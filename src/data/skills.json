@@ -1,0 +1,207 @@
+{
+  "technical": {
+    "intro": "You don't write code. You reason about how software works well enough to talk to engineers and spot risk. Conceptual is enough — except SQL and market sizing, which you should actually practice.",
+    "chain": {
+      "note": "Most of the technical skills are one story. A request travels this path; the rest are about making it fast, safe, and measurable.",
+      "steps": ["Client", "API", "Server", "Database"],
+      "labels": [
+        "the app or browser the user taps",
+        "the contract for asking",
+        "where the logic runs",
+        "where the data lives"
+      ],
+      "extras": [
+        "Caching sits in front of the database so common answers don't get recomputed.",
+        "Latency is the total round trip. Slow here is a product problem.",
+        "A data pipeline copies the events out to a place you can query for metrics."
+      ]
+    },
+    "skills": [
+      {
+        "slug": "apis",
+        "name": "APIs",
+        "gist": "How one service asks another for data.",
+        "need": [
+          "An API is a contract — a fixed way to ask, and a fixed shape of answer.",
+          "Ask \"is there already an API for this?\" before assuming something must be built.",
+          "Every new API a feature depends on is a new thing that can break or slow down."
+        ],
+        "bankCategory": "Technical",
+        "assess": "I can explain what an API is and why two teams agree on a contract before building against each other."
+      },
+      {
+        "slug": "databases",
+        "name": "Databases",
+        "gist": "Where the data lives, and why the choice locks you in.",
+        "need": [
+          "SQL (relational): structured, good for data with clear relationships and reporting.",
+          "NoSQL: flexible shape, good for scale and simple lookups.",
+          "Changing the data model after launch is expensive. The early choice matters."
+        ],
+        "bankCategory": "Technical",
+        "assess": "I can name one reason to choose a SQL database and one reason to choose NoSQL."
+      },
+      {
+        "slug": "client-server",
+        "name": "Client vs server",
+        "gist": "What runs on the phone vs what runs on your machines.",
+        "need": [
+          "Client = the app or browser. Server = the backend you control.",
+          "A server change ships instantly. A client change waits for an app-store update.",
+          "In India this matters — many users sit on old app versions for months."
+        ],
+        "bankCategory": "Technical",
+        "assess": "I can explain why a bug fixed on the server reaches users faster than one fixed in the mobile app."
+      },
+      {
+        "slug": "latency-caching",
+        "name": "Latency & caching",
+        "gist": "Why things feel slow, and the main trick to fix it.",
+        "need": [
+          "Latency is the delay before a response. Test on a real phone on 4G, not office wifi.",
+          "Caching stores a copy of a common answer so it isn't recomputed every time.",
+          "The risk: a stale cache serves an old answer after the real data changed."
+        ],
+        "bankCategory": "Technical",
+        "assess": "I can explain what caching does and name one case where a stale cache would cause a bug."
+      },
+      {
+        "slug": "ab-tests",
+        "name": "A/B tests",
+        "gist": "How you prove a change caused an outcome instead of coinciding with one.",
+        "need": [
+          "Split users at random, change one thing, compare the two groups.",
+          "Fix the success metric and the run length before you start, not after you peek.",
+          "\"Significant\" means the gap is unlikely to be noise — which needs enough users."
+        ],
+        "bankCategory": "Analytics",
+        "assess": "I can explain why you fix the success metric and sample size before starting an A/B test, not after."
+      },
+      {
+        "slug": "sql",
+        "name": "SQL",
+        "gist": "Pulling your own numbers instead of waiting on an analyst.",
+        "need": [
+          "SELECT, WHERE, GROUP BY, JOIN covers most of what a PM needs.",
+          "Practice on a real dataset — a weekend on Mode's tutorial is enough to start.",
+          "A PM who can query is faster and much harder to mislead."
+        ],
+        "bankCategory": "Analytics",
+        "assess": "Given the table, I could write a query to count sign-ups per day for the last week."
+      },
+      {
+        "slug": "data-pipelines",
+        "name": "Data pipelines",
+        "gist": "How a number gets from a user's tap to your dashboard.",
+        "need": [
+          "Events are logged, moved, processed, and loaded somewhere you can query.",
+          "Any step can fail or lag — so the number can be wrong even if users are fine.",
+          "When a metric looks off, first question: is it real, or did tracking break?"
+        ],
+        "bankCategory": "Technical",
+        "assess": "When a metric looks wrong, I'd check whether tracking or the pipeline broke before assuming user behaviour changed."
+      },
+      {
+        "slug": "ml-features",
+        "name": "ML features",
+        "gist": "What a PM owns when the feature is a model — recommendations, ranking, fraud.",
+        "need": [
+          "A model needs training data, an objective to optimise, and a baseline to beat.",
+          "Cold start: a new user or new item has no history, so the model guesses badly.",
+          "A model can optimise the wrong thing — watch time instead of satisfaction."
+        ],
+        "bankCategory": "Technical",
+        "assess": "I can explain what training data is and why a recommendation model needs an objective and a baseline."
+      },
+      {
+        "slug": "nfrs",
+        "name": "Non-functional requirements",
+        "gist": "\"It works\" vs \"it works under load, stays up, keeps data safe.\"",
+        "need": [
+          "The categories: performance, scalability, availability, security, reliability.",
+          "Before a big launch (a sale), set a target for each and load-test against it.",
+          "Decide what degrades gracefully — e.g. recommendations fail, checkout never does."
+        ],
+        "bankCategory": "Technical",
+        "assess": "Before a high-traffic launch I could state a target for load and uptime, and say what happens when a dependency fails."
+      }
+    ]
+  },
+  "nonTechnical": {
+    "intro": "This is where interviews are won or lost. All of it is learnable now with one real product and a notebook.",
+    "skills": [
+      {
+        "slug": "user-research",
+        "name": "User research",
+        "gist": "Understanding the problem before you touch a solution.",
+        "need": [
+          "Ask about the last time it actually happened, not what someone would hypothetically do.",
+          "Don't pitch your idea in the interview — you'll just hear agreement.",
+          "Five to ten conversations is usually enough to see a pattern."
+        ],
+        "bankCategory": "Product Design",
+        "assess": "I can run a 20-minute user interview without pitching my idea or asking leading questions."
+      },
+      {
+        "slug": "prioritisation",
+        "name": "Prioritisation",
+        "gist": "Saying no to good ideas so the great ones get built.",
+        "need": [
+          "Know two frameworks — RICE and Impact/Effort — and when each fits.",
+          "Filter by \"does this fit the strategy\" before you score anything.",
+          "Balance quick wins with a couple of bigger bets."
+        ],
+        "bankCategory": "Strategy",
+        "assess": "I can take five feature ideas and produce a defensible order, showing my reasoning."
+      },
+      {
+        "slug": "metrics",
+        "name": "Metrics",
+        "gist": "Picking the number you'll be judged on — and not gaming it.",
+        "need": [
+          "A North Star (the one number), plus guardrails that stop you cheating it.",
+          "Read a funnel and a retention cohort.",
+          "Total sign-ups is vanity. Weekly-active-and-retained is real."
+        ],
+        "bankCategory": "Analytics",
+        "assess": "For a product I use, I can name its likely North Star metric and two guardrails."
+      },
+      {
+        "slug": "writing",
+        "name": "Writing",
+        "gist": "Most PM work is writing. A clear one-pager saves weeks.",
+        "need": [
+          "A spec has: the problem, who it's for, what success looks like, what's out of scope.",
+          "An engineer should be able to estimate it without a meeting.",
+          "Short sentences. No jargon."
+        ],
+        "bankCategory": "General",
+        "assess": "I can write a one-page spec an engineer could question and estimate without a meeting."
+      },
+      {
+        "slug": "stakeholders",
+        "name": "Stakeholder comms",
+        "gist": "Getting things done with no authority over anyone.",
+        "need": [
+          "Update people regularly, not only when something breaks.",
+          "When a date slips, say it early with the reason and the new plan.",
+          "Leadership wants the outcome; engineers want the detail. Tailor it."
+        ],
+        "bankCategory": "General",
+        "assess": "I can write a status update that states a slipped timeline plainly and says what I'm doing about it."
+      },
+      {
+        "slug": "business",
+        "name": "Business sense",
+        "gist": "A product makes money or it dies. Think like an owner.",
+        "need": [
+          "Size a market out loud, stating each assumption.",
+          "Unit economics: does one more customer make or lose money?",
+          "Tie every feature back to revenue, retention, or growth."
+        ],
+        "bankCategory": "Strategy",
+        "assess": "I can estimate the market size for a product out loud, stating each assumption."
+      }
+    ]
+  }
+}

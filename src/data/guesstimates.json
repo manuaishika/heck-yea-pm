@@ -1,0 +1,94 @@
+{
+  "intro": "Two kinds come up: sizing something (\"how many X\") and explaining a change (\"metric Y dropped, why\"). Interviewers score the structure and the assumptions, not the final number.",
+  "sizing": {
+    "title": "Sizing something",
+    "steps": [
+      "Pick a path: top-down (start from a big population, narrow it) or bottom-up (start from one unit, multiply up).",
+      "State the population you start from, out loud, with a number.",
+      "Apply one filter at a time. Say the assumption before each: penetration, frequency, price.",
+      "Multiply through. Round hard — keep the arithmetic simple.",
+      "Sanity check against something you know. If it's 10x off a real figure, find which assumption is wrong."
+    ],
+    "example": {
+      "q": "How many cups of chai are sold in Mumbai per day?",
+      "work": [
+        ["Population", "~20M in the metro"],
+        ["Chai drinkers", "~70% → 14M"],
+        ["Cups per drinker per day", "~2 → 28M cups"],
+        ["Bought vs made at home", "~40% bought → ~11M cups/day"],
+        ["Sanity check", "~5k tea stalls in Mumbai × ~2k cups = 10M. Close enough."]
+      ]
+    }
+  },
+  "diagnosis": {
+    "title": "A metric dropped — explain it",
+    "note": "The classic: \"You're the PM at Netflix. Watch time drops 5% week over week. What do you do?\" Don't guess a cause. Narrow it.",
+    "steps": [
+      "Confirm it's real. Is the drop bigger than normal week-to-week noise? Is the tracking still working?",
+      "Segment. Platform, region, new vs existing, free vs paid. Everywhere, or one slice?",
+      "Time it. When exactly did it start? Line that up against releases, experiments, campaigns, outages.",
+      "Split the metric. Watch time = users × sessions × minutes per session. Which factor moved?",
+      "Check the outside world. Competitor launch, a holiday, a news event, seasonality.",
+      "Form one hypothesis, test it cheaply, then decide."
+    ],
+    "tree": {
+      "root": "Watch time down 5%",
+      "branches": [
+        { "label": "Fewer users", "leaves": ["Sign-ups down", "Churn up", "A cohort lapsed"] },
+        { "label": "Fewer sessions per user", "leaves": ["Push notifications broke", "A habit-forming feature changed"] },
+        { "label": "Shorter sessions", "leaves": ["Catalogue got weaker", "Player bug / buffering", "Recommendations worse"] }
+      ]
+    }
+  },
+  "questionSets": [
+    {
+      "kind": "Population & scale",
+      "note": "No product involved. Practice the population-funnel muscle.",
+      "questions": [
+        "How many people in India use public transport daily?",
+        "How many school teachers are there in India?",
+        "How many litres of milk are consumed in Bengaluru per day?",
+        "How many weddings happen in India each year?",
+        "How many mobile phone screens crack in Delhi each month?"
+      ]
+    },
+    {
+      "kind": "Non-tech product",
+      "note": "Physical goods and services. Watch for replacement rate and seasonality.",
+      "questions": [
+        "How many cars are sold in Pune in a year?",
+        "How many umbrellas are sold in Mumbai during monsoon?",
+        "How many pizzas does Domino's sell in India per day?",
+        "How many ACs are installed in Chennai each summer?",
+        "How many cricket bats are sold in India per year?"
+      ]
+    },
+    {
+      "kind": "Tech product",
+      "note": "Digital. Chain population → internet → smartphone → app → active use.",
+      "questions": [
+        "How many WhatsApp messages are sent in India per day?",
+        "How many food-delivery orders does Swiggy get in a tier-2 city per day?",
+        "How much storage would Google Photos need for all of India?",
+        "How many UPI transactions happen in India per day?",
+        "How many hours of video does an average Indian Instagram user watch per week?",
+        "How many rides does Rapido complete in Hyderabad per day?"
+      ]
+    }
+  ],
+  "anchors": {
+    "title": "Numbers to memorise",
+    "note": "Round, current-ish figures. Good enough for a guesstimate — state them as assumptions.",
+    "rows": [
+      ["India population", "~1.4 billion"],
+      ["India internet users", "~750 million"],
+      ["India smartphone users", "~700 million"],
+      ["India UPI users", "~350 million"],
+      ["Metro population (each of top 8)", "5–25 million"],
+      ["An average Indian city", "~1–2 million"],
+      ["US population", "~340 million"],
+      ["Working hours per year", "~2,000"],
+      ["Seconds in a day", "~86,400"]
+    ]
+  }
+}

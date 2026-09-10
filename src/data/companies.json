@@ -1,0 +1,493 @@
+{
+  "note": "Loop structures are pieced together from public candidate reports and change often. Treat each as a rough map, not a guarantee, and confirm the current format with your recruiter.",
+  "companies": [
+    {
+      "slug": "google",
+      "name": "Google",
+      "region": "Global, with an India intake",
+      "program": "APM and PM intern",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Recruiter call",
+          "detail": "A 20–30 minute chat: your background, why PM, why this company, logistics."
+        },
+        {
+          "name": "1–2 phone screens",
+          "detail": "one product design, one analytical or estimation"
+        },
+        {
+          "name": "On-site",
+          "detail": "4–5 interviews: product design, product strategy, analytical, and a behavioural round (\"Googleyness\")."
+        }
+      ],
+      "format": "Case-heavy and conversational. Interviewers push on your reasoning, not your conclusion. Estimation is done out loud with stated assumptions.",
+      "weights": [
+        [
+          "Product Design",
+          "heavy"
+        ],
+        [
+          "Analytics",
+          "heavy"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "They score structure and trade-off thinking above domain knowledge. Always clarify the goal before designing. Name a North Star metric on every design answer.",
+      "questionTags": [
+        "Google"
+      ]
+    },
+    {
+      "slug": "microsoft",
+      "name": "Microsoft",
+      "region": "Global, with an India intake",
+      "program": "PM intern and new-grad PM",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Recruiter call",
+          "detail": "A 20–30 minute chat: your background, why PM, why this company, logistics."
+        },
+        {
+          "name": "1 phone screen",
+          "detail": "product design or a light technical question"
+        },
+        {
+          "name": "Super day",
+          "detail": "3–4 interviews: product design, estimation, behavioural, sometimes a system-reasoning question."
+        }
+      ],
+      "format": "More conversational than Google. Interviewers care that you collaborate with them during the case rather than presenting a finished answer.",
+      "weights": [
+        [
+          "Product Design",
+          "heavy"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "medium"
+        ],
+        [
+          "Analytics",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Show customer empathy early and check in with the interviewer as you go. Have a favourite Microsoft product you actually use and specific critiques of it.",
+      "questionTags": [
+        "Microsoft"
+      ]
+    },
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "region": "Global, with a large India intake",
+      "program": "APM and PM intern",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Online assessment",
+          "detail": "work simulation and sometimes a writing sample"
+        },
+        {
+          "name": "1 phone screen",
+          "detail": "One 45-minute call, usually a product design or estimation question."
+        },
+        {
+          "name": "Loop",
+          "detail": "4–5 interviews, each anchored to two or three Leadership Principles, plus product and analytical questions. One interviewer is a bar raiser."
+        }
+      ],
+      "format": "Behavioural questions dominate and every story is scored against the Leadership Principles. Expect \"tell me about a time\" in almost every round.",
+      "weights": [
+        [
+          "Behavioral",
+          "heavy"
+        ],
+        [
+          "Analytics",
+          "medium"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Product Design",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Prepare 8–10 STAR stories mapped to the 16 Leadership Principles, each with real metrics. Use \"I\", not \"we\". Know Customer Obsession and Ownership cold.",
+      "questionTags": [
+        "Amazon"
+      ]
+    },
+    {
+      "slug": "meta",
+      "name": "Meta",
+      "region": "Global, with an India intake",
+      "program": "Rotational Product Manager (RPM) and PM intern",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Recruiter call",
+          "detail": "A 20–30 minute chat: your background, why PM, why this company, logistics."
+        },
+        {
+          "name": "1–2 screens",
+          "detail": "product sense and execution"
+        },
+        {
+          "name": "On-site",
+          "detail": "a product sense round, an execution / analytical round, and a leadership and drive round"
+        }
+      ],
+      "format": "Fast and metrics-first. The execution round is heavy on defining metrics, reading a drop, and trade-offs. Product sense expects a crisp user segment and goal.",
+      "weights": [
+        [
+          "Product Design",
+          "heavy"
+        ],
+        [
+          "Analytics",
+          "heavy"
+        ],
+        [
+          "Behavioral",
+          "medium"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Lead with the user and the goal, then one feature, then metrics. In execution rounds, structure the metric tree before proposing anything.",
+      "questionTags": [
+        "Meta"
+      ]
+    },
+    {
+      "slug": "flipkart",
+      "name": "Flipkart",
+      "region": "India",
+      "program": "APM",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Aptitude test",
+          "detail": "Timed online test — quant, logic, sometimes verbal. A screening filter."
+        },
+        {
+          "name": "Group discussion or a case exercise",
+          "detail": "A short group case or written exercise to shortlist for interviews."
+        },
+        {
+          "name": "Interviews",
+          "detail": "2–3 rounds: guesstimates, a product design or improvement case, and a behavioural round."
+        }
+      ],
+      "format": "Guesstimate-heavy, India-context. Expect market sizing for Indian cities and tiers, and product cases grounded in Indian e-commerce and logistics.",
+      "weights": [
+        [
+          "Strategy",
+          "heavy"
+        ],
+        [
+          "Analytics",
+          "heavy"
+        ],
+        [
+          "Product Design",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Practice estimation with Indian numbers — population tiers, smartphone and UPI penetration, income bands. Know Flipkart's business: marketplace, ads, Flipkart Plus, logistics.",
+      "questionTags": [
+        "Flipkart"
+      ]
+    },
+    {
+      "slug": "zomato",
+      "name": "Zomato",
+      "region": "India",
+      "program": "APM",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Application",
+          "detail": "often with a short written prompt"
+        },
+        {
+          "name": "Take-home assignment",
+          "detail": "a product teardown or an improvement proposal"
+        },
+        {
+          "name": "Interviews",
+          "detail": "2–3 rounds: product thinking, analytics, and a founder or senior-leader round."
+        }
+      ],
+      "format": "Assignment-led. The written submission is the main filter, so it has to be tight and opinionated. Interviews dig into your assignment and your product instincts.",
+      "weights": [
+        [
+          "Product Design",
+          "heavy"
+        ],
+        [
+          "Analytics",
+          "heavy"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "light"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Use Zomato and its neighbours (Swiggy, Blinkit, district) heavily and have sharp critiques. The assignment rewards a strong point of view over a balanced survey.",
+      "questionTags": [
+        "Zomato"
+      ]
+    },
+    {
+      "slug": "swiggy",
+      "name": "Swiggy",
+      "region": "India",
+      "program": "APM",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Assessment or a short assignment",
+          "detail": "A screening step before interviews — test or take-home."
+        },
+        {
+          "name": "Product round",
+          "detail": "execution and design"
+        },
+        {
+          "name": "Analytics round",
+          "detail": "metrics and a diagnosis question"
+        },
+        {
+          "name": "Hiring manager",
+          "detail": "sometimes with a bar-raiser"
+        }
+      ],
+      "format": "Execution and metrics first. Expect a \"a metric dropped, what do you do\" question and trade-off discussions grounded in food delivery and quick commerce.",
+      "weights": [
+        [
+          "Analytics",
+          "heavy"
+        ],
+        [
+          "Product Design",
+          "heavy"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Be fluent in delivery-marketplace metrics: order frequency, delivery time, contribution margin, rider utilisation, cancellations. Diagnose before prescribing.",
+      "questionTags": [
+        "Swiggy"
+      ]
+    },
+    {
+      "slug": "razorpay",
+      "name": "Razorpay",
+      "region": "India",
+      "program": "APM",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Product case",
+          "detail": "often a take-home"
+        },
+        {
+          "name": "Interviews",
+          "detail": "2–3 rounds: product design, analytical, and a culture-fit round."
+        },
+        {
+          "name": "Technical questions",
+          "detail": "Woven through the rounds, given the fintech domain — payments flow, failure handling, compliance."
+        }
+      ],
+      "format": "Fintech context throughout — payments, settlements, compliance, B2B. More technical depth expected than at a consumer company.",
+      "weights": [
+        [
+          "Technical",
+          "heavy"
+        ],
+        [
+          "Product Design",
+          "heavy"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Analytics",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Understand how a payment actually flows — gateway, network, bank, settlement — and why failure handling and compliance are product problems, not afterthoughts.",
+      "questionTags": [
+        "Razorpay"
+      ]
+    },
+    {
+      "slug": "zepto",
+      "name": "Zepto",
+      "region": "India",
+      "program": "APM",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Assignment",
+          "detail": "a product or growth problem"
+        },
+        {
+          "name": "Product and analytics interview",
+          "detail": "One combined round: a design case plus a metrics question."
+        },
+        {
+          "name": "Founder or senior-leader round",
+          "detail": "A conversation with a founder or senior leader — vision fit, drive, judgement."
+        }
+      ],
+      "format": "Fast loop, high bar on ownership. Questions centre on quick commerce under tight constraints: 10-minute delivery, dark-store economics, city expansion.",
+      "weights": [
+        [
+          "Analytics",
+          "heavy"
+        ],
+        [
+          "Strategy",
+          "heavy"
+        ],
+        [
+          "Product Design",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Think in unit economics and constraints. Be ready to reason about dark-store density, basket size, delivery cost per order, and what breaks at 10x volume.",
+      "questionTags": [
+        "Zepto"
+      ]
+    },
+    {
+      "slug": "meesho",
+      "name": "Meesho",
+      "region": "India",
+      "program": "APM",
+      "verified": false,
+      "rounds": [
+        {
+          "name": "Assessment",
+          "detail": "Timed online assessment before any interview."
+        },
+        {
+          "name": "Product case round",
+          "detail": "A product design or improvement case, worked live with the interviewer."
+        },
+        {
+          "name": "Analytics round",
+          "detail": "Metrics: define a North Star, read a funnel, diagnose a drop."
+        },
+        {
+          "name": "Hiring manager",
+          "detail": "The manager you would work for. Depth on your assignment and your instincts."
+        }
+      ],
+      "format": "Value-commerce context — tier-2 and tier-3 users, low-trust first-time online buyers, sellers who are small businesses. Cases are grounded in that user.",
+      "weights": [
+        [
+          "Product Design",
+          "heavy"
+        ],
+        [
+          "Analytics",
+          "heavy"
+        ],
+        [
+          "Strategy",
+          "medium"
+        ],
+        [
+          "Behavioral",
+          "medium"
+        ],
+        [
+          "Technical",
+          "light"
+        ]
+      ],
+      "whatToKnow": "Design for a user who may be new to online shopping, price-sensitive, and on a cheap phone. Trust, returns, and cash-on-delivery economics come up often.",
+      "questionTags": [
+        "Meesho"
+      ]
+    }
+  ]
+}

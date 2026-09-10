@@ -1,0 +1,41 @@
+{
+  "whatPmDoes": {
+    "root": "A PM decides what a product should do, and why.",
+    "sub": "Not: managing people, writing code, or designing screens.",
+    "constraints": {
+      "note": "Every call has to satisfy all three at once. Drop one and the product fails.",
+      "corners": [
+        { "label": "User needs" },
+        { "label": "Business goals" },
+        { "label": "Buildable" }
+      ]
+    },
+    "flow": [
+      {
+        "step": "Learn",
+        "short": "Understand the problem",
+        "detail": "Talk to users. Watch them use the product. Read support tickets. The skill is separating what people say from what they do — usually different."
+      },
+      {
+        "step": "Decide",
+        "short": "Rank what matters",
+        "detail": "Say no to good ideas so the great ones get built. Use a framework — RICE, or impact vs effort — to make the trade-off visible, and tie every call to a goal."
+      },
+      {
+        "step": "Spec",
+        "short": "Write it down",
+        "detail": "One page: what to build, who it's for, what success looks like, what's out of scope. An engineer should be able to question and estimate it without a meeting."
+      },
+      {
+        "step": "Ship",
+        "short": "Roll out and measure",
+        "detail": "Release gradually — 5% of users first. Watch the dashboard. Then the real question: did the metric actually move, or did something else change at the same time?"
+      },
+      {
+        "step": "Align",
+        "short": "Keep everyone in the loop",
+        "detail": "Tell stakeholders what's happening before it goes wrong. A slipped date is manageable; a surprise slipped date is a crisis. Never blindside your manager."
+      }
+    ]
+  }
+}

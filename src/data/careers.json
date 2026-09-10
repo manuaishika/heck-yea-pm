@@ -1,0 +1,192 @@
+{
+  "note": "The same job **feels different depending on where you do it**, and it sits next to several roles that **aren't quite PM**. Interviewers ask about both.",
+  "modes": {
+    "note": "Three modes, not two. An early startup and a scaled one are as different from each other as either is from a large company.",
+    "columns": [
+      {
+        "key": "early",
+        "name": "Early startup",
+        "sub": "before product-market fit"
+      },
+      {
+        "key": "scaled",
+        "name": "Scaled startup",
+        "sub": "post-PMF, growing"
+      },
+      {
+        "key": "mnc",
+        "name": "Large company",
+        "sub": "established, many teams"
+      }
+    ],
+    "bars": [
+      {
+        "dim": "How much you own",
+        "levels": [
+          3,
+          2,
+          1
+        ],
+        "labels": [
+          "the whole product",
+          "one area",
+          "one feature"
+        ]
+      },
+      {
+        "dim": "Ambiguity you absorb",
+        "levels": [
+          3,
+          2,
+          1
+        ],
+        "labels": [
+          "total — no answers exist",
+          "high — path is yours",
+          "low — optimise within limits"
+        ]
+      },
+      {
+        "dim": "Data already there",
+        "levels": [
+          0,
+          2,
+          3
+        ],
+        "labels": [
+          "almost none, you generate it",
+          "decent dashboards",
+          "abundant, plus a research team"
+        ]
+      },
+      {
+        "dim": "Pace",
+        "levels": [
+          3,
+          2,
+          1
+        ],
+        "labels": [
+          "ship weekly",
+          "steady cadence",
+          "deliberate, reviewed"
+        ]
+      },
+      {
+        "dim": "Process",
+        "levels": [
+          0,
+          1,
+          3
+        ],
+        "labels": [
+          "none",
+          "some",
+          "heavy — proposals, committees"
+        ]
+      }
+    ],
+    "spectrum": {
+      "dim": "Build vs coordinate",
+      "ends": [
+        "build",
+        "coordinate"
+      ],
+      "positions": [
+        10,
+        50,
+        82
+      ],
+      "labels": [
+        "mostly building",
+        "half and half",
+        "mostly aligning stakeholders"
+      ]
+    },
+    "text": [
+      {
+        "dim": "Team size",
+        "values": [
+          "3–8 people",
+          "8–15 in your group",
+          "10–20+ and a big matrix"
+        ]
+      },
+      {
+        "dim": "You're judged on",
+        "values": [
+          "did the product get traction",
+          "did your metric move",
+          "clean launch, no surprises, good writeup"
+        ]
+      },
+      {
+        "dim": "Leads to",
+        "values": [
+          "founding PM, or your own thing",
+          "senior PM, then group PM",
+          "senior PM on a defined ladder"
+        ]
+      }
+    ]
+  },
+  "adjacent": [
+    {
+      "role": "APM / Associate PM",
+      "oneLine": "PM, **junior**. Rotational, mentored. **The normal way in.**",
+      "vsPm": "Same job, **smaller scope**, more support."
+    },
+    {
+      "role": "Product Analyst",
+      "oneLine": "Owns the **data**, not the roadmap. Dashboards, analysis, sizing bets.",
+      "vsPm": "A **common route into PM in India**. You inform decisions; the PM makes them."
+    },
+    {
+      "role": "Program / Project Manager",
+      "oneLine": "Owns **delivery** — timelines, dependencies, coordination.",
+      "vsPm": "Makes sure it **ships**. The PM decides **what** ships."
+    },
+    {
+      "role": "Technical Program Manager",
+      "oneLine": "Program management for **infra, platform, migrations**.",
+      "vsPm": "Needs **real engineering depth**. Less about users, more about systems."
+    },
+    {
+      "role": "Growth PM",
+      "oneLine": "A PM on the **funnel** — acquisition, activation, retention, revenue.",
+      "vsPm": "Same craft, aimed at the funnel. **Experiment-heavy.**"
+    },
+    {
+      "role": "Founder's office / Chief of staff",
+      "oneLine": "Whatever the founder needs this month. **Broad, unstructured.**",
+      "vsPm": "**High exposure, no fixed remit.** Can lead to PM; isn't PM."
+    }
+  ],
+  "growth": [
+    {
+      "level": "APM / PM intern",
+      "years": "0",
+      "focus": "Learn the craft. Ship small things well. Build judgement."
+    },
+    {
+      "level": "PM",
+      "years": "1–3",
+      "focus": "Own a feature or area end to end. Move a metric."
+    },
+    {
+      "level": "Senior PM",
+      "years": "3–6",
+      "focus": "Own a hard problem or a large area. Set the local strategy."
+    },
+    {
+      "level": "Group PM / Principal",
+      "years": "6+",
+      "focus": "Own a product line through other PMs, or go deep as an individual expert."
+    },
+    {
+      "level": "Director / VP Product",
+      "years": "10+",
+      "focus": "Own the org and the portfolio. Mostly people and strategy."
+    }
+  ]
+}

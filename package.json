@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "validate": "node scripts/validate-data.mjs",
+    "prebuild": "node scripts/validate-data.mjs",
+    "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {
@@ -20,10 +22,8 @@
     "vite": "^8.0.0"
   },
   "dependencies": {
-    "framer-motion": "^12.36.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-markdown": "^10.1.0",
     "react-router-dom": "^7.13.1"
   }
 }

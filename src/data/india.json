@@ -1,0 +1,55 @@
+{
+  "intro": "Most PM job listings in India ask for 2+ years of experience or an MBA. Straight out of undergrad, the way in is a small set of new-grad programs and a few adjacent roles you can pivot from. Here's the map.",
+  "programs": [
+    {
+      "name": "Google APM",
+      "who": "New grads, any degree. Bengaluru cohort.",
+      "note": "Opens late September, closes late October. ~8,000 applications a year, under 1% taken. Rolling review — apply the day it opens.",
+      "url": "https://www.google.com/about/careers/applications/programs/apm/"
+    },
+    {
+      "name": "Microsoft PM (new grad / intern)",
+      "who": "Final-year students and new grads.",
+      "note": "Campus hiring plus off-campus. Product design and collaboration-heavy interviews.",
+      "url": "https://careers.microsoft.com/students/us/en"
+    },
+    {
+      "name": "Meta Rotational PM (RPM)",
+      "who": "New grads. 18 months across three teams.",
+      "note": "Small cohort, mostly US but takes international grads. Metrics-heavy loop.",
+      "url": "https://www.metacareers.com/careerprograms/pathways/rpm"
+    },
+    {
+      "name": "Flipkart APM",
+      "who": "Campus hire from select colleges, plus off-campus rounds.",
+      "note": "Aptitude test, group case, then guesstimate and product rounds. India e-commerce context.",
+      "url": "https://sites.google.com/flipkart.com/apm/home"
+    },
+    {
+      "name": "Zomato, Swiggy, Zepto, Meesho, Razorpay APM",
+      "who": "New grads and early-career. Assignment-led.",
+      "note": "A written product teardown or growth problem is usually the main filter. Watch each careers page — cycles are irregular.",
+      "url": "https://www.zomato.com/careers"
+    },
+    {
+      "name": "Atlassian, Uber, Adobe, PhonePe, Groww",
+      "who": "New-grad APM or PM-I roles, when open.",
+      "note": "Smaller intakes, often only via campus. Follow them on LinkedIn for the posting.",
+      "url": "https://www.atlassian.com/company/careers/early-career"
+    }
+  ],
+  "noProgram": {
+    "note": "If you don't land a program — which is the common case — these roles put you one lateral move from PM.",
+    "options": [
+      { "role": "Product Analyst", "why": "Owns the data a PM uses. The most common route into PM in India. Look for it at the same companies." },
+      { "role": "Associate PM at an early startup", "why": "Less structured, less competitive, more scope. You'll do real PM work in month one." },
+      { "role": "Founder's office / business analyst", "why": "Broad exposure to how a company runs. Pivot to PM internally after 12–18 months." },
+      { "role": "APM at an agency or services firm", "why": "Lower bar to entry, real client products. Use it to build a portfolio, then move." }
+    ]
+  },
+  "misconceptions": [
+    ["\"I need an MBA.\"", "Not for an APM program — they hire straight from undergrad. An MBA matters more for switching into PM after a few years in another function."],
+    ["\"I need a CS degree.\"", "Helps at Google and for technical products. Plenty of APMs come from other engineering branches, economics, or design."],
+    ["\"I should wait and apply next year with more experience.\"", "The programs are built for people with none. Apply now — you can apply again next cycle if it doesn't work."]
+  ]
+}

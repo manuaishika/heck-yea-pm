@@ -1,0 +1,44 @@
+{
+  "intro": "You can't fake product taste in an interview — you build it by using products closely and reading people who think about them well. Start here.",
+  "groups": [
+    {
+      "name": "Read every week",
+      "items": [
+        { "name": "Lenny's Newsletter", "what": "The default PM newsletter. Growth, career, frameworks.", "url": "https://www.lennysnewsletter.com/" },
+        { "name": "Stratechery", "what": "Ben Thompson on tech strategy and business models. Free Monday article.", "url": "https://stratechery.com/" },
+        { "name": "The Product Person / Reforge blog", "what": "Deeper essays on product and growth work.", "url": "https://www.reforge.com/blog" }
+      ]
+    },
+    {
+      "name": "See what's launching",
+      "items": [
+        { "name": "Product Hunt", "what": "New products daily. Good for spotting patterns and forming opinions.", "url": "https://www.producthunt.com/" },
+        { "name": "TechCrunch", "what": "Funding, launches, shutdowns. Skim the headlines.", "url": "https://techcrunch.com/" },
+        { "name": "The Ken / Entrackr", "what": "India startup coverage with actual analysis.", "url": "https://the-ken.com/" }
+      ]
+    },
+    {
+      "name": "Study design",
+      "items": [
+        { "name": "Mobbin", "what": "Screenshots of real app flows, searchable. Study onboarding and checkout.", "url": "https://mobbin.com/" },
+        { "name": "Dribbble", "what": "UI concepts. Useful for vocabulary, less for real product thinking.", "url": "https://dribbble.com/" },
+        { "name": "Growth.Design", "what": "Case studies that pull apart one flow at a time.", "url": "https://growth.design/case-studies" }
+      ]
+    },
+    {
+      "name": "Practice",
+      "items": [
+        { "name": "Mode SQL Tutorial", "what": "Learn enough SQL to pull your own numbers. One weekend.", "url": "https://mode.com/sql-tutorial/" },
+        { "name": "Exponent (free content)", "what": "Question lists and some free walkthroughs.", "url": "https://www.tryexponent.com/" },
+        { "name": "Product Management Exercises", "what": "Community answers to real interview questions, by company.", "url": "https://www.productmanagementexercises.com/" }
+      ]
+    },
+    {
+      "name": "Listen",
+      "items": [
+        { "name": "Lenny's Podcast", "what": "Long interviews with working PMs and founders.", "url": "https://www.lennyspodcast.com/" },
+        { "name": "Acquired", "what": "Deep company histories. Great for pattern-matching business models.", "url": "https://www.acquired.fm/" }
+      ]
+    }
+  ]
+}

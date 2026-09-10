@@ -1,15 +1,63 @@
-function About() {
+import { Link } from 'react-router-dom'
+import { questions } from '../data/questions'
+import { useHead } from '../lib/useHead'
+import { Page, PageHead } from '../components/Page'
+
+const REPO = 'https://github.com/manuaishika/heck-yea-pm'
+
+export default function About() {
+  useHead({
+    title: 'About',
+    description:
+      'What this is, who made it, and how to contribute a question, a company loop, or a correction.',
+    path: '/about',
+  })
+
   return (
-    <div className="min-h-screen pt-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-6">About</h1>
-        <p className="text-gray-300 leading-relaxed">
-          Heck Yea PM is a lightweight interview prep app focused on practical PM questions and
-          concise answers. Start with Browse mode and then use Flashcards for quick revision.
+    <Page>
+      <PageHead
+        title="About"
+        intro="A free study site for your first product manager interview."
+      />
+
+      <div className="prose-body mt-4 space-y-3">
+        <p>
+          Four chapters — the role, the skills, a{' '}
+          <Link to="/browse">{questions.length}-question bank</Link>, and{' '}
+          <Link to="/companies">company loops</Link> — plus a flashcard mode that
+          tracks what you know. It is built for a final-year
+          student in India applying to PM intern and APM roles, on a phone, with
+          a few weeks to prepare.
+        </p>
+        <p>
+          <strong>No login, no paywall, no email capture.</strong> It loads and
+          it works. Your review progress and self-assessment stay in your
+          browser and are never sent anywhere.
+        </p>
+        <p>
+          The question bank was built by hand from real interview reports. The
+          company loops are pieced together from public candidate accounts and
+          are marked unverified until confirmed — corrections there are the most
+          useful thing you can send.
         </p>
       </div>
-    </div>
+
+      <h2 className="mt-8 text-lg">Contribute</h2>
+      <div className="prose-body mt-2 space-y-3">
+        <p>
+          The site is open source. To add a question, fix a company loop, or
+          flag something wrong, open an issue or a pull request:
+        </p>
+        <p>
+          <a href={REPO} target="_blank" rel="noreferrer noopener">
+            {REPO.replace('https://', '')}
+          </a>
+        </p>
+        <p>
+          All content lives in typed data files with a documented shape; the
+          README covers how to add each type.
+        </p>
+      </div>
+    </Page>
   )
 }
-
-export default About

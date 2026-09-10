@@ -1,0 +1,58 @@
+{
+  "intro": "A PM intern resume gets **~20 seconds**. It has to show **product thinking without product experience**. Here's what that looks like.",
+  "bulletFormula": {
+    "parts": ["What you did", "How you measured it", "The scope or constraint"],
+    "bad": "Worked on a team project to build a study app.",
+    "good": "Led a **4-person team** to ship a study app to **200 students in 6 weeks**; cut sign-up drop-off from **60% to 25%** after **5 user interviews**."
+  },
+  "sections": [
+    {
+      "name": "Top",
+      "keep": [
+        "Name, one line, **links** (GitHub, portfolio, LinkedIn)",
+        "**No photo, no address, no \"objective\"**"
+      ]
+    },
+    {
+      "name": "Experience & projects",
+      "keep": [
+        "**3–5 bullets** each, newest first",
+        "Every bullet: **action verb + number + scope**",
+        "Show the PM parts: **research, prioritisation, a trade-off you made, a metric you moved**",
+        "**Cut anything with no outcome**"
+      ]
+    },
+    {
+      "name": "Skills",
+      "keep": [
+        "**SQL**, one analytics tool, Figma if real",
+        "No skill bars, no \"proficient in MS Word\""
+      ]
+    },
+    {
+      "name": "Education",
+      "keep": [
+        "Degree, institution, year",
+        "**GPA only if strong**",
+        "One line of relevant coursework, max"
+      ]
+    }
+  ],
+  "mistakes": [
+    "**Responsibilities instead of results** — \"was responsible for X\" says nothing happened.",
+    "**No numbers anywhere.** Even a small one (\"12 interviews\", \"3 features cut\") beats none.",
+    "Listing every hackathon. **Two strong projects beat six weak ones.**",
+    "A wall of text. **One page**, generous margins, one font.",
+    "**Buzzwords with no substance** — \"synergy\", \"passionate about disruption\", \"10x mindset\".",
+    "Tailoring nothing. **Mirror the language in the JD** for the specific company."
+  ],
+  "checklist": [
+    "**One page**",
+    "Every bullet has a **number**",
+    "Every bullet starts with a **verb**",
+    "The PM skills are visible: **research, prioritisation, metrics, a trade-off**",
+    "**No typos** — read it backwards, word by word",
+    "A friend can tell **what you actually did** in each role in 5 seconds",
+    "**Links work** and point somewhere real"
+  ]
+}

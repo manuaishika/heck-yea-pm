@@ -1,169 +1,181 @@
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { questions } from '../data/questions'
-import ReactMarkdown from 'react-markdown'
+import { useState } from 'react'
+import { useParams, useLocation, Link, Navigate } from 'react-router-dom'
+import {
+  resolveQuestionId,
+  getQuestion,
+  relatedQuestions,
+  categoryNeighbors,
+} from '../data/questions'
+import { useHead } from '../lib/useHead'
+import { Page } from '../components/Page'
+import Points from '../components/Points'
+import SaveButton from '../components/SaveButton'
+import NotFound from './NotFound'
 
-function QuestionDetail() {
-  const { questionId } = useParams()
-  const navigate = useNavigate()
-  const question = questions.find((q) => q.id === parseInt(questionId))
+function CopyLink({ id }) {
+  const [copied, setCopied] = useState(false)
+  const url =
+    (typeof window !== 'undefined' ? window.location.origin : '') + `/browse/${id}`
 
-  if (!question) {
-    return (
-      <div className="min-h-screen pt-16 flex items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Question not found</h2>
-          <Link to="/browse" className="text-blue-500 hover:text-blue-400">
-            ← Back to Browse
-          </Link>
-        </div>
-      </div>
-    )
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(url)
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = url
+      ta.style.cssText = 'position:fixed;opacity:0'
+      document.body.appendChild(ta)
+      ta.select()
+      try {
+        document.execCommand('copy')
+      } catch {
+        /* nothing more to try */
+      }
+      document.body.removeChild(ta)
+    }
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
-  const relatedQuestionsData = question.relatedQuestions
-    ? questions.filter((q) => question.relatedQuestions.includes(q.id))
-    : []
-
   return (
-    <div className="min-h-screen pt-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <button
-          onClick={() => navigate('/browse')}
-          className="flex items-center text-gray-400 hover:text-white mb-8 transition-colors group"
-        >
-          <svg
-            className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Back to Browse
-        </button>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="inline-block px-3 py-1 bg-blue-600/20 text-blue-400 rounded-full text-sm font-medium mb-4">
-            {question.category}
-          </span>
-
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-            {question.question}
-          </h1>
-
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 mb-8">
-            <div className="prose prose-invert prose-lg max-w-none">
-              <ReactMarkdown
-                components={{
-                  h1: ({ children }) => (
-                    <h2 className="text-2xl font-bold mt-6 mb-4">{children}</h2>
-                  ),
-                  h2: ({ children }) => (
-                    <h3 className="text-xl font-bold mt-6 mb-3">{children}</h3>
-                  ),
-                  h3: ({ children }) => (
-                    <h4 className="text-lg font-semibold mt-4 mb-2">{children}</h4>
-                  ),
-                  p: ({ children }) => (
-                    <p className="text-gray-300 mb-4 leading-relaxed">{children}</p>
-                  ),
-                  strong: ({ children }) => (
-                    <strong className="text-white font-semibold">{children}</strong>
-                  ),
-                  ul: ({ children }) => (
-                    <ul className="list-disc list-inside space-y-2 mb-4 text-gray-300">
-                      {children}
-                    </ul>
-                  ),
-                  ol: ({ children }) => (
-                    <ol className="list-decimal list-inside space-y-2 mb-4 text-gray-300">
-                      {children}
-                    </ol>
-                  ),
-                  code: ({ inline, children }) =>
-                    inline ? (
-                      <code className="bg-white/10 px-2 py-1 rounded text-blue-400 text-sm">
-                        {children}
-                      </code>
-                    ) : (
-                      <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto mb-4">
-                        <code className="text-sm text-gray-300">{children}</code>
-                      </pre>
-                    ),
-                  table: ({ children }) => (
-                    <div className="overflow-x-auto mb-6">
-                      <table className="min-w-full border border-white/20 rounded-lg">
-                        {children}
-                      </table>
-                    </div>
-                  ),
-                  thead: ({ children }) => (
-                    <thead className="bg-white/10">{children}</thead>
-                  ),
-                  th: ({ children }) => (
-                    <th className="px-4 py-2 text-left border-b border-white/20 font-semibold">
-                      {children}
-                    </th>
-                  ),
-                  td: ({ children }) => (
-                    <td className="px-4 py-2 border-b border-white/20 text-gray-300">
-                      {children}
-                    </td>
-                  ),
-                }}
-              >
-                {question.answer}
-              </ReactMarkdown>
-            </div>
-          </div>
-
-          {question.tip && (
-            <div className="bg-blue-600/10 border border-blue-500/30 rounded-xl p-6 mb-8">
-              <div className="flex items-start gap-3">
-                <div className="text-2xl">💡</div>
-                <div>
-                  <h4 className="font-semibold text-blue-400 mb-2">Pro Tip</h4>
-                  <p className="text-gray-300">{question.tip}</p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {relatedQuestionsData.length > 0 && (
-            <div className="mt-12">
-              <h3 className="text-2xl font-bold mb-6">Related Questions</h3>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {relatedQuestionsData.map((related) => (
-                  <Link
-                    key={related.id}
-                    to={`/browse/${related.id}`}
-                    className="block bg-white/5 border border-white/10 rounded-xl p-6 hover:border-blue-500/50 hover:bg-white/10 transition-all group"
-                  >
-                    <span className="text-xs text-blue-400 font-medium mb-2 block">
-                      {related.category}
-                    </span>
-                    <h4 className="font-semibold group-hover:text-blue-400 transition-colors">
-                      {related.question}
-                    </h4>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-        </motion.div>
-      </div>
-    </div>
+    <button
+      type="button"
+      onClick={copy}
+      className="label border border-rule px-1.5 py-1 hover:border-rule-hard hover:text-ink"
+    >
+      {copied ? 'copied' : 'copy link'}
+    </button>
   )
 }
 
-export default QuestionDetail
+export default function QuestionDetail() {
+  const { id } = useParams()
+  const location = useLocation()
+  const canonicalId = resolveQuestionId(id)
+
+  if (!canonicalId) return <NotFound />
+  if (canonicalId !== id) {
+    return <Navigate to={`/browse/${canonicalId}${location.search}`} replace />
+  }
+
+  const q = getQuestion(canonicalId)
+  const related = relatedQuestions(q, 3)
+  const { prev, next } = categoryNeighbors(q)
+
+  const answerSection =
+    q.sections.find((s) => /answer/i.test(s.label)) ||
+    q.sections[q.sections.length - 1]
+  useHead({
+    title: q.question.replace(/\s+/g, ' ').slice(0, 70),
+    description: (answerSection?.points.join('. ') || q.question)
+      .replace(/\s+/g, ' ')
+      .slice(0, 155),
+    path: `/browse/${q.id}`,
+  })
+
+  return (
+    <Page>
+      <p className="label">
+        <Link to={`/browse${location.search}`}>Question bank</Link>
+      </p>
+
+      <header className="mt-4 border-b border-rule-hard pb-4">
+        <p className="label flex items-center gap-2">
+          <span>{q.category}</span>
+          {q.hard && <span className="text-accent">· curveball</span>}
+        </p>
+        <h1 className="mt-1 text-xl sm:text-2xl">{q.question}</h1>
+        <div className="mt-3 flex items-center gap-1.5">
+          <CopyLink id={q.id} />
+          <SaveButton id={q.id} question={q.question} withLabel />
+        </div>
+      </header>
+
+      <div className="mt-4">
+        {q.sections.map((s) => (
+          <Points key={s.label} label={s.label} points={s.points} />
+        ))}
+
+        <section className="mt-5 border-l-2 border-accent pl-3">
+          <p className="label !text-accent">Failure mode</p>
+          <p className="mt-1 text-sm text-ink-dim">{q.failureMode}</p>
+        </section>
+
+        {q.tip && (
+          <section className="mt-4">
+            <p className="label">What they test</p>
+            <p className="mt-1 text-sm text-ink-dim">{q.tip}</p>
+          </section>
+        )}
+
+        {q.companies.length > 0 && (
+          <section className="mt-4">
+            <p className="label">Asked at</p>
+            <ul className="mt-1 flex flex-wrap gap-1.5">
+              {q.companies.map((c) => (
+                <li key={c}>
+                  <Link
+                    to={`/browse?q=${encodeURIComponent(c)}`}
+                    className="label border border-rule px-1.5 py-0.5 text-ink-dim no-underline hover:border-rule-hard hover:text-ink"
+                  >
+                    {c}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
+
+      {related.length > 0 && (
+        <nav
+          aria-label={`More ${q.category} questions`}
+          className="mt-8 border-t border-rule pt-4"
+        >
+          <p className="label">More in {q.category.toLowerCase()}</p>
+          <ul className="mt-1.5">
+            {related.map((r) => (
+              <li key={r.id} className="border-b border-rule last:border-0">
+                <Link
+                  to={`/browse/${r.id}`}
+                  className="block py-2 text-sm text-ink no-underline hover:text-accent"
+                >
+                  {r.question}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      {(prev || next) && (
+        <nav
+          aria-label="Question navigation"
+          className="mt-6 grid gap-3 border-t border-rule pt-4 sm:grid-cols-2"
+        >
+          {prev ? (
+            <Link to={`/browse/${prev.id}`} className="group no-underline">
+              <span className="label">Previous</span>
+              <span className="mt-0.5 block text-sm text-ink group-hover:text-accent">
+                {prev.question}
+              </span>
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next && (
+            <Link
+              to={`/browse/${next.id}`}
+              className="group no-underline sm:text-right"
+            >
+              <span className="label">Next</span>
+              <span className="mt-0.5 block text-sm text-ink group-hover:text-accent">
+                {next.question}
+              </span>
+            </Link>
+          )}
+        </nav>
+      )}
+    </Page>
+  )
+}

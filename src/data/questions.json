@@ -1,0 +1,2352 @@
+[
+  {
+    "id": "tell-me-about-yourself",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Tell me about yourself. / Why do you want to be a PM?",
+    "sections": [
+      {
+        "label": "Situation / Background",
+        "points": [
+          "I'm a [Year] student studying [Major] at [University], with a passion for building products that solve real user problems",
+          "I've been involved in [relevant project / club / role] where I noticed how good product thinking directly drives outcomes"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "I wanted to understand how to translate user needs into actionable product decisions — not just build things, but build the right things"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I started experimenting — I shipped a [side project / hackathon project], learned to run user interviews, and studied frameworks like RICE prioritization and Jobs-to-be-Done",
+          "I also completed [relevant course / certification]"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "That experience confirmed that PM is the role where I can combine analytical thinking, user empathy, and cross-functional collaboration",
+          "I'm excited to bring that mindset to [Company] specifically because of [specific product / mission]"
+        ]
+      }
+    ],
+    "tip": "Be specific about a company's product. Generic \"I love tech\" answers lose interviewers quickly, especially at FAANG.",
+    "failureMode": "Reciting a résumé instead of a narrative, and giving a generic \"I love tech\" reason with nothing specific about the company's product.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "convince-someone-of-an-idea",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you had to convince someone of an idea.",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "In a university group project on data science, I wanted to analyze public transportation data to optimize routes in our city",
+          "Two teammates preferred a housing price prediction model — they felt it was simpler and more glamorous"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "I needed to persuade them that the transport project was more impactful, more unique, and would showcase a broader range of skills"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "First, I acknowledged their concerns about data availability",
+          "Then I pulled real case studies from cities that had improved commute times through data-driven transit decisions, and found a publicly available dataset from our city's transit authority to eliminate their main objection",
+          "I sketched a visualization of what our final output could look like and proposed a hybrid element: analyzing how improved transit links might affect nearby property values"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "They came around — We executed the public transport project, identified key bottlenecks, and proposed data-backed route adjustments",
+          "The professor specifically praised the innovation and practical application"
+        ]
+      }
+    ],
+    "tip": "Use evidence (data, examples) + empathy (acknowledge their view) + a bridge (a hybrid idea). This mirrors exactly how PMs influence without authority.",
+    "failureMode": "Telling a story where you won by being louder or more senior, instead of showing you changed someone's mind with evidence.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "handle-a-team-conflict",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you had to handle a conflict at work or on a team.",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "During a team project, two members disagreed sharply on which feature to prioritize first — one focused on UI polish while the other pushed for backend stability before the deadline"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "As the de facto project lead, I needed to resolve this quickly without damaging team dynamics or missing our deadline"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I called a short meeting and asked each person to frame their position in terms of user impact, not personal preference",
+          "I drew a quick priority matrix on a whiteboard mapping effort against impact",
+          "That shifted the conversation from opinions to data",
+          "We agreed that backend stability was non-negotiable for a functioning MVP, and UI polish would be phased in immediately after"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "We shipped on time, the product was stable, and both team members felt heard",
+          "I also documented the decision and the reasoning so future disagreements could reference a consistent framework"
+        ]
+      }
+    ],
+    "tip": "FAANG interviewers love when you show you extracted a process improvement, not just solved a one-off problem.",
+    "failureMode": "Describing a conflict you avoided or escalated rather than one you actually resolved, and not saying what you took away from it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "deliver-against-tight-timelines",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you had to deliver against tight timelines.",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "For a university hackathon, our team had 24 hours to build and pitch a working product"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "I was responsible for product strategy and for coordinating between the two developers and our designer"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I immediately ran a 30-minute scoping session to cut the feature list to an absolute MVP — we dropped 3 planned features and locked scope",
+          "I assigned tasks based on each person's strengths, set 4-hour check-ins to catch blockers, and drafted the pitch deck in parallel so we weren't scrambling at the end"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "We shipped a working demo and won [award / mention]",
+          "More importantly, we hit every internal milestone without burnout, because the scope was defined and protected"
+        ]
+      }
+    ],
+    "tip": "Scope management is timeline management. Show you understand that PMs protect the team from scope creep.",
+    "failureMode": "Claiming you hit the deadline by working harder, with no mention of what you cut or how you protected scope.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "learn-a-new-skill-on-the-go",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you had to learn a new skill on the go. (Or: teach me a new skill in 2 minutes.)",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "During an internship, I needed to analyze user behavior data but had never used SQL before — all the data lived in a relational database"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "I had one week before the analysis was due to stakeholders"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I used Mode's SQL tutorial and practiced on our actual dataset every day",
+          "I focused only on SELECT, WHERE, GROUP BY, and JOIN — the 20% of SQL that covers 80% of analytical queries",
+          "I also found a senior engineer who reviewed my queries for efficiency"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "I delivered the analysis on time, and the insights directly informed a product roadmap decision",
+          "I've used SQL regularly since, and it's now one of my core tools"
+        ]
+      }
+    ],
+    "tip": "For the \"teach me\" variant: pick something you genuinely know well and break it into 3 clear steps. Avoid jargon.",
+    "failureMode": "Picking a skill you only learned on the surface, so you can't answer the follow-up questions about it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "give-feedback-to-a-colleague",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you provided feedback to a colleague to improve their work.",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "A teammate on a group project was consistently submitting deliverables that were missing key supporting data — the work looked good on the surface but lacked the why behind decisions"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "I needed to address this without damaging our working relationship or making them defensive"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I asked for a one-on-one and used the SBI model: I described the specific Situation, the Behavior I observed, and the Impact it had on our team's ability to make decisions",
+          "I also framed it as a question — \"When you put together the next section, could you walk me through your reasoning?",
+          "I want to learn from your thinking too.\" That made it collaborative, not critical"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "They responded well — Their next submission included a clear rationale section",
+          "Our final output was significantly stronger and our professor highlighted the analytical depth"
+        ]
+      }
+    ],
+    "tip": "At FAANG, feedback skills signal leadership potential. Show you can be honest and empathetic at the same time.",
+    "failureMode": "Softening the feedback so much that nothing changed, or giving it publicly and bluntly.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "improve-an-existing-process",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you contributed to improving an existing process.",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "In a student organization I was part of, our weekly meeting updates were scattered across email, Slack, and WhatsApp — members were constantly out of sync on project status"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "As the project coordinator, I needed to centralize communication without forcing people onto a new tool they'd resist"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I proposed a single Notion workspace as our source of truth, with a standardized weekly update template each team member would fill in before meetings",
+          "I ran a short demo, kept the template to under 5 fields, and made adoption voluntary but showed how it saved time"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "Within 3 weeks, 90% of members were using it consistently",
+          "Meeting time spent on status updates dropped by roughly half because everyone had already read the updates before walking in"
+        ]
+      }
+    ],
+    "tip": "Process improvement stories are gold for PM interviews — they show you don't just execute, you optimize systems.",
+    "failureMode": "Describing a change you suggested but never drove to adoption, so there is no result.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "promote-diversity-and-inclusion",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you promoted diversity and inclusion.",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "During a group project, I noticed that one quieter international student was rarely given space to speak in meetings — the louder members naturally dominated, often unintentionally"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "As a team member, not the leader, I still felt responsible for creating a more equitable dynamic"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I suggested a structured round-robin format for the first 10 minutes of each meeting — everyone shared their update with no interruptions",
+          "I also privately asked the quieter team member what would help them contribute more, and they mentioned they preferred written async input",
+          "I advocated for a shared doc where ideas could be contributed before meetings"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "Their contributions increased noticeably, including one suggestion that became a key feature in our final product",
+          "The team dynamic also improved — people felt the process was fairer"
+        ]
+      }
+    ],
+    "tip": "Specificity is key. Show a concrete action you took, not just that you \"valued\" inclusion.",
+    "failureMode": "Speaking in values and intentions (\"I believe in inclusion\") instead of one concrete action you took.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "manage-a-complex-product-launch",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you managed a complex product launch.",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "For a university capstone project, my team was building a web app to help students track internship applications",
+          "We had 6 weeks and a team of 5 — developers, a designer, and me as PM"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "I needed to coordinate everyone, keep the scope realistic, and ensure we launched something functional and polished"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I created a shared Notion roadmap with milestones tied to weekly deliverables",
+          "I ran weekly standups, tracked blockers in real time, and made the call to cut two lower-priority features in week 4 when we risked missing the core functionality deadline",
+          "I coordinated a soft launch with 10 beta users from our course to collect early feedback before the final presentation"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "We launched on time",
+          "Beta users gave us a 4.2 / 5 satisfaction score, and the professor team scored us in the top 15% of all capstone projects that semester"
+        ]
+      }
+    ],
+    "tip": "Scope decisions under pressure are what distinguish good PMs. Show you cut features purposefully, not randomly.",
+    "failureMode": "Listing everything the team did instead of the decisions you personally made, especially the scope cuts.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "a-project-that-didnt-work-out",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time a product or project didn't work out. What happened, and what did you learn?",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "I once led a feature addition for a student app — a social feed where users could share internship tips",
+          "I was confident users wanted it based on conversations in our group chat"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "We spent three weeks building it and launched to our existing users"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "Engagement was nearly zero",
+          "After running quick follow-up interviews, I learned users didn't want to share publicly — they preferred anonymous or private peer advice",
+          "We had built the wrong solution to the right problem"
+        ]
+      },
+      {
+        "label": "Result / Learning",
+        "points": [
+          "We pivoted to an anonymous Q&A format, which got immediate engagement",
+          "The lesson: group chat enthusiasm is not user validation",
+          "I now always run at least 5 structured user interviews before committing to a feature direction"
+        ]
+      }
+    ],
+    "tip": "Interviewers aren't looking for perfection — they want intellectual honesty and evidence that you learn fast.",
+    "failureMode": "A humble-brag failure (\"I cared too much\"), or blaming others, instead of an honest miss you learned from.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "contribute-to-a-group-project",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you collaborated on a group project. How did you contribute?",
+    "sections": [
+      {
+        "label": "Situation",
+        "points": [
+          "In my final semester, I worked on a 5-person team building a mobile app for campus event discovery"
+        ]
+      },
+      {
+        "label": "Task",
+        "points": [
+          "My role was to coordinate across design and development, define requirements, and make sure we were solving the right problem for students"
+        ]
+      },
+      {
+        "label": "Action",
+        "points": [
+          "I ran our initial user research (5 student interviews), translated findings into prioritized user stories, and managed the product backlog",
+          "When the designer and developer disagreed on the scope of the notification system, I facilitated a 30-minute trade-off discussion using data from our interviews to ground the decision"
+        ]
+      },
+      {
+        "label": "Result",
+        "points": [
+          "We shipped on time, and in our user testing session the notification feature was cited as the most useful part of the app",
+          "The team also said the structured requirements process reduced rework significantly"
+        ]
+      }
+    ],
+    "tip": "Show your specific PM contribution — user research, prioritization, facilitation. Not just \"we all worked together.\"",
+    "failureMode": "Saying \"we\" the whole time, so the interviewer cannot tell what you actually did.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "favorite-product",
+    "type": "question",
+    "category": "Product Design",
+    "question": "What is your favorite product (app / web / desktop / hardware), and why?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "What it is and its target user",
+          "The problem it solves",
+          "Why it solves it better than alternatives",
+          "The PM lens — which design decision do you find most impressive?"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "My favorite app is Notion",
+          "Before Notion, I juggled 4+ tools — Google Docs, Trello, Evernote, spreadsheets — and information was siloed everywhere",
+          "Notion solved this with a modular, block-based system where notes, databases, task boards, and wikis all live together and can reference each other",
+          "What impresses me from a PM lens is the platform strategy: they didn't build a tool, they built a canvas that lets users build their own tools",
+          "That unlocks a huge range of use cases without feature bloat",
+          "The AI integration shows they keep finding new ways to add value on top of that foundation"
+        ]
+      }
+    ],
+    "tip": "Prepare one answer each for a mobile app, a web app, a desktop app, and a hardware product. You'll be surprised which one they ask for.",
+    "failureMode": "Choosing an impressive-sounding product you barely use, then failing the follow-ups. Pick something you open every day.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "improve-spotify",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you improve Spotify?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal — engagement, retention, or monetization?",
+          "Identify a user segment with an unmet need",
+          "Propose a specific feature with rationale",
+          "Define success metrics"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I'd focus on social discovery for niche music fans — a segment Spotify's algorithm serves less well than mainstream listeners",
+          "My proposed feature: Vibe Rooms — real-time listening spaces where users join by genre, mood, or theme",
+          "Each room has a shared queue, a host or DJ, and live chat",
+          "Success metrics: DAU of Vibe Rooms, average session time inside rooms, new artists followed via room discovery, and song save rate from room sessions",
+          "This deepens engagement and gives independent artists a direct fan channel — addressing two business goals at once"
+        ]
+      }
+    ],
+    "tip": "Always clarify scope — \"improve\" is vague. Pick one user segment and one problem rather than listing 5 features.",
+    "failureMode": "Listing five features instead of picking one user segment and one problem, and skipping success metrics.",
+    "companies": [
+      "Spotify"
+    ],
+    "hard": false
+  },
+  {
+    "id": "gas-station-customer-experience",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you improve the customer experience at a gas station?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify first: digital experience, physical experience, or both? Then",
+          "Define the user",
+          "Map pain points in the journey",
+          "Prioritize one to solve"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I'd focus on the time-pressed commuter — the person who stops for gas 2 to 3 times a week",
+          "Their biggest pain points are waiting to pay, uncertainty about pump availability, and not knowing whether their loyalty points were applied",
+          "I'd introduce a mobile pre-pay feature: the user selects a pump, authorizes payment, and starts fueling within 30 seconds — no card insertion, no PIN",
+          "Secondary: real-time pump availability in the app reduces circling",
+          "Success metric: reduction in average time at the pump and increase in repeat visit frequency"
+        ]
+      }
+    ],
+    "tip": "If you're unfamiliar with a specific country's gas station experience, say so upfront — interviewers respect transparency.",
+    "failureMode": "Jumping to a solution before defining which user and mapping their journey; assuming a US context without saying so.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-an-online-gifting-experience",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you design an online gifting experience?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify first: B2C or B2B?",
+          "Marketplace or single retailer?",
+          "Physical or digital gifts?",
+          "For whom — last-minute givers, planners, corporate buyers?"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Assuming B2C for a general e-commerce platform targeting last-minute gift buyers: the core problem is decision paralysis — too many options, unclear delivery timing, awkward recipient preference mismatches",
+          "I'd design around three principles",
+          "Guided discovery: a 3-question quiz (relationship, occasion, budget) that narrows to 10 curated options",
+          "Guaranteed delivery windows shown prominently before purchase, not buried in checkout",
+          "Recipient preference links: let the sender send a \"choose your gift\" link so the recipient picks their color or size",
+          "Success metric: gift completion rate and a reduction in return rate"
+        ]
+      }
+    ],
+    "tip": "The clarification step is itself being evaluated. Don't skip it.",
+    "failureMode": "Skipping the clarifying questions — the interviewer is scoring that step, not just the design.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "new-feature-for-gmail",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a new feature for Gmail.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal — engagement, productivity, retention?",
+          "Pick a user segment",
+          "Identify a pain point",
+          "Propose a feature",
+          "Define metrics"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I'd target knowledge workers — people with 100+ unread emails daily",
+          "Their biggest pain is the cognitive load of triaging emails and knowing what needs a response versus what's informational",
+          "Proposed feature: Smart Reply Priority — an AI layer that scans your inbox each morning and surfaces the top 5 emails requiring your response, ranked by urgency and sender relationship, with a one-click \"handle later\" snooze",
+          "This builds on AI infrastructure Gmail already has",
+          "Success metrics: time to first response on important emails, user satisfaction with inbox management, and a reduction in overdue reply rate"
+        ]
+      }
+    ],
+    "tip": "Reference existing product infrastructure when you can — it shows you understand build-versus-buy trade-offs.",
+    "failureMode": "Proposing a feature with no user segment or pain point behind it, and no way to measure success.",
+    "companies": [
+      "Google"
+    ],
+    "hard": false
+  },
+  {
+    "id": "local-events-discovery-for-instagram",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a \"Local Events Discovery\" feature for Instagram. How would you measure success?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Goal: connect users with local events to increase engagement and community value beyond photo and video sharing"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "The feature surfaces local events in the Explore tab, personalized by location and interest graph",
+          "Users can save, share, or mark Interested / Going",
+          "Organizers get an event listing format with rich media, ticket links, and a follower CTA"
+        ]
+      },
+      {
+        "label": "Success Metrics",
+        "points": [
+          "North Star: unique users who view an event and take a meaningful action (save, share, RSVP)",
+          "Supporting metrics: DAU / WAU of the feature, time spent, events shared via Stories or DMs, new followers gained by organizers through the feature, RSVP conversion rate (if ticketing is integrated), and week-4 retention of feature users"
+        ]
+      }
+    ],
+    "tip": "Always name a North Star metric first, then supporting metrics. Interviewers at Meta and Google are especially rigorous on metrics questions.",
+    "failureMode": "Designing the feature but naming vague metrics like \"engagement\" instead of a clear North Star and supporting metrics.",
+    "companies": [
+      "Meta"
+    ],
+    "hard": false
+  },
+  {
+    "id": "refrigerator-for-blind-people",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a refrigerator for blind people.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Define the user — blind from birth versus acquired blindness, severity of vision loss",
+          "Map their fridge interaction journey",
+          "Identify pain points",
+          "Propose solutions",
+          "Prioritize"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Key pain points in the journey: locating specific items, knowing expiry dates, and managing leftovers",
+          "Tactile zone labeling — raised dividers with Braille section labels (dairy, produce, leftovers)",
+          "Smart shelf tags — NFC tags on containers that pair with a phone app to read item name and expiry via tap",
+          "Voice-activated inventory — ask \"what's expiring soon?\" and get an audio response",
+          "Hardware changes: high-contrast edge lighting and an auditory door-open confirmation",
+          "I'd validate with blind-user research before committing to the NFC approach, since some users may not carry phones"
+        ]
+      }
+    ],
+    "tip": "These \"design for underserved users\" questions test empathy and creativity — don't jump to features before mapping the full journey.",
+    "failureMode": "Jumping straight to gadget ideas without mapping the interaction journey or defining the user's degree of vision loss.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "design-a-play-date-app",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a play date app.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify: play dates for young children (parents as users), or adult social \"play dates\"?",
+          "Assuming parents scheduling play dates for children ages 3 to 10"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Core user: busy parents who struggle to coordinate schedules with other families in their area",
+          "Pain points: finding compatible families (age-appropriate kids, shared interests), coordinating schedules, and safety and trust concerns about meeting strangers",
+          "Profile setup — child age, interests, neighborhood",
+          "Match discovery — suggested families by proximity and child compatibility",
+          "Schedule coordination — an integrated calendar with proposed time slots",
+          "Trusted introductions — mutual friend verification or school / daycare group membership as a trust layer",
+          "Success metrics: matches made per week, confirmed play dates scheduled, and parent retention at 30 days"
+        ]
+      }
+    ],
+    "tip": "If a concept is unfamiliar, it's fine to say so briefly — then immediately show structured thinking. Interviewers want the framework, not domain trivia.",
+    "failureMode": "Getting stuck because the concept is unfamiliar, instead of saying so and applying a structure anyway.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "ticket-vending-machine-3-lines-3-buttons",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design the end-to-end experience of a ticket vending machine — with only 3 lines of text and 3 buttons.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Constraint-driven design — Work backward from the constraint: 3 lines of text and 3 buttons must handle an entire purchase flow"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "The experience uses progressive disclosure",
+          "Line 1 always shows the current step",
+          "Line 2 shows the selection",
+          "Line 3 shows a contextual instruction",
+          "Buttons: LEFT = Back / Cancel, CENTER = Confirm / Select, RIGHT = Next",
+          "Flow: Step 1 — \"Select destination\" (scroll with arrows), then Confirm",
+          "Step 2 — \"Select ticket type: One-way / Return / Day Pass\", then Confirm",
+          "Step 3 — \"Total: $X",
+          "Insert card or cash\", then Done",
+          "The key principle: each screen has exactly one decision",
+          "That eliminates confusion while staying within the constraint"
+        ]
+      }
+    ],
+    "tip": "Constraints are your friends in design questions — they force prioritization. Show you can work within them gracefully.",
+    "failureMode": "Fighting the constraint or ignoring it, instead of using it to force one decision per screen.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "parking-meters-for-a-city",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design parking meters for a moderately large city.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Define the users — drivers, city administrators, enforcement officers",
+          "Map pain points",
+          "Prioritize the key problems",
+          "Design the solution"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Key pain points: drivers forget to extend time and get tickets; finding meter locations wastes time; payment methods are limited (coins-only is real friction)",
+          "Mobile payment and time extension via SMS or app, so drivers don't have to physically return to the meter",
+          "A smart meter with dynamic pricing during peak hours to reduce congestion, showing the current rate on screen",
+          "A low-power e-ink display with solar charging for sustainability and low maintenance",
+          "For the city: a real-time dashboard showing meter occupancy helps with enforcement and revenue planning",
+          "Success metric: fewer citation disputes and a higher payment completion rate"
+        ]
+      }
+    ],
+    "tip": "Think about all stakeholders, not just the driver. City admin and enforcement are also users of a parking system.",
+    "failureMode": "Designing only for the driver and forgetting the city and enforcement officers are users too.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "disrupt-the-movie-industry-with-google",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Tell me a strategy to disrupt the movie industry using the Google ecosystem.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Diagnose the industry's core problem",
+          "Identify Google's unique assets",
+          "Propose a specific strategy",
+          "Anticipate risks"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "The movie industry's core problem: content is gated behind fragmented streaming platforms, and discovery is broken — people spend 20+ minutes deciding what to watch",
+          "Google's unique assets: Search intent data, YouTube's creator ecosystem, Google TV, DeepMind AI, and ad infrastructure",
+          "Strategy: Google Movie Studio — a direct-to-YouTube premium film fund that co-produces original movies with YouTube creators and emerging filmmakers, distributed ad-supported (free with ads) or by subscription (YouTube Premium)",
+          "Discovery is Google's moat — surfacing the right film to the right person via Search and YouTube recommendations is something Netflix cannot match",
+          "Monetization: ad revenue plus subscriptions plus Google TV bundling",
+          "Key risk: content quality and brand credibility, mitigated by a curated selection process"
+        ]
+      }
+    ],
+    "tip": "Strategy questions test whether you can connect company assets to market opportunities — always anchor the strategy to what makes the company uniquely positioned.",
+    "failureMode": "Proposing a generic streaming service with no tie to Google's specific assets, and no view on why Netflix cannot copy it.",
+    "companies": [
+      "Google"
+    ],
+    "hard": true
+  },
+  {
+    "id": "google-maps-after-waze",
+    "type": "question",
+    "category": "Product Design",
+    "question": "What should Google Maps do with the product after its integration with Waze?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Understand what each product does uniquely well",
+          "Identify overlap versus differentiation",
+          "Recommend an integration or portfolio strategy"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Google Maps strengths: breadth (transit, walking, business info), brand trust, global scale",
+          "Waze strengths: real-time crowdsourced traffic, a driver community, police and hazard alerts",
+          "The risk of a full merger is losing Waze's community-driven identity, which is its core value prop",
+          "Recommended strategy: keep Waze standalone for the engaged driver segment that values the community, while quietly integrating Waze's real-time traffic data layer into Google Maps to improve accuracy for casual users",
+          "Long term: Waze becomes the enthusiast driver brand; Maps becomes the universal navigation platform",
+          "This is classic portfolio segmentation — serve different personas with differentiated products on shared infrastructure"
+        ]
+      }
+    ],
+    "tip": "This question tests strategic thinking over product design — frame it as a portfolio and positioning decision, not a feature request.",
+    "failureMode": "Treating it as a feature-merge question instead of a portfolio and positioning decision.",
+    "companies": [
+      "Google"
+    ],
+    "hard": true
+  },
+  {
+    "id": "a-product-you-would-like-to-make",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Explain a product you would like to make.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Problem observed",
+          "Target user",
+          "Core solution",
+          "Why now / why you",
+          "How you'd validate"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I'd build Sync — a tool for remote teams to run asynchronous standups that actually work",
+          "The problem: async standups on Slack are ignored because they're text-heavy and disconnected from the actual work",
+          "Sync integrates with GitHub, Jira, or Linear to auto-generate a draft standup for each team member based on their real activity — PRs merged, tickets moved, comments made",
+          "The user just reviews, edits, and hits send",
+          "No friction — Target user: remote engineering and product teams of 5 to 25",
+          "I'd validate by running manual concierge tests with 3 remote teams — manually pulling their activity and sending a draft standup to see if they edit and use it"
+        ]
+      }
+    ],
+    "tip": "This is your chance to show passion and product instinct. Pick something you've actually felt pain around — authenticity is noticeable.",
+    "failureMode": "Pitching something you have never felt the pain of, so it sounds invented rather than observed.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-for-elderly-users",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a product for elderly users.",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "User Research First",
+          "Key Principles: Accessibility, Simplicity, Trust: Interview elderly users in their environment",
+          "Key Principles: Accessibility, Simplicity, Trust: Understand their pain points, not just assumptions",
+          "Key Principles: Accessibility, Simplicity, Trust: Consider varying tech literacy levels",
+          "Design Considerations",
+          "Key Principles: Accessibility, Simplicity, Trust: Large text and buttons (minimum 16px, prefer 18-20px)",
+          "Key Principles: Accessibility, Simplicity, Trust: High contrast ratios (WCAG AAA: 7:1)",
+          "Key Principles: Accessibility, Simplicity, Trust: Simple navigation - max 3 levels deep",
+          "Key Principles: Accessibility, Simplicity, Trust: Minimize scrolling - prioritize vertical layout",
+          "Key Principles: Accessibility, Simplicity, Trust: Voice input as alternative",
+          "Key Principles: Accessibility, Simplicity, Trust: Haptic feedback for confirmation",
+          "Build Trust",
+          "Key Principles: Accessibility, Simplicity, Trust: Clear privacy controls",
+          "Key Principles: Accessibility, Simplicity, Trust: No dark patterns",
+          "Key Principles: Accessibility, Simplicity, Trust: Easy access to human support",
+          "Key Principles: Accessibility, Simplicity, Trust: Familiar metaphors (avoid trendy UI patterns)",
+          "Example: A medication reminder app should have one giant \"Taken\" button, voice confirmation, and family member notifications"
+        ]
+      }
+    ],
+    "tip": "Test with actual elderly users early and often. What seems \"simple\" to you might not be intuitive to them.",
+    "failureMode": "Assuming what elderly users need instead of citing research, and treating them as one uniform group.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "better-airport-check-in",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a better airport check-in experience.",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Step 1: Understand Current Pain Points: Long lines at kiosks",
+          "Step 1: Understand Current Pain Points: Confusing UI (language barriers)",
+          "Step 1: Understand Current Pain Points: Printing boarding pass at kiosk",
+          "Step 1: Understand Current Pain Points: Baggage drop separate from check-in",
+          "Step 1: Understand Current Pain Points: No clear wayfinding after check-in",
+          "Step 2: Define User Segments: Frequent flyers (know the flow, want speed)",
+          "Step 2: Define User Segments: Occasional travelers (need guidance)",
+          "Step 2: Define User Segments: International travelers (language barriers)",
+          "Step 2: Define User Segments: Families with kids (need simplicity)",
+          "Mobile-First Check-in: 80% of check-in happens on phone before arriving",
+          "Mobile-First Check-in: QR code boarding pass (no printing needed)",
+          "Mobile-First Check-in: Push notifications with gate info and updates",
+          "Mobile-First Check-in: Real-time security wait times",
+          "Physical Space: Self-service kiosks only for edge cases (forgot to check in)",
+          "Physical Space: Dedicated baggage drop with QR scan (no kiosk needed)",
+          "Physical Space: Clear digital signage: \"Checked in? → Straight to security\"",
+          "Physical Space: Express lane for mobile check-in users",
+          "Kiosk UX (for those who still need it): Auto-detect language from passport scan",
+          "Kiosk UX (for those who still need it): Big buttons, one action per screen",
+          "Kiosk UX (for those who still need it): Visual icons, minimal text",
+          "Kiosk UX (for those who still need it): Skip screens based on context (no baggage? Skip that step)",
+          "Wayfinding: AR arrows on phone guiding to gate",
+          "Wayfinding: SMS/push when gate changes",
+          "Wayfinding: Walking time estimates",
+          "Success Metrics: Average check-in time < 3 minutes",
+          "Success Metrics: Kiosk usage drops by 60%",
+          "Success Metrics: Customer satisfaction score increases"
+        ]
+      }
+    ],
+    "tip": "Start with the biggest pain point, not the flashiest solution. Mobile-first solves 80% of problems before they reach the airport.",
+    "failureMode": "80% of the fix is moving check-in to the phone before arrival — redesigning the kiosk screen misses the point.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-for-children",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you design a product for children?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Ages 3-5 (Pre-readers)",
+          "Icon-based navigation only (no text reliance)",
+          "Large touch targets (54px minimum)",
+          "No typing required",
+          "Audio instructions",
+          "Bright, bold colors",
+          "Instant feedback (sounds, animations)",
+          "Ages 6-8 (Early readers)",
+          "Simple words, short sentences",
+          "Visual + text labels",
+          "Gamification (stars, badges, progress bars)",
+          "Clear cause-and-effect",
+          "Limited choices (3 options max)",
+          "Ages 9-12 (Pre-teens)",
+          "More complex navigation ok",
+          "Social features (with heavy moderation)",
+          "Customization options (avatars, themes)",
+          "Achievement systems",
+          "Educational value + fun balance",
+          "Safety First",
+          "Universal Principles: COPPA compliance (parental consent under 13)",
+          "Universal Principles: Heavy content moderation",
+          "Universal Principles: No ads (or extremely limited)",
+          "Universal Principles: Private by default (no public profiles)",
+          "Universal Principles: Reporting mechanisms",
+          "Parent Controls",
+          "Universal Principles: Time limits",
+          "Universal Principles: Content filters",
+          "Universal Principles: Usage reports",
+          "Universal Principles: Easy account management",
+          "Engagement Without Addiction",
+          "Universal Principles: No infinite scroll",
+          "Universal Principles: Natural stopping points",
+          "Universal Principles: Built-in breaks (\"You've played 3 games! Take a stretch break\")",
+          "Universal Principles: Don't weaponize dopamine",
+          "Accessibility",
+          "Universal Principles: Dyslexia-friendly fonts",
+          "Universal Principles: Colorblind-safe palettes",
+          "Universal Principles: Screen reader support",
+          "Universal Principles: Adjustable text size",
+          "Example: Kids' Reading App: Large book covers (visual selection)",
+          "Example: Kids' Reading App: Audio narration option",
+          "Example: Kids' Reading App: Progress bar shows pages left",
+          "Example: Kids' Reading App: Reward badge every 5 books (not every page - avoid over-gamification)",
+          "Example: Kids' Reading App: Parent dashboard shows reading time and comprehension",
+          "Example: Kids' Reading App: Auto-pause after 30 minutes",
+          "Key Mistakes to Avoid: Designing for how YOU think kids behave vs actual research",
+          "Key Mistakes to Avoid: Copying adult UI patterns",
+          "Key Mistakes to Avoid: Over-complicating (kids will just ask parents)",
+          "Key Mistakes to Avoid: Ignoring parents (they're the actual decision-makers)"
+        ]
+      }
+    ],
+    "tip": "Kids aren't just \"small adults\". Test with real kids in the target age group - their behavior will surprise you.",
+    "failureMode": "Treating kids as small adults and copying adult UI patterns; ignoring that parents are the buyers.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "redesign-the-facebook-news-feed",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Redesign the Facebook News Feed.",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Current Issues with Facebook Feed: Algorithmic feed creates filter bubbles",
+          "Current Issues with Facebook Feed: Engagement-baiting content (clickbait, rage bait)",
+          "Current Issues with Facebook Feed: Hard to find close friends' posts among noise",
+          "Current Issues with Facebook Feed: Infinite scroll = time sink",
+          "Current Issues with Facebook Feed: Ads are intrusive",
+          "What are we optimizing for?",
+          "User satisfaction (time well spent)",
+          "Engagement (time spent, but quality time)",
+          "Ad revenue (can't ignore - it's the business)",
+          "Safety (reduce misinformation spread)",
+          "Why do people use Facebook feed?",
+          "Stay updated on close friends/family",
+          "Discover interesting content",
+          "Be entertained",
+          "Feel connected",
+          "A. Dual Feed Model: \"Friends\" tab (default): Chronological posts from close friends only",
+          "A. Dual Feed Model: Determined by interaction frequency (messages, comments, tags)",
+          "A. Dual Feed Model: No ads in this feed (premium experience)",
+          "A. Dual Feed Model: Limited to ~50 closest connections",
+          "A. Dual Feed Model: \"Discover\" tab: Algorithmic feed of pages, groups, suggested content",
+          "A. Dual Feed Model: This is where ads live",
+          "A. Dual Feed Model: Surfaces interesting content from beyond your network",
+          "B. Intentional Design: Remove infinite scroll - show 20 posts, then prompt: \"You're all caught up. Want to see more?\"",
+          "B. Intentional Design: Add \"time spent\" counter at bottom (transparency)",
+          "B. Intentional Design: Surfaced \"You've been scrolling for 15 minutes\" notification",
+          "C. Content Quality Signals: Boost posts with meaningful comments (not just reacts)",
+          "C. Content Quality Signals: Demote engagement bait (\"Tag 3 friends\")",
+          "C. Content Quality Signals: Human review for viral content before wide distribution",
+          "D. Customization: \"Snooze\" feature for topics (e.g., politics)",
+          "D. Customization: \"More/Less like this\" feedback on every post",
+          "D. Customization: Control over algorithmic ranking (slider: friends vs pages)",
+          "Step 5: Test Hypothesis: A/B test dual feed with 5% of users",
+          "Step 5: Test Hypothesis: Measure: Time spent, DAU, user satisfaction survey, ad revenue",
+          "Step 5: Test Hypothesis: Success criteria: Satisfaction up, revenue neutral or better",
+          "Pros: Better user experience (less overwhelming)",
+          "Pros: Increases trust (chronological friends feed)",
+          "Pros: Separates concerns (social vs content discovery)",
+          "Cons: May reduce total time spent (less infinite scroll)",
+          "Cons: Ad revenue may drop (fewer ad impressions)",
+          "Cons: Requires user education (new tabs)",
+          "Ship the dual feed to a small cohort",
+          "If time well spent goes up and retention improves (even if time spent drops), it's worth it for long-term health",
+          "Facebook's biggest risk is being seen as toxic - this addresses that"
+        ]
+      }
+    ],
+    "tip": "When redesigning, start with \"what problem are we solving?\" not \"what looks cool?\" Every design decision should tie back to user needs or business goals.",
+    "failureMode": "Redesigning for looks without stating the problem, and ignoring that ad revenue is a real constraint.",
+    "companies": [
+      "Meta"
+    ],
+    "hard": false
+  },
+  {
+    "id": "monetize-x-blue-tick",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How would you monetize Twitter's (X's) blue-tick feature?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal — revenue, trust restoration, user growth?",
+          "Identify what \"verified\" means to different user segments",
+          "Propose a tiered monetization model"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Three user segments value verification differently: creators (want reach and credibility), businesses (want customer trust and ad performance), and casual users (want authenticity signals in their feed)",
+          "Creator tier — $8 per month for badge plus algorithmic boost plus analytics dashboard",
+          "Business tier — $50 per month for verified badge plus customer support DMs plus ad credits",
+          "Institutional tier — custom pricing for media, government, and verified organizations with ID verification",
+          "Additional lever: make verified status a requirement for certain ad formats, increasing ad product value",
+          "Guardrail metric: track whether verification improves user trust scores — if not, the badge loses its monetization power"
+        ]
+      }
+    ],
+    "tip": "Monetization questions require thinking about both revenue and the value that justifies the price. Show both sides.",
+    "failureMode": "Naming a price with no argument for the value that justifies it, and treating all verified users as one segment.",
+    "companies": [
+      "X"
+    ],
+    "hard": true
+  },
+  {
+    "id": "estimate-google-drive-storage-for-canada",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How would you estimate how much storage Google Drive would need to allocate for Canada?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Structure: population, then internet users, then Drive users, then storage per user, then total"
+        ]
+      },
+      {
+        "label": "Answer (Estimation)",
+        "points": [
+          "Canada population: ~40M — Internet penetration ~95%, so ~38M internet users",
+          "Google account penetration ~75%, so ~28M accounts",
+          "Active Drive users ~50% of accounts, so ~14M",
+          "Average storage per active user: a mix of free users (15GB available, ~3GB average actual usage) and paid users (~5% using ~100GB)",
+          "Weighted average: (0.95 × 3GB) + (0.05 × 100GB) = 2.85 + 5 = ~8GB per user",
+          "Total: 14M × 8GB = ~112 petabytes",
+          "Add a 30% buffer for growth and redundancy, so ~145 petabytes",
+          "I'd sanity-check this against Google's reported global storage numbers to see if the per-user average holds"
+        ]
+      }
+    ],
+    "tip": "Always show your math step by step. State a clear assumption at each step. Interviewers care about your reasoning, not the exact number.",
+    "failureMode": "Reaching for a memorized number instead of showing the step-by-step math and stating each assumption.",
+    "companies": [
+      "Google"
+    ],
+    "hard": true
+  },
+  {
+    "id": "market-size-and-pricing-strategy",
+    "type": "question",
+    "category": "Strategy",
+    "question": "Estimate the market size for a newly launched product and propose a pricing strategy.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the product first",
+          "Then: TAM, then SAM, then SOM, then pricing based on value delivered"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Example: a B2B SaaS project management tool for small teams (5 to 50 people)",
+          "TAM: global project management software market ~$7B",
+          "SAM: the small-business segment (~40% of market), so ~$2.8B",
+          "SOM: realistic 3-year capture with competitive positioning, 1 to 2%, so $28M to $56M",
+          "Pricing: value-based per-seat at $12 per seat per month (benchmarked against Asana and Notion)",
+          "A freemium tier for up to 5 users drives viral adoption — teams outgrow it and upgrade",
+          "Revenue at 10,000 paying seats: $1.44M ARR",
+          "Growth lever: an annual plan with a 20% discount to improve cash flow and reduce churn"
+        ]
+      }
+    ],
+    "tip": "TAM / SAM / SOM plus a pricing model in one answer shows PM and business acumen together. Practice this for at least 3 product categories.",
+    "failureMode": "Doing TAM / SAM / SOM but skipping pricing, or pricing with no benchmark or logic behind the number.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "teleportation-machine-go-to-market",
+    "type": "question",
+    "category": "Strategy",
+    "question": "Imagine you are launching a teleportation machine. Who is the target audience, and what is your go-to-market strategy?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Treat this like any GTM",
+          "Define constraints (cost, range, safety)",
+          "Segment users by willingness to pay and urgency of need",
+          "Land-and-expand GTM"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Assumptions: the first-gen device is expensive (~$1M per installation, $500 per use), reliable for distances up to 500 miles, and requires a receiving station at the destination",
+          "Target audience: enterprise first — logistics companies shipping time-sensitive cargo, hospitals needing emergency organ transport, and corporations with frequent executive travel",
+          "GTM: B2B land-and-expand — Phase 1: partner with 3 major logistics firms on pilot corridors (for example NYC to Chicago) and prove ROI versus air freight",
+          "Phase 2: expand to business travel with corporate subscriptions",
+          "Phase 3: consumer, once cost drops",
+          "Success metrics: cost per teleportation versus alternatives, utilization rate per device, and NPS of logistics partners"
+        ]
+      }
+    ],
+    "tip": "Hypothetical products test creative thinking and structured GTM thinking. Don't get lost in the sci-fi — treat it like any product.",
+    "failureMode": "Getting lost in the sci-fi premise instead of defining constraints and segmenting by willingness to pay.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "when-to-pivot-a-product",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you decide when to pivot a product?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "A pivot decision is triggered by signal, not by gut feeling",
+          "The question is: which signals, and how do you interpret them?"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I'd look at three categories of signal",
+          "Quantitative — are core engagement metrics declining despite optimization attempts?",
+          "Is the conversion funnel broken at a structural level, not just an executional one?",
+          "Qualitative — are user interviews revealing that the core value prop isn't resonating, or that users are using the product for something unintended?",
+          "Market — has a competitor already captured the space, or has a macro shift made the problem less urgent?",
+          "If multiple signals align, I'd run a focused experiment on an alternative direction before committing to a full pivot",
+          "The bar for pivoting is high — it's not a response to one bad week of metrics"
+        ]
+      }
+    ],
+    "tip": "Amazon's \"Bias for Action\" and Google's \"data-informed decisions\" both matter here — show you balance both.",
+    "failureMode": "Saying you would pivot off one bad week of metrics, with no framework for reading the signal.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "plan-a-product-roadmap",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you approach planning a product roadmap?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Start with strategy, not features",
+          "Gather inputs",
+          "Prioritize",
+          "Communicate",
+          "Iterate"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I start with the why — what business and user goals are we trying to achieve in the next 6 to 12 months?",
+          "Then I collect inputs from four sources: user research and support tickets, sales and CS feedback, data on current product performance, and the competitive landscape",
+          "I use a prioritization framework like RICE (Reach × Impact × Confidence ÷ Effort) to score candidate initiatives",
+          "The roadmap I present to stakeholders is outcome-based, not feature-based: instead of \"build X feature,\" it says \"increase activation rate by 20% by Q3.\" I review and update the roadmap quarterly as new information comes in"
+        ]
+      }
+    ],
+    "tip": "The best roadmap answers show you understand that a roadmap is a communication tool, not a commitment list.",
+    "failureMode": "Presenting a feature list with dates instead of an outcome-based plan tied to goals.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "stand-out-from-competitors",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you make your product stand out from competitors?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Differentiation comes from either better performance on a shared dimension, or a unique dimension competitors don't serve"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I'd start with a competitive matrix — mapping key competitors on the dimensions users care about most (based on user research)",
+          "Then I'd look for white space: dimensions users value highly but no competitor is winning on",
+          "For example, if all competitors have similar features but terrible onboarding, that's the differentiation lever",
+          "Alternatively, if a user segment is underserved by the mainstream product (power users, international users, small businesses), you can build for them explicitly",
+          "Differentiation has to be defensible — a feature can be copied; a network effect, a data advantage, or a community cannot"
+        ]
+      }
+    ],
+    "tip": "Show you understand sustainable versus temporary differentiation. That signals strategic PM thinking.",
+    "failureMode": "Naming a feature as the differentiator — features get copied — instead of something defensible like a network effect or data advantage.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "handle-changing-requirements",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you handle changing product requirements?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Requirements change for valid reasons (new data, market shifts) and invalid ones (scope creep, the HiPPO effect)",
+          "The PM's job is to distinguish between them"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "When a change request comes in, I ask three questions",
+          "Why is this changing — what new information or signal triggered it?",
+          "What is the cost of the change — sprint disruption, delayed roadmap items, team context-switching?",
+          "What is the cost of not changing — risk to user value, revenue, or strategic direction?",
+          "If the change is justified, I absorb it with a clear trade-off conversation: \"We can add X, but Y moves to next sprint.\" I document the decision and the reasoning so the team has context",
+          "If it's scope creep, I push back with data"
+        ]
+      }
+    ],
+    "tip": "This tests whether you can manage up and protect your team while staying flexible. Show both sides.",
+    "failureMode": "Either rigidly refusing all changes or absorbing them silently; not showing the trade-off conversation.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "prioritize-product-features",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you prioritize product features?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Use a structured framework, contextualized to the situation"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "My default is RICE: Reach (how many users affected), Impact (how much it moves the metric), Confidence (how sure I am of the impact), Effort (engineering weeks)",
+          "This gives a numeric score to compare objectively",
+          "For strategic initiatives where quantification is hard, I use a 2×2 Impact-versus-Effort matrix as a quick alignment tool in team discussions",
+          "Before scoring anything, I first filter by: does this align with our current strategy?",
+          "If not, it's off the table regardless of score",
+          "I also balance quick wins (high impact, low effort) with bets (high impact, high effort) so the roadmap has both momentum and ambition"
+        ]
+      }
+    ],
+    "tip": "Know at least two frameworks (RICE, MoSCoW, Kano, Impact / Effort). Show you pick the right tool for the context.",
+    "failureMode": "Reciting one framework mechanically without the strategy filter that comes before any scoring.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "align-business-goals-and-customer-needs",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you ensure business goals and customer needs are aligned?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "This tension is core to PM work",
+          "The key is finding the intersection — features that drive user value and business outcomes at the same time"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I start by clearly articulating both: what does the business need (revenue, retention, growth), and what do users need (a specific job to be done)?",
+          "Then I map features to both — the strongest features serve both simultaneously",
+          "When there's genuine tension (the user wants free, the business needs revenue), I propose solutions that minimize the trade-off, like a freemium model where the free tier creates enough value that users voluntarily upgrade",
+          "I measure both sides: user satisfaction metrics alongside business metrics",
+          "If one improves at the cost of the other, something is wrong with the product strategy"
+        ]
+      }
+    ],
+    "tip": "This question is really asking: do you understand that users aren't your only stakeholder? Show that you do.",
+    "failureMode": "Pretending there is no tension, instead of showing how you find the overlap and measure both sides.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "engagement-declining-three-questions",
+    "type": "question",
+    "category": "Analytics",
+    "question": "An engagement metric has been declining for a week. You have 3 questions for your data scientist — what are they, and why?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Diagnose before prescribing — The goal is to isolate the cause (a bug, a change, an external factor, or a cohort issue) before jumping to solutions"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Question 1: \"Is the decline across all users or concentrated in a specific segment (platform, cohort, geography)?\" This tells me whether it's a universal regression or a targeted issue",
+          "Question 2: \"Did the decline correlate with any product change, deployment, or external event?\" This rules out a bug or a specific change we made",
+          "Question 3: \"Which step in the funnel shows the biggest drop-off — acquisition, activation, or engagement with a specific feature?\" This pinpoints where to focus",
+          "Once I have those answers, I'd design an experiment to test the most likely root-cause hypothesis"
+        ]
+      }
+    ],
+    "tip": "Interviewers want diagnostic rigor, not a list of random questions. Show your questions build on each other logically.",
+    "failureMode": "Asking three unrelated questions instead of ones that build on each other to isolate the cause.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "metrics-for-user-engagement",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Come up with a list of metrics to measure user engagement with a given product.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Layer the metrics: North Star, then primary engagement, then secondary / guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "For a social app: North Star — DAU / MAU ratio (stickiness)",
+          "Primary engagement — session frequency, session length, content interactions per session (likes, comments, shares)",
+          "Activation — percent of new users who complete a first meaningful action within 24 hours",
+          "Retention — Day 1, Day 7, Day 30 retention curves",
+          "Guardrail — notification opt-out rate (in case we're over-notifying to drive fake engagement)",
+          "The key is also to define what engagement means for this product",
+          "High session length is great for Netflix but a failure signal for Google Search",
+          "Always define the ideal user behavior first"
+        ]
+      }
+    ],
+    "tip": "Adding guardrail metrics signals PM maturity — it shows you understand that optimizing engagement metrics blindly can harm the product.",
+    "failureMode": "Listing metrics with no North Star, no guardrails, and no definition of what engagement means for this product.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "measure-success-post-launch",
+    "type": "question",
+    "category": "Analytics",
+    "question": "What metrics do you use to track product success? / How do you measure success post-launch?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Think in four layers: adoption, then engagement, then retention, then revenue (or outcome)"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Adoption: how many users tried the new feature in the first week?",
+          "Engagement: of those, how many used it more than once, and how often?",
+          "Retention: are feature users still active at day 30 versus non-feature users?",
+          "Revenue: did the feature improve conversion, upsell, or reduce churn?",
+          "Plus qualitative feedback — an NPS survey 2 weeks post-launch, and user interviews with both happy and unhappy users",
+          "I also watch guardrail metrics to make sure the new feature isn't hurting existing ones — for example, did adding a new tab reduce engagement with the core feed?"
+        ]
+      }
+    ],
+    "tip": "Always mention guardrail metrics. This distinguishes candidates who think in systems from those who optimize single metrics.",
+    "failureMode": "Naming only adoption numbers and forgetting retention, guardrails, and qualitative signal.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "customer-feedback-in-product-decisions",
+    "type": "question",
+    "category": "Analytics",
+    "question": "How does customer feedback influence your product decisions?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Feedback is a signal, not a directive",
+          "The PM's job is to translate the what users say into the why behind it"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I collect feedback from multiple sources: user interviews (qualitative depth), support tickets and reviews (volume signal), NPS surveys (directional), and behavioral data (what users actually do versus say)",
+          "I use Jobs-to-be-Done to find the underlying motivation behind feedback",
+          "If 50 users say \"make the search bar bigger,\" the real job is \"help me find what I need faster\" — which might mean better autocomplete or smarter defaults, not just a bigger search bar",
+          "I log feedback themes in a shared tracker and review them during roadmap planning to spot recurring patterns",
+          "One-off feedback rarely warrants a feature; a pattern does"
+        ]
+      }
+    ],
+    "tip": "Show you distinguish signal from noise. Chasing every piece of feedback is as dangerous as ignoring it.",
+    "failureMode": "Treating feedback as a to-do list instead of a signal you translate into the underlying job.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "data-analytics-for-technical-decisions",
+    "type": "question",
+    "category": "Analytics",
+    "question": "How do you use data analytics to make technical decisions?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Data informs decisions; it rarely makes them alone",
+          "The PM's role is to know which data questions to ask"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I use analytics to",
+          "identify where users drop off in a funnel, then collaborate with engineering on the cause (performance issue? UX confusion? feature bug?)",
+          "prioritize technical debt paydown — if latency in a specific API call correlates with session abandonment, that's a product priority, not just a tech task",
+          "evaluate the impact of technical changes — A/B testing a refactored feature to confirm it doesn't hurt engagement even if it improves backend performance",
+          "Tools I've used or learned: Mixpanel, Google Analytics, and SQL for querying product data directly",
+          "I always define what I'm trying to learn before pulling data, to avoid fishing for a result"
+        ]
+      }
+    ],
+    "tip": "PMs who can write basic SQL and read analytics dashboards themselves are significantly more effective. Mention it if you can.",
+    "failureMode": "Describing dashboards in general instead of how a specific metric would change a specific decision.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "how-to-set-an-okr",
+    "type": "question",
+    "category": "Analytics",
+    "question": "How do you set an OKR?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Structure: Objective: Qualitative, inspirational, time-bound",
+          "Structure: Key Results: Quantitative, measurable, achievable",
+          "Good OKR Formula: \"I will [Objective] as measured by [Key Results]\"",
+          "Objective: Dramatically increase user activation in Q2",
+          "Increase day-7 retention from 30% to 45%",
+          "Reduce time-to-first-value from 10 minutes to 3 minutes",
+          "Achieve 70% completion rate on onboarding flow",
+          "Why This Works: Objective is ambitious but clear",
+          "Why This Works: Key Results are specific numbers with baselines",
+          "Why This Works: All 3 KRs tie to the same goal (activation)",
+          "Why This Works: Measurable today (no new instrumentation needed)",
+          "Objective: Make search the fastest way to find content in Q3",
+          "Increase search usage from 15% to 35% of sessions",
+          "Achieve <100ms average search response time",
+          "Improve search result CTR from 40% to 60%",
+          "Bad Objective: \"Improve the product\"",
+          "Too vague, not inspirational",
+          "Bad Key Result: \"Launch 5 new features\"",
+          "Measures output, not outcome",
+          "Doesn't tie to user/business value",
+          "Bad Key Result: \"Increase revenue by 200%\"",
+          "Unrealistic (OKRs should be ambitious but achievable ~70% confidence)",
+          "Limit scope: 3-5 OKRs per team per quarter max",
+          "Each OKR has 2-4 Key Results",
+          "70% achievement = success (not 100%)",
+          "Write them collaboratively (not top-down)",
+          "Review weekly (are we on track?)",
+          "No sandbagging (don't make them easy)",
+          "How to Derive OKRs: Start with company goal (e.g., \"Reach 10M ARR\")",
+          "How to Derive OKRs: Team OKR: \"Increase trial-to-paid conversion\" (contributes to ARR)",
+          "How to Derive OKRs: Individual OKR: \"Improve pricing page experience\" (contributes to conversion)"
+        ]
+      }
+    ],
+    "tip": "If you can't measure a Key Result with existing data, it's not a good KR. Always verify instrumentation exists before committing.",
+    "failureMode": "Writing a Key Result you have no way to measure, or an Objective that is really a task list.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "correlation-vs-causation",
+    "type": "question",
+    "category": "Analytics",
+    "question": "What is the difference between correlation and causation?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Definitions: Correlation: Two things happen together",
+          "Definitions: Causation: One thing causes the other",
+          "\"Ice cream sales correlate with drowning deaths.\"",
+          "Correlation: Both increase in summer",
+          "Causation: Ice cream doesn't cause drowning",
+          "Real cause: Hot weather (confounding variable)",
+          "\"Users who use search have 2x higher retention",
+          "Let's make search more prominent!\"",
+          "Correlation: Search users stay longer",
+          "Causation unclear: Are they retained BECAUSE of search, or do power users just happen to use search?",
+          "\"Let's A/B test promoting search",
+          "If the test group has higher retention, then search CAUSES retention.\"",
+          "1. Randomized Controlled Experiments (A/B Tests): Gold standard",
+          "1. Randomized Controlled Experiments (A/B Tests): Random assignment eliminates confounders",
+          "1. Randomized Controlled Experiments (A/B Tests): Treatment group gets feature, control doesn't",
+          "1. Randomized Controlled Experiments (A/B Tests): Measure difference in outcome",
+          "2. Natural Experiments: Feature launched in one country, not another",
+          "2. Natural Experiments: Compare outcomes between regions",
+          "2. Natural Experiments: Less rigorous than RCT, but better than pure correlation",
+          "3. Time-Series Analysis: Did retention increase AFTER we launched search?",
+          "3. Time-Series Analysis: Look for clear inflection point",
+          "4. Regression Analysis: Control for confounding variables",
+          "4. Regression Analysis: \"After controlling for user tenure, device type, and activity level, search usage predicts 15% higher retention\"",
+          "Common Confounders: Self-selection bias: Power users opt into new features",
+          "Common Confounders: Tenure: Older users behave differently than new users",
+          "Common Confounders: Platform: iOS users have higher income than Android (on average)",
+          "Common Confounders: Geography: US users behave differently than India users",
+          "PM Interview Red Flags: Saying \"X causes Y\" based only on correlation",
+          "PM Interview Red Flags: Not considering alternative explanations",
+          "PM Interview Red Flags: Assuming A/B test results generalize forever",
+          "When given a data point, always ask",
+          "Is this correlation or causation?",
+          "What else could explain this?",
+          "How would we test causation?",
+          "\"Users who watch our onboarding video have 50% higher activation.\"",
+          "Correlation: Yes",
+          "Causation? Unclear - maybe motivated users watch videos AND activate (self-selection)",
+          "Test: Randomly assign users to auto-play video vs opt-in video. Measure activation difference"
+        ]
+      }
+    ],
+    "tip": "In interviews, never claim causation without an experiment. Say \"correlation suggests\" or \"this hints that\" - then propose how to test it.",
+    "failureMode": "Claiming X causes Y from a correlation, with no experiment proposed to test it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "break-down-a-product-into-tech-architecture",
+    "type": "question",
+    "category": "Technical",
+    "question": "Walk me through a product you worked on and break it down into its underlying tech architecture.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Choose a project you know well",
+          "Layer the architecture: frontend, then backend, then database, then APIs, then infrastructure"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "For my capstone internship-tracker app: Frontend — a React web app handling login, dashboard views, and form inputs",
+          "Backend — a Node.js REST API handling business logic (matching internships to profiles, sending reminders)",
+          "Database — PostgreSQL storing user profiles, application records, and company data",
+          "Third-party APIs — email via SendGrid for reminders, LinkedIn API for job data enrichment",
+          "Hosting — Vercel for frontend, Railway for backend",
+          "Trade-off I'd highlight: we chose SQL over NoSQL because our data relationships were well-defined and queries were join-heavy",
+          "A graph database might have been better at scale for relationship mapping, but was overkill for our user base"
+        ]
+      }
+    ],
+    "tip": "You don't need to know how to build each layer — but you need to know why each decision was made. That's the PM value-add.",
+    "failureMode": "Naming technologies without being able to say why each choice was made — the \"why\" is the PM's value here.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "nfrs-for-ecommerce-before-a-sale",
+    "type": "question",
+    "category": "Technical",
+    "question": "What are the non-functional requirements (NFRs) for an e-commerce platform before a major annual sale event?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "NFRs define how the system behaves, not what it does",
+          "Key categories: performance, scalability, availability, security, reliability"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Performance: page load < 2 seconds under 10× normal traffic; API response < 500ms at P99",
+          "Scalability: auto-scaling to handle 10× normal load (based on last year's peak plus a 20% buffer)",
+          "Availability: 99.99% uptime SLA during the 48-hour sale window; scheduled maintenance completed 7 days before",
+          "Reliability: graceful degradation — if the recommendation engine fails, show static bestsellers; never fail the checkout flow",
+          "Security: DDoS protection enabled, fraud detection active, PCI compliance verified for payments",
+          "Observability: real-time monitoring dashboards, automated alerts for latency spikes or error-rate increases",
+          "Load testing completed 2 weeks before the event at 15× normal load"
+        ]
+      }
+    ],
+    "tip": "Knowing NFRs impresses engineers and shows you understand that \"the product works\" is not the same as \"the product works under pressure.\"",
+    "failureMode": "Talking about features instead of behaviour under load: performance targets, graceful degradation, uptime, load testing.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "gather-technical-requirements",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you gather technical requirements for a product?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Technical requirements translate user needs and business goals into engineering constraints and specifications"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I start with user stories — \"As a [user], I want [action] so that [outcome].\" Then I work with engineers to define the technical constraints for each story: data models needed, API dependencies, performance requirements, integration points",
+          "I document these in a PRD that includes functional requirements (what the feature does), NFRs (performance, security, scalability), out-of-scope items (to prevent creep), and open questions",
+          "I hold a requirements review with engineering and design before development starts, to catch ambiguities early",
+          "The goal is to reduce back-and-forth during development — unclear requirements are the number-one cause of rework"
+        ]
+      }
+    ],
+    "tip": "Mention PRDs if you have experience writing them. Even a simple one for a student project demonstrates PM craft.",
+    "failureMode": "Going straight to solutions without user stories, and writing nothing down for engineering to review.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "balance-requirements-with-technical-limits",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you balance customer requirements with technical limitations?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "This is a negotiation between user value and technical feasibility, mediated by the PM"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "When a user need hits a technical constraint, I work through three options with engineering",
+          "Can we achieve 80% of the value with a simpler technical approach?",
+          "Is there a phased approach — a simpler V1, with V2 unlocking the full capability later?",
+          "Is this constraint fundamental (we can't do this) or a priority constraint (we could, but it would take 3 sprints)?",
+          "I present trade-offs transparently to stakeholders rather than overpromising",
+          "If a feature would take 6 weeks to build correctly, I'd rather negotiate scope than ship something unstable in 2 weeks"
+        ]
+      }
+    ],
+    "tip": "Show that you protect both the user and the engineering team — PMs who overpromise to users burn out their engineers.",
+    "failureMode": "Overpromising to the user, or caving to the constraint without exploring a simpler or phased approach.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "handle-bugs-after-launch",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you handle bugs or technical issues after product launch?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Post-launch bugs require triage by severity, fast communication, and a structured fix process"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Severity tiers: P0 (product down or data loss — fix in hours), P1 (major feature broken for many users — fix in 24 hours), P2 (partial degradation — fix in the current sprint), P3 (minor cosmetic — backlog)",
+          "For P0 / P1: I work directly with on-call engineering, communicate status to affected users via a status page or in-app notice, and run a post-mortem after resolution to find the root cause and prevent recurrence",
+          "I also track bug rates as a product-health metric — if we're seeing more post-launch bugs over time, that's a signal our testing or deployment process needs work"
+        ]
+      }
+    ],
+    "tip": "Mention post-mortems. This signals engineering-culture awareness and shows you turn incidents into system improvements.",
+    "failureMode": "No severity tiers, so everything is either a fire drill or ignored; no post-mortem afterwards.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "ensure-a-product-scales",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you ensure your product can scale technically?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Scalability is a product concern as much as an engineering one — PMs need to anticipate load and set requirements accordingly"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I work with engineering early to define scalability requirements: expected user growth over 12 months, peak load scenarios, and acceptable performance-degradation thresholds",
+          "I advocate for load testing before major launches",
+          "I also push for architectural decisions that delay the need for expensive rewrites — horizontal scalability (add more servers) over vertical (a bigger server), caching for read-heavy workloads, and database indexing reviewed regularly",
+          "As the product grows, I watch performance metrics (latency, error rate) as a proxy for scaling headroom, and I initiate scalability sprints before we hit a wall, not after"
+        ]
+      }
+    ],
+    "tip": "You don't need to know how to implement a CDN — but knowing what it does and why it matters at scale is expected.",
+    "failureMode": "Treating scale as purely engineering's problem instead of setting load requirements and pushing for load testing.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "data-privacy-and-compliance",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you incorporate data privacy and compliance into your product?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Privacy and compliance are product requirements, not legal afterthoughts"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I treat data privacy as a feature requirement from day one",
+          "I work with legal and privacy teams to understand applicable regulations (GDPR, CCPA, DPDP in India) and translate them into product requirements: what data can we collect, how long can we retain it, and what rights do users have (delete, export, opt-out)?",
+          "In PRDs I include a Privacy Impact section",
+          "I push for privacy by design: collect the minimum necessary data, anonymize where possible, encrypt sensitive fields",
+          "I also make sure users have clear consent flows and a simple way to exercise their rights",
+          "Data incidents should trigger a documented incident-response process"
+        ]
+      }
+    ],
+    "tip": "In India, the DPDP (Digital Personal Data Protection) Act is increasingly relevant. Mentioning it in interviews with Indian companies, or global companies with Indian operations, adds credibility.",
+    "failureMode": "Treating privacy as a legal checkbox at the end instead of a product requirement from day one.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "manage-release-cycles-in-agile",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you manage release cycles in an agile environment?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Agile release management is about balancing speed with stability"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "I work in 2-week sprints with clear goals defined at sprint planning",
+          "I advocate for continuous deployment with feature flags — code can be deployed without being visible to users, which decouples deployment from release",
+          "That reduces risk: if a new feature causes issues, we turn it off instantly without a rollback",
+          "I also push for automated testing in the CI/CD pipeline so regressions are caught before they reach production",
+          "For major releases, I coordinate a staged rollout — 5% of users first, monitor metrics, then expand",
+          "I run a brief retrospective after each sprint to improve the process"
+        ]
+      }
+    ],
+    "tip": "Feature flags are a key concept for PM interviews at tech companies. Know what they are and why they're valuable.",
+    "failureMode": "Not knowing what feature flags are, or why decoupling deploy from release reduces risk.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "how-a-url-shortener-works",
+    "type": "question",
+    "category": "Technical",
+    "question": "Explain how a URL shortener works.",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "User submits long URL → System returns short URL",
+          "User visits short URL → System redirects to long URL",
+          "1. URL Generation: Base62 encoding (a-z, A-Z, 0-9) = 62 possible characters",
+          "1. URL Generation: 7 characters = 62^7 = 3.5 trillion unique URLs",
+          "1. URL Generation: Hash function or counter-based ID generation",
+          "3. Redirect Flow: User visits short.ly/abc123",
+          "3. Redirect Flow: Server looks up \"abc123\" in database",
+          "3. Redirect Flow: Returns 301 (permanent) or 302 (temporary) redirect",
+          "3. Redirect Flow: Browser redirects to long URL",
+          "4. Scale Considerations: Read-heavy: 100:1 read to write ratio",
+          "4. Scale Considerations: Caching: Redis for hot URLs (80/20 rule)",
+          "4. Scale Considerations: Database: NoSQL (DynamoDB, MongoDB) for fast lookups",
+          "4. Scale Considerations: CDN: Distribute redirect logic globally",
+          "5. Additional Features: Analytics (clicks, referrers, geographic data)",
+          "5. Additional Features: Custom aliases (short.ly/myproduct)",
+          "5. Additional Features: Link expiration",
+          "5. Additional Features: Rate limiting (prevent abuse)"
+        ]
+      }
+    ],
+    "tip": "Always start with the basic flow, then layer in scale and features. Don't jump to distributed systems if the question doesn't require it.",
+    "failureMode": "Jumping to distributed systems when the question only needs the basic flow first.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "how-youtube-recommends-videos",
+    "type": "question",
+    "category": "Technical",
+    "question": "How does YouTube recommend videos?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "1. Candidate Generation (Funnel: Millions → Hundreds): Collaborative Filtering: Users who watched A also watched B",
+          "1. Candidate Generation (Funnel: Millions → Hundreds): Content-Based: Videos similar to what you've watched (tags, category)",
+          "1. Candidate Generation (Funnel: Millions → Hundreds): Context: Time of day, device, location",
+          "1. Candidate Generation (Funnel: Millions → Hundreds): Output: ~200 candidate videos from millions",
+          "2. Ranking (Funnel: Hundreds → Dozens): ML Model Features",
+          "2. Ranking (Funnel: Hundreds → Dozens): User history (watch time, likes, searches)",
+          "2. Ranking (Funnel: Hundreds → Dozens): Video metadata (title, description, thumbnail)",
+          "2. Ranking (Funnel: Hundreds → Dozens): Engagement signals (CTR, watch %, shares)",
+          "2. Ranking (Funnel: Hundreds → Dozens): Freshness (newer videos boosted)",
+          "2. Ranking (Funnel: Hundreds → Dozens): Diversity (avoid echo chambers)",
+          "2. Ranking (Funnel: Hundreds → Dozens): Objective Function: Maximize expected watch time",
+          "2. Ranking (Funnel: Hundreds → Dozens): Output: Top 20-30 videos",
+          "3. Re-ranking & Filtering: Remove duplicates",
+          "3. Re-ranking & Filtering: Filter out already-watched",
+          "3. Re-ranking & Filtering: Enforce diversity quotas",
+          "3. Re-ranking & Filtering: Apply content policy filters",
+          "3. Re-ranking & Filtering: Output: Final feed order",
+          "Data Pipeline: Real-time signals (clicks, watch events) → Kafka",
+          "Data Pipeline: Batch processing (model training) → Spark",
+          "Data Pipeline: Online serving (inference) → TensorFlow Serving",
+          "Key Challenges: Cold start problem (new users/videos)",
+          "Key Challenges: Filter bubble vs discovery balance",
+          "Key Challenges: Latency (sub-200ms for recommendations)",
+          "Key Challenges: A/B testing impact on training data"
+        ]
+      }
+    ],
+    "tip": "Structure system design answers: what data goes in → how it's processed → what comes out. Then add scale considerations.",
+    "failureMode": "Describing one big model instead of the candidate-generation then ranking funnel, and skipping the cold-start problem.",
+    "companies": [
+      "Google"
+    ],
+    "hard": false
+  },
+  {
+    "id": "design-a-collaborative-document-editor",
+    "type": "question",
+    "category": "Technical",
+    "question": "Design a real-time collaborative document editor (like Google Docs).",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Core Challenge: Multiple users editing the same document simultaneously without conflicts",
+          "OT (Google Docs approach): Each edit is an \"operation\" (insert, delete, format)",
+          "OT (Google Docs approach): Server transforms operations to handle conflicts",
+          "OT (Google Docs approach): If User A types \"hello\" at position 5 while User B deletes position 3, OT adjusts A's position",
+          "OT (Google Docs approach): Pros: Mature, proven at scale",
+          "OT (Google Docs approach): Cons: Complex server logic",
+          "CRDT (newer approach): Data structure mathematically guarantees consistency",
+          "CRDT (newer approach): No central server needed (peer-to-peer possible)",
+          "CRDT (newer approach): Each character has a unique identifier",
+          "CRDT (newer approach): Pros: Simpler, decentralized",
+          "CRDT (newer approach): Cons: More data overhead",
+          "2. Real-time Communication: WebSockets: Persistent connection for live updates",
+          "2. Real-time Communication: Client types → sends to server → server broadcasts to all connected clients",
+          "2. Real-time Communication: Fallback to long polling for older browsers",
+          "Presence: Show who's editing (colored cursors)",
+          "Presence: Show who's viewing (avatar list)",
+          "Presence: Heartbeat every 30s to detect disconnects",
+          "Conflict Resolution: Last-write-wins for cursor position",
+          "Conflict Resolution: OT algorithm for content changes",
+          "Conflict Resolution: Version vector to track causality",
+          "Offline Support: Queue operations locally",
+          "Offline Support: Sync when reconnected",
+          "Offline Support: Merge conflicts server-side",
+          "Undo/Redo: Store operation history per user",
+          "Undo/Redo: Undo reverses your operations, not others'",
+          "Bottlenecks: WebSocket connections (1 million concurrent users = 1M sockets)",
+          "Bottlenecks: Database writes (every keystroke could be a write)",
+          "Solutions: Batch operations (send every 200ms, not per keystroke)",
+          "Solutions: Eventual consistency (small delay acceptable)",
+          "Solutions: Shard by document ID",
+          "Solutions: Read replicas for viewing",
+          "Solutions: Cache hot documents in Redis",
+          "Performance Targets: <50ms latency for edits to appear on other clients",
+          "Performance Targets: Support 50 simultaneous editors per document",
+          "Performance Targets: 99.9% uptime"
+        ]
+      }
+    ],
+    "tip": "Don't over-engineer. Start with \"what's the simplest solution?\" then add complexity only where needed. Most docs have <10 simultaneous editors.",
+    "failureMode": "Over-engineering with CRDTs and sharding when most documents have under ten editors; not starting simple.",
+    "companies": [
+      "Google"
+    ],
+    "hard": false
+  },
+  {
+    "id": "build-a-rate-limiter",
+    "type": "question",
+    "category": "Technical",
+    "question": "How would you build a rate limiter?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Purpose: Prevent abuse by limiting requests per user/IP",
+          "Example: API allows 100 requests/hour per user",
+          "1. Token Bucket (Most Common): Bucket holds N tokens (e.g., 100)",
+          "1. Token Bucket (Most Common): Each request consumes 1 token",
+          "1. Token Bucket (Most Common): Tokens refill at fixed rate (e.g., 100 per hour)",
+          "1. Token Bucket (Most Common): If bucket empty, reject request",
+          "Pros: Smooth traffic, handles bursts",
+          "Cons: Requires state storage",
+          "2. Fixed Window: Count requests in fixed time windows (12:00-1:00, 1:00-2:00)",
+          "2. Fixed Window: Reset counter at window boundary",
+          "Pros: Simple, low memory",
+          "Cons: Burst at window edge (100 requests at 12:59, 100 at 1:00 = 200 in 2 minutes)",
+          "3. Sliding Window Log: Store timestamp of each request",
+          "3. Sliding Window Log: Count requests in past 60 minutes",
+          "3. Sliding Window Log: Remove old timestamps",
+          "Pros: Precise",
+          "Cons: Memory-heavy (store every request)",
+          "Sliding Window Counter (Best of Both)",
+          "Hybrid of fixed window + sliding window",
+          "Weighted count from previous + current window",
+          "Single Server: In-memory hash map: {user_id: TokenBucket}",
+          "Single Server: Works for small scale",
+          "Distributed System: Redis for shared state across servers",
+          "Where to Apply Rate Limiting: API Gateway (before hitting servers)",
+          "Where to Apply Rate Limiting: Application layer (per endpoint)",
+          "Where to Apply Rate Limiting: Database layer (protect against expensive queries)",
+          "HTTP Response: Status: 429 Too Many Requests",
+          "HTTP Response: Body: \"Rate limit exceeded. Try again in 23 minutes.\"",
+          "Edge Cases: Multiple API keys per user",
+          "Edge Cases: Different limits for different endpoints",
+          "Edge Cases: Whitelisting (admins, internal tools)",
+          "Edge Cases: Graceful degradation (slow down, don't block)"
+        ]
+      }
+    ],
+    "tip": "Token bucket is the go-to algorithm. Don't overthink it - Redis + token bucket handles 99% of cases.",
+    "failureMode": "Naming an exotic algorithm instead of token bucket, and forgetting the distributed case needs shared state like Redis.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-a-notification-system",
+    "type": "question",
+    "category": "Technical",
+    "question": "Design a notification system.",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Requirements Clarification: Push notifications (mobile)",
+          "Requirements Clarification: Email notifications",
+          "Requirements Clarification: In-app notifications",
+          "Requirements Clarification: SMS (optional, expensive)",
+          "Scale: 100M users, 1B notifications/day",
+          "Preferences: User controls per notification type",
+          "Preferences: Quiet hours (no push 10pm-8am)",
+          "Preferences: Digest mode (batch into daily email)",
+          "Deduplication: Don't send \"You have 5 new messages\" 5 times",
+          "Deduplication: Batch: \"You have 5 new messages from 3 people\"",
+          "Priority: Critical (fraud alert) → Always send, override quiet hours",
+          "Priority: High (new message) → Send immediately",
+          "Priority: Low (new follower) → Can batch",
+          "Retry Logic: If push fails (device offline), retry 3 times over 1 hour",
+          "Retry Logic: Exponential backoff",
+          "Retry Logic: After 3 failures, mark as failed",
+          "Challenge: 1B notifications/day: = 11,574 notifications/second average",
+          "Challenge: 1B notifications/day: Peak: 3x average = 35k/second",
+          "Solutions: Queue: Kafka handles millions/sec",
+          "Solutions: Workers: Horizontal scaling (add more workers)",
+          "Solutions: Rate Limiting: Don't send 100 notifs at once to one user",
+          "Solutions: Sharding: Partition by user_id",
+          "Solutions: Caching: User preferences in Redis (don't hit DB every time)",
+          "6. Reliability: Idempotency: Same event doesn't trigger duplicate notifications",
+          "6. Reliability: Deduplication: Use event_id + user_id as unique key",
+          "6. Reliability: Monitoring: Track delivery rate, latency, failure rate",
+          "6. Reliability: Dead Letter Queue: Failed notifications go here for investigation",
+          "7. Cost Optimization: Push notifications: Cheap (fractions of a cent)",
+          "7. Cost Optimization: Email: 1-5 cents each",
+          "7. Cost Optimization: SMS: 5-10 cents each",
+          "7. Cost Optimization: Total cost: $1M+/month at scale",
+          "7. Cost Optimization: Only send high-value notifications"
+        ]
+      }
+    ],
+    "tip": "Always clarify scale first. A notification system for 1,000 users is trivial (database + cron job). For 100M users, you need queues and distributed workers.",
+    "failureMode": "Not clarifying scale first — the design for a thousand users is nothing like the design for a hundred million.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "what-is-a-product-manager",
+    "type": "question",
+    "category": "General",
+    "question": "Who is a product manager, and what do they do?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "A PM is the person responsible for defining what to build, why to build it, and making sure it gets built well",
+          "They sit at the intersection of user needs, business goals, and technical feasibility",
+          "The PM doesn't manage people — they manage outcomes",
+          "That means writing clear product requirements, prioritizing the roadmap, running user research, aligning stakeholders, and measuring success post-launch",
+          "The PM is the \"CEO of the product\" in the sense that they own its direction — but they succeed through influence, not authority"
+        ]
+      }
+    ],
+    "tip": "If asked this, keep it concise. It's a baseline check — don't over-explain it.",
+    "failureMode": "Over-explaining, or leaning on the \"CEO of the product\" myth instead of \"owns outcomes, leads by influence\".",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "product-vs-project",
+    "type": "question",
+    "category": "General",
+    "question": "What is the difference between a product and a project?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "A product is an ongoing offering that continuously evolves to deliver value to users and the business",
+          "It has a lifecycle but no defined end date — the goal is to keep improving it",
+          "A project is a time-bound initiative with a specific scope, start date, and end date",
+          "Once the goal is achieved, the project ends",
+          "A product might contain many projects — for example, building a new checkout flow is a project within the broader e-commerce product",
+          "PMs own the product; project managers own the project"
+        ]
+      }
+    ],
+    "tip": "A simple question, but worth knowing cold — it's sometimes used as a warm-up to assess clarity of thought.",
+    "failureMode": "Fuzzing the distinction — a product is ongoing, a project is time-bound with an end.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "important-pm-skills",
+    "type": "question",
+    "category": "General",
+    "question": "What skills are most important for a product manager?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "The core PM skill set",
+          "user empathy — deeply understanding user problems before jumping to solutions",
+          "prioritization — saying no to good ideas to make room for great ones",
+          "communication — writing clear requirements and aligning diverse stakeholders",
+          "data literacy — reading metrics, designing experiments, making data-informed decisions",
+          "technical understanding — knowing enough about how software is built to have credible conversations with engineers",
+          "influence without authority — getting cross-functional teams aligned without a reporting relationship",
+          "The skill that separates good PMs from great ones is judgment — knowing when to trust data, when to trust instinct, and when to trust users"
+        ]
+      }
+    ],
+    "tip": "For intern level, emphasize curiosity, user empathy, and structured thinking — you don't need 5 years of experience to demonstrate these.",
+    "failureMode": "Listing ten skills flatly instead of naming judgment as the thing that separates good from great.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "stay-updated-on-tech-and-pm",
+    "type": "question",
+    "category": "General",
+    "question": "How do you stay updated on tech trends and PM best practices?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "I have a multi-layered approach",
+          "Daily — I scan Stratechery, TechCrunch, and Product Hunt during my morning routine for news and product launches",
+          "Weekly — I listen to Lenny's Podcast and Product Thinking with Melissa Perri for in-depth PM insights",
+          "Monthly — I do a deeper read of a PM book chapter or an online course module (I've completed Coursera units on agile and UX)",
+          "I also experiment with new products firsthand — when a new AI tool launches, I use it for a real task rather than just reading about it",
+          "For FAANG-specific prep, I follow PM Twitter and LinkedIn for interview insights and product breakdowns",
+          "The goal isn't just awareness of trends, but understanding the why behind them"
+        ]
+      }
+    ],
+    "tip": "This is often asked at the start of an interview as a warm-up. Have 2 or 3 specific sources ready, with one concrete example of something you learned recently.",
+    "failureMode": "Vague answers (\"I read a lot\") with no specific sources and nothing you learned recently.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "communicate-product-strategy",
+    "type": "question",
+    "category": "General",
+    "question": "How do you communicate product strategy to your team?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Strategy communication has to be consistent, multi-channel, and two-way",
+          "I use three levels",
+          "Written — a strategy doc or one-pager that articulates the why behind the roadmap, available asynchronously to everyone",
+          "Verbal — a team all-hands at the start of each quarter to walk through priorities and answer questions",
+          "Embedded — making strategy visible in day-to-day work by tying each sprint goal back to a strategic objective",
+          "I also encourage bottom-up input — engineers and designers often have insights that improve the strategy",
+          "A strategy communicated once and never revisited dies",
+          "I check for alignment regularly by asking team members how their current work connects to the quarterly goal"
+        ]
+      }
+    ],
+    "tip": "Show that communication is a two-way process. PMs who only broadcast strategy and never listen miss critical signals from their own team.",
+    "failureMode": "Describing one-way broadcast only, with no mechanism to check the team actually absorbed it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "manage-stakeholder-expectations",
+    "type": "question",
+    "category": "General",
+    "question": "How do you manage stakeholder and company expectations?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Expectation management is really about proactive communication and clear commitments",
+          "I start by making sure stakeholders understand what the roadmap is — and isn't — committing to",
+          "Roadmap items are bets, not guarantees",
+          "Each quarter I share: here are our goals, here's how we'll measure success, and here are the dependencies and risks that could change the plan",
+          "I give stakeholders regular updates, not just when things go wrong",
+          "When timelines shift (and they do), I communicate early with context: \"X is delayed because of Y — here's the revised plan and the trade-off we made.\" I avoid surprises",
+          "A stakeholder who's informed even about bad news is easier to work with than one who feels blindsided"
+        ]
+      }
+    ],
+    "tip": "Amazon's \"Earn Trust\" principle applies here — stakeholders trust PMs who are consistently honest, even about setbacks.",
+    "failureMode": "Only communicating when things go wrong; letting a slipped timeline surprise people.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "analyze-customer-insights",
+    "type": "question",
+    "category": "General",
+    "question": "How do you analyze customer insights for a new product?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "I use a mix of generative and evaluative research",
+          "For a new product I'd start generative — understanding the problem space before any solution exists",
+          "That means",
+          "customer interviews (5 to 10 is often enough to find patterns) using Jobs-to-be-Done questions like \"Walk me through the last time you faced [problem]\"",
+          "observation — watching users do the task in their natural context if possible",
+          "desk research — industry reports, Reddit threads, competitor app-store reviews to understand existing pain points at scale",
+          "Once I have a hypothesis, I shift to evaluative: prototype testing, surveys to validate assumptions, and eventually A/B testing on the real product",
+          "I document insights in a shared repository so the whole team benefits from what we learn"
+        ]
+      }
+    ],
+    "tip": "Show you know the difference between generative research (explore the problem) and evaluative research (test the solution).",
+    "failureMode": "Confusing generative research (explore the problem) with evaluative research (test the solution).",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "monitor-market-trends",
+    "type": "question",
+    "category": "General",
+    "question": "How do you monitor and track market trends and customer needs?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Market monitoring is continuous, not periodic",
+          "I track at multiple levels",
+          "Macro — industry reports (Gartner, CB Insights), news, and earnings calls from key players",
+          "Competitive — product launches and feature updates from direct competitors, tracked via Product Hunt, press releases, and app-store update logs",
+          "User — ongoing feedback loops: NPS surveys, support-ticket themes, app-store reviews, and periodic user interviews",
+          "I set up Google Alerts for key competitor names and category keywords",
+          "I also watch adjacent industries — trends in consumer apps often migrate to B2B tools 2 to 3 years later",
+          "The goal is to spot signals before they become obvious"
+        ]
+      }
+    ],
+    "tip": "Mention specific tools or sources you actually use — it makes the answer credible and memorable.",
+    "failureMode": "Treating it as a one-off exercise instead of a continuous habit, and naming no actual tools or sources.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "what-makes-a-product-successful",
+    "type": "question",
+    "category": "General",
+    "question": "What makes a product successful?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "A successful product does three things at once",
+          "It solves a real user problem in a way that's meaningfully better than alternatives — that's product-market fit",
+          "It does so in a way that's economically sustainable for the business — revenue, margin, or growth that funds the company",
+          "It delivers the experience consistently and reliably — a product that works great most of the time but fails at critical moments loses trust",
+          "Beyond these foundations, the most durable products create habits or network effects that make them hard to leave",
+          "And they have a team that can learn fast — a product that's great today but can't adapt to changing user needs or market conditions won't stay successful"
+        ]
+      }
+    ],
+    "tip": "Tie your answer to a product you've studied. \"Notion is successful because...\" is more compelling than a generic framework.",
+    "failureMode": "A generic framework with no real product to anchor it to.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "what-to-do-if-a-launch-is-delayed",
+    "type": "question",
+    "category": "General",
+    "question": "What would you do if a product launch is delayed?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "First: communicate early — A delay disclosed early is manageable; a delay disclosed at the last minute is a crisis",
+          "I'd inform all stakeholders — leadership, sales, marketing, CS — with the reason and a revised timeline",
+          "Then: scope review — Is the delay due to scope?",
+          "Cut features to protect the date",
+          "Due to technical complexity?",
+          "Work with engineering on what's truly blocking",
+          "Due to dependencies — Escalate to unblock them",
+          "I'd also assess downstream impact: if marketing has campaigns planned around the original date, they need time to adjust",
+          "After the launch (whenever it happens), I'd run a retrospective on what caused the delay and update our planning process to prevent a repeat"
+        ]
+      }
+    ],
+    "tip": "Show you think about downstream impact — not just the internal engineering problem.",
+    "failureMode": "Focusing only on the engineering blocker and ignoring downstream teams like marketing and sales.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "product-doesnt-meet-expectations",
+    "type": "question",
+    "category": "General",
+    "question": "What would you do if a product doesn't meet customer expectations?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Step 1: diagnose — Is this a gap between what we promised and what we delivered (an expectation problem), or a gap between what we delivered and what users actually needed (a product-market-fit problem)?",
+          "These need different responses",
+          "Step 2: gather signal — user interviews, support tickets, NPS, reviews",
+          "What specifically isn't meeting expectations?",
+          "Step 3: triage — Critical gaps that affect the core value prop get fixed now; smaller gaps go on the roadmap with a communicated timeline",
+          "Step 4: communicate with users",
+          "Acknowledge the gap, share what you're doing about it, set a realistic timeline",
+          "Step 5: ship the fix and measure",
+          "Did the change close the gap?",
+          "If not, keep iterating",
+          "Trust is rebuilt through consistent follow-through, not promises"
+        ]
+      }
+    ],
+    "tip": "Acknowledge that some unmet expectations are the PM's fault — we built the wrong thing. Owning that shows maturity.",
+    "failureMode": "Not diagnosing whether it is an expectations gap or a product-market-fit gap — they need different fixes.",
+    "companies": [],
+    "hard": false
+  }
+]

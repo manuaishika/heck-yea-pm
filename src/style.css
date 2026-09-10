@@ -1,47 +1,278 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-@theme {
-  --color-navy-950: #0F172A;
-  --font-family-sans: Inter, system-ui, sans-serif;
+/* ================================================================== *
+ *  A field manual for your first PM loop.
+ *  Dense, editorial, monochrome + one accent. Hierarchy from type,
+ *  not boxes. Hairline rules do the separating, not whitespace.
+ * ================================================================== */
+
+:root {
+  --paper: #fbfbfa;
+  --paper-2: #f4f3f0; /* sunk: inputs, code, active accordion */
+  --rule: #e3e2dd;
+  --rule-hard: #17171a;
+
+  --ink: #17171a;
+  --ink-dim: #55554f;
+  --ink-faint: #86857d;
+
+  --accent: #1f43e0;
+  --accent-strong: #142fa8;
+  --accent-quiet: #eceffd;
+
+  --highlight: #fdeab0; /* highlighter pen — for **key terms** */
+
+  --focus: #1f43e0;
 }
 
-body {
-  font-family: var(--font-family-sans);
-  -webkit-font-smoothing: antialiased;
-}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #131312;
+    --paper-2: #1d1c1a;
+    --rule: #2c2b27;
+    --rule-hard: #ecebe6;
 
-.animated-gradient {
-  background: linear-gradient(-45deg, #0F172A, #1E293B, #0F172A, #334155);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
+    --ink: #ecebe6;
+    --ink-dim: #a9a79d;
+    --ink-faint: #78766c;
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
+    --accent: #8aa4ff;
+    --accent-strong: #a9bcff;
+    --accent-quiet: #1c2340;
+
+    --highlight: #574a1f;
+
+    --focus: #8aa4ff;
   }
-  50% {
-    background-position: 100% 50%;
+}
+
+[data-theme='dark'] {
+  --paper: #131312;
+  --paper-2: #1d1c1a;
+  --rule: #2c2b27;
+  --rule-hard: #ecebe6;
+  --ink: #ecebe6;
+  --ink-dim: #a9a79d;
+  --ink-faint: #78766c;
+  --accent: #8aa4ff;
+  --accent-strong: #a9bcff;
+  --accent-quiet: #1c2340;
+  --highlight: #574a1f;
+  --focus: #8aa4ff;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-rule: var(--rule);
+  --color-rule-hard: var(--rule-hard);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-quiet: var(--accent-quiet);
+
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas,
+    monospace;
+
+  /* fixed type scale, px: 12 13 15 17 20 25 31 */
+  --text-2xs: 0.75rem;
+  --text-2xs--line-height: 1.4;
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.45;
+  --text-sm: 0.9375rem;
+  --text-sm--line-height: 1.55;
+  --text-base: 0.9375rem;
+  --text-base--line-height: 1.6;
+  --text-md: 1.0625rem;
+  --text-md--line-height: 1.55;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.3;
+  --text-xl: 1.5625rem;
+  --text-xl--line-height: 1.2;
+  --text-2xl: 1.9375rem;
+  --text-2xl--line-height: 1.15;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--rule);
+    box-sizing: border-box;
   }
-  100% {
-    background-position: 0% 50%;
+
+  html {
+    color-scheme: light dark;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    font-feature-settings: 'kern';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.011em;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 1px;
+  }
+
+  ::selection {
+    background: var(--accent-quiet);
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
   }
 }
 
-.glow {
-  filter: blur(100px);
-  opacity: 0.3;
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
+@layer components {
+  /* mono metadata label — used in the margin column and on tags */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: var(--ink-faint);
   }
-  100% {
-    transform: translateX(-50%);
+
+  /* emphasis for the one phrase that matters in a sentence — used sparingly */
+  .hl {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* the margin column: hanging label + body, collapses inline on mobile */
+  .margin-row {
+    display: grid;
+    gap: 0.25rem 1.5rem;
+    padding-block: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  .margin-row > .margin-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    padding-top: 0.15rem;
+  }
+  @media (min-width: 640px) {
+    .margin-row {
+      grid-template-columns: 8.25rem 1fr;
+    }
+  }
+
+  /* long-form prose inside an answer */
+  .prose-body {
+    font-size: 0.9375rem;
+    line-height: 1.62;
+    color: var(--ink-dim);
+  }
+  .prose-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .prose-body p {
+    margin: 0.7rem 0;
+  }
+  .prose-body p:first-child {
+    margin-top: 0;
+  }
+  .prose-body p:last-child {
+    margin-bottom: 0;
+  }
+  .prose-body ul,
+  .prose-body ol {
+    margin: 0.7rem 0;
+    padding-left: 1.25rem;
+  }
+  .prose-body li {
+    margin: 0.2rem 0;
+  }
+  .prose-body ul {
+    list-style: disc;
+  }
+  .prose-body ol {
+    list-style: decimal;
+  }
+  .prose-body li::marker {
+    color: var(--ink-faint);
+  }
+  .prose-body h3,
+  .prose-body h4 {
+    color: var(--ink);
+    font-size: 0.9375rem;
+    margin: 1.1rem 0 0.35rem;
+  }
+  .prose-body code {
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+    background: var(--paper-2);
+    padding: 0.05rem 0.3rem;
+    border-radius: 2px;
+  }
+  .prose-body pre {
+    background: var(--paper-2);
+    padding: 0.75rem;
+    border-radius: 3px;
+    overflow-x: auto;
+    margin: 0.7rem 0;
+  }
+  .prose-body pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.82em;
+    line-height: 1.5;
+  }
+  .prose-body blockquote {
+    border-left: 2px solid var(--rule-hard);
+    padding-left: 0.9rem;
+    margin: 0.7rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

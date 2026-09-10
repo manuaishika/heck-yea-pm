@@ -1,30 +1,305 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {
+  categories,
+  categoryCounts,
+  questionsInCategory,
+  getQuestion,
+} from '../data/questions'
+import { useFlashcardSession } from '../lib/useFlashcardSession'
+import { useReviews } from '../lib/useReviews'
+import { useHead } from '../lib/useHead'
+import { Page, PageHead } from '../components/Page'
 
-function Flashcards() {
+function shuffle(arr) {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
+/** The short answer for the back of a card: at most 5 bullets. */
+function cardPoints(q) {
+  const star = q.sections.filter((s) =>
+    /^(situation|task|action|result)/i.test(s.label)
+  )
+  if (star.length >= 3) {
+    // one line per STAR beat
+    return star.map((s) => `${s.label.split(' ')[0]}: ${s.points[0]}`)
+  }
+  const answer =
+    q.sections.find((s) => /answer/i.test(s.label)) ||
+    q.sections[q.sections.length - 1]
+  return answer.points.slice(0, 5)
+}
+
+/* ---------------------------------------------------------------- picker */
+
+function Picker({ onStart, reviewIds }) {
+  const [selected, setSelected] = useState(() => new Set())
+  const counts = useMemo(() => categoryCounts(), [])
+
+  function toggle(cat) {
+    setSelected((prev) => {
+      const next = new Set(prev)
+      if (next.has(cat)) next.delete(cat)
+      else next.add(cat)
+      return next
+    })
+  }
+
+  const deckSize = categories
+    .filter((c) => selected.has(c))
+    .reduce((n, c) => n + counts[c], 0)
+
   return (
-    <div className="min-h-screen pt-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-4xl sm:text-5xl font-bold mb-4">Flashcards</h1>
-        <p className="text-gray-300 mb-8">
-          Flashcard mode is being wired up. For now, use Browse mode to study all questions.
+    <>
+      <p className="label mt-6">Pick categories</p>
+      <ul className="mt-1.5 border-t border-rule">
+        {categories.map((cat) => (
+          <li key={cat} className="border-b border-rule">
+            <label className="flex cursor-pointer items-center gap-2.5 py-2.5 text-sm">
+              <input
+                type="checkbox"
+                checked={selected.has(cat)}
+                onChange={() => toggle(cat)}
+                className="accent-accent"
+              />
+              <span className="flex-1 text-ink">{cat}</span>
+              <span className="label">{counts[cat]}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+
+      <button
+        type="button"
+        disabled={deckSize === 0}
+        onClick={() =>
+          onStart(
+            shuffle(
+              categories
+                .filter((c) => selected.has(c))
+                .flatMap((c) => questionsInCategory(c).map((q) => q.id))
+            )
+          )
+        }
+        className="mt-4 border border-rule-hard px-3 py-1.5 text-sm text-ink disabled:border-rule disabled:text-ink-faint"
+      >
+        {deckSize === 0
+          ? 'Select a category to start'
+          : `Start · ${deckSize} card${deckSize === 1 ? '' : 's'}`}
+      </button>
+
+      {reviewIds.length > 0 && (
+        <p className="mt-4 text-sm">
+          <button
+            type="button"
+            onClick={() => onStart(shuffle(reviewIds))}
+            className="text-accent underline underline-offset-2"
+          >
+            Review your {reviewIds.length} flagged{' '}
+            {reviewIds.length === 1 ? 'card' : 'cards'}
+          </button>
         </p>
-        <div className="flex flex-wrap gap-3">
-          <Link
-            to="/browse"
-            className="px-5 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors"
-          >
-            Go to Browse
-          </Link>
-          <Link
-            to="/flashcards/complete"
-            className="px-5 py-3 bg-white/10 hover:bg-white/20 rounded-lg font-medium transition-colors"
-          >
-            Mark Session Complete
-          </Link>
-        </div>
+      )}
+    </>
+  )
+}
+
+/* ------------------------------------------------------------------ deck */
+
+function Deck({ session, prev, next, finish }) {
+  const navigate = useNavigate()
+  const { marks, mark } = useReviews()
+  const [showBack, setShowBack] = useState(false)
+  const touch = useRef(null)
+
+  const total = session.ids.length
+  const id = session.ids[session.i]
+  const q = getQuestion(id)
+  const currentMark = marks[id]
+  const atStart = session.i === 0
+  const atEnd = session.i >= total - 1
+
+  useEffect(() => {
+    setShowBack(false)
+  }, [session.i])
+
+  function done() {
+    finish()
+    navigate('/flashcards/complete')
+  }
+  function advance() {
+    if (atEnd) done()
+    else next()
+  }
+  function markCard(status) {
+    mark(id, status)
+    advance()
+  }
+
+  useEffect(() => {
+    function onKey(e) {
+      if (e.target.matches('input, textarea')) return
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault()
+        setShowBack((v) => !v)
+      } else if (e.key === 'ArrowRight') advance()
+      else if (e.key === 'ArrowLeft') prev()
+      else if (e.key.toLowerCase() === 'k') markCard('known')
+      else if (e.key.toLowerCase() === 'r') markCard('review')
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  })
+
+  return (
+    <div className="mt-6">
+      <div className="flex items-center justify-between">
+        <p className="label" aria-live="polite">
+          {session.i + 1} / {total}
+          {currentMark
+            ? ` · ${currentMark === 'known' ? 'known' : 'needs review'}`
+            : ''}
+        </p>
+        <button
+          type="button"
+          onClick={done}
+          className="label border border-rule px-1.5 py-0.5 hover:border-rule-hard hover:text-ink"
+        >
+          end session
+        </button>
       </div>
+
+      <span className="mt-1.5 block h-0.5 bg-rule" aria-hidden="true">
+        <span
+          className="block h-full bg-accent transition-[width] duration-200"
+          style={{ width: `${((session.i + 1) / total) * 100}%` }}
+        />
+      </span>
+
+      {/* card + arrows */}
+      <div className="mt-3 flex items-stretch gap-1.5">
+        <button
+          type="button"
+          onClick={prev}
+          disabled={atStart}
+          aria-label="Previous card"
+          className="shrink-0 px-1 text-2xl text-ink-faint disabled:opacity-25"
+        >
+          ‹
+        </button>
+
+        <button
+          type="button"
+          onClick={() => setShowBack((v) => !v)}
+          aria-pressed={showBack}
+          aria-label={showBack ? 'Show question' : 'Show answer'}
+          onTouchStart={(e) => {
+            touch.current = e.changedTouches[0].clientX
+          }}
+          onTouchEnd={(e) => {
+            if (touch.current == null) return
+            const dx = e.changedTouches[0].clientX - touch.current
+            if (dx < -45) advance()
+            else if (dx > 45) prev()
+            else setShowBack((v) => !v)
+            touch.current = null
+          }}
+          className="min-h-52 flex-1 border border-rule-hard bg-paper-2 p-4 text-left"
+        >
+          <span className="label block">
+            {q.category}
+            {q.hard ? ' · curveball' : ''} · {showBack ? 'answer' : 'question'}
+          </span>
+          {!showBack ? (
+            <span className="mt-3 block text-md text-ink">{q.question}</span>
+          ) : (
+            <ul className="mt-3 space-y-1.5">
+              {cardPoints(q).map((p, i) => (
+                <li
+                  key={i}
+                  className="flex gap-2 text-sm leading-snug text-ink-dim"
+                >
+                  <span className="mt-[9px] h-[3px] w-[3px] shrink-0 rounded-full bg-ink-faint" />
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </button>
+
+        <button
+          type="button"
+          onClick={advance}
+          aria-label="Next card"
+          className="shrink-0 px-1 text-2xl text-ink-faint"
+        >
+          ›
+        </button>
+      </div>
+
+      <div className="mt-3 flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => markCard('known')}
+          className="flex-1 border border-rule-hard px-3 py-1.5 text-sm text-ink"
+        >
+          Known
+        </button>
+        <button
+          type="button"
+          onClick={() => markCard('review')}
+          className="flex-1 border border-rule-hard px-3 py-1.5 text-sm text-ink"
+        >
+          Needs review
+        </button>
+      </div>
+
+      <p className="mt-3 flex items-center justify-between text-sm">
+        <Link to={`/browse/${q.id}`} className="text-accent">
+          Full answer →
+        </Link>
+        <span className="label">tap card to flip · swipe to move</span>
+      </p>
     </div>
   )
 }
 
-export default Flashcards
+/* --------------------------------------------------------------- wrapper */
+
+export default function Flashcards() {
+  const { session, start, prev, next, finish } = useFlashcardSession()
+  const { marks } = useReviews()
+  useHead({
+    title: 'Flashcards',
+    description:
+      'Study the question bank as flashcards. Mark each card known or needs review; your progress is saved.',
+    path: '/flashcards',
+  })
+
+  const reviewIds = Object.keys(marks).filter(
+    (id) => marks[id] === 'review' && getQuestion(id)
+  )
+
+  return (
+    <Page>
+      <PageHead
+        title="Flashcards"
+        intro={
+          session
+            ? 'Flip, judge yourself, move on. Marks save as you go.'
+            : 'Pick what to study. Flip for a short answer, then mark each card.'
+        }
+      />
+      {session ? (
+        <Deck session={session} prev={prev} next={next} finish={finish} />
+      ) : (
+        <Picker onStart={start} reviewIds={reviewIds} />
+      )}
+    </Page>
+  )
+}
