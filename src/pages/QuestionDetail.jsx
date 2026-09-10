@@ -8,7 +8,7 @@ import {
 } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page } from '../components/Page'
-import Points from '../components/Points'
+import AnswerSlides from '../components/AnswerSlides'
 import SaveButton from '../components/SaveButton'
 import NotFound from './NotFound'
 
@@ -92,24 +92,11 @@ export default function QuestionDetail() {
       </header>
 
       <div className="mt-4">
-        {q.sections.map((s) => (
-          <Points key={s.label} label={s.label} points={s.points} />
-        ))}
-
-        <section className="mt-5 border-l-2 border-accent pl-3">
-          <p className="label !text-accent">Failure mode</p>
-          <p className="mt-1 text-sm text-ink-dim">{q.failureMode}</p>
-        </section>
-
-        {q.tip && (
-          <section className="mt-4">
-            <p className="label">What they test</p>
-            <p className="mt-1 text-sm text-ink-dim">{q.tip}</p>
-          </section>
-        )}
+        <p className="label">Swipe through the answer</p>
+        <AnswerSlides question={q} />
 
         {q.companies.length > 0 && (
-          <section className="mt-4">
+          <section className="mt-5">
             <p className="label">Asked at</p>
             <ul className="mt-1 flex flex-wrap gap-1.5">
               {q.companies.map((c) => (

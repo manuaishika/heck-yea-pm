@@ -439,21 +439,19 @@
       {
         "label": "Framework",
         "points": [
-          "What it is and its target user",
-          "The problem it solves",
-          "Why it solves it better than alternatives",
-          "The PM lens — which design decision do you find most impressive?"
+          "Name the product and who it is for",
+          "The one job it does better than anything else",
+          "One design decision you find impressive, and why",
+          "One thing you would change"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "My favorite app is Notion",
-          "Before Notion, I juggled 4+ tools — Google Docs, Trello, Evernote, spreadsheets — and information was siloed everywhere",
-          "Notion solved this with a modular, block-based system where notes, databases, task boards, and wikis all live together and can reference each other",
-          "What impresses me from a PM lens is the platform strategy: they didn't build a tool, they built a canvas that lets users build their own tools",
-          "That unlocks a huge range of use cases without feature bloat",
-          "The AI integration shows they keep finding new ways to add value on top of that foundation"
+          "Notion. For people who juggle notes, tasks, and docs across five apps",
+          "It is not a tool — it is blocks you assemble into your own tool. No feature bloat",
+          "Impressive: they shipped a slow, confusing v1 and won on flexibility, then fixed speed later",
+          "Would change: onboarding drops you on a blank page. New users need a template picker first"
         ]
       }
     ],
@@ -471,20 +469,20 @@
       {
         "label": "Framework",
         "points": [
-          "Clarify the goal — engagement, retention, or monetization?",
-          "Identify a user segment with an unmet need",
-          "Propose a specific feature with rationale",
-          "Define success metrics"
+          "Pick a goal: engagement, retention, or revenue",
+          "Pick one underserved user segment",
+          "Propose one feature, not five",
+          "Name the metrics that prove it worked"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "I'd focus on social discovery for niche music fans — a segment Spotify's algorithm serves less well than mainstream listeners",
-          "My proposed feature: Vibe Rooms — real-time listening spaces where users join by genre, mood, or theme",
-          "Each room has a shared queue, a host or DJ, and live chat",
-          "Success metrics: DAU of Vibe Rooms, average session time inside rooms, new artists followed via room discovery, and song save rate from room sessions",
-          "This deepens engagement and gives independent artists a direct fan channel — addressing two business goals at once"
+          "Goal: engagement. Segment: people who want to discover niche music but the algorithm keeps them mainstream",
+          "Feature: \"Rooms\" — live listening spaces by genre or mood, shared queue, one host, live chat",
+          "Why it works: social pressure keeps you listening, and independent artists get a direct audience",
+          "Metrics: minutes in Rooms, new artists followed per session, week-4 retention of Room users",
+          "Guardrail: does it pull time away from playlists, or add to it?"
         ]
       }
     ],
@@ -504,20 +502,19 @@
       {
         "label": "Framework",
         "points": [
-          "Clarify first: digital experience, physical experience, or both? Then",
-          "Define the user",
-          "Map pain points in the journey",
-          "Prioritize one to solve"
+          "Say your context — most Indian fuel stations are full-service, US is self-service",
+          "Pick the user: here, the commuter who stops 3x a week",
+          "Map their 5 minutes and find the worst 30 seconds",
+          "Fix that one thing"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "I'd focus on the time-pressed commuter — the person who stops for gas 2 to 3 times a week",
-          "Their biggest pain points are waiting to pay, uncertainty about pump availability, and not knowing whether their loyalty points were applied",
-          "I'd introduce a mobile pre-pay feature: the user selects a pump, authorizes payment, and starts fueling within 30 seconds — no card insertion, no PIN",
-          "Secondary: real-time pump availability in the app reduces circling",
-          "Success metric: reduction in average time at the pump and increase in repeat visit frequency"
+          "Worst moment: waiting for change or a receipt after the tank is full",
+          "Fix: pay from the app before you arrive. Pick a pump, authorise, drive in, fuel, leave",
+          "Second: show live pump availability in the app so people stop circling",
+          "Metric: average time from arrival to leaving, and repeat visits per month"
         ]
       }
     ],
@@ -535,21 +532,18 @@
       {
         "label": "Framework",
         "points": [
-          "Clarify first: B2C or B2B?",
-          "Marketplace or single retailer?",
-          "Physical or digital gifts?",
-          "For whom — last-minute givers, planners, corporate buyers?"
+          "Clarify: marketplace or one store? Physical or digital gift? Who is the buyer?",
+          "Assume: last-minute buyer on a general e-commerce site",
+          "Their real problem is not choice — it is confidence the gift lands right and on time"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "Assuming B2C for a general e-commerce platform targeting last-minute gift buyers: the core problem is decision paralysis — too many options, unclear delivery timing, awkward recipient preference mismatches",
-          "I'd design around three principles",
-          "Guided discovery: a 3-question quiz (relationship, occasion, budget) that narrows to 10 curated options",
-          "Guaranteed delivery windows shown prominently before purchase, not buried in checkout",
-          "Recipient preference links: let the sender send a \"choose your gift\" link so the recipient picks their color or size",
-          "Success metric: gift completion rate and a reduction in return rate"
+          "A 3-question quiz — relationship, occasion, budget — that narrows to 8 picks",
+          "Delivery date shown before you add to cart, not buried at checkout",
+          "Send a \"swap this\" link so the recipient can change size or colour without the sender knowing",
+          "Metric: gift completion rate, and returns as a share of gift orders"
         ]
       }
     ],
@@ -567,21 +561,18 @@
       {
         "label": "Framework",
         "points": [
-          "Clarify the goal — engagement, productivity, retention?",
-          "Pick a user segment",
-          "Identify a pain point",
-          "Propose a feature",
-          "Define metrics"
+          "Pick the user: someone with 100+ unread every day",
+          "Their pain: deciding what actually needs a reply",
+          "Build on what Gmail already has, do not invent a new system"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "I'd target knowledge workers — people with 100+ unread emails daily",
-          "Their biggest pain is the cognitive load of triaging emails and knowing what needs a response versus what's informational",
-          "Proposed feature: Smart Reply Priority — an AI layer that scans your inbox each morning and surfaces the top 5 emails requiring your response, ranked by urgency and sender relationship, with a one-click \"handle later\" snooze",
-          "This builds on AI infrastructure Gmail already has",
-          "Success metrics: time to first response on important emails, user satisfaction with inbox management, and a reduction in overdue reply rate"
+          "Feature: a morning digest of the 5 emails that need your reply today, ranked by sender and deadline",
+          "One tap to snooze the rest to tomorrow",
+          "Runs on Gmail's existing priority and smart-reply models — no new infrastructure",
+          "Metric: time-to-first-reply on important mail, and overdue-reply rate"
         ]
       }
     ],
@@ -601,22 +592,18 @@
       {
         "label": "Framework",
         "points": [
-          "Goal: connect users with local events to increase engagement and community value beyond photo and video sharing"
+          "Goal: give people a reason to open Explore beyond photos",
+          "Two sides: attendees who want plans, organisers who want reach",
+          "Name the North Star before you design anything"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "The feature surfaces local events in the Explore tab, personalized by location and interest graph",
-          "Users can save, share, or mark Interested / Going",
-          "Organizers get an event listing format with rich media, ticket links, and a follower CTA"
-        ]
-      },
-      {
-        "label": "Success Metrics",
-        "points": [
-          "North Star: unique users who view an event and take a meaningful action (save, share, RSVP)",
-          "Supporting metrics: DAU / WAU of the feature, time spent, events shared via Stories or DMs, new followers gained by organizers through the feature, RSVP conversion rate (if ticketing is integrated), and week-4 retention of feature users"
+          "Events surface in Explore, ranked by location and who you follow",
+          "Save, share to a DM, or mark Going. Organisers get a rich listing with a ticket link",
+          "North Star: people who see an event and take an action — save, share, or RSVP",
+          "Supporting: events shared in DMs, new followers organisers gain, week-4 return rate"
         ]
       }
     ],
@@ -636,22 +623,19 @@
       {
         "label": "Framework",
         "points": [
-          "Define the user — blind from birth versus acquired blindness, severity of vision loss",
-          "Map their fridge interaction journey",
-          "Identify pain points",
-          "Propose solutions",
-          "Prioritize"
+          "Define the user: blind from birth vs recent, and how much sight is left",
+          "Walk the whole journey: open, find, check freshness, restock",
+          "Solve the top pain first, not the coolest idea"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "Key pain points in the journey: locating specific items, knowing expiry dates, and managing leftovers",
-          "Tactile zone labeling — raised dividers with Braille section labels (dairy, produce, leftovers)",
-          "Smart shelf tags — NFC tags on containers that pair with a phone app to read item name and expiry via tap",
-          "Voice-activated inventory — ask \"what's expiring soon?\" and get an audio response",
-          "Hardware changes: high-contrast edge lighting and an auditory door-open confirmation",
-          "I'd validate with blind-user research before committing to the NFC approach, since some users may not carry phones"
+          "Top pains: finding a specific item, knowing what is about to expire",
+          "Fix 1: fixed tactile zones with Braille labels — dairy, produce, leftovers — so location is learned",
+          "Fix 2: NFC tags on containers; tap with a phone to hear the name and expiry date",
+          "Fix 3: ask a voice assistant \"what expires this week?\"",
+          "Validate with blind users before betting on NFC — not everyone carries a phone to the kitchen"
         ]
       }
     ],
@@ -669,20 +653,18 @@
       {
         "label": "Framework",
         "points": [
-          "Clarify: play dates for young children (parents as users), or adult social \"play dates\"?",
-          "Assuming parents scheduling play dates for children ages 3 to 10"
+          "Clarify: kids (parents are the users) or adults? Assume parents, kids aged 3–10",
+          "Their problem is coordination plus trust — meeting a stranger with your child"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "Core user: busy parents who struggle to coordinate schedules with other families in their area",
-          "Pain points: finding compatible families (age-appropriate kids, shared interests), coordinating schedules, and safety and trust concerns about meeting strangers",
-          "Profile setup — child age, interests, neighborhood",
-          "Match discovery — suggested families by proximity and child compatibility",
-          "Schedule coordination — an integrated calendar with proposed time slots",
-          "Trusted introductions — mutual friend verification or school / daycare group membership as a trust layer",
-          "Success metrics: matches made per week, confirmed play dates scheduled, and parent retention at 30 days"
+          "Profile: child age, interests, neighbourhood",
+          "Match: nearby families with compatible kids",
+          "Schedule: shared calendar with suggested slots, not open chat",
+          "Trust layer: verified via a shared school or a mutual friend — no cold connections",
+          "Metric: confirmed play dates per week, and parent retention at 30 days"
         ]
       }
     ],
@@ -700,23 +682,18 @@
       {
         "label": "Framework",
         "points": [
-          "Constraint-driven design — Work backward from the constraint: 3 lines of text and 3 buttons must handle an entire purchase flow"
+          "The constraint is the point — work backward from 3 lines, 3 buttons",
+          "One decision per screen, no exceptions"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "The experience uses progressive disclosure",
-          "Line 1 always shows the current step",
-          "Line 2 shows the selection",
-          "Line 3 shows a contextual instruction",
-          "Buttons: LEFT = Back / Cancel, CENTER = Confirm / Select, RIGHT = Next",
-          "Flow: Step 1 — \"Select destination\" (scroll with arrows), then Confirm",
-          "Step 2 — \"Select ticket type: One-way / Return / Day Pass\", then Confirm",
-          "Step 3 — \"Total: $X",
-          "Insert card or cash\", then Done",
-          "The key principle: each screen has exactly one decision",
-          "That eliminates confusion while staying within the constraint"
+          "Buttons are fixed: LEFT = back, CENTRE = confirm, RIGHT = next",
+          "Line 1 = current step. Line 2 = your choice. Line 3 = what to do",
+          "Step 1: pick destination (RIGHT to scroll, CENTRE to pick)",
+          "Step 2: pick ticket type — one-way / return / day pass",
+          "Step 3: \"Total ₹40. Tap card or insert cash\""
         ]
       }
     ],
@@ -734,21 +711,18 @@
       {
         "label": "Framework",
         "points": [
-          "Define the users — drivers, city administrators, enforcement officers",
-          "Map pain points",
-          "Prioritize the key problems",
-          "Design the solution"
+          "Three users: drivers, the city, enforcement officers",
+          "Map each one's pain, then pick the fixes that help more than one"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "Key pain points: drivers forget to extend time and get tickets; finding meter locations wastes time; payment methods are limited (coins-only is real friction)",
-          "Mobile payment and time extension via SMS or app, so drivers don't have to physically return to the meter",
-          "A smart meter with dynamic pricing during peak hours to reduce congestion, showing the current rate on screen",
-          "A low-power e-ink display with solar charging for sustainability and low maintenance",
-          "For the city: a real-time dashboard showing meter occupancy helps with enforcement and revenue planning",
-          "Success metric: fewer citation disputes and a higher payment completion rate"
+          "Driver pain: forgetting to extend time and getting fined; coins-only",
+          "Fix: pay and extend from the phone — a text reminder before time runs out",
+          "City: dynamic pricing at peak hours, shown on the meter, to free up spaces",
+          "Hardware: e-ink screen, solar powered, so maintenance is rare",
+          "Metric: payment completion rate, and disputed fines per month"
         ]
       }
     ],
@@ -766,21 +740,20 @@
       {
         "label": "Framework",
         "points": [
-          "Diagnose the industry's core problem",
-          "Identify Google's unique assets",
-          "Propose a specific strategy",
-          "Anticipate risks"
+          "Name the industry's real problem",
+          "List Google's assets no rival has",
+          "Connect the two into one strategy",
+          "Name the risk"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "The movie industry's core problem: content is gated behind fragmented streaming platforms, and discovery is broken — people spend 20+ minutes deciding what to watch",
-          "Google's unique assets: Search intent data, YouTube's creator ecosystem, Google TV, DeepMind AI, and ad infrastructure",
-          "Strategy: Google Movie Studio — a direct-to-YouTube premium film fund that co-produces original movies with YouTube creators and emerging filmmakers, distributed ad-supported (free with ads) or by subscription (YouTube Premium)",
-          "Discovery is Google's moat — surfacing the right film to the right person via Search and YouTube recommendations is something Netflix cannot match",
-          "Monetization: ad revenue plus subscriptions plus Google TV bundling",
-          "Key risk: content quality and brand credibility, mitigated by a curated selection process"
+          "Problem: content is split across 8 apps and discovery is broken — people spend 20 minutes choosing",
+          "Google's edge: Search intent, YouTube's creators, Google TV, and ad infrastructure",
+          "Strategy: fund original films made with YouTube creators, free with ads or in YouTube Premium",
+          "The moat is discovery — Search and YouTube can put the right film in front of the right person; Netflix cannot",
+          "Risk: brand and quality. Mitigate with a tight curation bar"
         ]
       }
     ],
@@ -800,20 +773,19 @@
       {
         "label": "Framework",
         "points": [
-          "Understand what each product does uniquely well",
-          "Identify overlap versus differentiation",
-          "Recommend an integration or portfolio strategy"
+          "What does each product do that the other cannot?",
+          "Where do they overlap, and where are they different?",
+          "Decide: merge, or run as a portfolio"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "Google Maps strengths: breadth (transit, walking, business info), brand trust, global scale",
-          "Waze strengths: real-time crowdsourced traffic, a driver community, police and hazard alerts",
-          "The risk of a full merger is losing Waze's community-driven identity, which is its core value prop",
-          "Recommended strategy: keep Waze standalone for the engaged driver segment that values the community, while quietly integrating Waze's real-time traffic data layer into Google Maps to improve accuracy for casual users",
-          "Long term: Waze becomes the enthusiast driver brand; Maps becomes the universal navigation platform",
-          "This is classic portfolio segmentation — serve different personas with differentiated products on shared infrastructure"
+          "Maps: breadth, brand trust, global scale",
+          "Waze: real-time crowdsourced traffic, a loyal driver community, hazard alerts",
+          "Do not merge — a full merge kills the Waze community, which is its whole value",
+          "Pull Waze's live traffic data into Maps for casual users; keep Waze standalone for the enthusiast driver",
+          "This is portfolio segmentation — two brands, one data layer"
         ]
       }
     ],
@@ -833,22 +805,19 @@
       {
         "label": "Framework",
         "points": [
-          "Problem observed",
-          "Target user",
-          "Core solution",
-          "Why now / why you",
-          "How you'd validate"
+          "A problem you have actually felt",
+          "Who else has it",
+          "The smallest thing that would fix it",
+          "How you would test it cheaply"
         ]
       },
       {
         "label": "Answer",
         "points": [
-          "I'd build Sync — a tool for remote teams to run asynchronous standups that actually work",
-          "The problem: async standups on Slack are ignored because they're text-heavy and disconnected from the actual work",
-          "Sync integrates with GitHub, Jira, or Linear to auto-generate a draft standup for each team member based on their real activity — PRs merged, tickets moved, comments made",
-          "The user just reviews, edits, and hits send",
-          "No friction — Target user: remote engineering and product teams of 5 to 25",
-          "I'd validate by running manual concierge tests with 3 remote teams — manually pulling their activity and sending a draft standup to see if they edit and use it"
+          "Problem: async standups on Slack get ignored because they are disconnected from the actual work",
+          "For: remote engineering and product teams of 5–25",
+          "Build: pull each person's GitHub and Jira activity, draft their standup, they just edit and send",
+          "Test: run it by hand for 3 teams — pull their activity, send a draft, see if they use it"
         ]
       }
     ],
@@ -864,25 +833,20 @@
     "question": "Design a product for elderly users.",
     "sections": [
       {
+        "label": "Framework",
+        "points": [
+          "Do not guess their needs — cite research or say you would run it",
+          "They are not one group: 65 and active is not 85 and frail",
+          "Design for the hardest case, it helps everyone"
+        ]
+      },
+      {
         "label": "Answer",
         "points": [
-          "User Research First",
-          "Key Principles: Accessibility, Simplicity, Trust: Interview elderly users in their environment",
-          "Key Principles: Accessibility, Simplicity, Trust: Understand their pain points, not just assumptions",
-          "Key Principles: Accessibility, Simplicity, Trust: Consider varying tech literacy levels",
-          "Design Considerations",
-          "Key Principles: Accessibility, Simplicity, Trust: Large text and buttons (minimum 16px, prefer 18-20px)",
-          "Key Principles: Accessibility, Simplicity, Trust: High contrast ratios (WCAG AAA: 7:1)",
-          "Key Principles: Accessibility, Simplicity, Trust: Simple navigation - max 3 levels deep",
-          "Key Principles: Accessibility, Simplicity, Trust: Minimize scrolling - prioritize vertical layout",
-          "Key Principles: Accessibility, Simplicity, Trust: Voice input as alternative",
-          "Key Principles: Accessibility, Simplicity, Trust: Haptic feedback for confirmation",
-          "Build Trust",
-          "Key Principles: Accessibility, Simplicity, Trust: Clear privacy controls",
-          "Key Principles: Accessibility, Simplicity, Trust: No dark patterns",
-          "Key Principles: Accessibility, Simplicity, Trust: Easy access to human support",
-          "Key Principles: Accessibility, Simplicity, Trust: Familiar metaphors (avoid trendy UI patterns)",
-          "Example: A medication reminder app should have one giant \"Taken\" button, voice confirmation, and family member notifications"
+          "Bigger text and targets, high contrast, one action per screen",
+          "No trendy gestures — swipe-to-delete and hamburger menus are invisible to them",
+          "A clear way to reach a human, not a chatbot",
+          "Example: a medicine reminder app is one giant \"Taken\" button and a call to family if missed"
         ]
       }
     ],
@@ -898,35 +862,19 @@
     "question": "Design a better airport check-in experience.",
     "sections": [
       {
+        "label": "Framework",
+        "points": [
+          "Segment: frequent flyer, occasional traveller, family, international",
+          "Most of the fix happens on the phone before the airport"
+        ]
+      },
+      {
         "label": "Answer",
         "points": [
-          "Step 1: Understand Current Pain Points: Long lines at kiosks",
-          "Step 1: Understand Current Pain Points: Confusing UI (language barriers)",
-          "Step 1: Understand Current Pain Points: Printing boarding pass at kiosk",
-          "Step 1: Understand Current Pain Points: Baggage drop separate from check-in",
-          "Step 1: Understand Current Pain Points: No clear wayfinding after check-in",
-          "Step 2: Define User Segments: Frequent flyers (know the flow, want speed)",
-          "Step 2: Define User Segments: Occasional travelers (need guidance)",
-          "Step 2: Define User Segments: International travelers (language barriers)",
-          "Step 2: Define User Segments: Families with kids (need simplicity)",
-          "Mobile-First Check-in: 80% of check-in happens on phone before arriving",
-          "Mobile-First Check-in: QR code boarding pass (no printing needed)",
-          "Mobile-First Check-in: Push notifications with gate info and updates",
-          "Mobile-First Check-in: Real-time security wait times",
-          "Physical Space: Self-service kiosks only for edge cases (forgot to check in)",
-          "Physical Space: Dedicated baggage drop with QR scan (no kiosk needed)",
-          "Physical Space: Clear digital signage: \"Checked in? → Straight to security\"",
-          "Physical Space: Express lane for mobile check-in users",
-          "Kiosk UX (for those who still need it): Auto-detect language from passport scan",
-          "Kiosk UX (for those who still need it): Big buttons, one action per screen",
-          "Kiosk UX (for those who still need it): Visual icons, minimal text",
-          "Kiosk UX (for those who still need it): Skip screens based on context (no baggage? Skip that step)",
-          "Wayfinding: AR arrows on phone guiding to gate",
-          "Wayfinding: SMS/push when gate changes",
-          "Wayfinding: Walking time estimates",
-          "Success Metrics: Average check-in time < 3 minutes",
-          "Success Metrics: Kiosk usage drops by 60%",
-          "Success Metrics: Customer satisfaction score increases"
+          "80% check in on the phone before arrival — QR pass, push updates, live security wait time",
+          "At the airport: bag drop with a QR scan, no kiosk",
+          "Kiosks only for edge cases — forgot to check in — with passport-scan language detection",
+          "Metric: average check-in time, and share of passengers who skip the kiosk"
         ]
       }
     ],
@@ -942,58 +890,20 @@
     "question": "How would you design a product for children?",
     "sections": [
       {
+        "label": "Framework",
+        "points": [
+          "Split by age — 3–5, 6–8, 9–12 behave completely differently",
+          "Two users: the child who uses it, the parent who buys and trusts it"
+        ]
+      },
+      {
         "label": "Answer",
         "points": [
-          "Ages 3-5 (Pre-readers)",
-          "Icon-based navigation only (no text reliance)",
-          "Large touch targets (54px minimum)",
-          "No typing required",
-          "Audio instructions",
-          "Bright, bold colors",
-          "Instant feedback (sounds, animations)",
-          "Ages 6-8 (Early readers)",
-          "Simple words, short sentences",
-          "Visual + text labels",
-          "Gamification (stars, badges, progress bars)",
-          "Clear cause-and-effect",
-          "Limited choices (3 options max)",
-          "Ages 9-12 (Pre-teens)",
-          "More complex navigation ok",
-          "Social features (with heavy moderation)",
-          "Customization options (avatars, themes)",
-          "Achievement systems",
-          "Educational value + fun balance",
-          "Safety First",
-          "Universal Principles: COPPA compliance (parental consent under 13)",
-          "Universal Principles: Heavy content moderation",
-          "Universal Principles: No ads (or extremely limited)",
-          "Universal Principles: Private by default (no public profiles)",
-          "Universal Principles: Reporting mechanisms",
-          "Parent Controls",
-          "Universal Principles: Time limits",
-          "Universal Principles: Content filters",
-          "Universal Principles: Usage reports",
-          "Universal Principles: Easy account management",
-          "Engagement Without Addiction",
-          "Universal Principles: No infinite scroll",
-          "Universal Principles: Natural stopping points",
-          "Universal Principles: Built-in breaks (\"You've played 3 games! Take a stretch break\")",
-          "Universal Principles: Don't weaponize dopamine",
-          "Accessibility",
-          "Universal Principles: Dyslexia-friendly fonts",
-          "Universal Principles: Colorblind-safe palettes",
-          "Universal Principles: Screen reader support",
-          "Universal Principles: Adjustable text size",
-          "Example: Kids' Reading App: Large book covers (visual selection)",
-          "Example: Kids' Reading App: Audio narration option",
-          "Example: Kids' Reading App: Progress bar shows pages left",
-          "Example: Kids' Reading App: Reward badge every 5 books (not every page - avoid over-gamification)",
-          "Example: Kids' Reading App: Parent dashboard shows reading time and comprehension",
-          "Example: Kids' Reading App: Auto-pause after 30 minutes",
-          "Key Mistakes to Avoid: Designing for how YOU think kids behave vs actual research",
-          "Key Mistakes to Avoid: Copying adult UI patterns",
-          "Key Mistakes to Avoid: Over-complicating (kids will just ask parents)",
-          "Key Mistakes to Avoid: Ignoring parents (they're the actual decision-makers)"
+          "3–5: icons only, no reading, huge targets, instant audio feedback",
+          "6–8: short words, gentle gamification, 3 choices max",
+          "Safety: private by default, no ads, easy reporting, COPPA-style parental consent",
+          "No infinite scroll — natural stopping points and built-in breaks",
+          "Parent dashboard: time limits, content filters, a weekly summary"
         ]
       }
     ],
@@ -1009,51 +919,20 @@
     "question": "Redesign the Facebook News Feed.",
     "sections": [
       {
+        "label": "Framework",
+        "points": [
+          "Diagnose first — what is actually broken, not what looks dated",
+          "Name what you optimise for, including ad revenue as a real constraint"
+        ]
+      },
+      {
         "label": "Answer",
         "points": [
-          "Current Issues with Facebook Feed: Algorithmic feed creates filter bubbles",
-          "Current Issues with Facebook Feed: Engagement-baiting content (clickbait, rage bait)",
-          "Current Issues with Facebook Feed: Hard to find close friends' posts among noise",
-          "Current Issues with Facebook Feed: Infinite scroll = time sink",
-          "Current Issues with Facebook Feed: Ads are intrusive",
-          "What are we optimizing for?",
-          "User satisfaction (time well spent)",
-          "Engagement (time spent, but quality time)",
-          "Ad revenue (can't ignore - it's the business)",
-          "Safety (reduce misinformation spread)",
-          "Why do people use Facebook feed?",
-          "Stay updated on close friends/family",
-          "Discover interesting content",
-          "Be entertained",
-          "Feel connected",
-          "A. Dual Feed Model: \"Friends\" tab (default): Chronological posts from close friends only",
-          "A. Dual Feed Model: Determined by interaction frequency (messages, comments, tags)",
-          "A. Dual Feed Model: No ads in this feed (premium experience)",
-          "A. Dual Feed Model: Limited to ~50 closest connections",
-          "A. Dual Feed Model: \"Discover\" tab: Algorithmic feed of pages, groups, suggested content",
-          "A. Dual Feed Model: This is where ads live",
-          "A. Dual Feed Model: Surfaces interesting content from beyond your network",
-          "B. Intentional Design: Remove infinite scroll - show 20 posts, then prompt: \"You're all caught up. Want to see more?\"",
-          "B. Intentional Design: Add \"time spent\" counter at bottom (transparency)",
-          "B. Intentional Design: Surfaced \"You've been scrolling for 15 minutes\" notification",
-          "C. Content Quality Signals: Boost posts with meaningful comments (not just reacts)",
-          "C. Content Quality Signals: Demote engagement bait (\"Tag 3 friends\")",
-          "C. Content Quality Signals: Human review for viral content before wide distribution",
-          "D. Customization: \"Snooze\" feature for topics (e.g., politics)",
-          "D. Customization: \"More/Less like this\" feedback on every post",
-          "D. Customization: Control over algorithmic ranking (slider: friends vs pages)",
-          "Step 5: Test Hypothesis: A/B test dual feed with 5% of users",
-          "Step 5: Test Hypothesis: Measure: Time spent, DAU, user satisfaction survey, ad revenue",
-          "Step 5: Test Hypothesis: Success criteria: Satisfaction up, revenue neutral or better",
-          "Pros: Better user experience (less overwhelming)",
-          "Pros: Increases trust (chronological friends feed)",
-          "Pros: Separates concerns (social vs content discovery)",
-          "Cons: May reduce total time spent (less infinite scroll)",
-          "Cons: Ad revenue may drop (fewer ad impressions)",
-          "Cons: Requires user education (new tabs)",
-          "Ship the dual feed to a small cohort",
-          "If time well spent goes up and retention improves (even if time spent drops), it's worth it for long-term health",
-          "Facebook's biggest risk is being seen as toxic - this addresses that"
+          "Broken: close friends drown under pages, engagement-bait wins, infinite scroll",
+          "Split into two tabs — \"Friends\" (chronological, close connections, no ads) and \"Discover\" (algorithmic, pages, ads here)",
+          "Kill infinite scroll: show 20 posts, then \"You are caught up\"",
+          "Demote \"tag 3 friends\" bait; boost posts with real comments",
+          "Test on 5% — success is satisfaction up with ad revenue flat or better"
         ]
       }
     ],
