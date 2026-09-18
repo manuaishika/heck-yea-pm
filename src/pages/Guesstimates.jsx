@@ -71,8 +71,27 @@ export default function Guesstimates() {
       <p className="mt-1 text-sm leading-relaxed text-ink-dim">{diagnosis.note}</p>
       <Steps items={diagnosis.steps} />
 
-      <p className="label mt-4">The ways a metric moves</p>
+      <p className="label mt-4">MECE the causes</p>
+      <p className="mt-1 text-xs text-ink-faint">{diagnosis.mece.note}</p>
+      <div className="mt-2 grid gap-px overflow-hidden border border-rule bg-rule sm:grid-cols-2">
+        {diagnosis.mece.buckets.map((b) => (
+          <div key={b.label} className="bg-paper p-3">
+            <p className="text-sm font-semibold text-ink">{b.label}</p>
+            <p className="mt-1 text-sm text-ink-dim">{b.examples}</p>
+          </div>
+        ))}
+      </div>
+
+      <p className="label mt-5">The ways a metric moves</p>
       <Tree root={diagnosis.tree.root} branches={diagnosis.tree.branches} />
+
+      <p className="mt-4 text-sm text-ink-dim">
+        Practice on real ones —{' '}
+        <Link to="/browse?category=analytics&hard=1">
+          the RCA questions in the bank
+        </Link>
+        , each tied to a real company and a worked answer.
+      </p>
 
       {/* anchors */}
       <h2 className="mt-10 text-lg">{anchors.title}</h2>

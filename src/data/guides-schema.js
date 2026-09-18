@@ -116,6 +116,10 @@ export function validateGuesstimates(g) {
 
   const dg = g.diagnosis
   if (!str(dg?.title) || !str(dg?.note) || !arr(dg?.steps)) fail('guesstimates.diagnosis incomplete')
+  if (!str(dg.mece?.note) || !arr(dg.mece?.buckets)) fail('guesstimates.diagnosis.mece incomplete')
+  dg.mece.buckets.forEach((b, i) => {
+    if (!str(b.label) || !str(b.examples)) fail(`guesstimates.diagnosis.mece.buckets ${i} incomplete`)
+  })
   if (!str(dg.tree?.root) || !arr(dg.tree?.branches)) fail('guesstimates.diagnosis.tree incomplete')
   dg.tree.branches.forEach((b, i) => {
     if (!str(b.label) || !arr(b.leaves)) fail(`guesstimates.diagnosis.tree.branches ${i} incomplete`)

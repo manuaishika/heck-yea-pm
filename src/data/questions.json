@@ -2008,5 +2008,265 @@
     "failureMode": "Not diagnosing whether it is an expectations gap or a product-market-fit gap — they need different fixes.",
     "companies": [],
     "hard": false
+  },
+  {
+    "id": "flipkart-orders-drop-30",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Flipkart's daily orders dropped 30% overnight. Do a root cause analysis.",
+    "sections": [
+      {
+        "label": "Clarify first",
+        "points": [
+          "Which metric exactly — orders placed, or orders that paid?",
+          "Sudden or gradual? All platforms, all cities, all categories?",
+          "When exactly did it start — line it up against anything we shipped"
+        ]
+      },
+      {
+        "label": "MECE the causes",
+        "points": [
+          "System: is tracking broken? Check the raw payments ledger, not just the dashboard",
+          "Internal: a deploy, a pricing change, a broken coupon, a payment gateway outage",
+          "External: a competitor sale (Amazon Great Indian Festival same week?), an app-store outage",
+          "Out of control: a bank UPI outage, a regional event, a holiday shift"
+        ]
+      },
+      {
+        "label": "Narrow it",
+        "points": [
+          "Segment by platform first — if it is Android-only, it is almost certainly a release",
+          "Segment by city — if it is one region, check a local outage or a competitor promo there",
+          "If it is everywhere and every platform, suspect payments or a tracking break before anything else"
+        ]
+      }
+    ],
+    "tip": "RCA questions score your process, not your guess. State the MECE categories out loud before naming a cause.",
+    "failureMode": "Jumping straight to \"a competitor must have run a sale\" without checking tracking and internal changes first — the boring causes are the common ones.",
+    "companies": [
+      "Flipkart"
+    ],
+    "hard": true
+  },
+  {
+    "id": "ola-rides-drop-25",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Ola's daily ride bookings are down 25%. How do you find the root cause?",
+    "sections": [
+      {
+        "label": "Clarify first",
+        "points": [
+          "Bookings requested, or rides completed? Big difference — one is demand, one is fulfilment",
+          "One city or nationwide? Peak hours or all day?"
+        ]
+      },
+      {
+        "label": "MECE the causes",
+        "points": [
+          "Supply side: did driver supply drop — a strike, fuel prices, a rival offering better incentives?",
+          "Demand side: a price hike, a surge-pricing bug, an app crash on a popular device",
+          "External: monsoon flooding, a public holiday, a metro line reopening in that city",
+          "System: is the app logging \"booking attempted\" or silently failing before it logs?"
+        ]
+      },
+      {
+        "label": "Narrow it",
+        "points": [
+          "Check driver-side acceptance rate first — a supply shock looks like a demand drop but isn't",
+          "If it is one city, look for a local event before a product cause",
+          "If cancellation rate spiked instead of bookings falling, that is a different problem entirely"
+        ]
+      }
+    ],
+    "tip": "A two-sided marketplace can fail on either side. Always check supply before you assume it is a demand problem.",
+    "failureMode": "Treating a supply-side shock (fewer drivers online) as if it were a demand problem and proposing a demand fix like a discount.",
+    "companies": [
+      "Ola"
+    ],
+    "hard": true
+  },
+  {
+    "id": "zomato-transacting-users-drop",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Zomato's daily transacting users are down 10%. Find the cause.",
+    "sections": [
+      {
+        "label": "Clarify first",
+        "points": [
+          "Transacting = placed an order that day. New users, existing users, or both?",
+          "Gradual decline over weeks, or a sudden one-day drop?"
+        ]
+      },
+      {
+        "label": "MECE the causes",
+        "points": [
+          "Internal: a checkout bug, a new payment step added friction, a UI change hurt discovery",
+          "External: Swiggy ran an aggressive promotion the same week",
+          "Seasonal: a festival changed eating-out patterns, extreme weather kept restaurants closed",
+          "System: an app crash on a specific OS version, or a tracking pixel broke on release"
+        ]
+      },
+      {
+        "label": "Narrow it",
+        "points": [
+          "If it is gradual, look for a slow trend — restaurant supply quality, delivery time creeping up",
+          "If it is sudden, check the release log from that exact day first",
+          "Compare against Swiggy's public numbers if you can — is the whole category down, or just us?"
+        ]
+      }
+    ],
+    "tip": "A gradual decline and a sudden cliff have almost disjoint causes — nail down the shape of the drop before hypothesising.",
+    "failureMode": "Giving one explanation for a problem that could be either sudden or gradual, without first confirming which one it is.",
+    "companies": [
+      "Zomato"
+    ],
+    "hard": true
+  },
+  {
+    "id": "amazon-add-to-cart-drop",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Amazon's Add to Cart actions dropped 10%. Find the root cause.",
+    "sections": [
+      {
+        "label": "Clarify first",
+        "points": [
+          "Add-to-cart rate (per session) or absolute count? Traffic could have dropped instead",
+          "Which device, which category, which country?"
+        ]
+      },
+      {
+        "label": "MECE the causes",
+        "points": [
+          "System: the \"Add to Cart\" button event stopped firing after a frontend deploy",
+          "Internal: a redesign moved the button, slower page load lost impatient users",
+          "External: a competitor price war, or a supply issue meaning fewer items in stock to add",
+          "Seasonal: post-festival lull, a normal week-over-week dip mistaken for a real one"
+        ]
+      },
+      {
+        "label": "Narrow it",
+        "points": [
+          "Check page views first — if traffic is flat but add-to-cart fell, it is a page or button problem",
+          "If traffic also fell, the real question is upstream — why are fewer people arriving",
+          "Compare the add-to-cart rate against checkout rate — did checkout also drop, or only the top of funnel?"
+        ]
+      }
+    ],
+    "tip": "Always separate \"fewer people did X\" from \"X became harder to do.\" They need completely different fixes.",
+    "failureMode": "Proposing a UI fix for a traffic problem, or a traffic fix for a UI problem, because the two were never separated.",
+    "companies": [
+      "Amazon"
+    ],
+    "hard": true
+  },
+  {
+    "id": "swiggy-orders-drop-20",
+    "type": "question",
+    "category": "Analytics",
+    "question": "As a PM at Swiggy, daily orders dropped 20% last week versus every week before. Walk through your RCA.",
+    "sections": [
+      {
+        "label": "Clarify first",
+        "points": [
+          "Confirm it against last year same week too, not just last week — rule out seasonality",
+          "City-wide or specific to one metro? Lunch, dinner, or both dayparts?"
+        ]
+      },
+      {
+        "label": "MECE the causes",
+        "points": [
+          "External: Zomato ran a big anniversary discount the same week and pulled share",
+          "Internal: a pricing or delivery-fee change went out, restaurant partners paused for onboarding issues",
+          "Operational: driver shortage pushed ETAs up, so more people abandoned before ordering",
+          "System: tracking broke after a backend migration — check raw payment settlements as ground truth"
+        ]
+      },
+      {
+        "label": "Narrow it",
+        "points": [
+          "If ETA and cancellation rate both rose, look at delivery operations before marketing",
+          "If it is one city, check for a local competitor push or a driver strike there",
+          "Cross-check against category-wide data if available — is this a Swiggy problem or a category problem"
+        ]
+      }
+    ],
+    "tip": "In food delivery, ETA and driver supply explain more drops than people expect — check operations before assuming it is a demand or marketing issue.",
+    "failureMode": "Reaching for a marketing explanation (a competitor promo) before checking the operational metrics you actually control, like delivery time and driver supply.",
+    "companies": [
+      "Swiggy"
+    ],
+    "hard": true
+  },
+  {
+    "id": "swiggy-rating-drop",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Swiggy's Play Store rating fell from 4.5 to 3.8 in two weeks. Investigate.",
+    "sections": [
+      {
+        "label": "Clarify first",
+        "points": [
+          "A rating drop is a lagging signal — the cause is probably 1-2 weeks old already",
+          "Read the actual 1 and 2-star reviews from this window before doing anything else"
+        ]
+      },
+      {
+        "label": "MECE the causes",
+        "points": [
+          "Operational: delivery time crept from ~30 min to 50-60 min — the single biggest driver of rating drops in delivery apps",
+          "Internal: an app update introduced crashes or a broken payment flow on a specific OS version",
+          "Partner-side: a batch of restaurants with quality issues got onboarded without a proper quality bar",
+          "External: a payment gateway change caused failed transactions users blame on the app"
+        ]
+      },
+      {
+        "label": "Narrow it",
+        "points": [
+          "Read reviews first — real people will tell you the theme in their own words within minutes",
+          "Cross-check the theme against a hard metric — if reviews mention \"late delivery\", pull average ETA for the window",
+          "Fix the operational cause, then ask happy users to review — do not just chase the rating number"
+        ]
+      }
+    ],
+    "tip": "App-store reviews are qualitative gold for RCA — read them before you touch a dashboard.",
+    "failureMode": "Going straight to dashboards and skipping the actual 1-star review text, which usually names the problem directly.",
+    "companies": [
+      "Swiggy"
+    ],
+    "hard": true
+  },
+  {
+    "id": "should-razorpay-build-upi-app",
+    "type": "question",
+    "category": "Strategy",
+    "question": "Should Razorpay build its own UPI app?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Razorpay today: B2B payments infrastructure for businesses, not a consumer-facing app",
+          "A UPI app (like PhonePe, GPay) is B2C — a completely different distribution and trust game",
+          "Ask: does this serve the core business, or is it a separate bet needing its own team and capital?"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "No — not as a priority. Consumer UPI is a subsidised, winner-take-most market against PhonePe and GPay, who already have massive distribution",
+          "Razorpay's moat is the merchant side — checkout, payouts, banking-as-a-service — where it is already strong",
+          "Better move: go deeper into merchant-side UPI tooling (collect links, UPI Autopay, payout automation) rather than compete for consumer wallets",
+          "If leadership insists on a consumer play, pilot small and tie it back to the merchant ecosystem, not a standalone app"
+        ]
+      }
+    ],
+    "tip": "Strategy questions like this reward saying no with a reason — do not default to \"yes, more products.\"",
+    "failureMode": "Answering \"yes, let's build it\" without weighing the cost of entering a subsidy war against two entrenched, better-distributed competitors.",
+    "companies": [
+      "Razorpay"
+    ],
+    "hard": true
   }
 ]

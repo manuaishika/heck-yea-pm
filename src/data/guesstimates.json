@@ -21,8 +21,8 @@
     }
   },
   "diagnosis": {
-    "title": "A metric dropped — explain it",
-    "note": "The classic: \"You're the PM at Netflix. Watch time drops 5% week over week. What do you do?\" Don't guess a cause. Narrow it.",
+    "title": "RCA — a metric dropped, explain it",
+    "note": "The most common PM interview format there is: \"Orders dropped 20% this week. Do a root cause analysis.\" Don't guess a cause — narrow it down with a method.",
     "steps": [
       "Confirm it's real. Is the drop bigger than normal week-to-week noise? Is the tracking still working?",
       "Segment. Platform, region, new vs existing, free vs paid. Everywhere, or one slice?",
@@ -31,6 +31,15 @@
       "Check the outside world. Competitor launch, a holiday, a news event, seasonality.",
       "Form one hypothesis, test it cheaply, then decide."
     ],
+    "mece": {
+      "note": "Once you're narrowing causes, sort them into four buckets so you cover everything without overlap — MECE: mutually exclusive, collectively exhaustive.",
+      "buckets": [
+        { "label": "System", "examples": "Tracking broke, a metric definition changed, a dashboard bug" },
+        { "label": "Internal", "examples": "A release, a pricing change, a bug, a design change, an outage on our side" },
+        { "label": "External", "examples": "A competitor's promotion, a payment provider outage, a market shift" },
+        { "label": "Out of control", "examples": "A holiday, weather, a regional event, a natural disaster" }
+      ]
+    },
     "tree": {
       "root": "Watch time down 5%",
       "branches": [
