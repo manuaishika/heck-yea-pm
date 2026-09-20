@@ -4,6 +4,42 @@
  *  text-body ...). Nothing else may hard-code a colour or a radius.
  * ==================================================================== */
 
+@font-face {
+  font-family: 'New Spirit';
+  src: url('/fonts/NewSpirit-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'New Spirit';
+  src: url('/fonts/NewSpirit-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'New Spirit';
+  src: url('/fonts/NewSpirit-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'New Spirit';
+  src: url('/fonts/NewSpirit-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'New Spirit';
+  src: url('/fonts/NewSpirit-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* colour — one hue */
   --accent: #b5173f;
@@ -62,8 +98,8 @@
   --drop-shadow-*: initial;
 
   /* type: one scale, four sizes */
-  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; /* code only */
+  --font-sans: 'New Spirit', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; /* code only */
   --text-*: initial;
   --text-page: 1.5rem; /* 24 */
   --text-page--line-height: 1.2;
