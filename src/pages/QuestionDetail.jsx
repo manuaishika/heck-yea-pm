@@ -10,6 +10,7 @@ import { useHead } from '../lib/useHead'
 import { Page } from '../components/Page'
 import AnswerSlides from '../components/AnswerSlides'
 import SaveButton from '../components/SaveButton'
+import CompanyMark from '../components/CompanyMark'
 import NotFound from './NotFound'
 
 function CopyLink({ id }) {
@@ -101,12 +102,7 @@ export default function QuestionDetail() {
             <ul className="mt-1 flex flex-wrap gap-1.5">
               {q.companies.map((c) => (
                 <li key={c}>
-                  <Link
-                    to={`/browse?q=${encodeURIComponent(c)}`}
-                    className="chip no-underline"
-                  >
-                    {c}
-                  </Link>
+                  <CompanyMark name={c} />
                 </li>
               ))}
             </ul>

@@ -2,6 +2,8 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { companies, getCompany, questionsForCompany } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page } from '../components/Page'
+import { CompanyLogoLink } from '../components/CompanyMark'
+import { standoutsFor } from '../lib/companyMeta'
 import Rich from '../components/Rich'
 import LoopFlow from '../components/diagrams/LoopFlow'
 import WeightBars from '../components/diagrams/WeightBars'
@@ -23,6 +25,7 @@ export default function CompanyDetail() {
 
   const c = getCompany(canonical)
   const tagged = questionsForCompany(c)
+  const standout = standoutsFor(c)
 
   useHead({
     title: `${c.name} PM interview`,
@@ -37,10 +40,15 @@ export default function CompanyDetail() {
       </p>
 
       <header className="mt-4 border-b-2 border-rule-hard pb-4">
-        <h1 className="text-2xl">{c.name}</h1>
-        <p className="label mt-1">
-          {c.region} · {c.program} · {c.rounds.length} rounds
-        </p>
+        <div className="flex items-center gap-3">
+          <CompanyLogoLink name={c.name} size="h-11 w-11" />
+          <div className="min-w-0">
+            <h1 className="text-2xl">{c.name}</h1>
+            <p className="label mt-1">
+              {c.region} · {c.program} · {c.rounds.length} rounds
+            </p>
+          </div>
+        </div>
       </header>
 
       {!c.verified && (
@@ -56,7 +64,16 @@ export default function CompanyDetail() {
 
       {/* what they weight */}
       <h2 className="mt-8 text-lg">What they weight</h2>
-      <WeightBars weights={c.weights} />
+      <WeightBars weights={c.weights} standout={standout} />
+      {standout.length > 0 && (
+        <p className="mt-3 text-sm text-ink-dim">
+          <span className="font-bold text-ink">★</span>{' '}
+          <span className="font-semibold text-ink">
+            {standout.join(', ')}
+          </span>{' '}
+          — weighted more here than at most companies.
+        </p>
+      )}
 
       {/* format + what to know */}
       <h2 className="mt-8 text-lg">How it feels</h2>
