@@ -41,7 +41,7 @@ function CopyLink({ id }) {
     <button
       type="button"
       onClick={copy}
-      className="label border border-rule px-1.5 py-1 hover:border-rule-hard hover:text-ink"
+      className="chip"
     >
       {copied ? 'copied' : 'copy link'}
     </button>
@@ -79,7 +79,7 @@ export default function QuestionDetail() {
         <Link to={`/browse${location.search}`}>Question bank</Link>
       </p>
 
-      <header className="mt-4 border-b border-rule-hard pb-4">
+      <header className="mt-3 border-b-2 border-rule-hard pb-3">
         <p className="label flex items-center gap-2">
           <span>{q.category}</span>
           {q.hard && <span className="text-accent">· curveball</span>}
@@ -103,7 +103,7 @@ export default function QuestionDetail() {
                 <li key={c}>
                   <Link
                     to={`/browse?q=${encodeURIComponent(c)}`}
-                    className="label border border-rule px-1.5 py-0.5 text-ink-dim no-underline hover:border-rule-hard hover:text-ink"
+                    className="chip no-underline"
                   >
                     {c}
                   </Link>

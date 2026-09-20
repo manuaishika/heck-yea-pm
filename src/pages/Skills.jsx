@@ -41,7 +41,7 @@ function SkillCard({ skill }) {
           </ul>
           <Link
             to={`/browse?category=${categorySlug(skill.bankCategory)}`}
-            className="mt-2 inline-block text-xs text-accent"
+            className="mt-2 inline-block text-xs font-semibold"
           >
             practice {skill.bankCategory} questions →
           </Link>
@@ -53,8 +53,8 @@ function SkillCard({ skill }) {
 
 function Track({ label, intro, list, children }) {
   return (
-    <section className="mt-8">
-      <div className="flex items-baseline gap-2 border-b border-rule-hard pb-1">
+    <section className="mt-6">
+      <div className="flex items-baseline gap-2 border-b-2 border-rule-hard pb-1">
         <h2 className="text-lg">{label}</h2>
         <span className="label">{list.length} skills</span>
       </div>
@@ -88,7 +88,7 @@ export default function Skills() {
         aside={
           <Link
             to="/skills/assess"
-            className="label border border-rule-hard px-2 py-1 text-ink no-underline"
+            className="btn !px-2.5 !py-0.5 !text-[0.8125rem] no-underline"
           >
             Rate yourself
           </Link>
@@ -100,7 +100,7 @@ export default function Skills() {
         intro={skills.technical.intro}
         list={skills.technical.skills}
       >
-        <div className="mt-4 border border-rule bg-paper-2 p-3">
+        <div className="panel mt-4 p-3">
           <p className="text-sm text-ink-dim">{chain.note}</p>
           <Chain steps={chain.steps} labels={chain.labels} />
           <ul className="mt-2 space-y-1">

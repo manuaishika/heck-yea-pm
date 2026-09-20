@@ -28,20 +28,20 @@ export default function Layout() {
     <div className="min-h-screen">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-sm focus:border focus:border-rule-hard focus:bg-paper focus:px-3 focus:py-1.5 focus:text-sm"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-[6px] focus:border-2 focus:border-rule-hard focus:bg-paper focus:px-3 focus:py-1.5 focus:text-sm"
       >
         Skip to content
       </a>
 
       {/* mobile top bar */}
-      <div className="flex items-center justify-between border-b border-rule px-4 py-2.5 lg:hidden">
-        <Link to="/" className="font-mono text-sm font-medium text-ink no-underline">
+      <div className="flex items-center justify-between border-b-2 border-rule-hard px-4 py-2 lg:hidden">
+        <Link to="/" className="text-md font-bold tracking-tight text-ink no-underline">
           Heck Yea PM
         </Link>
         <button
           ref={toggleRef}
           type="button"
-          className="label border border-rule-hard px-2 py-1 text-ink"
+          className="chip"
           aria-expanded={sheetOpen}
           aria-controls={sheetId}
           onClick={() => setSheetOpen((v) => !v)}
@@ -54,21 +54,21 @@ export default function Layout() {
       <div
         id={sheetId}
         hidden={!sheetOpen}
-        className="border-b border-rule px-4 py-3 lg:hidden"
+        className="border-b-2 border-rule-hard px-4 py-3 lg:hidden"
       >
         <Contents onNavigate={() => setSheetOpen(false)} />
       </div>
 
       <div className="mx-auto flex max-w-5xl">
         {/* desktop rail */}
-        <aside className="sticky top-0 hidden h-screen w-60 shrink-0 overflow-y-auto border-r border-rule px-5 py-6 lg:block">
+        <aside className="sticky top-0 hidden h-screen w-60 shrink-0 overflow-y-auto border-r-2 border-rule-hard px-5 py-5 lg:block">
           <Link
             to="/"
-            className="font-mono text-sm font-medium text-ink no-underline"
+            className="text-md font-bold tracking-tight text-ink no-underline"
           >
             Heck Yea PM
           </Link>
-          <p className="label mt-0.5 mb-6">first PM loop, prepped</p>
+          <p className="label mt-0.5 mb-5">first PM loop, prepped</p>
           <Contents />
         </aside>
 

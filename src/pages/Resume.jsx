@@ -22,11 +22,11 @@ export default function Resume() {
       />
 
       {/* bullet formula */}
-      <h2 className="mt-8 text-lg">Every bullet, one formula</h2>
+      <h2 className="mt-6 text-lg">Every bullet, one formula</h2>
       <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
         {bulletFormula.parts.map((p, i) => (
           <span key={p} className="flex items-center gap-2">
-            <span className="border border-rule-hard px-2 py-1 text-ink">
+            <span className="panel px-2 py-1 text-ink">
               {p}
             </span>
             {i < bulletFormula.parts.length - 1 && (
@@ -36,12 +36,12 @@ export default function Resume() {
         ))}
       </div>
       <div className="mt-4 space-y-2 text-sm">
-        <div className="border-l-2 border-rule pl-3">
+        <div className="border-l-4 border-rule pl-3">
           <span className="label !text-ink-faint">weak</span>
           <p className="mt-0.5 text-ink-faint">{bulletFormula.bad}</p>
         </div>
-        <div className="border-l-2 border-accent pl-3">
-          <span className="label !text-accent">strong</span>
+        <div className="border-l-4 border-accent pl-3">
+          <span className="label !text-ink">strong</span>
           <p className="mt-0.5 leading-relaxed text-ink">
             <Rich>{bulletFormula.good}</Rich>
           </p>
@@ -83,7 +83,7 @@ export default function Resume() {
       <ul className="mt-3 border-t border-rule">
         {checklist.map((c) => (
           <li key={c} className="border-b border-rule py-2 text-sm text-ink">
-            <span className="text-accent">✓</span> <Rich>{c}</Rich>
+            <span className="font-bold text-ink">✓</span> <Rich>{c}</Rich>
           </li>
         ))}
       </ul>

@@ -28,8 +28,8 @@ function Result({ ratings }) {
 
   if (weak.length === 0) {
     return (
-      <div className="mt-6 border-t border-rule-hard pt-4">
-        <p className="label !text-accent">Start here</p>
+      <div className="mt-6 border-t-2 border-rule-hard pt-4">
+        <p className="label !text-ink">Start here</p>
         <p className="prose-body mt-1">
           You rated yourself okay or solid on everything you&apos;ve marked. Skip
           the drilling and go straight to the{' '}
@@ -42,8 +42,8 @@ function Result({ ratings }) {
   }
 
   return (
-    <div className="mt-6 border-t border-rule-hard pt-4">
-      <p className="label !text-accent">Start here</p>
+    <div className="mt-6 border-t-2 border-rule-hard pt-4">
+      <p className="label !text-ink">Start here</p>
       <p className="prose-body mt-1">
         Weakest first. Read the skill, then work its questions.
       </p>
@@ -101,7 +101,7 @@ export default function Assess() {
           <button
             type="button"
             onClick={reset}
-            className="ml-3 border border-rule px-1.5 py-0.5 hover:border-rule-hard hover:text-ink"
+            className="chip ml-3"
           >
             reset
           </button>
@@ -121,11 +121,7 @@ export default function Assess() {
                     type="button"
                     onClick={() => rate(s.slug, r.value)}
                     aria-pressed={current === r.value}
-                    className={`label border px-2 py-1 transition-colors ${
-                      current === r.value
-                        ? 'border-accent bg-accent-quiet text-ink'
-                        : 'border-rule text-ink-dim hover:border-rule-hard hover:text-ink'
-                    }`}
+                    className="chip"
                   >
                     {r.label}
                   </button>

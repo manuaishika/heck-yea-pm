@@ -14,10 +14,9 @@ import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import QuestionList from '../components/QuestionList'
 
-const chip =
-  'label border px-2 py-1 transition-colors'
-const chipOn = 'border-accent bg-accent-quiet text-ink'
-const chipOff = 'border-rule text-ink-dim hover:border-rule-hard hover:text-ink'
+const chip = 'pill'
+const chipOn = 'pill-on'
+const chipOff = ''
 
 const curveballCount = curveballs().length
 
@@ -98,7 +97,7 @@ export default function Browse() {
         intro={`${questions.length} questions across six categories. Expand one to read it here; open its page to share the link.`}
       />
 
-      <div className="mt-5">
+      <div className="mt-4">
         <label htmlFor="q" className="label">
           Search question and answer text
         </label>
@@ -109,11 +108,11 @@ export default function Browse() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="metrics, pricing, tell me about a time…"
           autoComplete="off"
-          className="mt-1 w-full border border-rule bg-paper-2 px-3 py-2 text-sm placeholder:text-ink-faint focus-visible:border-accent"
+          className="mt-1 w-full rounded-[6px] border-2 border-ink bg-paper-2 px-3 py-1.5 text-sm placeholder:text-ink-faint focus-visible:border-accent"
         />
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-1.5">
+      <div className="mt-3 flex flex-wrap gap-2">
         <button
           type="button"
           onClick={() => patchParams((p) => p.delete('category'))}
@@ -182,7 +181,7 @@ export default function Browse() {
             <button
               type="button"
               onClick={resetAll}
-              className="label mt-3 border border-rule-hard px-2.5 py-1.5 text-ink"
+              className="btn mt-3"
             >
               Clear everything
             </button>

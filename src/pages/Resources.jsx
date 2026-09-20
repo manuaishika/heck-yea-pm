@@ -26,7 +26,7 @@ export default function Resources() {
                   href={it.url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-sm font-medium text-accent"
+                  className="text-sm font-semibold"
                 >
                   {it.name}
                 </a>

@@ -13,7 +13,7 @@ export default function Points({ label, points, compact = false }) {
           <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-ink-dim">
             <span
               aria-hidden="true"
-              className="mt-[9px] h-[3px] w-[3px] shrink-0 rounded-full bg-ink-faint"
+              className="mt-[9px] h-1 w-1 shrink-0 bg-ink"
             />
             <span>{p}</span>
           </li>

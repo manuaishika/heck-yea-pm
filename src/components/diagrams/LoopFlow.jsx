@@ -24,11 +24,11 @@ export default function LoopFlow({ rounds }) {
               aria-current={idx === i ? 'step' : undefined}
               aria-label={`Round ${idx + 1}: ${round.name}`}
               onClick={() => go(idx)}
-              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-xs font-semibold ${
+              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[4px] border-2 text-xs font-bold ${
                 idx === i
-                  ? 'border-accent bg-accent text-paper'
+                  ? 'border-ink bg-accent text-on-accent'
                   : idx < i
-                    ? 'border-accent text-accent'
+                    ? 'border-ink bg-paper-2 text-ink'
                     : 'border-rule text-ink-faint'
               }`}
             >
@@ -36,7 +36,7 @@ export default function LoopFlow({ rounds }) {
             </button>
             {idx < rounds.length - 1 && (
               <span
-                className={`h-px w-4 ${idx < i ? 'bg-accent' : 'bg-rule'}`}
+                className={`h-0.5 w-4 ${idx < i ? 'bg-ink' : 'bg-rule'}`}
                 aria-hidden="true"
               />
             )}
@@ -46,7 +46,7 @@ export default function LoopFlow({ rounds }) {
 
       {/* panel */}
       <div
-        className="mt-3 min-h-[5.5rem] border border-rule-hard bg-paper-2 p-3"
+        className="card mt-3 min-h-[5.5rem] p-3"
         onTouchStart={(e) => {
           touch.current = e.changedTouches[0].clientX
         }}
@@ -59,7 +59,7 @@ export default function LoopFlow({ rounds }) {
         }}
       >
         <div className="flex items-baseline justify-between gap-3">
-          <p className="text-sm font-semibold text-accent">{r.name}</p>
+          <p className="text-sm font-bold text-ink">{r.name}</p>
           <p className="label shrink-0">
             {i + 1} / {rounds.length}
           </p>
@@ -70,12 +70,12 @@ export default function LoopFlow({ rounds }) {
       </div>
 
       {/* arrows */}
-      <div className="mt-2 flex items-center justify-between">
+      <div className="mt-3 flex items-center justify-between">
         <button
           type="button"
           onClick={() => go(i - 1)}
           disabled={i === 0}
-          className="label px-2 py-1 disabled:opacity-30"
+          className="chip disabled:opacity-30"
         >
           ‹ prev
         </button>
@@ -84,7 +84,7 @@ export default function LoopFlow({ rounds }) {
           type="button"
           onClick={() => go(i + 1)}
           disabled={i === rounds.length - 1}
-          className="label px-2 py-1 disabled:opacity-30"
+          className="chip disabled:opacity-30"
         >
           next ›
         </button>

@@ -86,7 +86,7 @@ function Picker({ onStart, reviewIds }) {
             )
           )
         }
-        className="mt-4 border border-rule-hard px-3 py-1.5 text-sm text-ink disabled:border-rule disabled:text-ink-faint"
+        className="btn btn-primary mt-4"
       >
         {deckSize === 0
           ? 'Select a category to start'
@@ -98,7 +98,7 @@ function Picker({ onStart, reviewIds }) {
           <button
             type="button"
             onClick={() => onStart(shuffle(reviewIds))}
-            className="text-accent underline underline-offset-2"
+            className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-[3px]"
           >
             Review your {reviewIds.length} flagged{' '}
             {reviewIds.length === 1 ? 'card' : 'cards'}
@@ -168,13 +168,13 @@ function Deck({ session, prev, next, finish }) {
         <button
           type="button"
           onClick={done}
-          className="label border border-rule px-1.5 py-0.5 hover:border-rule-hard hover:text-ink"
+          className="chip"
         >
           end session
         </button>
       </div>
 
-      <span className="mt-1.5 block h-0.5 bg-rule" aria-hidden="true">
+      <span className="mt-2 block h-2.5 overflow-hidden rounded-[3px] border-2 border-ink bg-paper" aria-hidden="true">
         <span
           className="block h-full bg-accent transition-[width] duration-200"
           style={{ width: `${((session.i + 1) / total) * 100}%` }}
@@ -182,13 +182,13 @@ function Deck({ session, prev, next, finish }) {
       </span>
 
       {/* card + arrows */}
-      <div className="mt-3 flex items-stretch gap-1.5">
+      <div className="mt-3 flex items-stretch gap-2">
         <button
           type="button"
           onClick={prev}
           disabled={atStart}
           aria-label="Previous card"
-          className="shrink-0 px-1 text-2xl text-ink-faint disabled:opacity-25"
+          className="shrink-0 px-1 text-2xl text-ink disabled:opacity-25"
         >
           ‹
         </button>
@@ -209,7 +209,7 @@ function Deck({ session, prev, next, finish }) {
             else setShowBack((v) => !v)
             touch.current = null
           }}
-          className="min-h-52 flex-1 border border-rule-hard bg-paper-2 p-4 text-left"
+          className="card min-h-52 flex-1 p-4 text-left"
         >
           <span className="label block">
             {q.category}
@@ -224,7 +224,7 @@ function Deck({ session, prev, next, finish }) {
                   key={i}
                   className="flex gap-2 text-sm leading-snug text-ink-dim"
                 >
-                  <span className="mt-[9px] h-[3px] w-[3px] shrink-0 rounded-full bg-ink-faint" />
+                  <span className="mt-[9px] h-1 w-1 shrink-0 bg-ink" />
                   <span>{p}</span>
                 </li>
               ))}
@@ -236,31 +236,31 @@ function Deck({ session, prev, next, finish }) {
           type="button"
           onClick={advance}
           aria-label="Next card"
-          className="shrink-0 px-1 text-2xl text-ink-faint"
+          className="shrink-0 px-1 text-2xl text-ink"
         >
           ›
         </button>
       </div>
 
-      <div className="mt-3 flex items-center gap-2">
+      <div className="mt-4 flex items-center gap-3">
         <button
           type="button"
           onClick={() => markCard('known')}
-          className="flex-1 border border-rule-hard px-3 py-1.5 text-sm text-ink"
+          className="btn btn-primary flex-1"
         >
           Known
         </button>
         <button
           type="button"
           onClick={() => markCard('review')}
-          className="flex-1 border border-rule-hard px-3 py-1.5 text-sm text-ink"
+          className="btn flex-1"
         >
           Needs review
         </button>
       </div>
 
       <p className="mt-3 flex items-center justify-between text-sm">
-        <Link to={`/browse/${q.id}`} className="text-accent">
+        <Link to={`/browse/${q.id}`} className="font-semibold">
           Full answer →
         </Link>
         <span className="label">tap card to flip · swipe to move</span>

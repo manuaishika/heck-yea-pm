@@ -19,7 +19,7 @@ export default function QuestionRow({ question, expanded, onToggle, to }) {
 
   return (
     <article className="border-b border-rule">
-      <div className="flex items-start gap-3 py-3">
+      <div className="flex items-start gap-3 py-2.5">
         <button
           type="button"
           aria-expanded={expanded}
@@ -45,13 +45,13 @@ export default function QuestionRow({ question, expanded, onToggle, to }) {
         </div>
       </div>
 
-      <div id={panelId} hidden={!expanded} className="pb-3 pl-4">
+      <div id={panelId} hidden={!expanded} className="pb-2.5 pl-4">
         {question.sections.map((s) => (
           <Points key={s.label} label={s.label} points={s.points} />
         ))}
 
-        <section className="mt-4 border-l-2 border-accent pl-3">
-          <p className="label !text-accent">Failure mode</p>
+        <section className="mt-3 border-l-4 border-accent pl-3">
+          <p className="label !text-ink">Failure mode</p>
           <p className="mt-1 text-sm text-ink-dim">{question.failureMode}</p>
         </section>
 

@@ -14,7 +14,7 @@ export default function ModeMatrix({ modes }) {
     <div className="mt-3 overflow-x-auto">
       <div className="min-w-[30rem]">
         {/* header */}
-        <div className="grid grid-cols-[7rem_repeat(3,1fr)] gap-x-3 border-b border-rule-hard pb-2">
+        <div className="grid grid-cols-[7rem_repeat(3,1fr)] gap-x-3 border-b-2 border-rule-hard pb-2">
           <span />
           {columns.map((c) => (
             <div key={c.key}>
@@ -53,11 +53,11 @@ export default function ModeMatrix({ modes }) {
           {spectrum.positions.map((pos, i) => (
             <div key={i}>
               <span
-                className="relative block h-1.5 rounded-[1px] bg-rule"
+                className="relative block h-1.5 rounded-[2px] bg-rule"
                 aria-hidden="true"
               >
                 <span
-                  className="absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent"
+                  className="absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-[2px] bg-ink ring-2 ring-paper"
                   style={{ left: `${pos}%` }}
                 />
               </span>

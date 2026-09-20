@@ -2,7 +2,7 @@
 export function Page({ children, wide = false }) {
   return (
     <div
-      className={`px-4 py-8 sm:px-8 lg:px-10 ${wide ? 'max-w-3xl' : 'max-w-[42rem]'}`}
+      className={`px-4 py-6 sm:px-8 lg:px-10 ${wide ? 'max-w-3xl' : 'max-w-[42rem]'}`}
     >
       {children}
     </div>
@@ -12,11 +12,11 @@ export function Page({ children, wide = false }) {
 /** h1 block with the hard rule under it. */
 export function PageHead({ chapter, title, intro, aside = null }) {
   return (
-    <header className="border-b border-rule-hard pb-4">
+    <header className="border-b-2 border-rule-hard pb-3">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
           {chapter && <p className="label">{chapter}</p>}
-          <h1 className="mt-1 text-2xl">{title}</h1>
+          <h1 className="mt-1 text-2xl sm:text-[2.25rem] sm:leading-none">{title}</h1>
         </div>
         {aside}
       </div>
@@ -32,11 +32,11 @@ export function PageHead({ chapter, title, intro, aside = null }) {
 export function MarginRow({ label, accent = false, children }) {
   return (
     <section className="margin-row">
-      <h2 className={`margin-label ${accent ? '!text-accent' : ''}`}>{label}</h2>
+      <h2 className={`margin-label ${accent ? '!text-ink' : ''}`}>{label}</h2>
       <div
         className={
           accent
-            ? 'border-l-2 border-accent pl-3.5 sm:border-0 sm:pl-0'
+            ? 'border-l-4 border-accent pl-3 sm:border-0 sm:pl-0'
             : 'min-w-0'
         }
       >

@@ -42,7 +42,7 @@ export default function Slides({ children, label = 'Slides' }) {
           else if (dx > 40) go(active - 1)
           touch.current = null
         }}
-        className="overflow-hidden rounded-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+        className="overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       >
         <div
           className="flex transition-transform duration-200 ease-out"
@@ -52,7 +52,7 @@ export default function Slides({ children, label = 'Slides' }) {
             <div
               key={i}
               aria-hidden={i !== active}
-              className="w-full shrink-0"
+              className="w-full shrink-0 pb-1 pr-1"
             >
               {slide}
             </div>
@@ -66,7 +66,7 @@ export default function Slides({ children, label = 'Slides' }) {
           onClick={() => go(active - 1)}
           disabled={active === 0}
           aria-label="Previous slide"
-          className="label px-2 py-1 disabled:opacity-30"
+          className="chip disabled:opacity-30"
         >
           ‹ prev
         </button>
@@ -75,8 +75,8 @@ export default function Slides({ children, label = 'Slides' }) {
           {children.map((_, i) => (
             <li
               key={i}
-              className={`h-1.5 rounded-full transition-all ${
-                i === active ? 'w-4 bg-accent' : 'w-1.5 bg-rule'
+              className={`h-1.5 rounded-[2px] transition-all ${
+                i === active ? 'w-4 bg-accent' : 'w-1.5 bg-ink/25'
               }`}
             />
           ))}
@@ -87,7 +87,7 @@ export default function Slides({ children, label = 'Slides' }) {
           onClick={() => go(active + 1)}
           disabled={active === count - 1}
           aria-label="Next slide"
-          className="label px-2 py-1 disabled:opacity-30"
+          className="chip disabled:opacity-30"
         >
           next ›
         </button>

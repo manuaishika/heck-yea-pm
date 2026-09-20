@@ -24,7 +24,7 @@ export default function FlowMap({ root, sub, steps }) {
   return (
     <div className="mt-4">
       {/* root */}
-      <div className="mx-auto max-w-sm border border-rule-hard bg-paper-2 px-3 py-2 text-center">
+      <div className="panel mx-auto max-w-sm px-3 py-2 text-center">
         <div className="text-sm font-semibold text-ink">{root}</div>
         {sub && <div className="mt-0.5 text-xs text-ink-dim">{sub}</div>}
       </div>
@@ -76,18 +76,18 @@ export default function FlowMap({ root, sub, steps }) {
               onMouseLeave={() => setHovered(null)}
               onFocus={() => setHovered(i)}
               onBlur={() => setHovered(null)}
-              className={`flex flex-col border px-1.5 py-1.5 text-left transition-colors ${
-                on
-                  ? 'border-accent bg-accent-quiet'
-                  : 'border-rule hover:border-rule-hard'
+              className={`flex flex-col rounded-[6px] border-2 border-ink px-1.5 py-1.5 text-left ${
+                on ? 'bg-accent text-on-accent' : 'bg-paper hover:bg-paper-2'
               }`}
             >
               <span
-                className={`text-xs font-semibold ${on ? 'text-accent' : 'text-ink'}`}
+                className={`text-xs font-bold ${on ? 'text-on-accent' : 'text-ink'}`}
               >
                 {s.step}
               </span>
-              <span className="mt-0.5 text-[0.7rem] leading-tight text-ink-dim">
+              <span
+                className={`mt-0.5 text-[0.7rem] leading-tight ${on ? 'text-on-accent' : 'text-ink-dim'}`}
+              >
                 {s.short}
               </span>
             </button>
@@ -96,8 +96,8 @@ export default function FlowMap({ root, sub, steps }) {
       </div>
 
       {/* detail */}
-      <div className="mt-3 border-l-2 border-accent pl-3">
-        <p className="label !text-accent">{current.step}</p>
+      <div className="mt-3 border-l-4 border-accent pl-3">
+        <p className="label !text-ink">{current.step}</p>
         <p className="mt-1 text-sm leading-relaxed text-ink-dim">
           <Rich>{current.detail}</Rich>
         </p>

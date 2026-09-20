@@ -10,7 +10,7 @@ export default function Chain({ steps, labels }) {
       {steps.map((step, i) => (
         <li key={step} className="flex items-start">
           <div className="w-28 shrink-0">
-            <div className="border border-rule-hard px-2 py-1 text-center font-semibold text-ink">
+            <div className="panel px-2 py-1 text-center font-semibold text-ink">
               {step}
             </div>
             <div className="mt-1 text-center text-xs leading-tight text-ink-dim">

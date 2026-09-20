@@ -28,11 +28,11 @@ export default function AnswerSlides({ question }) {
       {slides.map((slide) => (
         <div
           key={slide.label}
-          className={`flex h-full min-h-[10rem] flex-col border p-4 ${
-            slide.accent ? 'border-accent bg-accent-quiet/40' : 'border-rule-hard bg-paper-2'
+          className={`card flex h-full min-h-[9rem] flex-col p-3.5 ${
+            slide.accent ? 'border-l-[6px] border-l-accent' : ''
           }`}
         >
-          <p className={`label ${slide.accent ? '!text-accent' : ''}`}>
+          <p className={`label ${slide.accent ? '!text-ink' : ''}`}>
             {slide.label}
           </p>
           <ul className="mt-2 space-y-2">
@@ -41,7 +41,7 @@ export default function AnswerSlides({ question }) {
                 key={i}
                 className="flex gap-2.5 text-sm leading-relaxed text-ink-dim"
               >
-                <span className="mt-[9px] h-[3px] w-[3px] shrink-0 rounded-full bg-ink-faint" />
+                <span className="mt-[9px] h-1 w-1 shrink-0 bg-ink" />
                 <span>{p}</span>
               </li>
             ))}

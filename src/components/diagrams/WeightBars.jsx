@@ -21,7 +21,7 @@ export default function WeightBars({ weights }) {
           >
             {cat}
           </Link>
-          <span className="h-2 flex-1 bg-rule" aria-hidden="true">
+          <span className="h-3 flex-1 overflow-hidden rounded-[3px] border-2 border-ink bg-paper" aria-hidden="true">
             <span
               className="block h-full bg-accent"
               style={{ width: width[level] }}

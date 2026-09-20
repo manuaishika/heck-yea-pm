@@ -24,7 +24,7 @@ export default function QuestionList({ questions, linkTo }) {
   }
 
   return (
-    <div className="border-t border-rule">
+    <div className="border-t-2 border-rule-hard">
       {questions.map((q) => (
         <QuestionRow
           key={q.id}

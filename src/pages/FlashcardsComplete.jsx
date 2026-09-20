@@ -53,7 +53,7 @@ export default function FlashcardsComplete() {
         ))}
       </dl>
 
-      <div className="mt-5 flex flex-wrap gap-2">
+      <div className="mt-5 flex flex-wrap gap-3">
         {review.length > 0 && (
           <button
             type="button"
@@ -61,7 +61,7 @@ export default function FlashcardsComplete() {
               start(review)
               navigate('/flashcards')
             }}
-            className="border border-rule-hard px-3 py-1.5 text-sm text-ink"
+            className="btn btn-primary"
           >
             Review the {review.length} you flagged
           </button>
@@ -69,7 +69,7 @@ export default function FlashcardsComplete() {
         <button
           type="button"
           onClick={() => navigate('/flashcards')}
-          className="border border-rule px-3 py-1.5 text-sm text-ink hover:border-rule-hard"
+          className="btn"
         >
           New session
         </button>

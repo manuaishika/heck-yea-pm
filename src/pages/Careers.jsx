@@ -31,7 +31,7 @@ export default function Careers() {
       <div className="mt-3 overflow-x-auto">
         <table className="w-full min-w-[34rem] border-collapse text-sm">
           <thead>
-            <tr className="border-b border-rule-hard text-left">
+            <tr className="border-b-2 border-rule-hard text-left">
               <th className="w-40 py-2 pr-3 font-semibold">Role</th>
               <th className="py-2 pr-3 font-semibold">What it is</th>
               <th className="py-2 font-semibold">vs PM</th>
@@ -63,7 +63,7 @@ export default function Careers() {
       <div className="mt-3 overflow-x-auto">
         <table className="w-full min-w-[30rem] border-collapse text-sm">
           <thead>
-            <tr className="border-b border-rule-hard text-left">
+            <tr className="border-b-2 border-rule-hard text-left">
               <th className="py-2 pr-3 font-semibold">Level</th>
               <th className="w-16 py-2 pr-3 font-semibold">Years</th>
               <th className="py-2 font-semibold">Focus</th>

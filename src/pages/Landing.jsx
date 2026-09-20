@@ -22,7 +22,7 @@ function Preview() {
   const q = getQuestion('monetize-x-blue-tick')
   const [open, setOpen] = useState(false)
   return (
-    <div className="mt-2 border-y border-rule py-3">
+    <div className="card mt-2 p-3">
       <p className="label">
         {q.category} · curveball · a real question
       </p>
@@ -39,8 +39,8 @@ function Preview() {
       </button>
       {open && (
         <div className="mt-3 pl-4">
-          <p className="label !text-accent">Failure mode</p>
-          <p className="prose-body border-l-2 border-accent pl-3">
+          <p className="label !text-ink">Failure mode</p>
+          <p className="prose-body border-l-4 border-accent pl-3">
             {q.failureMode}
           </p>
           <p className="mt-3 text-sm">
@@ -63,34 +63,34 @@ export default function Landing() {
 
   return (
     <Page>
-      <h1 className="text-2xl">Prep for your first PM interview.</h1>
-      <p className="prose-body mt-3">
+      <h1 className="text-3xl sm:text-[3.5rem]">Prep for your first PM interview.</h1>
+      <p className="prose-body mt-3 max-w-[34rem]">
         For final-year students applying to PM intern and APM roles — including
         the Indian programs nobody else builds prep for. No login, no paywall.
       </p>
-      <p className="mt-4 flex flex-wrap gap-2">
+      <p className="mt-5 flex flex-wrap gap-3">
         <Link
           to="/browse"
-          className="border border-rule-hard px-3 py-1.5 text-sm text-ink no-underline"
+          className="btn btn-primary no-underline"
         >
           Browse the questions
         </Link>
         <Link
           to="/flashcards"
-          className="border border-rule px-3 py-1.5 text-sm text-ink no-underline hover:border-rule-hard"
+          className="btn no-underline"
         >
           Start flashcards
         </Link>
       </p>
 
-      <nav className="mt-8 border-t border-rule">
+      <nav className="mt-6 grid gap-3">
         {chapters.map(([to, n, label, desc]) => (
           <Link
             key={to}
             to={to}
-            className="flex gap-3 border-b border-rule py-3 no-underline"
+            className="card flex gap-3 px-3 py-2.5 no-underline hover:bg-paper"
           >
-            <span className="label pt-0.5">{n}</span>
+            <span className="label pt-0.5 !text-ink">{n}</span>
             <span>
               <span className="text-md text-ink">{label}</span>
               <span className="prose-body block">{desc}</span>
@@ -99,23 +99,23 @@ export default function Landing() {
         ))}
       </nav>
 
-      <p className="label mt-8">What a question looks like</p>
+      <p className="label mt-6">What a question looks like</p>
       <Preview />
 
-      <p className="prose-body mt-8 border-l-2 border-accent pl-3">
-        <strong className="text-ink">The one rule.</strong> Only talk about
+      <p className="sticky-note mt-7 text-sm leading-snug sm:max-w-md">
+        <strong>The one rule.</strong> Only talk about
         products you use regularly. Depth beats an impressive-sounding choice —
         walk in with three real frustrations and three specific fixes for
         something you open every day.
       </p>
 
-      <p className="label mt-8">Categories</p>
-      <ul className="mt-1">
+      <p className="label mt-7">Categories</p>
+      <ul className="mt-1 border-t-2 border-rule-hard">
         {categories.map((c) => (
           <li key={c} className="border-b border-rule">
             <Link
               to={`/browse?category=${categorySlug(c)}`}
-              className="flex items-baseline justify-between py-2 text-sm text-ink no-underline hover:text-accent"
+              className="flex items-baseline justify-between py-1.5 text-sm text-ink no-underline hover:text-accent"
             >
               <span>{c}</span>
               <span className="label">{counts[c]}</span>
@@ -125,7 +125,7 @@ export default function Landing() {
         <li className="border-b border-rule">
           <Link
             to="/browse?hard=1"
-            className="flex items-baseline justify-between py-2 text-sm text-accent no-underline"
+            className="flex items-baseline justify-between py-1.5 text-sm font-semibold text-ink no-underline"
           >
             <span>Curveballs</span>
             <span className="label">{curveballs().length}</span>
@@ -133,7 +133,7 @@ export default function Landing() {
         </li>
       </ul>
 
-      <p className="prose-body mt-8">
+      <p className="prose-body mt-6">
         That is the whole site. <Link to="/role">Start with the role</Link> if
         you are new to product, or go straight to the{' '}
         <Link to="/browse">questions</Link>.

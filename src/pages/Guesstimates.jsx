@@ -34,7 +34,7 @@ export default function Guesstimates() {
                 key={q}
                 className="flex gap-2 border-b border-rule py-1.5 text-sm text-ink-dim"
               >
-                <span className="mt-[9px] h-[3px] w-[3px] shrink-0 rounded-full bg-ink-faint" />
+                <span className="mt-[9px] h-1 w-1 shrink-0 bg-ink" />
                 <span>{q}</span>
               </li>
             ))}
@@ -73,7 +73,7 @@ export default function Guesstimates() {
 
       <p className="label mt-4">MECE the causes</p>
       <p className="mt-1 text-xs text-ink-faint">{diagnosis.mece.note}</p>
-      <div className="mt-2 grid gap-px overflow-hidden border border-rule bg-rule sm:grid-cols-2">
+      <div className="mt-2 grid gap-0.5 overflow-hidden rounded-[6px] border-2 border-ink bg-ink sm:grid-cols-2">
         {diagnosis.mece.buckets.map((b) => (
           <div key={b.label} className="bg-paper p-3">
             <p className="text-sm font-semibold text-ink">{b.label}</p>

@@ -22,22 +22,26 @@ const tools = [
 
 function chapterClass({ isActive }) {
   return [
-    'flex items-baseline gap-2.5 py-1.5 text-sm no-underline transition-colors',
-    isActive ? 'text-ink' : 'text-ink-dim hover:text-ink',
+    'flex items-baseline gap-2.5 rounded-[4px] px-2 py-1 text-sm no-underline',
+    isActive
+      ? 'bg-accent font-semibold text-on-accent'
+      : 'text-ink-dim hover:bg-paper-2 hover:text-ink',
   ].join(' ')
 }
 
 function itemClass({ isActive }) {
   return [
-    'block py-1.5 text-sm no-underline transition-colors',
-    isActive ? 'text-ink' : 'text-ink-dim hover:text-ink',
+    'block rounded-[4px] px-2 py-1 text-sm no-underline',
+    isActive
+      ? 'bg-accent font-semibold text-on-accent'
+      : 'text-ink-dim hover:bg-paper-2 hover:text-ink',
   ].join(' ')
 }
 
 function Group({ heading, items, onNavigate }) {
   return (
     <>
-      <p className="label mb-1 mt-5">{heading}</p>
+      <p className="label mb-1 mt-4 px-2">{heading}</p>
       <ul>
         {items.map((t) => (
           <li key={t.to}>
@@ -62,7 +66,7 @@ export default function Contents({ onNavigate }) {
               {({ isActive }) => (
                 <>
                   <span
-                    className={`label ${isActive ? 'text-accent' : ''}`}
+                    className={`label ${isActive ? '!text-on-accent' : ''}`}
                     aria-hidden="true"
                   >
                     {c.n}
@@ -78,7 +82,7 @@ export default function Contents({ onNavigate }) {
       <Group heading="Prepare" items={prepare} onNavigate={onNavigate} />
       <Group heading="Study" items={tools} onNavigate={onNavigate} />
 
-      <ul className="mt-5 border-t border-rule pt-3">
+      <ul className="mt-4 border-t-2 border-rule-hard pt-2">
         <li>
           <NavLink to="/about" className={itemClass} onClick={onNavigate}>
             About

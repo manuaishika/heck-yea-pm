@@ -19,7 +19,7 @@ export default function Companies() {
         intro="What each loop looks like — how many rounds, what format, what they weight."
       />
 
-      <p className="prose-body mt-4 border-l-2 border-accent pl-3">
+      <p className="prose-body mt-4 border-l-4 border-accent pl-3">
         {companiesNote}
       </p>
 

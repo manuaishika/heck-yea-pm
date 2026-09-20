@@ -25,11 +25,7 @@ export default function SaveButton({ id, question, withLabel = false }) {
       onClick={() => toggleSave(id)}
       aria-pressed={saved}
       aria-label={saved ? `Remove "${question}" from saved` : `Save "${question}"`}
-      className={`label inline-flex items-center gap-1.5 border px-1.5 py-1 transition-colors ${
-        saved
-          ? 'border-accent text-accent'
-          : 'border-rule hover:border-rule-hard hover:text-ink'
-      }`}
+      className="chip"
     >
       <Bookmark filled={saved} />
       {withLabel && <span>{saved ? 'Saved' : 'Save'}</span>}

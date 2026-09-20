@@ -26,7 +26,7 @@ export default function India() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="label shrink-0 text-accent"
+                className="label shrink-0 !text-ink"
               >
                 careers page →
               </a>
@@ -56,7 +56,7 @@ export default function India() {
         {misconceptions.map(([claim, reality]) => (
           <div key={claim} className="border-b border-rule py-2.5">
             <dt className="text-sm text-ink-faint line-through">{claim}</dt>
-            <dd className="mt-1 border-l-2 border-accent pl-3 text-sm text-ink-dim">
+            <dd className="mt-1 border-l-4 border-accent pl-3 text-sm text-ink-dim">
               {reality}
             </dd>
           </div>

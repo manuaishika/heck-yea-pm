@@ -14,7 +14,7 @@ export default function Steps({ items }) {
           key={i}
           className="grid grid-cols-[1.5rem_1fr] gap-3 border-b border-rule py-2 text-sm"
         >
-          <span className="label pt-0.5 !text-accent tabular-nums">{i + 1}</span>
+          <span className="label pt-0.5 !text-ink tabular-nums">{i + 1}</span>
           <span className="text-ink-dim">
             <Rich>{item}</Rich>
           </span>
