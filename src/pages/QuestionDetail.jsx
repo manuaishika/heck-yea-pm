@@ -7,8 +7,8 @@ import {
   categoryNeighbors,
 } from '../data/questions'
 import { useHead } from '../lib/useHead'
-import { Page } from '../components/Page'
-import AnswerSlides from '../components/AnswerSlides'
+import { Page, PageHead } from '../components/Page'
+import { Detail, Block, Bullets } from '../components/ui'
 import SaveButton from '../components/SaveButton'
 import CompanyMark from '../components/CompanyMark'
 import NotFound from './NotFound'
@@ -42,7 +42,7 @@ function CopyLink({ id }) {
     <button
       type="button"
       onClick={copy}
-      className="chip"
+      className="btn btn-sm"
     >
       {copied ? 'copied' : 'copy link'}
     </button>
@@ -76,52 +76,61 @@ export default function QuestionDetail() {
 
   return (
     <Page>
-      <p className="label">
-        <Link to={`/browse${location.search}`}>Question bank</Link>
-      </p>
+      <PageHead
+        chapter={
+          <Link to={`/browse${location.search}`} className="no-underline hover:no-underline">
+            Question bank
+          </Link>
+        }
+        title={q.question}
+        intro={`${q.category}${q.hard ? ' · curveball' : ''}`}
+        aside={
+          <div className="flex shrink-0 items-center gap-2">
+            <CopyLink id={q.id} />
+            <SaveButton id={q.id} question={q.question} withLabel />
+          </div>
+        }
+      />
 
-      <header className="mt-3 border-b-2 border-rule-hard pb-3">
-        <p className="label flex items-center gap-2">
-          <span>{q.category}</span>
-          {q.hard && <span className="text-accent">· curveball</span>}
-        </p>
-        <h1 className="mt-1 text-xl sm:text-2xl">{q.question}</h1>
-        <div className="mt-3 flex items-center gap-1.5">
-          <CopyLink id={q.id} />
-          <SaveButton id={q.id} question={q.question} withLabel />
-        </div>
-      </header>
-
-      <div className="mt-4">
-        <p className="label">Swipe through the answer</p>
-        <AnswerSlides question={q} />
-
-        {q.companies.length > 0 && (
-          <section className="mt-5">
-            <p className="label">Asked at</p>
-            <ul className="mt-1 flex flex-wrap gap-1.5">
-              {q.companies.map((c) => (
-                <li key={c}>
-                  <CompanyMark name={c} />
-                </li>
-              ))}
-            </ul>
-          </section>
+      <div className="card">
+        <Detail
+          columns={q.sections.map((sec) => ({
+            label: sec.label,
+            children: <Bullets items={sec.points} />,
+          }))}
+        />
+        {q.tip && (
+          <Block label="What they test">
+            <p>{q.tip}</p>
+          </Block>
         )}
+        <Block label="Failure mode">
+          <p>{q.failureMode}</p>
+        </Block>
       </div>
 
+      {q.companies.length > 0 && (
+        <section className="mt-6">
+          <p className="label">Asked at</p>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {q.companies.map((c) => (
+              <li key={c}>
+                <CompanyMark name={c} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {related.length > 0 && (
-        <nav
-          aria-label={`More ${q.category} questions`}
-          className="mt-8 border-t border-rule pt-4"
-        >
+        <nav aria-label={`More ${q.category} questions`} className="mt-8">
           <p className="label">More in {q.category.toLowerCase()}</p>
-          <ul className="mt-1.5">
+          <ul className="mt-2 divide-y divide-border border-y border-border">
             {related.map((r) => (
-              <li key={r.id} className="border-b border-rule last:border-0">
+              <li key={r.id}>
                 <Link
                   to={`/browse/${r.id}`}
-                  className="block py-2 text-sm text-ink no-underline hover:text-accent"
+                  className="block py-2 text-text no-underline hover:text-accent hover:no-underline"
                 >
                   {r.question}
                 </Link>
@@ -132,16 +141,11 @@ export default function QuestionDetail() {
       )}
 
       {(prev || next) && (
-        <nav
-          aria-label="Question navigation"
-          className="mt-6 grid gap-3 border-t border-rule pt-4 sm:grid-cols-2"
-        >
+        <nav aria-label="Question navigation" className="mt-6 grid gap-3 sm:grid-cols-2">
           {prev ? (
-            <Link to={`/browse/${prev.id}`} className="group no-underline">
+            <Link to={`/browse/${prev.id}`} className="group no-underline hover:no-underline">
               <span className="label">Previous</span>
-              <span className="mt-0.5 block text-sm text-ink group-hover:text-accent">
-                {prev.question}
-              </span>
+              <span className="mt-1 block text-text group-hover:text-accent">{prev.question}</span>
             </Link>
           ) : (
             <span />
@@ -149,12 +153,10 @@ export default function QuestionDetail() {
           {next && (
             <Link
               to={`/browse/${next.id}`}
-              className="group no-underline sm:text-right"
+              className="group no-underline hover:no-underline sm:text-right"
             >
               <span className="label">Next</span>
-              <span className="mt-0.5 block text-sm text-ink group-hover:text-accent">
-                {next.question}
-              </span>
+              <span className="mt-1 block text-text group-hover:text-accent">{next.question}</span>
             </Link>
           )}
         </nav>

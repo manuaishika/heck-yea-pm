@@ -26,7 +26,7 @@ export default function Venn({ corners }) {
       </g>
 
       <g
-        fill="var(--ink)"
+        fill="var(--text)"
         fontFamily="var(--font-sans)"
         fontSize="12.5"
         fontWeight="600"
@@ -42,8 +42,8 @@ export default function Venn({ corners }) {
         x="150"
         y="145"
         textAnchor="middle"
-        fill="var(--paper)"
-        fontFamily="var(--font-mono)"
+        fill="var(--surface)"
+        fontFamily="var(--font-sans)"
         fontSize="10"
         fontWeight="700"
       >

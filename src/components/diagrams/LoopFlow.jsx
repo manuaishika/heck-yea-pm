@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 
 /**
  * An interview loop as a horizontal stepper. Numbered pills across the top show
- * every round; below, one round's detail at a time. Swipe the panel or tap a
+ * every round; below, one round's detail at a time. Swipe the card or tap a
  * pill / arrow to move. No accordion clicking.
  *
  * @param {{ rounds: { name: string, detail: string }[] }} props
@@ -16,27 +16,27 @@ export default function LoopFlow({ rounds }) {
   return (
     <div className="mt-3">
       {/* pills */}
-      <ol className="flex items-center gap-1.5 overflow-x-auto pb-1">
+      <ol className="flex items-center gap-2 overflow-x-auto pb-1">
         {rounds.map((round, idx) => (
-          <li key={idx} className="flex items-center gap-1.5">
+          <li key={idx} className="flex items-center gap-2">
             <button
               type="button"
               aria-current={idx === i ? 'step' : undefined}
               aria-label={`Round ${idx + 1}: ${round.name}`}
               onClick={() => go(idx)}
-              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-[4px] border-2 text-xs font-bold ${
+              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-button border text-body font-semibold ${
                 idx === i
-                  ? 'border-ink bg-accent text-on-accent'
+                  ? 'border-border bg-accent text-surface'
                   : idx < i
-                    ? 'border-ink bg-paper-2 text-ink'
-                    : 'border-rule text-ink-faint'
+                    ? 'border-border bg-surface text-text'
+                    : 'border-border text-text-muted'
               }`}
             >
               {idx + 1}
             </button>
             {idx < rounds.length - 1 && (
               <span
-                className={`h-0.5 w-4 ${idx < i ? 'bg-ink' : 'bg-rule'}`}
+                className={`h-1 w-4 ${idx < i ? 'bg-text' : 'bg-border'}`}
                 aria-hidden="true"
               />
             )}
@@ -44,9 +44,9 @@ export default function LoopFlow({ rounds }) {
         ))}
       </ol>
 
-      {/* panel */}
+      {/* card */}
       <div
-        className="card mt-3 min-h-[5.5rem] p-3"
+        className="card mt-3 min-h-22 p-3"
         onTouchStart={(e) => {
           touch.current = e.changedTouches[0].clientX
         }}
@@ -59,13 +59,13 @@ export default function LoopFlow({ rounds }) {
         }}
       >
         <div className="flex items-baseline justify-between gap-3">
-          <p className="text-sm font-bold text-ink">{r.name}</p>
+          <p className="text-body font-semibold text-text">{r.name}</p>
           <p className="label shrink-0">
             {i + 1} / {rounds.length}
           </p>
         </div>
         {r.detail && (
-          <p className="mt-1 text-sm leading-relaxed text-ink-dim">{r.detail}</p>
+          <p className="mt-1 text-body leading-relaxed text-text-muted">{r.detail}</p>
         )}
       </div>
 
@@ -75,7 +75,7 @@ export default function LoopFlow({ rounds }) {
           type="button"
           onClick={() => go(i - 1)}
           disabled={i === 0}
-          className="chip disabled:opacity-30"
+          className="btn btn-sm disabled:opacity-30"
         >
           ‹ prev
         </button>
@@ -84,7 +84,7 @@ export default function LoopFlow({ rounds }) {
           type="button"
           onClick={() => go(i + 1)}
           disabled={i === rounds.length - 1}
-          className="chip disabled:opacity-30"
+          className="btn btn-sm disabled:opacity-30"
         >
           next ›
         </button>

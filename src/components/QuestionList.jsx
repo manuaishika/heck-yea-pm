@@ -24,16 +24,17 @@ export default function QuestionList({ questions, linkTo }) {
   }
 
   return (
-    <div className="border-t-2 border-rule-hard">
+    <ul className="space-y-2">
       {questions.map((q) => (
-        <QuestionRow
-          key={q.id}
-          question={q}
-          expanded={expanded.has(q.id)}
-          onToggle={() => toggle(q.id)}
-          to={linkTo(q)}
-        />
+        <li key={q.id}>
+          <QuestionRow
+            question={q}
+            expanded={expanded.has(q.id)}
+            onToggle={() => toggle(q.id)}
+            to={linkTo(q)}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }

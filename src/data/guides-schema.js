@@ -130,7 +130,14 @@ export function validateGuesstimates(g) {
     if (!str(qs.kind) || !str(qs.note)) fail(`guesstimates.questionSets ${i} incomplete`)
     if (!arr(qs.questions)) fail(`guesstimates.questionSets ${i}.questions missing`)
     qs.questions.forEach((q, j) => {
-      if (!str(q)) fail(`guesstimates.questionSets ${i}.questions ${j} empty`)
+      const at = `guesstimates.questionSets ${i}.questions ${j}`
+      if (!str(q?.q) || !str(q?.how) || !str(q?.answer) || !str(q?.check)) fail(`${at} incomplete`)
+      if (!arr(q.steps)) fail(`${at}.steps missing`)
+      q.steps.forEach((row, k) => {
+        if (!Array.isArray(row) || row.length !== 2 || !str(row[0]) || !str(row[1])) {
+          fail(`${at}.steps ${k} must be [label, value]`)
+        }
+      })
     })
   })
 

@@ -117,7 +117,7 @@ export default function Browse() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="metrics, pricing, tell me about a time…"
           autoComplete="off"
-          className="mt-1 w-full rounded-[6px] border-2 border-ink bg-paper-2 px-3 py-1.5 text-sm placeholder:text-ink-faint focus-visible:border-accent"
+          className="mt-1 w-full rounded-button border border-border bg-surface px-3 py-2 text-body placeholder:text-text-muted focus-visible:border-accent"
         />
       </div>
 
@@ -204,9 +204,9 @@ export default function Browse() {
           <QuestionList questions={results} linkTo={linkTo} />
         </div>
       ) : (
-        <div className="mt-4 border-t border-rule pt-6">
-          <p className="text-ink">Nothing matches that.</p>
-          <p className="prose-body mt-1.5">
+        <div className="mt-4 border-t border-border pt-6">
+          <p className="text-text">Nothing matches that.</p>
+          <p className="prose-body mt-2">
             Try a shorter or more general term
             {activeCategory ? ', or clear the category' : ''}. Search covers the
             question and the full answer.

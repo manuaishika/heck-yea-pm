@@ -18,7 +18,7 @@ export default function FlashcardsComplete() {
   if (deck.length === 0) {
     return (
       <Page>
-        <PageHead title="No session yet" />
+        <PageHead chapter="Library" title="No session yet" />
         <p className="prose-body mt-4">
           Start one from <Link to="/flashcards">Flashcards</Link>.
         </p>
@@ -33,11 +33,12 @@ export default function FlashcardsComplete() {
   return (
     <Page>
       <PageHead
+        chapter="Library"
         title="Session done"
         intro={`${deck.length} card${deck.length === 1 ? '' : 's'}.`}
       />
 
-      <dl className="mt-4 border-t border-rule">
+      <dl className="mt-4 border-t border-border">
         {[
           ['Known', known.length],
           ['Needs review', review.length],
@@ -45,9 +46,9 @@ export default function FlashcardsComplete() {
         ].map(([label, n]) => (
           <div
             key={label}
-            className="flex items-baseline justify-between border-b border-rule py-2.5"
+            className="flex items-baseline justify-between border-b border-border py-3"
           >
-            <dt className="text-sm text-ink">{label}</dt>
+            <dt className="text-body text-text">{label}</dt>
             <dd className="label tabular-nums">{n}</dd>
           </div>
         ))}
@@ -76,14 +77,14 @@ export default function FlashcardsComplete() {
       </div>
 
       {review.length > 0 && (
-        <ul className="mt-6 border-t border-rule">
+        <ul className="mt-6 border-t border-border">
           {review.map((id) => {
             const q = getQuestion(id)
             return (
-              <li key={id} className="border-b border-rule">
+              <li key={id} className="border-b border-border">
                 <Link
                   to={`/browse/${id}`}
-                  className="block py-2 text-sm text-ink no-underline hover:text-accent"
+                  className="block py-2 text-body text-text no-underline hover:text-accent"
                 >
                   {q.question}
                 </Link>

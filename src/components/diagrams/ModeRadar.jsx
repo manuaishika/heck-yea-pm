@@ -12,10 +12,10 @@ const MAX = 3
  * per dimension. Further from the centre means more of it.
  *
  * Series are told apart by colour AND line style, so it survives greyscale and
- * colour-blindness: magenta solid, ink solid, ink dashed with hollow markers.
+ * colour-blindness: accent solid, text-colour solid, text-colour dashed with hollow markers.
  * The table below it (ModeMatrix) is the accessible, exact view of the same data.
  *
- * Tap a legend chip to isolate one type; hover, focus or tap an axis to read
+ * Tap a legend btn btn-sm to isolate one type; hover, focus or tap an axis to read
  * what each type is like on it.
  *
  * @param {{ modes: import('../../data/guides').careers['modes'] }} props
@@ -43,8 +43,8 @@ export default function ModeRadar({ modes }) {
   // per-series look: colour + dash + marker shape
   const look = [
     { stroke: 'var(--accent)', fill: 'var(--accent)', fillOpacity: 0.16, dash: undefined, marker: 'circle' },
-    { stroke: 'var(--ink)', fill: 'none', fillOpacity: 0, dash: undefined, marker: 'circle' },
-    { stroke: 'var(--ink)', fill: 'none', fillOpacity: 0, dash: '7 5', marker: 'square' },
+    { stroke: 'var(--text)', fill: 'none', fillOpacity: 0, dash: undefined, marker: 'circle' },
+    { stroke: 'var(--text)', fill: 'none', fillOpacity: 0, dash: '7 5', marker: 'square' },
   ]
 
   const dimensionLabel = (i) => {
@@ -63,10 +63,11 @@ export default function ModeRadar({ modes }) {
               type="button"
               aria-pressed={only === m}
               onClick={() => setOnly(only === m ? null : m)}
-              className="chip !py-0.5"
+              className="btn btn-sm !py-1"
             >
               <svg width="26" height="10" viewBox="0 0 26 10" aria-hidden="true">
                 <line
+                fill="none"
                   x1="1"
                   y1="5"
                   x2="25"
@@ -78,7 +79,7 @@ export default function ModeRadar({ modes }) {
                 {look[m].marker === 'circle' ? (
                   <circle cx="13" cy="5" r="3.5" fill={only === m ? 'currentColor' : look[m].stroke} />
                 ) : (
-                  <rect x="9.5" y="1.5" width="7" height="7" fill="var(--paper)" stroke={only === m ? 'currentColor' : look[m].stroke} strokeWidth="2" />
+                  <rect x="9.5" y="1.5" width="7" height="7" fill="var(--surface)" stroke={only === m ? 'currentColor' : look[m].stroke} strokeWidth="2" />
                 )}
               </svg>
               {s.name}
@@ -101,7 +102,7 @@ export default function ModeRadar({ modes }) {
             key={lv}
             points={ring(lv)}
             fill="none"
-            stroke="var(--rule)"
+            stroke="var(--border)"
             strokeWidth={lv === MAX ? 1.5 : 1}
           />
         ))}
@@ -109,12 +110,13 @@ export default function ModeRadar({ modes }) {
           const [x, y] = at(i, MAX)
           return (
             <line
+                fill="none"
               key={i}
               x1={CX}
               y1={CY}
               x2={x}
               y2={y}
-              stroke={i === dim ? 'var(--ink)' : 'var(--rule)'}
+              stroke={i === dim ? 'var(--text)' : 'var(--border)'}
               strokeWidth={i === dim ? 2 : 1}
             />
           )
@@ -124,7 +126,7 @@ export default function ModeRadar({ modes }) {
         {series.map((s, m) => {
           const faded = only !== null && only !== m
           return (
-            <g key={s.key} opacity={faded ? 0.15 : 1} style={{ transition: 'opacity 150ms' }}>
+            <g key={s.key} fill="currentColor" opacity={faded ? 0.15 : 1} style={{ transition: 'opacity 150ms' }}>
               <polygon
                 points={s.points.map((p) => p.join(',')).join(' ')}
                 fill={look[m].fill}
@@ -142,7 +144,7 @@ export default function ModeRadar({ modes }) {
                     cy={y}
                     r="4.5"
                     fill={look[m].stroke}
-                    stroke="var(--paper)"
+                    stroke="var(--surface)"
                     strokeWidth="2"
                   />
                 ) : (
@@ -152,7 +154,7 @@ export default function ModeRadar({ modes }) {
                     y={y - 4.5}
                     width="9"
                     height="9"
-                    fill="var(--paper)"
+                    fill="var(--surface)"
                     stroke={look[m].stroke}
                     strokeWidth="2"
                   />
@@ -174,6 +176,7 @@ export default function ModeRadar({ modes }) {
           return (
             <g
               key={b.dim}
+              fill="currentColor"
               role="button"
               tabIndex={0}
               aria-label={`${b.dim}: show how each company type compares`}
@@ -196,7 +199,7 @@ export default function ModeRadar({ modes }) {
                 fontFamily="var(--font-sans)"
                 fontSize="12"
                 fontWeight={on ? 700 : 500}
-                fill="var(--ink)"
+                fill="var(--text)"
                 textDecoration={on ? 'underline' : 'none'}
               >
                 {lines.map((ln, k) => (
@@ -214,35 +217,35 @@ export default function ModeRadar({ modes }) {
         <text
           x={CX + 4}
           y={CY + R * 0.34 + 1}
-          fontFamily="var(--font-mono)"
+          fontFamily="var(--font-sans)"
           fontSize="9"
-          fill="var(--ink-faint)"
+          fill="var(--text-muted)"
         >
           less
         </text>
         <text
           x={CX + 8}
           y={CY - R + 14}
-          fontFamily="var(--font-mono)"
+          fontFamily="var(--font-sans)"
           fontSize="9"
-          fill="var(--ink-faint)"
+          fill="var(--text-muted)"
         >
           more
         </text>
       </svg>
 
       {/* reading of the chosen axis */}
-      <div className="panel mt-1 p-3" aria-live="polite">
-        <p className="label !text-ink">{bars[dim].dim}</p>
-        <ul className="mt-1.5 space-y-1">
+      <div className="card mt-1 p-3" aria-live="polite">
+        <p className="label !text-text">{bars[dim].dim}</p>
+        <ul className="mt-2 space-y-1">
           {series.map((s, m) => (
-            <li key={s.key} className="flex items-start gap-2 text-sm">
+            <li key={s.key} className="flex items-start gap-2 text-body">
               <svg width="18" height="12" viewBox="0 0 18 12" className="mt-1 shrink-0" aria-hidden="true">
-                <line x1="0" y1="6" x2="18" y2="6" stroke={look[m].stroke} strokeWidth="2.5" strokeDasharray={look[m].dash} />
+                <line fill="none" x1="0" y1="6" x2="18" y2="6" stroke={look[m].stroke} strokeWidth="2.5" strokeDasharray={look[m].dash} />
               </svg>
               <span>
-                <span className="font-semibold text-ink">{s.name}:</span>{' '}
-                <span className="text-ink-dim">{bars[dim].labels[m]}</span>
+                <span className="font-semibold text-text">{s.name}:</span>{' '}
+                <span className="text-text-muted">{bars[dim].labels[m]}</span>
               </span>
             </li>
           ))}

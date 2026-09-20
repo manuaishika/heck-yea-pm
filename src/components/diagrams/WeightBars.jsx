@@ -1,43 +1,42 @@
 import { Link } from 'react-router-dom'
 import { categorySlug } from '../../data/questions'
 
-const width = { heavy: '100%', medium: '58%', light: '26%' }
 const order = { heavy: 0, medium: 1, light: 2 }
 
 /**
- * "What they weight" as a sorted bar chart. Each label links into the bank.
+ * "What they weight" as plain text with accent emphasis: heavy is accent and
+ * semibold, medium is normal, light is muted. Each label links into the bank.
  * Categories in `standout` get a star: this company weights them more than
- * most do.
+ * most do. (Component keeps its old name; it no longer draws bars.)
  *
  * @param {{ weights: [string, 'heavy'|'medium'|'light'][], standout?: string[] }} props
  */
 export default function WeightBars({ weights, standout = [] }) {
   const sorted = [...weights].sort((a, b) => order[a[1]] - order[b[1]])
+  const levelClass = {
+    heavy: 'font-semibold text-accent',
+    medium: 'text-text',
+    light: 'text-text-muted',
+  }
   return (
-    <ul className="mt-3 space-y-2">
+    <ul className="card divide-y divide-border">
       {sorted.map(([cat, level]) => (
-        <li key={cat} className="flex items-center gap-3">
+        <li key={cat} className="flex items-baseline justify-between gap-3 px-4 py-2">
           <Link
             to={`/browse?category=${categorySlug(cat)}`}
-            className="w-24 shrink-0 text-sm text-ink no-underline hover:text-accent"
+            className="text-text no-underline hover:text-accent"
           >
             {cat}
             {standout.includes(cat) && (
               <>
-                <span aria-hidden="true" className="ml-1 font-bold">
+                <span aria-hidden="true" className="ml-1 font-semibold text-accent">
                   ★
                 </span>
                 <span className="sr-only"> (weighted more than at most companies)</span>
               </>
             )}
           </Link>
-          <span className="h-3 flex-1 overflow-hidden rounded-[3px] border-2 border-ink bg-paper" aria-hidden="true">
-            <span
-              className="block h-full bg-accent"
-              style={{ width: width[level] }}
-            />
-          </span>
-          <span className="label w-12 shrink-0 text-right">{level}</span>
+          <span className={levelClass[level]}>{level}</span>
         </li>
       ))}
     </ul>

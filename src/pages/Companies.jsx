@@ -3,17 +3,17 @@ import { Link } from 'react-router-dom'
 import { companies, companiesNote } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import { CompanyLogo, CompanyLogoLink } from '../components/CompanyMark'
+import { Row, Detail } from '../components/ui'
+import CompanyMark, { CompanyLogo } from '../components/CompanyMark'
+import Rich from '../components/Rich'
 import { FEATURED_SLUGS, standoutsFor } from '../lib/companyMeta'
 
-const featured = FEATURED_SLUGS.map((slug) =>
-  companies.find((c) => c.slug === slug)
-).filter(Boolean)
+const featured = FEATURED_SLUGS.map((slug) => companies.find((c) => c.slug === slug)).filter(
+  Boolean
+)
 
 function matches(c, q) {
-  return [c.name, c.slug, c.region, c.program].some((f) =>
-    f.toLowerCase().includes(q)
-  )
+  return [c.name, c.slug, c.region, c.program].some((f) => f.toLowerCase().includes(q))
 }
 
 export default function Companies() {
@@ -36,9 +36,7 @@ export default function Companies() {
         intro="What each loop looks like — how many rounds, what format, what they weight."
       />
 
-      <p className="prose-body mt-4 border-l-4 border-accent pl-3">
-        {companiesNote}
-      </p>
+      <p className="card p-4 text-text-muted">{companiesNote}</p>
 
       <div className="mt-4">
         <label htmlFor="company-q" className="label">
@@ -51,23 +49,20 @@ export default function Companies() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Google, Swiggy, a startup…"
           autoComplete="off"
-          className="mt-1 w-full rounded-[6px] border-2 border-ink bg-paper-2 px-3 py-1.5 text-sm placeholder:text-ink-faint focus-visible:border-accent"
+          className="mt-1 w-full rounded-button border border-border bg-surface px-3 py-2 placeholder:text-text-muted focus-visible:border-accent"
         />
       </div>
 
-      {/* featured tiles — only when not searching; everyone is still in the list below */}
+      {/* featured: pills only when not searching; everyone is still in the list below */}
       {!query && (
         <>
-          <p className="label mt-5">Featured</p>
-          <ul className="mt-1.5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <p className="label mt-4">Featured</p>
+          <ul className="mt-2 flex flex-wrap gap-2">
             {featured.map((c) => (
               <li key={c.slug}>
-                <Link
-                  to={`/companies/${c.slug}`}
-                  className="card flex h-full items-center gap-2 px-2.5 py-2 text-sm font-semibold text-ink no-underline hover:bg-paper"
-                >
-                  <CompanyLogo name={c.name} size="h-7 w-7" />
-                  <span className="min-w-0">{c.name}</span>
+                <Link to={`/companies/${c.slug}`} className="pill">
+                  <CompanyLogo name={c.name} size="size-4" />
+                  {c.name}
                 </Link>
               </li>
             ))}
@@ -75,57 +70,62 @@ export default function Companies() {
         </>
       )}
 
-      <p aria-live="polite" className="label mt-5">
+      <p aria-live="polite" className="label mt-6">
         {query ? `${results.length} ${results.length === 1 ? 'match' : 'matches'}` : 'Companies'}
       </p>
 
       {results.length > 0 ? (
-        <ul className="mt-1 border-t-2 border-rule-hard">
+        <ul className="mt-2 space-y-2">
           {results.map((c) => {
             const standout = standoutsFor(c)
+            const sub = [
+              c.region,
+              `${c.program} · ${c.rounds.length} rounds`,
+              standout.length ? `★ heavy on ${standout.join(', ').toLowerCase()}` : null,
+            ]
+              .filter(Boolean)
+              .join(' · ')
             return (
-              <li
-                key={c.slug}
-                className="flex items-start gap-3 border-b border-rule py-3"
-              >
-                <CompanyLogoLink name={c.name} className="mt-0.5" />
-                <Link
-                  to={`/companies/${c.slug}`}
-                  className="block min-w-0 flex-1 no-underline"
+              <li key={c.slug}>
+                <Row
+                  tile={<CompanyLogo name={c.name} />}
+                  icon="briefcase"
+                  title={c.name}
+                  sub={sub}
                 >
-                  <div className="flex items-baseline justify-between gap-3">
-                    <span className="text-md text-ink">{c.name}</span>
-                    <span className="label shrink-0">{c.region}</span>
+                  <Detail
+                    columns={[
+                      { label: 'How it feels', children: <Rich>{c.format}</Rich> },
+                      { label: 'Prep this specifically', children: <Rich>{c.whatToKnow}</Rich> },
+                    ]}
+                  />
+                  <div className="flex flex-wrap gap-2 border-t border-border p-4">
+                    <Link
+                      to={`/companies/${c.slug}`}
+                      className="btn btn-primary no-underline hover:no-underline"
+                    >
+                      The loop →
+                    </Link>
+                    <CompanyMark name={c.name} />
                   </div>
-                  <span className="prose-body mt-0.5 block">
-                    {c.program} · {c.rounds.length} rounds
-                  </span>
-                  {standout.length > 0 && (
-                    <span className="label mt-0.5 block !text-ink">
-                      ★ heavy on {standout.join(', ').toLowerCase()}
-                    </span>
-                  )}
-                </Link>
+                </Row>
               </li>
             )
           })}
         </ul>
       ) : (
-        /* not on the list: send them to the generic PM prep instead of a dead end */
-        <div className="card mt-2 p-3">
-          <p className="text-md font-semibold text-ink">
-            No loop page for &ldquo;{input.trim()}&rdquo; yet.
-          </p>
+        /* not on the list: send them to the questions instead of a dead end */
+        <div className="card mt-2 p-4">
+          <p className="font-semibold text-text">No loop page for &ldquo;{input.trim()}&rdquo; yet.</p>
           <p className="prose-body mt-1">
-            Most PM interviews test the same things whatever the company:
-            product design, analytics, strategy, behavioral. Practice those and
-            you are most of the way there.
+            Most PM interviews test the same things whatever the company: product design,
+            analytics, strategy, behavioral. Practice those and you are most of the way there.
           </p>
           <p className="mt-3 flex flex-wrap gap-3">
-            <Link to="/browse" className="btn btn-primary no-underline">
+            <Link to="/browse" className="btn btn-primary no-underline hover:no-underline">
               Questions
             </Link>
-            <Link to="/skills/assess" className="btn no-underline">
+            <Link to="/skills/assess" className="btn no-underline hover:no-underline">
               Weak spots
             </Link>
           </p>

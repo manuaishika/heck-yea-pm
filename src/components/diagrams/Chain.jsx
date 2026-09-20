@@ -6,20 +6,20 @@
  */
 export default function Chain({ steps, labels }) {
   return (
-    <ol className="mt-3 flex flex-wrap items-stretch gap-y-3 text-sm">
+    <ol className="mt-3 flex flex-wrap items-stretch gap-y-3 text-body">
       {steps.map((step, i) => (
         <li key={step} className="flex items-start">
           <div className="w-28 shrink-0">
-            <div className="panel px-2 py-1 text-center font-semibold text-ink">
+            <div className="card px-2 py-1 text-center font-semibold text-text">
               {step}
             </div>
-            <div className="mt-1 text-center text-xs leading-tight text-ink-dim">
+            <div className="mt-1 text-center text-body leading-tight text-text-muted">
               {labels[i]}
             </div>
           </div>
           {i < steps.length - 1 && (
             <span
-              className="mx-1 self-center text-ink-faint"
+              className="mx-1 self-center text-text-muted"
               aria-hidden="true"
             >
               →

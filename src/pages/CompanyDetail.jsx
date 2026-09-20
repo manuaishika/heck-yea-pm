@@ -1,9 +1,11 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { companies, getCompany, questionsForCompany } from '../data/guides'
 import { useHead } from '../lib/useHead'
-import { Page } from '../components/Page'
+import { Page, PageHead } from '../components/Page'
+import { Block } from '../components/ui'
 import { CompanyLogoLink } from '../components/CompanyMark'
 import { standoutsFor } from '../lib/companyMeta'
+import QuestionList from '../components/QuestionList'
 import Rich from '../components/Rich'
 import LoopFlow from '../components/diagrams/LoopFlow'
 import WeightBars from '../components/diagrams/WeightBars'
@@ -35,75 +37,58 @@ export default function CompanyDetail() {
 
   return (
     <Page>
-      <p className="label">
-        <Link to="/companies">Companies</Link>
-      </p>
-
-      <header className="mt-4 border-b-2 border-rule-hard pb-4">
-        <div className="flex items-center gap-3">
-          <CompanyLogoLink name={c.name} size="h-11 w-11" />
-          <div className="min-w-0">
-            <h1 className="text-2xl">{c.name}</h1>
-            <p className="label mt-1">
-              {c.region} · {c.program} · {c.rounds.length} rounds
-            </p>
-          </div>
-        </div>
-      </header>
+      <PageHead
+        chapter={
+          <Link to="/companies" className="no-underline hover:no-underline">
+            Companies
+          </Link>
+        }
+        title={c.name}
+        intro={`${c.region} · ${c.program} · ${c.rounds.length} rounds`}
+        aside={<CompanyLogoLink name={c.name} size="size-10" />}
+      />
 
       {!c.verified && (
-        <p className="mt-4 border-l-4 border-accent pl-3 text-sm text-ink-dim">
-          Unverified — pieced together from public candidate reports. Confirm the
-          current format with your recruiter.
+        <p className="card p-4 text-text-muted">
+          Unverified — pieced together from public candidate reports. Confirm the current format
+          with your recruiter.
         </p>
       )}
 
-      {/* the loop, as a stepper */}
-      <h2 className="mt-6 text-lg">The loop</h2>
+      <h2 className="mt-6">The loop</h2>
       <LoopFlow rounds={c.rounds} />
 
-      {/* what they weight */}
-      <h2 className="mt-8 text-lg">What they weight</h2>
-      <WeightBars weights={c.weights} standout={standout} />
+      <h2 className="mt-8">What they weight</h2>
+      <div className="mt-2">
+        <WeightBars weights={c.weights} standout={standout} />
+      </div>
       {standout.length > 0 && (
-        <p className="mt-3 text-sm text-ink-dim">
-          <span className="font-bold text-ink">★</span>{' '}
-          <span className="font-semibold text-ink">
-            {standout.join(', ')}
-          </span>{' '}
-          — weighted more here than at most companies.
+        <p className="mt-2 text-text-muted">
+          <span className="font-semibold text-accent">★ {standout.join(', ')}</span> — weighted
+          more here than at most companies.
         </p>
       )}
 
-      {/* format + what to know */}
-      <h2 className="mt-8 text-lg">How it feels</h2>
-      <p className="mt-2 text-sm leading-relaxed text-ink-dim">
-        <Rich>{c.format}</Rich>
-      </p>
-      <p className="mt-3 border-l-4 border-accent pl-3 text-sm text-ink">
-        <span className="label !text-ink">Prep this specifically</span>
-        <span className="mt-1 block">
-          <Rich>{c.whatToKnow}</Rich>
-        </span>
-      </p>
+      <div className="card mt-8">
+        <Block label="How it feels" rule={false}>
+          <p className="text-text-muted">
+            <Rich>{c.format}</Rich>
+          </p>
+        </Block>
+        <Block label="Prep this specifically">
+          <p>
+            <Rich>{c.whatToKnow}</Rich>
+          </p>
+        </Block>
+      </div>
 
-      {/* tagged questions */}
-      <h2 className="mt-8 text-lg">Questions seen at {c.name}</h2>
+      <h2 className="mt-8">Questions seen at {c.name}</h2>
       {tagged.length > 0 ? (
-        <ul className="mt-2">
-          {tagged.map((q) => (
-            <li key={q.id} className="border-b border-rule last:border-0">
-              <Link
-                to={`/browse/${q.id}`}
-                className="block py-2 text-sm text-ink no-underline hover:text-accent"
-              >
-                {q.question}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-2">
+          <QuestionList questions={tagged} linkTo={(q) => `/browse/${q.id}`} />
+        </div>
       ) : (
-        <p className="mt-2 text-sm text-ink-dim">
+        <p className="mt-2 text-text-muted">
           None tagged yet. Work the heavy categories above from the{' '}
           <Link to="/browse">question bank</Link>.
         </p>

@@ -4,16 +4,15 @@ import { brandFor, logoSrc } from '../lib/companyMeta'
 const opensNew = (name) => `${name} — official site, opens in a new tab`
 
 /**
- * A company as its logo + name, linking out to the company's own site in a
- * new tab. Companies we don't have a site for fall back to a search link.
- * Used for the "Asked at" tags.
+ * A company as a tag pill: logo + name, linking out to the company's own site
+ * in a new tab. Companies we have no site for fall back to a search link.
  */
 export default function CompanyMark({ name }) {
   const brand = brandFor(name)
 
   if (!brand) {
     return (
-      <Link to={`/browse?q=${encodeURIComponent(name)}`} className="chip no-underline">
+      <Link to={`/browse?q=${encodeURIComponent(name)}`} className="pill">
         {name}
       </Link>
     )
@@ -27,16 +26,16 @@ export default function CompanyMark({ name }) {
       rel="noopener noreferrer"
       aria-label={opensNew(name)}
       title={opensNew(name)}
-      className="chip !py-0.5 !pl-1 no-underline"
+      className="pill"
     >
       {src && (
         <img
           src={src}
           alt=""
-          width="20"
-          height="20"
+          width="16"
+          height="16"
           loading="lazy"
-          className="h-5 w-5 rounded-[3px]"
+          className="size-4 rounded-button"
         />
       )}
       <span>{name}</span>
@@ -45,26 +44,15 @@ export default function CompanyMark({ name }) {
   )
 }
 
-/** The bare logo image (no link), or null if we have none. */
-export function CompanyLogo({ name, size = 'h-8 w-8' }) {
+/** The bare logo image (no link, no frame), or null if we have none. */
+export function CompanyLogo({ name, size = 'size-6' }) {
   const src = logoSrc(brandFor(name))
   if (!src) return null
-  return (
-    <img
-      src={src}
-      alt=""
-      width="40"
-      height="40"
-      className={`${size} shrink-0 rounded-[6px] border-2 border-ink bg-paper`}
-    />
-  )
+  return <img src={src} alt="" width="24" height="24" className={`${size} shrink-0 rounded-button`} />
 }
 
-/**
- * Just the logo tile, as a link to the company's own site. `size` is a
- * Tailwind size class pair, e.g. "h-8 w-8".
- */
-export function CompanyLogoLink({ name, size = 'h-8 w-8', className = '' }) {
+/** Just the logo, as a link to the company's own site. */
+export function CompanyLogoLink({ name, size = 'size-8', className = '' }) {
   const brand = brandFor(name)
   const src = logoSrc(brand)
   if (!brand || !src) return null
@@ -76,15 +64,9 @@ export function CompanyLogoLink({ name, size = 'h-8 w-8', className = '' }) {
       rel="noopener noreferrer"
       aria-label={opensNew(name)}
       title={opensNew(name)}
-      className={`shrink-0 ${className}`}
+      className={`shrink-0 rounded-button border border-border bg-surface p-1 ${className}`}
     >
-      <img
-        src={src}
-        alt=""
-        width="40"
-        height="40"
-        className={`${size} rounded-[6px] border-2 border-ink bg-paper`}
-      />
+      <img src={src} alt="" width="40" height="40" className={`${size} rounded-button`} />
     </a>
   )
 }

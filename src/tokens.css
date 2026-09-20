@@ -1,0 +1,78 @@
+/* ==================================================================== *
+ *  THE ONLY PLACE colours, radii, type sizes and fonts are defined.
+ *  Components use these by name (bg-surface, text-text-muted, rounded-card,
+ *  text-body ...). Nothing else may hard-code a colour or a radius.
+ * ==================================================================== */
+
+:root {
+  /* colour — one hue */
+  --accent: #b5173f;
+  --accent-tint: #fbeaef; /* eyebrow pills only */
+  --surface: #ffffff; /* every card and panel */
+  --page: #f7f5f3; /* page background */
+  --border: #e4e0db; /* hairline */
+  --text: #1b1a19;
+  --text-muted: #6b6864;
+}
+
+/* the same seven names, mirrored for people who browse in dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --accent: #e8577f;
+    --accent-tint: #3a1a24;
+    --surface: #211f1e;
+    --page: #171615;
+    --border: #383533;
+    --text: #efece8;
+    --text-muted: #a29e98;
+  }
+}
+
+[data-theme='dark'] {
+  --accent: #e8577f;
+  --accent-tint: #3a1a24;
+  --surface: #211f1e;
+  --page: #171615;
+  --border: #383533;
+  --text: #efece8;
+  --text-muted: #a29e98;
+}
+
+@theme inline {
+  /* wipe Tailwind's defaults so an off-system class produces nothing */
+  --color-*: initial;
+  --color-accent: var(--accent);
+  --color-accent-tint: var(--accent-tint);
+  --color-surface: var(--surface);
+  --color-page: var(--page);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+}
+
+@theme {
+  /* shape: 8px cards and panels, 6px buttons, pill for tags only. No shadows. */
+  --radius-*: initial;
+  --radius-card: 8px;
+  --radius-button: 6px;
+  --radius-pill: 9999px;
+  --shadow-*: initial;
+  --drop-shadow-*: initial;
+
+  /* type: one scale, four sizes */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; /* code only */
+  --text-*: initial;
+  --text-page: 1.5rem; /* 24 */
+  --text-page--line-height: 1.2;
+  --text-section: 1rem; /* 16 */
+  --text-section--line-height: 1.3;
+  --text-body: 0.875rem; /* 14 */
+  --text-body--line-height: 1.5;
+  --text-label: 0.65625rem; /* 10.5 — tiny uppercase, letterspaced */
+  --text-label--line-height: 1.2;
+
+  /* spacing: Tailwind's 4px-based scale (p-1 = 4px, p-2 = 8px ...) */
+}

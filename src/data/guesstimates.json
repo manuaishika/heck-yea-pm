@@ -12,11 +12,26 @@
     "example": {
       "q": "How many cups of chai are sold in Mumbai per day?",
       "work": [
-        ["Population", "~20M in the metro"],
-        ["Chai drinkers", "~70% → 14M"],
-        ["Cups per drinker per day", "~2 → 28M cups"],
-        ["Bought vs made at home", "~40% bought → ~11M cups/day"],
-        ["Sanity check", "~5k tea stalls in Mumbai × ~2k cups = 10M. Close enough."]
+        [
+          "Population",
+          "~20M in the metro"
+        ],
+        [
+          "Chai drinkers",
+          "~70% → 14M"
+        ],
+        [
+          "Cups per drinker per day",
+          "~2 → 28M cups"
+        ],
+        [
+          "Bought vs made at home",
+          "~40% bought → ~11M cups/day"
+        ],
+        [
+          "Sanity check",
+          "~5k tea stalls in Mumbai × ~2k cups = 10M. Close enough."
+        ]
       ]
     }
   },
@@ -34,54 +49,422 @@
     "mece": {
       "note": "Once you're narrowing causes, sort them into four buckets so you cover everything without overlap — MECE: mutually exclusive, collectively exhaustive.",
       "buckets": [
-        { "label": "System", "examples": "Tracking broke, a metric definition changed, a dashboard bug" },
-        { "label": "Internal", "examples": "A release, a pricing change, a bug, a design change, an outage on our side" },
-        { "label": "External", "examples": "A competitor's promotion, a payment provider outage, a market shift" },
-        { "label": "Out of control", "examples": "A holiday, weather, a regional event, a natural disaster" }
+        {
+          "label": "System",
+          "examples": "Tracking broke, a metric definition changed, a dashboard bug"
+        },
+        {
+          "label": "Internal",
+          "examples": "A release, a pricing change, a bug, a design change, an outage on our side"
+        },
+        {
+          "label": "External",
+          "examples": "A competitor's promotion, a payment provider outage, a market shift"
+        },
+        {
+          "label": "Out of control",
+          "examples": "A holiday, weather, a regional event, a natural disaster"
+        }
       ]
     },
     "tree": {
       "root": "Watch time down 5%",
       "branches": [
-        { "label": "Fewer users", "leaves": ["Sign-ups down", "Churn up", "A cohort lapsed"] },
-        { "label": "Fewer sessions per user", "leaves": ["Push notifications broke", "A habit-forming feature changed"] },
-        { "label": "Shorter sessions", "leaves": ["Catalogue got weaker", "Player bug / buffering", "Recommendations worse"] }
+        {
+          "label": "Fewer users",
+          "leaves": [
+            "Sign-ups down",
+            "Churn up",
+            "A cohort lapsed"
+          ]
+        },
+        {
+          "label": "Fewer sessions per user",
+          "leaves": [
+            "Push notifications broke",
+            "A habit-forming feature changed"
+          ]
+        },
+        {
+          "label": "Shorter sessions",
+          "leaves": [
+            "Catalogue got weaker",
+            "Player bug / buffering",
+            "Recommendations worse"
+          ]
+        }
       ]
     }
   },
   "questionSets": [
     {
       "kind": "Population & scale",
-      "note": "No product involved. Practice the population-funnel muscle.",
+      "note": "No product involved. Practise the population funnel.",
       "questions": [
-        "How many people in India use public transport daily?",
-        "How many school teachers are there in India?",
-        "How many litres of milk are consumed in Bengaluru per day?",
-        "How many weddings happen in India each year?",
-        "How many mobile phone screens crack in Delhi each month?"
+        {
+          "q": "How many people in India use public transport daily?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "Urban population",
+              "~35% of 1.4B → ~490M"
+            ],
+            [
+              "Travel daily",
+              "~40% (not kids, elderly, WFH) → ~200M"
+            ],
+            [
+              "Use public transport",
+              "~40% (rest walk, cycle, two-wheeler) → ~80M"
+            ],
+            [
+              "Add intercity and rural",
+              "+~20M"
+            ]
+          ],
+          "answer": "~100M people a day",
+          "check": "Indian Railways alone carries 20M+ a day, and city buses carry several times that. Fits."
+        },
+        {
+          "q": "How many school teachers are there in India?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "Population",
+              "1.4B"
+            ],
+            [
+              "Ages 6–17",
+              "~22% → ~300M"
+            ],
+            [
+              "Enrolled",
+              "~85% → ~250M students"
+            ],
+            [
+              "Students per teacher",
+              "~30"
+            ]
+          ],
+          "answer": "~8M teachers",
+          "check": "Govt schools run fuller classes, private ones smaller. Averaging to 30 is fair."
+        },
+        {
+          "q": "How many litres of milk are consumed in Bengaluru per day?",
+          "how": "Bottom-up",
+          "steps": [
+            [
+              "Population",
+              "~13M"
+            ],
+            [
+              "Households",
+              "~13M ÷ 4 → ~3.2M"
+            ],
+            [
+              "Packet + loose milk per household",
+              "~1 L a day"
+            ]
+          ],
+          "answer": "~3M litres a day",
+          "check": "Per person that is ~0.25 L, about a cup and a bit. Believable for tea, coffee, curd and cooking."
+        },
+        {
+          "q": "How many weddings happen in India each year?",
+          "how": "Cohort",
+          "steps": [
+            [
+              "Births per year",
+              "~25M, so ~25M people turn marriageable each year"
+            ],
+            [
+              "Ever marry",
+              "~90% → ~22M people"
+            ],
+            [
+              "Two people per wedding",
+              "÷ 2"
+            ]
+          ],
+          "answer": "~11M weddings a year",
+          "check": "The wedding industry usually quotes ~10M. Same ballpark."
+        },
+        {
+          "q": "How many mobile phone screens crack in Delhi each month?",
+          "how": "Top-down + supply check",
+          "steps": [
+            [
+              "Delhi population",
+              "~20M"
+            ],
+            [
+              "Smartphone owners",
+              "~60% → ~12M"
+            ],
+            [
+              "Crack a screen per year",
+              "~25% → ~3M a year"
+            ],
+            [
+              "Per month",
+              "÷ 12"
+            ]
+          ],
+          "answer": "~250k a month",
+          "check": "Supply check: ~2,000 repair shops × ~4 screens a day × 30 days = ~240k. Both routes agree."
+        }
       ]
     },
     {
       "kind": "Non-tech product",
-      "note": "Physical goods and services. Watch for replacement rate and seasonality.",
+      "note": "Physical goods and services. Watch replacement rate and seasonality.",
       "questions": [
-        "How many cars are sold in Pune in a year?",
-        "How many umbrellas are sold in Mumbai during monsoon?",
-        "How many pizzas does Domino's sell in India per day?",
-        "How many ACs are installed in Chennai each summer?",
-        "How many cricket bats are sold in India per year?"
+        {
+          "q": "How many cars are sold in Pune in a year?",
+          "how": "Stock ÷ life",
+          "steps": [
+            [
+              "Households",
+              "~7M ÷ 4 → ~1.8M"
+            ],
+            [
+              "Own a car",
+              "~25% → ~450k cars"
+            ],
+            [
+              "Replaced every ~10 years",
+              "→ ~45k"
+            ],
+            [
+              "New buyers (~5% growth)",
+              "+~20k"
+            ]
+          ],
+          "answer": "~65k cars a year",
+          "check": "India sells ~4M cars a year. Pune is ~0.5% of people but richer, so ~1.5% share → ~60k."
+        },
+        {
+          "q": "How many umbrellas are sold in Mumbai during monsoon?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "Population",
+              "~20M"
+            ],
+            [
+              "Use an umbrella",
+              "~60% → ~12M"
+            ],
+            [
+              "Replaced every ~3 monsoons",
+              "÷ 3"
+            ]
+          ],
+          "answer": "~4M umbrellas a season",
+          "check": "At ~₹250 each that is ~₹100 crore. Sensible for one city's seasonal product."
+        },
+        {
+          "q": "How many pizzas does Domino's sell in India per day?",
+          "how": "Supply-side",
+          "steps": [
+            [
+              "Stores",
+              "~2,000 (assumption, state it)"
+            ],
+            [
+              "Orders per store per day",
+              "~120"
+            ],
+            [
+              "Pizzas per order",
+              "~2"
+            ]
+          ],
+          "answer": "~480k pizzas a day",
+          "check": "480k × 365 × ~₹300 ≈ ₹5,000 crore a year. Same order of magnitude as its reported revenue."
+        },
+        {
+          "q": "How many ACs are installed in Chennai each summer?",
+          "how": "Stock, then flow",
+          "steps": [
+            [
+              "Households",
+              "~2.5M"
+            ],
+            [
+              "Have an AC",
+              "~20% × ~1.5 units → ~750k units"
+            ],
+            [
+              "Replaced (10-year life) + new adopters",
+              "~10% + ~8% = ~18% → ~135k a year"
+            ],
+            [
+              "Bought in summer",
+              "~70%"
+            ]
+          ],
+          "answer": "~100k ACs",
+          "check": "India sells ~9M ACs a year. Chennai is ~1% of people but hotter and richer, so ~1.2% → ~100k."
+        },
+        {
+          "q": "How many cricket bats are sold in India per year?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "Population",
+              "1.4B"
+            ],
+            [
+              "Play cricket regularly",
+              "~5% → ~70M"
+            ],
+            [
+              "Own a bat (most share)",
+              "~15% → ~10M"
+            ],
+            [
+              "Replaced every ~2 years",
+              "÷ 2"
+            ]
+          ],
+          "answer": "~5M bats a year",
+          "check": "Mostly cheap tennis-ball bats. At ~₹300 that is ~₹150 crore, a plausible niche market."
+        }
       ]
     },
     {
       "kind": "Tech product",
       "note": "Digital. Chain population → internet → smartphone → app → active use.",
       "questions": [
-        "How many WhatsApp messages are sent in India per day?",
-        "How many food-delivery orders does Swiggy get in a tier-2 city per day?",
-        "How much storage would Google Photos need for all of India?",
-        "How many UPI transactions happen in India per day?",
-        "How many hours of video does an average Indian Instagram user watch per week?",
-        "How many rides does Rapido complete in Hyderabad per day?"
+        {
+          "q": "How many WhatsApp messages are sent in India per day?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "Users in India",
+              "~500M"
+            ],
+            [
+              "Active daily",
+              "~80% → ~400M"
+            ],
+            [
+              "Messages sent per user",
+              "~40 (1:1 plus groups)"
+            ]
+          ],
+          "answer": "~16B messages a day",
+          "check": "WhatsApp has publicly said it carries ~100B a day worldwide. India at ~15% of that fits."
+        },
+        {
+          "q": "How many food-delivery orders does Swiggy get in a tier-2 city per day?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "City population",
+              "~2M → ~500k households"
+            ],
+            [
+              "Order on any app",
+              "~12% → ~60k households"
+            ],
+            [
+              "Orders per household",
+              "~4 a month → ~240k a month, ~8k a day"
+            ],
+            [
+              "Swiggy share",
+              "~45%"
+            ]
+          ],
+          "answer": "~3.5k orders a day",
+          "check": "Metros do most of the volume. A tier-2 city landing in the low thousands is reasonable."
+        },
+        {
+          "q": "How much storage would Google Photos need for all of India?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "Smartphone users",
+              "~700M"
+            ],
+            [
+              "Use Google Photos",
+              "~40% → ~280M"
+            ],
+            [
+              "Photos and videos",
+              "~1,000 a year × ~3 MB = ~3 GB a year"
+            ],
+            [
+              "Kept for ~5 years",
+              "~15 GB each"
+            ]
+          ],
+          "answer": "~4 exabytes (280M × 15 GB)",
+          "check": "15 GB is the free quota, so most users sit near it. That matches."
+        },
+        {
+          "q": "How many UPI transactions happen in India per day?",
+          "how": "Top-down",
+          "steps": [
+            [
+              "UPI users",
+              "~350M"
+            ],
+            [
+              "Transactions per user per month",
+              "~45 (about 1.5 a day)"
+            ],
+            [
+              "Per month",
+              "~16B → ÷ 30 for a day"
+            ]
+          ],
+          "answer": "~500M transactions a day",
+          "check": "Check against NPCI's published monthly volume. Volume keeps growing, so use the latest figure."
+        },
+        {
+          "q": "How many hours of video does an average Indian Instagram user watch per week?",
+          "how": "Bottom-up",
+          "steps": [
+            [
+              "Time on Instagram",
+              "~30 min a day"
+            ],
+            [
+              "Share that is video (Reels)",
+              "~60% → ~18 min a day"
+            ],
+            [
+              "Per week",
+              "× 7 → ~2 h"
+            ]
+          ],
+          "answer": "~2 hours a week",
+          "check": "The ~30 min a day matches commonly reported averages. The 60% video share is the assumption to defend."
+        },
+        {
+          "q": "How many rides does Rapido complete in Hyderabad per day?",
+          "how": "Demand + supply",
+          "steps": [
+            [
+              "Demand: daily commuters",
+              "~11M × 45% → ~5M"
+            ],
+            [
+              "Use a bike taxi",
+              "~3% × ~1.5 rides → ~225k"
+            ],
+            [
+              "Supply: active captains",
+              "~15k × ~10 rides → ~150k"
+            ]
+          ],
+          "answer": "~150–200k rides a day",
+          "check": "Two independent routes landing within 1.5×. That is the point of the check."
+        }
       ]
     }
   ],
@@ -89,15 +472,42 @@
     "title": "Numbers to memorise",
     "note": "Round, current-ish figures. Good enough for a guesstimate — state them as assumptions.",
     "rows": [
-      ["India population", "~1.4 billion"],
-      ["India internet users", "~750 million"],
-      ["India smartphone users", "~700 million"],
-      ["India UPI users", "~350 million"],
-      ["Metro population (each of top 8)", "5–25 million"],
-      ["An average Indian city", "~1–2 million"],
-      ["US population", "~340 million"],
-      ["Working hours per year", "~2,000"],
-      ["Seconds in a day", "~86,400"]
+      [
+        "India population",
+        "~1.4 billion"
+      ],
+      [
+        "India internet users",
+        "~750 million"
+      ],
+      [
+        "India smartphone users",
+        "~700 million"
+      ],
+      [
+        "India UPI users",
+        "~350 million"
+      ],
+      [
+        "Metro population (each of top 8)",
+        "5–25 million"
+      ],
+      [
+        "An average Indian city",
+        "~1–2 million"
+      ],
+      [
+        "US population",
+        "~340 million"
+      ],
+      [
+        "Working hours per year",
+        "~2,000"
+      ],
+      [
+        "Seconds in a day",
+        "~86,400"
+      ]
     ]
   }
 }

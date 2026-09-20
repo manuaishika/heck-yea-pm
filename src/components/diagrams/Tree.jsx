@@ -8,18 +8,18 @@
 export default function Tree({ root, branches }) {
   return (
     <div className="mt-3">
-      <div className="panel inline-block px-2.5 py-1 text-sm font-semibold text-ink">
+      <div className="card inline-block px-3 py-1 text-body font-semibold text-text">
         {root}
       </div>
-      <ul className="mt-2 space-y-2.5 border-l-2 border-ink pl-4">
+      <ul className="mt-2 space-y-3 border-l border-border pl-4">
         {branches.map((b) => (
           <li key={b.label}>
-            <div className="text-sm font-bold text-ink">{b.label}</div>
+            <div className="text-body font-semibold text-text">{b.label}</div>
             <ul className="mt-1 flex flex-wrap gap-x-2 gap-y-1">
               {b.leaves.map((leaf) => (
                 <li
                   key={leaf}
-                  className="rounded-[4px] border-2 border-rule px-2 py-0.5 text-xs text-ink-dim"
+                  className="rounded-button border border-border px-2 py-1 text-body text-text-muted"
                 >
                   {leaf}
                 </li>

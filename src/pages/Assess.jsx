@@ -29,7 +29,7 @@ function Question({ item, index, chosen, onPick, onNext, isLast }) {
         {skill.name}
       </p>
       <span
-        className="mt-1.5 block h-2.5 overflow-hidden rounded-[3px] border-2 border-ink bg-paper"
+        className="mt-2 block h-1 overflow-hidden bg-border"
         aria-hidden="true"
       >
         <span
@@ -38,35 +38,35 @@ function Question({ item, index, chosen, onPick, onNext, isLast }) {
         />
       </span>
 
-      <h2 className="mt-4 text-lg leading-snug">{item.q}</h2>
+      <h2 className="mt-4 text-section leading-snug">{item.q}</h2>
 
       <ul className="mt-3 space-y-2">
         {item.options.map((opt, i) => {
           const isAnswer = i === item.answer
           const isChosen = i === chosen
-          let state = 'bg-paper hover:bg-paper-2'
-          if (answered && isAnswer) state = 'bg-ink text-paper'
-          else if (answered && isChosen) state = 'bg-accent-quiet !border-accent'
-          else if (answered) state = 'bg-paper opacity-60'
+          let state = 'bg-surface hover:border-accent'
+          if (answered && isAnswer) state = 'bg-accent text-surface !border-accent'
+          else if (answered && isChosen) state = '!border-accent text-accent'
+          else if (answered) state = 'bg-surface opacity-60'
           return (
             <li key={i}>
               <button
                 type="button"
                 disabled={answered}
                 onClick={() => onPick(i)}
-                className={`flex w-full items-start gap-3 rounded-[6px] border-2 border-ink px-3 py-2 text-left text-sm ${state} ${
-                  item.mono ? 'font-mono text-xs' : ''
+                className={`flex w-full items-start gap-3 rounded-button border border-border px-3 py-2 text-left text-body ${state} ${
+                  item.mono ? 'font-mono text-body' : ''
                 }`}
               >
                 <span className="label shrink-0 pt-px !text-current">{LETTERS[i]}</span>
                 <span className="min-w-0 flex-1">{opt}</span>
                 {answered && isAnswer && (
-                  <span aria-label="correct answer" className="font-bold">
+                  <span aria-label="correct answer" className="font-semibold">
                     ✓
                   </span>
                 )}
                 {answered && isChosen && !isAnswer && (
-                  <span aria-label="your answer, wrong" className="font-bold">
+                  <span aria-label="your answer, wrong" className="font-semibold">
                     ✗
                   </span>
                 )}
@@ -77,9 +77,9 @@ function Question({ item, index, chosen, onPick, onNext, isLast }) {
       </ul>
 
       {answered && (
-        <div className="panel mt-3 p-3" role="status">
-          <p className="label !text-ink">{chosen === item.answer ? 'Right' : 'Not quite'}</p>
-          <p className="mt-1 text-sm text-ink-dim">{item.why}</p>
+        <div className="card mt-3 p-3" role="status">
+          <p className="label !text-text">{chosen === item.answer ? 'Right' : 'Not quite'}</p>
+          <p className="mt-1 text-body text-text-muted">{item.why}</p>
         </div>
       )}
 
@@ -111,18 +111,16 @@ function Ladder({ score }) {
       <div className="relative pt-3">
         <span
           aria-hidden="true"
-          className="absolute top-0 -translate-x-1/2 text-xs font-bold text-ink"
+          className="absolute top-0 -translate-x-1/2 text-body font-semibold text-text"
           style={{ left: `${Math.min(Math.max(pos, 3), 97)}%` }}
         >
           ▼
         </span>
-        <div className="flex h-3 overflow-hidden rounded-[3px] border-2 border-ink">
+        <div className="flex h-1 gap-1">
           {stops.map((s, i) => (
             <span
               key={s.label}
-              className={`h-full ${i < stops.length - 1 ? 'border-r-2 border-ink' : ''} ${
-                here === s.label ? 'bg-accent' : 'bg-paper'
-              }`}
+              className={`h-full ${here === s.label ? 'bg-accent' : 'bg-border'}`}
               style={{ width: `${(s.size / totalSize) * 100}%` }}
             />
           ))}
@@ -132,7 +130,7 @@ function Ladder({ score }) {
         {stops.map((s) => (
           <span
             key={s.label}
-            className={`label ${here === s.label ? '!text-ink font-bold' : ''}`}
+            className={`label ${here === s.label ? '!text-text font-semibold' : ''}`}
             style={{ width: `${(s.size / totalSize) * 100}%` }}
           >
             {s.label}
@@ -147,13 +145,13 @@ function Track({ label, correct, total }) {
   return (
     <div>
       <div className="flex items-baseline justify-between">
-        <span className="text-sm font-semibold text-ink">{label}</span>
+        <span className="text-body font-semibold text-text">{label}</span>
         <span className="label">
           {correct} / {total}
         </span>
       </div>
       <span
-        className="mt-1 flex h-2.5 overflow-hidden rounded-[3px] border-2 border-ink bg-paper"
+        className="mt-1 flex h-1 overflow-hidden bg-border"
         aria-hidden="true"
       >
         <span className="block h-full bg-accent" style={{ width: `${(correct / total) * 100}%` }} />
@@ -178,10 +176,10 @@ function Results({ answers, onRetake }) {
     <div className="mt-4">
       <div className="card p-4">
         <p className="label">Your result</p>
-        <p className="mt-1 text-xl font-bold tracking-tight text-ink">
+        <p className="mt-1 text-section font-semibold text-text">
           {score} / {items.length} · {band.label}
         </p>
-        <p className="mt-2 text-sm text-ink-dim">{band.line}</p>
+        <p className="mt-2 text-body text-text-muted">{band.line}</p>
         <Ladder score={score} />
       </div>
 
@@ -200,21 +198,21 @@ function Results({ answers, onRetake }) {
 
       {missed.length > 0 ? (
         <>
-          <h2 className="mt-6 text-lg">Start with these</h2>
-          <p className="mt-1 text-sm text-ink-dim">
+          <h2 className="mt-6 text-section">Start with these</h2>
+          <p className="mt-1 text-body text-text-muted">
             The skills you missed. Read each, then work its questions.
           </p>
-          <ol className="mt-2 border-t-2 border-rule-hard">
+          <ol className="mt-2 border-t border-border">
             {missed.slice(0, 6).map(({ skill }) => (
-              <li key={skill.slug} className="border-b border-rule py-2.5">
+              <li key={skill.slug} className="border-b border-border py-3">
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="text-sm font-semibold text-ink">{skill.name}</span>
+                  <span className="text-body font-semibold text-text">{skill.name}</span>
                   <span className="label shrink-0">
                     {isTech(skill.slug) ? 'technical' : 'non-technical'}
                   </span>
                 </div>
-                <p className="mt-0.5 text-sm text-ink-dim">{skill.gist}</p>
-                <p className="mt-1 flex gap-4 text-sm">
+                <p className="mt-1 text-body text-text-muted">{skill.gist}</p>
+                <p className="mt-1 flex gap-4 text-body">
                   <Link to={`/skills#${skill.slug}`}>Read the skill</Link>
                   <Link to={`/browse?category=${categorySlug(skill.bankCategory)}`}>
                     {skill.bankCategory} questions
@@ -225,23 +223,23 @@ function Results({ answers, onRetake }) {
           </ol>
         </>
       ) : (
-        <p className="mt-6 text-sm text-ink-dim">
+        <p className="mt-6 text-body text-text-muted">
           No misses. Go to the <Link to="/browse">questions</Link> and the{' '}
           <Link to="/companies">company loops</Link>.
         </p>
       )}
 
-      <h2 className="mt-6 text-lg">Every question</h2>
-      <ul className="mt-2 border-t-2 border-rule-hard">
+      <h2 className="mt-6 text-section">Every question</h2>
+      <ul className="mt-2 border-t border-border">
         {graded.map(({ it, ok, skill }) => (
           <li
             key={it.skill}
-            className="flex items-baseline gap-3 border-b border-rule py-1.5 text-sm"
+            className="flex items-baseline gap-3 border-b border-border py-2 text-body"
           >
-            <span className="w-4 shrink-0 font-bold text-ink" aria-label={ok ? 'correct' : 'missed'}>
+            <span className="w-4 shrink-0 font-semibold text-text" aria-label={ok ? 'correct' : 'missed'}>
               {ok ? '✓' : '✗'}
             </span>
-            <span className="text-ink">{skill.name}</span>
+            <span className="text-text">{skill.name}</span>
           </li>
         ))}
       </ul>
@@ -327,7 +325,7 @@ export default function Assess() {
 
       {!viewingResults && answeredCount > 0 && (
         <p className="mt-6">
-          <button type="button" onClick={retake} className="chip">
+          <button type="button" onClick={retake} className="btn btn-sm">
             start over
           </button>
         </p>

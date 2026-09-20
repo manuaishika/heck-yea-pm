@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { role } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
+import { Row } from '../components/ui'
 import FlowMap from '../components/diagrams/FlowMap'
 import Venn from '../components/diagrams/Venn'
 
@@ -17,24 +18,35 @@ export default function Role() {
 
   return (
     <Page>
-      <PageHead chapter="Chapter 1" title="The role" />
+      <PageHead chapter="Chapter 1" title="The role" intro={root} />
 
-      <p className="mt-4 text-md text-ink">{root}</p>
-      <p className="mt-1 text-sm text-ink-dim">{sub}</p>
+      <p className="text-text-muted">{sub}</p>
 
-      {/* the loop */}
-      <h2 className="mt-8 text-lg">The loop you run</h2>
-      <p className="mt-1 text-sm text-ink-dim">
-        Tap a step. This cycle repeats for every feature.
-      </p>
-      <FlowMap root="What to build, and why" steps={flow} />
+      <div className="mt-6 space-y-2">
+        <Row
+          icon="flow"
+          title="The loop you run"
+          sub="Tap a step. This cycle repeats for every feature."
+          defaultOpen
+        >
+          <div className="p-4">
+            <FlowMap root="What to build, and why" steps={flow} />
+          </div>
+        </Row>
 
-      {/* the three constraints */}
-      <h2 className="mt-10 text-lg">Every decision, three constraints</h2>
-      <p className="mt-1 text-sm text-ink-dim">{constraints.note}</p>
-      <Venn corners={constraints.corners} />
+        <Row
+          icon="target"
+          title="Every decision, three constraints"
+          sub={constraints.note}
+          defaultOpen
+        >
+          <div className="p-4">
+            <Venn corners={constraints.corners} />
+          </div>
+        </Row>
+      </div>
 
-      <p className="mt-8 text-sm text-ink-dim">
+      <p className="mt-8 text-text-muted">
         Next: <Link to="/skills">the skills this needs</Link>, or{' '}
         <Link to="/careers">where you can do this job</Link>.
       </p>

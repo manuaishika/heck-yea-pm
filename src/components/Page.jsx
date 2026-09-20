@@ -1,47 +1,25 @@
 /** Standard page frame. `wide` widens for tables and comparisons. */
 export function Page({ children, wide = false }) {
   return (
-    <div
-      className={`px-4 py-6 sm:px-8 lg:px-10 ${wide ? 'max-w-3xl' : 'max-w-[42rem]'}`}
-    >
-      {children}
-    </div>
-  )
-}
-
-/** h1 block with the hard rule under it. */
-export function PageHead({ chapter, title, intro, aside = null }) {
-  return (
-    <header className="border-b-2 border-rule-hard pb-3">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          {chapter && <p className="label">{chapter}</p>}
-          <h1 className="mt-1 text-2xl sm:text-[2.25rem] sm:leading-none">{title}</h1>
-        </div>
-        {aside}
-      </div>
-      {intro && <p className="mt-3 text-md text-ink-dim">{intro}</p>}
-    </header>
+    <div className={`px-4 py-6 sm:px-8 ${wide ? 'max-w-4xl' : 'max-w-3xl'}`}>{children}</div>
   )
 }
 
 /**
- * A labelled block: mono label hangs in the left margin on desktop, stacks
- * above on mobile. `accent` marks it as an opinion / warning.
+ * The one page header, identical on every route: eyebrow pill, page heading,
+ * one muted subtitle line. Nothing else sits above the content.
  */
-export function MarginRow({ label, accent = false, children }) {
+export function PageHead({ chapter, title, intro, aside = null }) {
   return (
-    <section className="margin-row">
-      <h2 className={`margin-label ${accent ? '!text-ink' : ''}`}>{label}</h2>
-      <div
-        className={
-          accent
-            ? 'border-l-4 border-accent pl-3 sm:border-0 sm:pl-0'
-            : 'min-w-0'
-        }
-      >
-        {children}
+    <header className="mb-6">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="min-w-0 flex-1 basis-56">
+          {chapter && <span className="label eyebrow">{chapter}</span>}
+          <h1 className={chapter ? 'mt-2' : ''}>{title}</h1>
+          {intro && <p className="mt-1 text-text-muted">{intro}</p>}
+        </div>
+        {aside}
       </div>
-    </section>
+    </header>
   )
 }

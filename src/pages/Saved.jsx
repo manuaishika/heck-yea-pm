@@ -14,32 +14,29 @@ export default function Saved() {
   return (
     <Page>
       <PageHead
+        chapter="Library"
         title="Saved"
         intro="Questions you flagged to revisit. Stored on this device only."
       />
 
       {!canPersist && (
-        <p className="prose-body mt-3">
-          This browser is not storing data, so this list clears when you close
-          the tab.
+        <p className="prose-body mb-4">
+          This browser is not storing data, so this list clears when you close the tab.
         </p>
       )}
 
       {items.length > 0 ? (
         <>
-          <p aria-live="polite" className="label mt-4">
+          <p aria-live="polite" className="label mb-2">
             {items.length} saved
           </p>
-          <div className="mt-2">
-            <QuestionList questions={items} linkTo={(q) => `/browse/${q.id}`} />
-          </div>
+          <QuestionList questions={items} linkTo={(q) => `/browse/${q.id}`} />
         </>
       ) : (
-        <div className="mt-5">
-          <p className="text-ink">Nothing saved yet.</p>
-          <p className="prose-body mt-1.5">
-            Use the save button on any question in the{' '}
-            <Link to="/browse">question bank</Link>.
+        <div className="card p-4">
+          <p className="font-semibold text-text">Nothing saved yet.</p>
+          <p className="prose-body mt-1">
+            Use the save button on any question in the <Link to="/browse">question bank</Link>.
           </p>
         </div>
       )}

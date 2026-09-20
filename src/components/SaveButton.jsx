@@ -25,7 +25,7 @@ export default function SaveButton({ id, question, withLabel = false }) {
       onClick={() => toggleSave(id)}
       aria-pressed={saved}
       aria-label={saved ? `Remove "${question}" from saved` : `Save "${question}"`}
-      className="chip"
+      className="btn btn-sm"
     >
       <Bookmark filled={saved} />
       {withLabel && <span>{saved ? 'Saved' : 'Save'}</span>}

@@ -17,6 +17,7 @@ export default function About() {
   return (
     <Page>
       <PageHead
+        chapter="About"
         title="About"
         intro="A free study site for your first product manager interview."
       />
@@ -54,7 +55,7 @@ export default function About() {
         </p>
       </div>
 
-      <h2 className="mt-8 text-lg">Contribute</h2>
+      <h2 className="mt-8 text-section">Contribute</h2>
       <div className="prose-body mt-2 space-y-3">
         <p>
           The site is open source. To add a question, fix a company loop, or

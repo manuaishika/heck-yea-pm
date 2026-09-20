@@ -23,18 +23,18 @@ export default function Careers() {
       />
 
       {/* modes */}
-      <h2 className="mt-8 text-lg">Startup vs scaled vs large company</h2>
-      <p className="mt-1 text-sm text-ink-dim">{careers.modes.note}</p>
+      <h2 className="mt-8 text-section">Startup vs scaled vs large company</h2>
+      <p className="mt-1 text-body text-text-muted">{careers.modes.note}</p>
       <ModeRadar modes={careers.modes} />
       <p className="label mt-5">The detail</p>
       <ModeMatrix modes={careers.modes} />
 
       {/* adjacent roles */}
-      <h2 className="mt-10 text-lg">PM vs the roles next to it</h2>
+      <h2 className="mt-10 text-section">PM vs the roles next to it</h2>
       <div className="mt-3 overflow-x-auto">
-        <table className="w-full min-w-[34rem] border-collapse text-sm">
+        <table className="w-full min-w-[34rem] border-collapse text-body">
           <thead>
-            <tr className="border-b-2 border-rule-hard text-left">
+            <tr className="border-b border-border text-left">
               <th className="w-40 py-2 pr-3 font-semibold">Role</th>
               <th className="py-2 pr-3 font-semibold">What it is</th>
               <th className="py-2 font-semibold">vs PM</th>
@@ -42,17 +42,17 @@ export default function Careers() {
           </thead>
           <tbody>
             {careers.adjacent.map((r) => (
-              <tr key={r.role} className="border-b border-rule align-top">
+              <tr key={r.role} className="border-b border-border align-top">
                 <th
                   scope="row"
-                  className="py-2.5 pr-3 text-left font-semibold text-ink"
+                  className="py-3 pr-3 text-left font-semibold text-text"
                 >
                   {r.role}
                 </th>
-                <td className="py-2.5 pr-3 text-ink-dim">
+                <td className="py-3 pr-3 text-text-muted">
                   <Rich>{r.oneLine}</Rich>
                 </td>
-                <td className="py-2.5 text-ink-dim">
+                <td className="py-3 text-text-muted">
                   <Rich>{r.vsPm}</Rich>
                 </td>
               </tr>
@@ -62,11 +62,11 @@ export default function Careers() {
       </div>
 
       {/* ladder */}
-      <h2 className="mt-10 text-lg">The ladder</h2>
+      <h2 className="mt-10 text-section">The ladder</h2>
       <div className="mt-3 overflow-x-auto">
-        <table className="w-full min-w-[30rem] border-collapse text-sm">
+        <table className="w-full min-w-[30rem] border-collapse text-body">
           <thead>
-            <tr className="border-b-2 border-rule-hard text-left">
+            <tr className="border-b border-border text-left">
               <th className="py-2 pr-3 font-semibold">Level</th>
               <th className="w-16 py-2 pr-3 font-semibold">Years</th>
               <th className="py-2 font-semibold">Focus</th>
@@ -74,24 +74,24 @@ export default function Careers() {
           </thead>
           <tbody>
             {careers.growth.map((g) => (
-              <tr key={g.level} className="border-b border-rule align-top">
+              <tr key={g.level} className="border-b border-border align-top">
                 <th
                   scope="row"
-                  className="py-2.5 pr-3 text-left font-semibold text-ink"
+                  className="py-3 pr-3 text-left font-semibold text-text"
                 >
                   {g.level}
                 </th>
-                <td className="py-2.5 pr-3 text-ink-faint tabular-nums">
+                <td className="py-3 pr-3 text-text-muted tabular-nums">
                   {g.years}
                 </td>
-                <td className="py-2.5 text-ink-dim">{g.focus}</td>
+                <td className="py-3 text-text-muted">{g.focus}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <p className="mt-8 text-sm text-ink-dim">
+      <p className="mt-8 text-body text-text-muted">
         Interviewing in India? <Link to="/india">What's different</Link>.
       </p>
     </Page>

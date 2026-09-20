@@ -10,10 +10,10 @@ export default function Points({ label, points, compact = false }) {
       <p className="label">{label}</p>
       <ul className={`mt-1 space-y-${compact ? '0.5' : '1'}`}>
         {points.map((p, i) => (
-          <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-ink-dim">
+          <li key={i} className="flex gap-3 text-body leading-relaxed text-text-muted">
             <span
               aria-hidden="true"
-              className="mt-[9px] h-1 w-1 shrink-0 bg-ink"
+              className="mt-2 h-1 w-1 shrink-0 bg-text"
             />
             <span>{p}</span>
           </li>

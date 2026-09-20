@@ -16,21 +16,21 @@ export default function Resources() {
 
       {resources.groups.map((g) => (
         <section key={g.name} className="mt-7">
-          <h2 className="border-b border-rule pb-1 text-sm font-semibold text-ink">
+          <h2 className="border-b border-border pb-1 text-body font-semibold text-text">
             {g.name}
           </h2>
-          <ul className="mt-1.5">
+          <ul className="mt-2">
             {g.items.map((it) => (
-              <li key={it.name} className="border-b border-rule py-2">
+              <li key={it.name} className="border-b border-border py-2">
                 <a
                   href={it.url}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="text-sm font-semibold"
+                  className="text-body font-semibold"
                 >
                   {it.name}
                 </a>
-                <p className="mt-0.5 text-sm text-ink-dim">{it.what}</p>
+                <p className="mt-1 text-body text-text-muted">{it.what}</p>
               </li>
             ))}
           </ul>

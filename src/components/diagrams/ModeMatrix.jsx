@@ -14,11 +14,11 @@ export default function ModeMatrix({ modes }) {
     <div className="mt-3 overflow-x-auto">
       <div className="min-w-[30rem]">
         {/* header */}
-        <div className="grid grid-cols-[7rem_repeat(3,1fr)] gap-x-3 border-b-2 border-rule-hard pb-2">
+        <div className="grid grid-cols-[7rem_repeat(3,1fr)] gap-x-3 border-b border-border pb-2">
           <span />
           {columns.map((c) => (
             <div key={c.key}>
-              <div className="text-sm font-semibold text-ink">{c.name}</div>
+              <div className="text-body font-semibold text-text">{c.name}</div>
               <div className="label">{c.sub}</div>
             </div>
           ))}
@@ -28,13 +28,13 @@ export default function ModeMatrix({ modes }) {
         {bars.map((b) => (
           <div
             key={b.dim}
-            className="grid grid-cols-[7rem_repeat(3,1fr)] items-start gap-x-3 border-b border-rule py-2.5"
+            className="grid grid-cols-[7rem_repeat(3,1fr)] items-start gap-x-3 border-b border-border py-3"
           >
-            <span className="label pt-0.5 !text-ink">{b.dim}</span>
+            <span className="label pt-1 !text-text">{b.dim}</span>
             {b.levels.map((lvl, i) => (
               <div key={i}>
                 <Pips level={lvl} />
-                <div className="mt-1 text-xs leading-snug text-ink-dim">
+                <div className="mt-1 text-body leading-snug text-text-muted">
                   {b.labels[i]}
                 </div>
               </div>
@@ -43,25 +43,25 @@ export default function ModeMatrix({ modes }) {
         ))}
 
         {/* spectrum row */}
-        <div className="grid grid-cols-[7rem_repeat(3,1fr)] items-start gap-x-3 border-b border-rule py-2.5">
-          <span className="label pt-0.5 !text-ink">
+        <div className="grid grid-cols-[7rem_repeat(3,1fr)] items-start gap-x-3 border-b border-border py-3">
+          <span className="label pt-1 !text-text">
             {spectrum.dim}
-            <span className="mt-0.5 block font-normal text-ink-faint">
+            <span className="mt-1 block font-normal text-text-muted">
               {spectrum.ends[0]} → {spectrum.ends[1]}
             </span>
           </span>
           {spectrum.positions.map((pos, i) => (
             <div key={i}>
               <span
-                className="relative block h-1.5 rounded-[2px] bg-rule"
+                className="relative block h-2 rounded-button bg-border"
                 aria-hidden="true"
               >
                 <span
-                  className="absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-[2px] bg-ink ring-2 ring-paper"
+                  className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-button bg-text border-2 border-surface"
                   style={{ left: `${pos}%` }}
                 />
               </span>
-              <div className="mt-1 text-xs leading-snug text-ink-dim">
+              <div className="mt-1 text-body leading-snug text-text-muted">
                 {spectrum.labels[i]}
               </div>
             </div>
@@ -72,11 +72,11 @@ export default function ModeMatrix({ modes }) {
         {text.map((t) => (
           <div
             key={t.dim}
-            className="grid grid-cols-[7rem_repeat(3,1fr)] items-start gap-x-3 border-b border-rule py-2.5 last:border-0"
+            className="grid grid-cols-[7rem_repeat(3,1fr)] items-start gap-x-3 border-b border-border py-3 last:border-0"
           >
-            <span className="label pt-0.5 !text-ink">{t.dim}</span>
+            <span className="label pt-1 !text-text">{t.dim}</span>
             {t.values.map((v, i) => (
-              <div key={i} className="text-xs leading-snug text-ink-dim">
+              <div key={i} className="text-body leading-snug text-text-muted">
                 {v}
               </div>
             ))}

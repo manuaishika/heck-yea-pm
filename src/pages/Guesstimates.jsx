@@ -2,124 +2,168 @@ import { Link } from 'react-router-dom'
 import { guesstimates } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
+import { Row, Detail, Block } from '../components/ui'
 import Steps from '../components/diagrams/Steps'
 import Tree from '../components/diagrams/Tree'
+
+function WorkTable({ rows }) {
+  return (
+    <table className="w-full border-collapse">
+      <tbody>
+        {rows.map(([label, value]) => (
+          <tr key={label} className="border-b border-border align-top last:border-0">
+            <th scope="row" className="w-2/5 py-2 pr-3 text-left font-normal text-text">
+              {label}
+            </th>
+            <td className="py-2 text-text-muted">{value}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
+
+function Question({ q }) {
+  return (
+    <li>
+      <Row icon="question" title={q.q} sub={q.how}>
+        <Block label="Working" rule={false}>
+          <WorkTable rows={q.steps} />
+        </Block>
+        <Detail
+          columns={[
+            { label: 'Answer', children: <p className="font-semibold">{q.answer}</p> },
+            { label: 'Sanity check', children: <p className="text-text-muted">{q.check}</p> },
+          ]}
+        />
+      </Row>
+    </li>
+  )
+}
+
+function Section({ id, title, count, note, children }) {
+  return (
+    <section id={id} className="mt-10 scroll-mt-4">
+      <div className="flex items-baseline gap-2 border-b border-border pb-2">
+        <h2>{title}</h2>
+        {count && <span className="label">{count}</span>}
+      </div>
+      {note && <p className="mt-2 text-text-muted">{note}</p>}
+      {children}
+    </section>
+  )
+}
+
+function Sub({ title, count, note, children }) {
+  return (
+    <div className="mt-6">
+      <div className="flex items-baseline gap-2">
+        <h3 className="font-semibold text-text">{title}</h3>
+        {count && <span className="label">{count}</span>}
+      </div>
+      {note && <p className="mt-1 text-text-muted">{note}</p>}
+      {children}
+    </div>
+  )
+}
+
+const JUMP = [
+  ['practice', 'Practice'],
+  ['sizing', 'How to size'],
+  ['drops', 'Metric drops'],
+  ['numbers', 'Numbers'],
+]
 
 export default function Guesstimates() {
   useHead({
     title: 'Guesstimates',
     description:
-      'Guesstimate questions across population, non-tech products, and tech products, plus how to size something and how to explain a metric drop.',
+      'Guesstimate questions with worked answers across population, non-tech products, and tech products, plus how to size something and how to explain a metric drop.',
     path: '/guesstimates',
   })
 
   const { intro, sizing, diagnosis, questionSets, anchors } = guesstimates
+  const total = questionSets.reduce((n, s) => n + s.questions.length, 0)
 
   return (
     <Page wide>
       <PageHead chapter="Prepare" title="Guesstimates" intro={intro} />
 
-      {/* practice questions first — the thing you came for */}
-      <h2 className="mt-8 text-lg">Practice questions</h2>
-      {questionSets.map((set) => (
-        <div key={set.kind} className="mt-4">
-          <div className="flex items-baseline gap-2 border-b border-rule pb-1">
-            <h3 className="text-sm font-semibold text-ink">{set.kind}</h3>
-            <span className="label">{set.questions.length}</span>
-          </div>
-          <p className="mt-1 text-xs text-ink-faint">{set.note}</p>
-          <ul className="mt-1.5">
-            {set.questions.map((q) => (
-              <li
-                key={q}
-                className="flex gap-2 border-b border-rule py-1.5 text-sm text-ink-dim"
-              >
-                <span className="mt-[9px] h-1 w-1 shrink-0 bg-ink" />
-                <span>{q}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-
-      {/* method: sizing */}
-      <h2 className="mt-10 text-lg">{sizing.title}</h2>
-      <Steps items={sizing.steps} />
-
-      <p className="label mt-4">Worked example</p>
-      <p className="mt-1 text-sm font-semibold text-ink">{sizing.example.q}</p>
-      <div className="mt-2 overflow-x-auto">
-        <table className="w-full min-w-[24rem] border-collapse text-sm">
-          <tbody>
-            {sizing.example.work.map(([label, value]) => (
-              <tr key={label} className="border-b border-rule align-top">
-                <th
-                  scope="row"
-                  className="w-40 py-2 pr-3 text-left font-normal text-ink"
-                >
-                  {label}
-                </th>
-                <td className="py-2 text-ink-dim">{value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* method: diagnosis */}
-      <h2 className="mt-10 text-lg">{diagnosis.title}</h2>
-      <p className="mt-1 text-sm leading-relaxed text-ink-dim">{diagnosis.note}</p>
-      <Steps items={diagnosis.steps} />
-
-      <p className="label mt-4">MECE the causes</p>
-      <p className="mt-1 text-xs text-ink-faint">{diagnosis.mece.note}</p>
-      <div className="mt-2 grid gap-0.5 overflow-hidden rounded-[6px] border-2 border-ink bg-ink sm:grid-cols-2">
-        {diagnosis.mece.buckets.map((b) => (
-          <div key={b.label} className="bg-paper p-3">
-            <p className="text-sm font-semibold text-ink">{b.label}</p>
-            <p className="mt-1 text-sm text-ink-dim">{b.examples}</p>
-          </div>
+      <nav aria-label="On this page" className="flex flex-wrap gap-2">
+        {JUMP.map(([id, label], i) => (
+          <a key={id} href={`#${id}`} className="btn btn-sm no-underline hover:no-underline">
+            {i + 1} · {label}
+          </a>
         ))}
-      </div>
+      </nav>
 
-      <p className="label mt-5">The ways a metric moves</p>
-      <Tree root={diagnosis.tree.root} branches={diagnosis.tree.branches} />
+      <Section
+        id="practice"
+        title="1 · Practice"
+        count={`${total} questions`}
+        note="Tap a question for one worked path and a sanity check. It is a path, not the answer: swap in your own assumptions."
+      >
+        {questionSets.map((set) => (
+          <Sub key={set.kind} title={set.kind} count={set.questions.length} note={set.note}>
+            <ul className="mt-3 space-y-2">
+              {set.questions.map((q) => (
+                <Question key={q.q} q={q} />
+              ))}
+            </ul>
+          </Sub>
+        ))}
+      </Section>
 
-      <p className="mt-4 text-sm text-ink-dim">
-        Practice on real ones —{' '}
-        <Link to="/browse?category=analytics&hard=1">
-          the RCA questions in the bank
-        </Link>
-        , each tied to a real company and a worked answer.
-      </p>
+      <Section id="sizing" title={`2 · ${sizing.title}`}>
+        <Sub title="Steps">
+          <Steps items={sizing.steps} />
+        </Sub>
+        <Sub title="Worked example" note={sizing.example.q}>
+          <div className="card mt-2 px-4 py-1">
+            <WorkTable rows={sizing.example.work} />
+          </div>
+        </Sub>
+      </Section>
 
-      {/* anchors */}
-      <h2 className="mt-10 text-lg">{anchors.title}</h2>
-      <p className="mt-1 text-sm text-ink-dim">{anchors.note}</p>
-      <div className="mt-3 overflow-x-auto">
-        <table className="w-full min-w-[22rem] border-collapse text-sm">
-          <tbody>
-            {anchors.rows.map(([label, value]) => (
-              <tr key={label} className="border-b border-rule">
-                <th
-                  scope="row"
-                  className="py-2 pr-3 text-left font-normal text-ink"
-                >
-                  {label}
-                </th>
-                <td className="py-2 text-right text-ink-dim tabular-nums">
-                  {value}
-                </td>
-              </tr>
+      <Section id="drops" title={`3 · ${diagnosis.title}`} note={diagnosis.note}>
+        <Sub title="Steps">
+          <Steps items={diagnosis.steps} />
+        </Sub>
+        <Sub title="Sort the causes (MECE)" note={diagnosis.mece.note}>
+          <div className="mt-2 grid gap-px overflow-hidden rounded-card border border-border bg-border sm:grid-cols-2">
+            {diagnosis.mece.buckets.map((b) => (
+              <div key={b.label} className="bg-surface p-3">
+                <p className="font-semibold text-text">{b.label}</p>
+                <p className="mt-1 text-text-muted">{b.examples}</p>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </div>
+        </Sub>
+        <Sub title="The ways a metric moves">
+          <Tree root={diagnosis.tree.root} branches={diagnosis.tree.branches} />
+        </Sub>
+        <p className="mt-4 text-text-muted">
+          More like this:{' '}
+          <Link to="/browse?category=analytics&hard=1">the RCA questions in the bank</Link>.
+        </p>
+      </Section>
 
-      <p className="mt-6 text-sm text-ink-dim">
-        These also live in the{' '}
-        <Link to="/browse?category=strategy">Strategy question bank</Link>.
-      </p>
+      <Section id="numbers" title={`4 · ${anchors.title}`} note={anchors.note}>
+        <div className="card mt-3 px-4 py-1">
+          <table className="w-full border-collapse">
+            <tbody>
+              {anchors.rows.map(([label, value]) => (
+                <tr key={label} className="border-b border-border last:border-0">
+                  <th scope="row" className="py-2 pr-3 text-left font-normal text-text">
+                    {label}
+                  </th>
+                  <td className="py-2 text-right text-text-muted tabular-nums">{value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Section>
     </Page>
   )
 }

@@ -8,14 +8,14 @@ import Rich from '../Rich'
  */
 export default function Steps({ items }) {
   return (
-    <ol className="mt-3 border-t border-rule">
+    <ol className="mt-3 border-t border-border">
       {items.map((item, i) => (
         <li
           key={i}
-          className="grid grid-cols-[1.5rem_1fr] gap-3 border-b border-rule py-2 text-sm"
+          className="grid grid-cols-[1.5rem_1fr] gap-3 border-b border-border py-2 text-body"
         >
-          <span className="label pt-0.5 !text-ink tabular-nums">{i + 1}</span>
-          <span className="text-ink-dim">
+          <span className="label pt-1 !text-text tabular-nums">{i + 1}</span>
+          <span className="text-text-muted">
             <Rich>{item}</Rich>
           </span>
         </li>

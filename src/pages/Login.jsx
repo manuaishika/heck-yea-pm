@@ -66,8 +66,8 @@ export default function Login() {
         <div className="mt-4">
           <div className="card p-4">
             <p className="label">Signed in as</p>
-            <p className="mt-0.5 text-md font-semibold text-ink">{user.email}</p>
-            <p className="mt-2 text-sm text-ink-dim" aria-live="polite">
+            <p className="mt-1 text-body font-semibold text-text">{user.email}</p>
+            <p className="mt-2 text-body text-text-muted" aria-live="polite">
               {STATUS[syncStatus] || ''}
             </p>
           </div>
@@ -98,7 +98,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@college.edu"
-              className="mt-1 w-full rounded-[6px] border-2 border-ink bg-paper px-3 py-1.5 text-sm placeholder:text-ink-faint focus-visible:border-accent"
+              className="mt-1 w-full rounded-button border border-border bg-surface px-3 py-2 text-body placeholder:text-text-muted focus-visible:border-accent"
             />
             <p className="mt-3 flex flex-wrap items-center gap-3">
               <button type="submit" className="btn btn-primary" disabled={state === 'sending'}>
@@ -106,7 +106,7 @@ export default function Login() {
               </button>
               <span className="label">no password</span>
             </p>
-            <p aria-live="polite" className="mt-3 text-sm text-ink-dim">
+            <p aria-live="polite" className="mt-3 text-body text-text-muted">
               {state === 'sent' && 'Check your inbox. The link signs you in on this device.'}
               {state === 'error' && message}
             </p>

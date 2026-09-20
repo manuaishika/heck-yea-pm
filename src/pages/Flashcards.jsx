@@ -57,17 +57,17 @@ function Picker({ onStart, reviewIds }) {
   return (
     <>
       <p className="label mt-6">Pick categories</p>
-      <ul className="mt-1.5 border-t border-rule">
+      <ul className="mt-2 border-t border-border">
         {categories.map((cat) => (
-          <li key={cat} className="border-b border-rule">
-            <label className="flex cursor-pointer items-center gap-2.5 py-2.5 text-sm">
+          <li key={cat} className="border-b border-border">
+            <label className="flex cursor-pointer items-center gap-3 py-3 text-body">
               <input
                 type="checkbox"
                 checked={selected.has(cat)}
                 onChange={() => toggle(cat)}
                 className="accent-accent"
               />
-              <span className="flex-1 text-ink">{cat}</span>
+              <span className="flex-1 text-text">{cat}</span>
               <span className="label">{counts[cat]}</span>
             </label>
           </li>
@@ -94,11 +94,11 @@ function Picker({ onStart, reviewIds }) {
       </button>
 
       {reviewIds.length > 0 && (
-        <p className="mt-4 text-sm">
+        <p className="mt-4 text-body">
           <button
             type="button"
             onClick={() => onStart(shuffle(reviewIds))}
-            className="font-semibold text-ink underline decoration-accent decoration-2 underline-offset-[3px]"
+            className="font-semibold text-accent underline underline-offset-2"
           >
             Review your {reviewIds.length} flagged{' '}
             {reviewIds.length === 1 ? 'card' : 'cards'}
@@ -168,13 +168,13 @@ function Deck({ session, prev, next, finish }) {
         <button
           type="button"
           onClick={done}
-          className="chip"
+          className="btn btn-sm"
         >
           end session
         </button>
       </div>
 
-      <span className="mt-2 block h-2.5 overflow-hidden rounded-[3px] border-2 border-ink bg-paper" aria-hidden="true">
+      <span className="mt-2 block h-1 overflow-hidden bg-border" aria-hidden="true">
         <span
           className="block h-full bg-accent transition-[width] duration-200"
           style={{ width: `${((session.i + 1) / total) * 100}%` }}
@@ -188,7 +188,7 @@ function Deck({ session, prev, next, finish }) {
           onClick={prev}
           disabled={atStart}
           aria-label="Previous card"
-          className="shrink-0 px-1 text-2xl text-ink disabled:opacity-25"
+          className="shrink-0 px-1 text-page text-text disabled:opacity-25"
         >
           ‹
         </button>
@@ -211,32 +211,34 @@ function Deck({ session, prev, next, finish }) {
           }}
           className="card min-h-52 flex-1 p-4 text-left"
         >
+          <span key={String(showBack)} className="flip block">
           <span className="label block">
             {q.category}
             {q.hard ? ' · curveball' : ''} · {showBack ? 'answer' : 'question'}
           </span>
           {!showBack ? (
-            <span className="mt-3 block text-md text-ink">{q.question}</span>
+            <span className="mt-3 block text-body text-text">{q.question}</span>
           ) : (
-            <ul className="mt-3 space-y-1.5">
+            <ul className="mt-3 space-y-2">
               {cardPoints(q).map((p, i) => (
                 <li
                   key={i}
-                  className="flex gap-2 text-sm leading-snug text-ink-dim"
+                  className="flex gap-2 text-body leading-snug text-text-muted"
                 >
-                  <span className="mt-[9px] h-1 w-1 shrink-0 bg-ink" />
+                  <span className="mt-2 h-1 w-1 shrink-0 bg-text" />
                   <span>{p}</span>
                 </li>
               ))}
             </ul>
           )}
+          </span>
         </button>
 
         <button
           type="button"
           onClick={advance}
           aria-label="Next card"
-          className="shrink-0 px-1 text-2xl text-ink"
+          className="shrink-0 px-1 text-page text-text"
         >
           ›
         </button>
@@ -259,7 +261,7 @@ function Deck({ session, prev, next, finish }) {
         </button>
       </div>
 
-      <p className="mt-3 flex items-center justify-between text-sm">
+      <p className="mt-3 flex items-center justify-between text-body">
         <Link to={`/browse/${q.id}`} className="font-semibold">
           Full answer →
         </Link>
@@ -288,6 +290,7 @@ export default function Flashcards() {
   return (
     <Page>
       <PageHead
+        chapter="Library"
         title="Flashcards"
         intro={
           session

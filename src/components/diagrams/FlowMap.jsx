@@ -4,7 +4,7 @@ import Rich from '../Rich'
 /**
  * An interactive flowchart. A root sits above a row of step nodes joined by an
  * SVG connector. Hovering or focusing a node previews it; clicking pins it. The
- * detail for the active node shows in a panel below.
+ * detail for the active node shows in a card below.
  *
  * Real buttons, keyboard navigable, works on touch (tap = pin). The connector
  * is decorative and aria-hidden.
@@ -24,16 +24,16 @@ export default function FlowMap({ root, sub, steps }) {
   return (
     <div className="mt-4">
       {/* root */}
-      <div className="panel mx-auto max-w-sm px-3 py-2 text-center">
-        <div className="text-sm font-semibold text-ink">{root}</div>
-        {sub && <div className="mt-0.5 text-xs text-ink-dim">{sub}</div>}
+      <div className="card mx-auto max-w-sm px-3 py-2 text-center">
+        <div className="text-body font-semibold text-text">{root}</div>
+        {sub && <div className="mt-1 text-body text-text-muted">{sub}</div>}
       </div>
 
       {/* connector */}
       <svg
         viewBox="0 0 100 14"
         preserveAspectRatio="none"
-        className="mx-auto block h-3.5 w-full max-w-md text-rule"
+        className="mx-auto block h-4 w-full max-w-md text-border"
         aria-hidden="true"
       >
         <path
@@ -51,6 +51,7 @@ export default function FlowMap({ root, sub, steps }) {
             <path
               key={i}
               d={`M${x} 13 V14`}
+              fill="none"
               stroke="currentColor"
               strokeWidth="0.8"
               vectorEffect="non-scaling-stroke"
@@ -61,7 +62,7 @@ export default function FlowMap({ root, sub, steps }) {
 
       {/* step nodes */}
       <div
-        className="grid gap-1.5"
+        className="grid gap-2"
         style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}
       >
         {steps.map((s, i) => {
@@ -76,17 +77,17 @@ export default function FlowMap({ root, sub, steps }) {
               onMouseLeave={() => setHovered(null)}
               onFocus={() => setHovered(i)}
               onBlur={() => setHovered(null)}
-              className={`flex flex-col rounded-[6px] border-2 border-ink px-1.5 py-1.5 text-left ${
-                on ? 'bg-accent text-on-accent' : 'bg-paper hover:bg-paper-2'
+              className={`flex flex-col rounded-button border border-border px-2 py-2 text-left ${
+                on ? 'bg-accent text-surface' : 'bg-surface hover:border-accent'
               }`}
             >
               <span
-                className={`text-xs font-bold ${on ? 'text-on-accent' : 'text-ink'}`}
+                className={`text-body font-semibold ${on ? 'text-surface' : 'text-text'}`}
               >
                 {s.step}
               </span>
               <span
-                className={`mt-0.5 text-[0.7rem] leading-tight ${on ? 'text-on-accent' : 'text-ink-dim'}`}
+                className={`mt-1 text-body leading-tight ${on ? 'text-surface' : 'text-text-muted'}`}
               >
                 {s.short}
               </span>
@@ -96,9 +97,9 @@ export default function FlowMap({ root, sub, steps }) {
       </div>
 
       {/* detail */}
-      <div className="mt-3 border-l-4 border-accent pl-3">
-        <p className="label !text-ink">{current.step}</p>
-        <p className="mt-1 text-sm leading-relaxed text-ink-dim">
+      <div className="mt-3 border-l border-accent pl-3">
+        <p className="label !text-text">{current.step}</p>
+        <p className="mt-1 text-body leading-relaxed text-text-muted">
           <Rich>{current.detail}</Rich>
         </p>
       </div>
