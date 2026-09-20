@@ -1,7 +1,11 @@
 {
   "intro": "A PM intern resume gets **~20 seconds**. It has to show **product thinking without product experience**. Here's what that looks like.",
   "bulletFormula": {
-    "parts": ["What you did", "How you measured it", "The scope or constraint"],
+    "parts": [
+      "What you did",
+      "How you measured it",
+      "The scope or constraint"
+    ],
     "bad": "Worked on a team project to build a study app.",
     "good": "Led a **4-person team** to ship a study app to **200 students in 6 weeks**; cut sign-up drop-off from **60% to 25%** after **5 user interviews**."
   },
@@ -54,5 +58,102 @@
     "**No typos** — read it backwards, word by word",
     "A friend can tell **what you actually did** in each role in 5 seconds",
     "**Links work** and point somewhere real"
-  ]
+  ],
+  "sample": {
+    "note": "A made-up final-year student. Copy the shape, never the numbers. Every note on the right is a reason a line is there.",
+    "header": {
+      "name": "Asha Rao",
+      "line": "B.Tech Computer Science, 2027 · Bengaluru · asha.rao@example.com",
+      "links": "github.com/asharao · linkedin.com/in/asharao",
+      "note": "Name, one line, links. No photo, no address, no \"objective\"."
+    },
+    "blocks": [
+      {
+        "heading": "Projects",
+        "entries": [
+          {
+            "title": "CampusCart — student marketplace",
+            "meta": "Led a team of 4 · Jan–Mar 2026",
+            "bullets": [
+              {
+                "text": "Interviewed **12 students** before writing code. **9 of 12** sold items in WhatsApp groups and lost track of buyers.",
+                "note": "Research first. A count of interviews shows you started from the problem."
+              },
+              {
+                "text": "Cut the first release to **3 features** (listing, chat, pickup slot) from a list of **11**, using an impact/effort grid.",
+                "note": "A trade-off you made. The most PM-like line on the page."
+              },
+              {
+                "text": "Shipped to **200 students in 6 weeks**; **38%** listed a second item within a week.",
+                "note": "Outcome, scale and time frame. A small user base still counts if you measured it."
+              },
+              {
+                "text": "Cut sign-up drop-off from **60% to 25%** by moving the OTP step after first browse.",
+                "note": "A metric you moved, and the one change that moved it."
+              }
+            ]
+          },
+          {
+            "title": "Hostel mess feedback tool",
+            "meta": "Solo · Oct 2025",
+            "bullets": [
+              {
+                "text": "Built a feedback form used by **340 residents**; findings on food waste led to menu changes in **2 of 4** hostels.",
+                "note": "Impact beyond the code: someone changed something because of your work."
+              },
+              {
+                "text": "Wrote SQL that showed **70%** of complaints came from one meal slot.",
+                "note": "Analytical skill in one line, with the finding attached."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Experience",
+        "entries": [
+          {
+            "title": "Data analytics intern — logistics startup",
+            "meta": "May–Jul 2026",
+            "bullets": [
+              {
+                "text": "Built a weekly delays dashboard for **3 ops managers**, replacing a spreadsheet that took **2 hours** every Monday.",
+                "note": "Time saved and who used it. Shows you built for a real user."
+              },
+              {
+                "text": "Analysed **40k orders** in SQL; recommended dropping one delivery slot, **adopted in 2 cities**.",
+                "note": "A recommendation and its adoption, not just \"analysed data\"."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Skills",
+        "entries": [
+          {
+            "bullets": [
+              {
+                "text": "SQL · Python (pandas) · Figma · Google Analytics",
+                "note": "Only what you can be asked about tomorrow. No skill bars."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Education",
+        "entries": [
+          {
+            "bullets": [
+              {
+                "text": "B.Tech Computer Science, 2027 · CGPA 8.6 / 10 · Databases, Human-computer interaction",
+                "note": "Add GPA only if it is strong. One line of coursework, at most."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1482,6 +1482,7 @@
     "id": "ensure-a-product-scales",
     "type": "question",
     "category": "Technical",
+    "topic": "system-design",
     "question": "How do you ensure your product can scale technically?",
     "sections": [
       {
@@ -1566,6 +1567,7 @@
     "id": "how-a-url-shortener-works",
     "type": "question",
     "category": "Technical",
+    "topic": "system-design",
     "question": "Explain how a URL shortener works.",
     "sections": [
       {
@@ -1600,6 +1602,7 @@
     "id": "how-youtube-recommends-videos",
     "type": "question",
     "category": "Technical",
+    "topic": "ai",
     "question": "How does YouTube recommend videos?",
     "sections": [
       {
@@ -1643,6 +1646,7 @@
     "id": "design-a-collaborative-document-editor",
     "type": "question",
     "category": "Technical",
+    "topic": "system-design",
     "question": "Design a real-time collaborative document editor (like Google Docs).",
     "sections": [
       {
@@ -1687,6 +1691,7 @@
     "id": "build-a-rate-limiter",
     "type": "question",
     "category": "Technical",
+    "topic": "system-design",
     "question": "How would you build a rate limiter?",
     "sections": [
       {
@@ -1727,6 +1732,7 @@
     "id": "design-a-notification-system",
     "type": "question",
     "category": "Technical",
+    "topic": "system-design",
     "question": "Design a notification system.",
     "sections": [
       {
@@ -2268,5 +2274,437 @@
       "Razorpay"
     ],
     "hard": true
+  },
+  {
+    "id": "design-a-messaging-app",
+    "type": "question",
+    "category": "Technical",
+    "topic": "system-design",
+    "question": "Design a messaging app like WhatsApp.",
+    "sections": [
+      {
+        "label": "Clarify first",
+        "points": [
+          "1:1 only, or groups? Media? Voice calls? Scope it before you draw anything",
+          "Scale: 10,000 users is a weekend project, 500M is a different company",
+          "The promise to protect: a message arrives once, in order, even on a bad connection"
+        ]
+      },
+      {
+        "label": "How a message travels",
+        "points": [
+          "Sender's phone → server → recipient's phone. If the recipient is offline, the server holds it until they reconnect",
+          "Keep one open connection (a WebSocket) instead of polling. Polling drains the battery and adds lag",
+          "Three delivery states — sent, delivered, read — each is its own small event"
+        ]
+      },
+      {
+        "label": "Decisions that shape the product",
+        "points": [
+          "Store history on the device, so old chats open with no signal",
+          "End-to-end encryption means the server cannot read messages. That rules out server-side search and spam scanning of content",
+          "Groups multiply cost: one message fans out to N phones. Cap group size, or the cost curve gets ugly"
+        ]
+      },
+      {
+        "label": "Trade-offs",
+        "points": [
+          "Latency beats throughput. Users notice a two-second delay long before they notice capacity",
+          "Low-data markets: compress media, send a tiny preview first, download the full file on tap"
+        ]
+      }
+    ],
+    "tip": "The PM answer is the trade-offs, not the boxes. Say what encryption, offline delivery and low data each cost you in features.",
+    "failureMode": "Drawing servers and databases with no user goal. Never saying what 'delivered' should feel like or what you would give up to get it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-ride-matching",
+    "type": "question",
+    "category": "Technical",
+    "topic": "system-design",
+    "question": "Design how a ride-hailing app matches riders to drivers.",
+    "sections": [
+      {
+        "label": "The goal",
+        "points": [
+          "Short rider wait and busy drivers. The two pull against each other, so name the trade-off up front",
+          "Say who you optimise for when they conflict. Riders churn on long waits; drivers churn on idle time"
+        ]
+      },
+      {
+        "label": "The flow",
+        "points": [
+          "Rider requests → find nearby drivers → offer to the best one → 10 seconds to accept, else the next",
+          "Rank by estimated arrival time, not straight-line distance. A driver across a river is close on a map and far in life"
+        ]
+      },
+      {
+        "label": "Decisions",
+        "points": [
+          "Match instantly, or collect requests for a few seconds and match them together? Batching lowers total wait but makes the first response slower",
+          "Surge pricing is a supply lever first, revenue second. It pulls drivers toward demand",
+          "A driver cancels: re-match automatically and tell the rider early. A silent wait is the worst outcome"
+        ]
+      },
+      {
+        "label": "Measure",
+        "points": [
+          "Rider wait time, driver utilisation, cancellation rate, and the share of requests that never get a driver"
+        ]
+      }
+    ],
+    "tip": "Interviewers want to hear that closest-driver is a default, not the answer. ETA, batching and cancellations are what show you have thought about the real problem.",
+    "failureMode": "Optimising only the rider's wait and ignoring driver utilisation and cancellations, which is where the marketplace actually breaks.",
+    "companies": [
+      "Ola"
+    ],
+    "hard": false
+  },
+  {
+    "id": "design-cloud-file-storage",
+    "type": "question",
+    "category": "Technical",
+    "topic": "system-design",
+    "question": "Design a cloud file storage and sync product like Google Drive.",
+    "sections": [
+      {
+        "label": "Core jobs",
+        "points": [
+          "Upload, store, sync across devices, share. Everything else is secondary",
+          "Clarify: personal files or team documents? A 5 MB photo and a 5 GB video need different handling"
+        ]
+      },
+      {
+        "label": "Sync",
+        "points": [
+          "Split files into chunks and upload only the chunks that changed. Re-uploading a whole 2 GB file for a one-line edit is unusable",
+          "Two devices edit the same file offline: keep both copies rather than silently overwrite one",
+          "The sync icon has to tell the truth. 'Synced' that is not synced loses files and trust"
+        ]
+      },
+      {
+        "label": "Sharing",
+        "points": [
+          "Permissions are a table of who can do what to which file, checked on every access",
+          "Link sharing is convenient and risky. Default to restricted, and make 'anyone with the link' a deliberate choice"
+        ]
+      },
+      {
+        "label": "Cost",
+        "points": [
+          "Storage is the main bill. Deduplicate identical files and move rarely opened files to cheaper storage",
+          "The free tier size is a business decision as much as a technical one"
+        ]
+      }
+    ],
+    "tip": "Chunked upload and conflict handling are the two things that separate a thoughtful answer from a list of components.",
+    "failureMode": "Skipping conflicts. The moment two devices touch the same file, sync stops being an engineering detail and becomes a product problem.",
+    "companies": [
+      "Google"
+    ],
+    "hard": false
+  },
+  {
+    "id": "design-search-autocomplete",
+    "type": "question",
+    "category": "Technical",
+    "topic": "system-design",
+    "question": "Design search autocomplete for an e-commerce app.",
+    "sections": [
+      {
+        "label": "What good looks like",
+        "points": [
+          "Suggestions appear in under 100 ms. Every keystroke is a request, so each one has to be cheap",
+          "Good means the user reaches the right product in fewer taps, not that suggestions look clever"
+        ]
+      },
+      {
+        "label": "How it works",
+        "points": [
+          "Do the heavy work in advance: pre-compute popular queries and look them up by prefix",
+          "Cache the top suggestions for the most common prefixes. 'iph' is typed thousands of times an hour"
+        ]
+      },
+      {
+        "label": "Ranking",
+        "points": [
+          "Blend popularity, recency and the user's own history. A new phone launch should surface within hours",
+          "Boost what is in stock and deliverable to this user's pincode. A suggestion for something unavailable is a dead end"
+        ]
+      },
+      {
+        "label": "Guardrails and measurement",
+        "points": [
+          "Filter offensive or legally risky suggestions before they ever appear",
+          "Watch suggestion click-through, searches that return nothing, and time to first click"
+        ]
+      }
+    ],
+    "tip": "Say what a good suggestion is before you say how to build one. That is the PM part.",
+    "failureMode": "Treating it as a pure lookup problem and never defining what a good suggestion is or how you would measure it.",
+    "companies": [
+      "Flipkart"
+    ],
+    "hard": false
+  },
+  {
+    "id": "design-a-upi-payment-flow",
+    "type": "question",
+    "category": "Technical",
+    "topic": "system-design",
+    "question": "Walk me through what happens when a user pays with UPI in your app.",
+    "sections": [
+      {
+        "label": "The happy path",
+        "points": [
+          "User taps pay → your server creates an order → the UPI app opens → the user approves with their PIN → the bank confirms → your server is told the result",
+          "Your app never sees the PIN or the account. That is by design and it limits what you can show on failure"
+        ]
+      },
+      {
+        "label": "Where it breaks",
+        "points": [
+          "Money debited but the confirmation never reaches you. This is the classic failure and it happens daily at scale",
+          "The fix: never assume failure. Check the payment status with the bank until it settles, then fulfil or refund",
+          "Retries must be safe. Sending the same request twice must never charge the user twice"
+        ]
+      },
+      {
+        "label": "Product decisions",
+        "points": [
+          "Show 'pending' honestly, with a time estimate, instead of a spinner or a false 'failed'",
+          "Promise an automatic refund window in plain words. Uncertainty about money is what users remember",
+          "On peak days (a sale, salary day) queue and retry rather than fail, and never let checkout depend on a nice-to-have service"
+        ]
+      }
+    ],
+    "tip": "Interviewers listen for the pending state. Candidates who treat payment as success or failure have not thought about real money.",
+    "failureMode": "Assuming a payment either succeeds or fails and never designing the pending state, which is where users lose trust.",
+    "companies": [
+      "Razorpay"
+    ],
+    "hard": false
+  },
+  {
+    "id": "should-we-add-an-llm-feature",
+    "type": "question",
+    "category": "Strategy",
+    "topic": "ai",
+    "question": "Your CEO wants an LLM chatbot in the app by next quarter. What do you do?",
+    "sections": [
+      {
+        "label": "Start with the problem",
+        "points": [
+          "Which user problem does chat solve better than the current screens? If you cannot name one, it is a demo, not a product",
+          "Find where users already get stuck: support tickets, search with no results, drop-offs in a long flow"
+        ]
+      },
+      {
+        "label": "Test it cheaply",
+        "points": [
+          "Prototype with an off-the-shelf model on real user questions before anyone builds infrastructure",
+          "Read the outputs yourself. Fifty real conversations tell you more than a roadmap slide"
+        ]
+      },
+      {
+        "label": "Cost and risk",
+        "points": [
+          "Every answer costs money and cost scales with usage. Work out the price per successful task, not per chat",
+          "A wrong answer about a refund, a medicine or a payment costs trust. Decide which topics it must not touch"
+        ]
+      },
+      {
+        "label": "Decide",
+        "points": [
+          "Ship to a small group with a fallback to search or a human, and define success up front: tasks completed, not chats started",
+          "Tell the CEO what you will know in six weeks and what would make you stop"
+        ]
+      }
+    ],
+    "tip": "You are not being asked whether AI is good. You are being asked whether you can turn a top-down mandate into a testable bet.",
+    "failureMode": "Saying yes because everyone has one, with no user problem, no success metric and no cost estimate.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "measure-an-ai-feature",
+    "type": "question",
+    "category": "Analytics",
+    "topic": "ai",
+    "question": "How would you measure whether an AI assistant feature is working?",
+    "sections": [
+      {
+        "label": "Did it help?",
+        "points": [
+          "Task success rate: did the user get what they came for without going somewhere else?",
+          "Compare retention of people who used it against a matched group who did not. Novelty makes raw usage misleading"
+        ]
+      },
+      {
+        "label": "Is it any good?",
+        "points": [
+          "Have people grade a sample of answers every week for accuracy and safety",
+          "Keep a fixed test set of hard questions and rerun it whenever the model or prompt changes. That catches regressions before users do"
+        ]
+      },
+      {
+        "label": "Guardrails",
+        "points": [
+          "Handoff-to-human rate, complaint rate, and cost per successful task",
+          "Thumbs-down with a reason is the cheapest signal you will get. Read them"
+        ]
+      }
+    ],
+    "tip": "Separate 'people used it' from 'it worked'. Every AI launch has a big first week.",
+    "failureMode": "Measuring engagement (chats started) and never checking whether the answers were right or the task got done.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "fraud-model-92-percent-accurate",
+    "type": "question",
+    "category": "Analytics",
+    "topic": "ai",
+    "question": "Your fraud model is 92% accurate. Engineering wants to ship. What do you ask?",
+    "sections": [
+      {
+        "label": "Ask first",
+        "points": [
+          "What is the baseline? If 1% of transactions are fraud, a model that always says 'not fraud' is 99% accurate",
+          "Which mistake costs more: blocking a real customer, or letting fraud through? Accuracy hides that difference",
+          "Ask for precision and recall, not one number"
+        ]
+      },
+      {
+        "label": "Then",
+        "points": [
+          "Set the decision threshold from business cost, not from the model's default",
+          "Check performance by segment: new users, one city, one payment method. A model can be fine overall and terrible for a group"
+        ]
+      },
+      {
+        "label": "Launch plan",
+        "points": [
+          "Shadow mode first: score every transaction but take no action, and compare against what actually happened",
+          "Then a small rollout with a review path for customers who were wrongly blocked"
+        ]
+      }
+    ],
+    "tip": "The base-rate point is the one interviewers wait for. Say it in the first thirty seconds.",
+    "failureMode": "Treating accuracy as the answer, without asking about the base rate or which kind of error costs more.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "handle-ai-hallucinations",
+    "type": "question",
+    "category": "Technical",
+    "topic": "ai",
+    "question": "Your AI feature sometimes gives confident, wrong answers. How do you handle it?",
+    "sections": [
+      {
+        "label": "Reduce it",
+        "points": [
+          "Ground answers in your own data: fetch the relevant record first, then answer from it",
+          "Let it say 'I do not know'. A model that always answers will sometimes make things up"
+        ]
+      },
+      {
+        "label": "Contain it",
+        "points": [
+          "Show sources so users can check the claim in one tap",
+          "Keep high-stakes topics (refunds, health, money movement) on fixed rules or a human"
+        ]
+      },
+      {
+        "label": "Watch it",
+        "points": [
+          "Log thumbs-downs and handoffs, review a sample weekly, and add every failure to your test set",
+          "Design the screen so an error is cheap to catch: preview before an action, undo after"
+        ]
+      }
+    ],
+    "tip": "Do not promise to eliminate it. You design so that wrong answers do little damage and get caught fast.",
+    "failureMode": "Promising to eliminate hallucinations. They cannot be removed, so the answer is to limit the stakes, show sources and make errors easy to catch.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-an-ai-shopping-assistant",
+    "type": "question",
+    "category": "Product Design",
+    "topic": "ai",
+    "question": "Design an AI shopping assistant for an e-commerce app.",
+    "sections": [
+      {
+        "label": "The user's job",
+        "points": [
+          "The shopper who knows the need ('a gift for my dad, under 3,000') but not the product",
+          "This is where search and filters fail: they need words the shopper does not have yet"
+        ]
+      },
+      {
+        "label": "The experience",
+        "points": [
+          "Ask one or two clarifying questions, then show three products, not thirty, and say why each fits",
+          "Let the shopper correct it ('cheaper', 'not leather') and remember the correction"
+        ]
+      },
+      {
+        "label": "Trust",
+        "points": [
+          "Price and stock come from live data, never from the model's memory",
+          "When nothing matches, say so and hand over to normal search. A confident wrong suggestion loses the sale and the shopper"
+        ]
+      },
+      {
+        "label": "Measure",
+        "points": [
+          "Conversion and return rate of assisted sessions against similar unassisted ones",
+          "Watch for the assistant answering easy questions the search bar already handles: that is cost with no gain"
+        ]
+      }
+    ],
+    "tip": "Lead with what the assistant does better than search. If the answer is 'nothing yet', say where you would look for it.",
+    "failureMode": "Designing a chat box first and the user's job second, with no answer to what it does that search and filters do not.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "cold-start-recommendations",
+    "type": "question",
+    "category": "Technical",
+    "topic": "ai",
+    "question": "How do you handle the cold-start problem for a new user in a recommendation system?",
+    "sections": [
+      {
+        "label": "The problem",
+        "points": [
+          "A new user has no history, so the model has nothing to personalise from and guesses badly",
+          "The same happens for a new item: no one has interacted with it yet"
+        ]
+      },
+      {
+        "label": "What to do",
+        "points": [
+          "Ask for two or three interests at sign-up. Cheap, and it gives the model a start",
+          "Until then, show what is popular in the user's city or language, not what is popular globally",
+          "For new items, give them a guaranteed slice of exposure so they can collect signals"
+        ]
+      },
+      {
+        "label": "Then hand over",
+        "points": [
+          "Blend in personalised results as behaviour arrives, and track how fast the model overtakes the popular default",
+          "Measure first-session retention. That is where cold start hurts most"
+        ]
+      }
+    ],
+    "tip": "Name both sides: new users and new items. Most candidates only mention users.",
+    "failureMode": "Answering with a model technique and skipping the product side: what the new user actually sees in the first minute.",
+    "companies": [],
+    "hard": false
   }
 ]

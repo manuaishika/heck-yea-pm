@@ -3,6 +3,7 @@ import { careers } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import ModeMatrix from '../components/diagrams/ModeMatrix'
+import ModeRadar from '../components/diagrams/ModeRadar'
 import Rich from '../components/Rich'
 
 export default function Careers() {
@@ -24,6 +25,8 @@ export default function Careers() {
       {/* modes */}
       <h2 className="mt-8 text-lg">Startup vs scaled vs large company</h2>
       <p className="mt-1 text-sm text-ink-dim">{careers.modes.note}</p>
+      <ModeRadar modes={careers.modes} />
+      <p className="label mt-5">The detail</p>
       <ModeMatrix modes={careers.modes} />
 
       {/* adjacent roles */}

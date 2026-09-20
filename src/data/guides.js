@@ -9,6 +9,7 @@ import indiaData from './india.json'
 import guesstimatesData from './guesstimates.json'
 import resumeData from './resume.json'
 import resourcesData from './resources.json'
+import quizData from './quiz.json'
 import {
   validateRole,
   validateSkills,
@@ -18,6 +19,7 @@ import {
   validateGuesstimates,
   validateResume,
   validateResources,
+  validateQuiz,
 } from './guides-schema'
 import { questions } from './questions'
 
@@ -38,6 +40,11 @@ export const allSkills = [
   ...skills.technical.skills.map((s) => ({ ...s, track: 'technical' })),
   ...skills.nonTechnical.skills.map((s) => ({ ...s, track: 'nonTechnical' })),
 ]
+
+export const quiz = validateQuiz(
+  quizData,
+  allSkills.map((s) => s.slug)
+)
 
 export function getSkill(slug) {
   return allSkills.find((s) => s.slug === slug)

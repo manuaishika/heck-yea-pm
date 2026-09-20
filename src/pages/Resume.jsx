@@ -11,7 +11,7 @@ export default function Resume() {
     path: '/resume',
   })
 
-  const { intro, bulletFormula, sections, mistakes, checklist } = resume
+  const { intro, sample, bulletFormula, sections, mistakes, checklist } = resume
 
   return (
     <Page wide>
@@ -21,8 +21,63 @@ export default function Resume() {
         intro={<Rich>{intro}</Rich>}
       />
 
+      {/* annotated sample */}
+      <h2 className="mt-6 text-lg">A sample, annotated</h2>
+      <p className="mt-1 text-sm text-ink-dim">{sample.note}</p>
+      <div className="card mt-3 p-4 sm:p-5">
+        <div className="grid gap-1 border-b-2 border-rule-hard pb-3 sm:grid-cols-[1fr_13rem] sm:gap-4">
+          <div>
+            <p className="text-xl font-bold tracking-tight text-ink">{sample.header.name}</p>
+            <p className="text-sm text-ink-dim">{sample.header.line}</p>
+            {sample.header.links && (
+              <p className="text-sm text-ink-dim">{sample.header.links}</p>
+            )}
+          </div>
+          {sample.header.note && (
+            <p className="border-l-4 border-accent pl-2 text-xs text-ink-dim">
+              {sample.header.note}
+            </p>
+          )}
+        </div>
+
+        {sample.blocks.map((block) => (
+          <section key={block.heading} className="mt-4">
+            <h3 className="label !text-ink uppercase tracking-wide">{block.heading}</h3>
+            {block.entries.map((entry, ei) => (
+              <div key={entry.title || ei} className="mt-1.5">
+                {entry.title && (
+                  <p className="flex flex-wrap items-baseline justify-between gap-x-3 text-sm font-semibold text-ink">
+                    <span>{entry.title}</span>
+                    {entry.meta && (
+                      <span className="text-xs font-normal text-ink-faint">{entry.meta}</span>
+                    )}
+                  </p>
+                )}
+                <ul>
+                  {entry.bullets.map((b) => (
+                    <li
+                      key={b.text}
+                      className="grid gap-1 py-1.5 sm:grid-cols-[1fr_13rem] sm:gap-4"
+                    >
+                      <span className="text-sm text-ink-dim">
+                        <span className="text-ink">•</span> <Rich>{b.text}</Rich>
+                      </span>
+                      {b.note && (
+                        <span className="border-l-4 border-accent pl-2 text-xs text-ink-dim">
+                          {b.note}
+                        </span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
+        ))}
+      </div>
+
       {/* bullet formula */}
-      <h2 className="mt-6 text-lg">Every bullet, one formula</h2>
+      <h2 className="mt-10 text-lg">Every bullet, one formula</h2>
       <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
         {bulletFormula.parts.map((p, i) => (
           <span key={p} className="flex items-center gap-2">

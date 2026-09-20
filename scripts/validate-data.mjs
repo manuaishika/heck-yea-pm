@@ -14,6 +14,7 @@ import {
   validateGuesstimates,
   validateResume,
   validateResources,
+  validateQuiz,
 } from '../src/data/guides-schema.js'
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
@@ -37,6 +38,14 @@ const checks = [
   ['guesstimates.json', (d) => validateGuesstimates(d), () => 'guesstimates guide'],
   ['resume.json', (d) => validateResume(d), (d) => `${d.checklist.length}-point checklist`],
   ['resources.json', (d) => validateResources(d), (d) => `${d.groups.length} resource groups`],
+  [
+    'quiz.json',
+    (d) => {
+      const s = load('skills.json')
+      return validateQuiz(d, [...s.technical.skills, ...s.nonTechnical.skills].map((k) => k.slug))
+    },
+    (d) => `${d.questions.length} quiz questions`,
+  ],
 ]
 
 for (const [file, validate, describe] of checks) {

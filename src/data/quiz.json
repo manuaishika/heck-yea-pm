@@ -1,0 +1,202 @@
+{
+  "bands": [
+    {
+      "min": 0,
+      "label": "Starting out",
+      "line": "You are missing the basics on several skills. That is fine at this point. Fix the weakest ones below, then retake."
+    },
+    {
+      "min": 6,
+      "label": "Getting there",
+      "line": "You have the core ideas but slip on the details interviewers probe. Work the missed skills, then move to the question bank."
+    },
+    {
+      "min": 11,
+      "label": "Interview-ready on the basics",
+      "line": "The fundamentals are solid. Spend your time on mock answers and the company loops instead of re-reading skills."
+    }
+  ],
+  "questions": [
+    {
+      "skill": "apis",
+      "q": "Your team wants to show live train delays in the app. A transit agency already publishes this data. What do you check first?",
+      "options": [
+        "Whether we should hire a team to collect the data ourselves",
+        "Whether the agency offers an API, and what its limits, cost and uptime look like",
+        "Which database to store the delays in",
+        "What colour to show a delayed train in"
+      ],
+      "answer": 1,
+      "why": "Assume an API exists before building anything. Then ask what happens when it is slow or down, because your feature now depends on it."
+    },
+    {
+      "skill": "databases",
+      "q": "A startup's app stores users, orders and payments, and finance wants monthly revenue by customer. Which store fits the core data?",
+      "options": [
+        "A relational (SQL) database, because the data has clear relationships and gets reported on",
+        "A NoSQL store, because it always scales better",
+        "Files exported to a spreadsheet each month",
+        "It does not matter. Switching later is cheap"
+      ],
+      "answer": 0,
+      "why": "Structured, connected data that you report on is what SQL is for. Changing the data model after launch is expensive, so the early choice matters."
+    },
+    {
+      "skill": "client-server",
+      "q": "Users see a wrong price in your mobile app. Compared with a bug inside the app itself, how fast can you fix a wrong price coming from the backend?",
+      "options": [
+        "The same speed, since both need a release",
+        "Slower, because backend changes need app-store approval",
+        "Faster. A server change goes live for everyone immediately",
+        "It depends on the user's internet speed"
+      ],
+      "answer": 2,
+      "why": "The server is yours, so a fix reaches everyone at once. An app fix waits for the store, then for users to update. In India many people sit on old versions for months."
+    },
+    {
+      "skill": "latency-caching",
+      "q": "Product pages are slow. An engineer proposes caching each product's price for 24 hours. What risk do you raise?",
+      "options": [
+        "Caching uses too much electricity",
+        "Caching always makes pages slower",
+        "There is no risk with caching",
+        "Users can see a stale price after it changes"
+      ],
+      "answer": 3,
+      "why": "A cache trades freshness for speed. For prices that is a real cost, so the answer is a short expiry or clearing the cache when the price changes."
+    },
+    {
+      "skill": "ab-tests",
+      "q": "You run an A/B test for three days, peek, and see version B up 2%. You want to ship. What did you skip?",
+      "options": [
+        "Nothing. B is ahead",
+        "Fixing the success metric and run length up front, and having enough users to call it",
+        "Asking users which version they prefer",
+        "Testing on employees first"
+      ],
+      "answer": 1,
+      "why": "Stopping when the numbers look good inflates false wins. Decide the metric and duration before you start, and let it reach enough users."
+    },
+    {
+      "skill": "sql",
+      "q": "You need the number of orders per city for last August. Which query does that?",
+      "mono": true,
+      "options": [
+        "SELECT city, order_date FROM orders",
+        "SELECT COUNT(*) FROM orders",
+        "SELECT city, COUNT(*) FROM orders WHERE order_date >= '2026-08-01' AND order_date < '2026-09-01' GROUP BY city",
+        "SELECT city FROM orders WHERE COUNT(*) > 1"
+      ],
+      "answer": 2,
+      "why": "You need the date filter (WHERE), a count, and one row per city (GROUP BY). The others return raw rows, one total, or an invalid query."
+    },
+    {
+      "skill": "data-pipelines",
+      "q": "The dashboard says daily signups fell 40% overnight. There was no release, no outage, and support tickets are normal. What do you check first?",
+      "options": [
+        "Cancel the marketing campaign",
+        "Redesign the signup page",
+        "Wait a week to see if it recovers",
+        "Whether tracking or logging broke before assuming users changed"
+      ],
+      "answer": 3,
+      "why": "A number can be wrong while users are fine. When a metric jumps with no cause, first ask whether the data is real."
+    },
+    {
+      "skill": "ml-features",
+      "q": "Your video app's recommender is tuned to maximise watch time. Users watch more, but satisfaction survey scores are falling. What is the likely cause?",
+      "options": [
+        "The model is optimising the wrong objective. Watch time is not satisfaction",
+        "The model needs more computing power",
+        "The survey must be broken",
+        "Users are getting bored of videos in general"
+      ],
+      "answer": 0,
+      "why": "A model does exactly what you reward. If the target is watch time, it will find what keeps people watching, even if it makes them feel worse."
+    },
+    {
+      "skill": "nfrs",
+      "q": "A big sale is two weeks away. What is the right way to prepare the platform?",
+      "options": [
+        "Aim for 100% uptime on every feature",
+        "Set targets for speed, availability and security, load-test against them, and decide what may fail: recommendations can, checkout cannot",
+        "Add more features to attract more users",
+        "Trust it, because last year's sale went fine"
+      ],
+      "answer": 1,
+      "why": "You cannot protect everything equally. Pick the targets, test under load, and choose in advance which parts degrade gracefully."
+    },
+    {
+      "skill": "user-research",
+      "q": "You are interviewing people about a fitness app. Which question gets the most reliable answer?",
+      "options": [
+        "Would you use an app that reminds you to work out?",
+        "How much would you pay for this?",
+        "Tell me about the last time you skipped a workout.",
+        "Do you like our new design?"
+      ],
+      "answer": 2,
+      "why": "People are bad at predicting their own behaviour and polite about ideas. Ask about a real, recent moment and you get facts."
+    },
+    {
+      "skill": "prioritisation",
+      "q": "You have 20 feature requests. What do you do before scoring them?",
+      "options": [
+        "Filter to the ones that fit the strategy, then score",
+        "Build whatever the loudest executive asked for",
+        "Score all 20 with RICE straight away",
+        "Start with the easiest ones"
+      ],
+      "answer": 0,
+      "why": "Scoring cannot rescue an idea that does not fit where the product is going. Filter by strategy first, then use a framework to rank what is left."
+    },
+    {
+      "skill": "metrics",
+      "q": "Which is the best North Star metric for a note-taking app?",
+      "options": [
+        "Total sign-ups",
+        "App downloads",
+        "Page views",
+        "Weekly users who create notes and come back the next week"
+      ],
+      "answer": 3,
+      "why": "It measures real use and repeat use. Sign-ups, downloads and page views can all rise while nobody actually gets value."
+    },
+    {
+      "skill": "writing",
+      "q": "An engineer should be able to estimate your one-page spec without a meeting. Which line does it need?",
+      "options": [
+        "Pixel-level mockups of every screen",
+        "What is out of scope for this version",
+        "The full task list for the sprint",
+        "The team's holiday calendar"
+      ],
+      "answer": 1,
+      "why": "A good spec states the problem, who it is for, what success looks like, and what is left out. The last one is the most often forgotten and the one that stops scope creep."
+    },
+    {
+      "skill": "stakeholders",
+      "q": "Your launch will slip by two weeks. When and how do you tell leadership?",
+      "options": [
+        "Wait until the deadline in case the team catches up",
+        "Tell only the engineers, and let them pass it up",
+        "Tell them early, with the reason and the new plan",
+        "Tell them the reason later, once you know more"
+      ],
+      "answer": 2,
+      "why": "Bad news gets worse with age. Say it early, say why, and bring the new date. That is what makes people trust your next update."
+    },
+    {
+      "skill": "business",
+      "q": "A delivery order brings in ₹300 but costs ₹350 in delivery and discounts. Orders are growing 20% a month. What is the issue?",
+      "options": [
+        "None. Growth is all that matters",
+        "Each new order loses ₹50, so faster growth means faster losses",
+        "Marketing spend is too low",
+        "Customers should order more often"
+      ],
+      "answer": 1,
+      "why": "This is unit economics. If one more customer loses money, growth makes it worse until you change price, cost or mix."
+    }
+  ]
+}

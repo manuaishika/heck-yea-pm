@@ -7,6 +7,9 @@ import {
   categorySlug,
   categoryFromSlug,
   curveballs,
+  topics,
+  topicCounts,
+  topicFromSlug,
 } from '../data/questions'
 import { matchesQuery, queryTokens } from '../lib/search'
 import { useDebounced } from '../lib/useDebounced'
@@ -19,6 +22,7 @@ const chipOn = 'pill-on'
 const chipOff = ''
 
 const curveballCount = curveballs().length
+const topicTotals = topicCounts()
 
 export default function Browse() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -27,6 +31,7 @@ export default function Browse() {
   const rawCategory = searchParams.get('category') || ''
   const activeCategory = categoryFromSlug(rawCategory)
   const hardOnly = searchParams.get('hard') === '1'
+  const activeTopic = topicFromSlug(searchParams.get('topic') || '')
   const urlQuery = searchParams.get('q') || ''
 
   const [input, setInput] = useState(urlQuery)
@@ -70,9 +75,10 @@ export default function Browse() {
       (q) =>
         (!activeCategory || q.category === activeCategory) &&
         (!hardOnly || q.hard) &&
+        (!activeTopic || q.topic === activeTopic) &&
         matchesQuery(q, tokens)
     )
-  }, [activeCategory, hardOnly, debouncedInput])
+  }, [activeCategory, hardOnly, activeTopic, debouncedInput])
 
   function patchParams(mutate) {
     const next = new URLSearchParams(searchParams)
@@ -86,7 +92,10 @@ export default function Browse() {
   }
 
   const hasFilter =
-    Boolean(activeCategory) || hardOnly || debouncedInput.trim().length > 0
+    Boolean(activeCategory) ||
+    hardOnly ||
+    Boolean(activeTopic) ||
+    debouncedInput.trim().length > 0
   const linkTo = (q) => `/browse/${q.id}${location.search}`
 
   return (
@@ -115,9 +124,14 @@ export default function Browse() {
       <div className="mt-3 flex flex-wrap gap-2">
         <button
           type="button"
-          onClick={() => patchParams((p) => p.delete('category'))}
+          onClick={() =>
+            patchParams((p) => {
+              p.delete('category')
+              p.delete('topic')
+            })
+          }
           aria-pressed={!activeCategory}
-          className={`${chip} ${!activeCategory && !hardOnly ? chipOn : chipOff}`}
+          className={`${chip} ${!activeCategory && !hardOnly && !activeTopic ? chipOn : chipOff}`}
         >
           all {questions.length}
         </button>
@@ -154,6 +168,25 @@ export default function Browse() {
         >
           curveballs {curveballCount}
         </button>
+        {topics.map((t) => {
+          const on = activeTopic === t.slug
+          return (
+            <button
+              key={t.slug}
+              type="button"
+              onClick={() =>
+                patchParams((p) => {
+                  if (on) p.delete('topic')
+                  else p.set('topic', t.slug)
+                })
+              }
+              aria-pressed={on}
+              className={`${chip} ${on ? chipOn : chipOff}`}
+            >
+              {t.label} {topicTotals[t.slug]}
+            </button>
+          )
+        })}
       </div>
 
       <p aria-live="polite" className="label mt-5">
@@ -162,6 +195,7 @@ export default function Browse() {
           : `${results.length} of ${questions.length}`}
         {activeCategory ? ` · ${activeCategory.toLowerCase()}` : ''}
         {hardOnly ? ' · curveballs' : ''}
+        {activeTopic ? ` · ${topics.find((t) => t.slug === activeTopic).label}` : ''}
         {debouncedInput.trim() ? ` · "${debouncedInput.trim()}"` : ''}
       </p>
 

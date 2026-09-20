@@ -14,6 +14,9 @@ export const CATEGORIES = [
 
 export const CONTENT_TYPES = ['question']
 
+/** Optional cross-cutting tags, separate from the six categories. */
+export const TOPICS = ['system-design', 'ai']
+
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
 
 function fail(message) {
@@ -84,6 +87,10 @@ export function validateQuestions(data) {
     })
 
     if (typeof q.hard !== 'boolean') fail(`${at} is missing boolean "hard"`)
+
+    if (q.topic !== undefined && !TOPICS.includes(q.topic)) {
+      fail(`${at} has unknown topic "${q.topic}" — expected one of ${TOPICS.join(', ')}`)
+    }
   })
 
   return data

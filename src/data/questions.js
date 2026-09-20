@@ -4,7 +4,7 @@
 // To add a question, see README.md — edit questions.json only.
 
 import raw from './questions.json'
-import { validateQuestions, CATEGORIES } from './schema'
+import { validateQuestions, CATEGORIES, TOPICS } from './schema'
 
 validateQuestions(raw)
 
@@ -20,6 +20,7 @@ validateQuestions(raw)
  * @property {string} failureMode
  * @property {string[]} companies
  * @property {boolean} hard
+ * @property {'system-design' | 'ai'} [topic]
  */
 
 /** @type {Question[]} */
@@ -62,6 +63,24 @@ export function resolveQuestionId(param) {
 /** Questions in a given category, in bank order. */
 export function questionsInCategory(category) {
   return questions.filter((q) => q.category === category)
+}
+
+/** Cross-cutting topics, with the label shown on the filter pill. */
+export const topics = TOPICS.map((slug) => ({
+  slug,
+  label: slug === 'ai' ? 'AI' : slug.replace('-', ' '),
+}))
+
+/** Inverse lookup. Returns the topic slug, or null. */
+export function topicFromSlug(slug) {
+  return TOPICS.includes(slug) ? slug : null
+}
+
+/** { [topic]: count } */
+export function topicCounts() {
+  const counts = Object.fromEntries(TOPICS.map((t) => [t, 0]))
+  for (const q of questions) if (q.topic) counts[q.topic] += 1
+  return counts
 }
 
 /** The cross-cutting "curveball" set — pricing traps, scaling under constraint, incumbents. */

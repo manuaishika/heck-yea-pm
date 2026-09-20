@@ -173,6 +173,20 @@ export function validateResume(r) {
   })
   if (!arr(r.mistakes)) fail('resume.mistakes missing')
   if (!arr(r.checklist)) fail('resume.checklist missing')
+
+  const sm = r.sample
+  if (!str(sm?.note)) fail('resume.sample.note missing')
+  if (!str(sm?.header?.name) || !str(sm?.header?.line)) fail('resume.sample.header incomplete')
+  if (!arr(sm?.blocks)) fail('resume.sample.blocks missing')
+  sm.blocks.forEach((b, i) => {
+    if (!str(b.heading) || !arr(b.entries)) fail(`resume.sample.blocks[${i}] incomplete`)
+    b.entries.forEach((e, j) => {
+      if (!arr(e.bullets)) fail(`resume.sample.blocks[${i}].entries[${j}].bullets missing`)
+      e.bullets.forEach((bl, k) => {
+        if (!str(bl.text)) fail(`resume.sample.blocks[${i}].entries[${j}].bullets[${k}].text missing`)
+      })
+    })
+  })
   return r
 }
 
@@ -243,4 +257,44 @@ export function validateSkills(s) {
     })
   }
   return s
+}
+
+export function validateQuiz(q, skillSlugs) {
+  if (!q || typeof q !== 'object') fail('quiz.json is not an object')
+
+  if (!arr(q.bands)) fail('quiz.bands missing')
+  let prev = -1
+  q.bands.forEach((b, i) => {
+    if (!str(b.label) || !str(b.line)) fail(`quiz.bands[${i}] needs label and line`)
+    if (typeof b.min !== 'number' || b.min <= prev) fail(`quiz.bands[${i}].min must increase`)
+    prev = b.min
+  })
+  if (q.bands[0].min !== 0) fail('quiz.bands[0].min must be 0')
+
+  if (!arr(q.questions)) fail('quiz.questions missing')
+  const seen = new Set()
+  q.questions.forEach((item, i) => {
+    const at = `quiz.questions[${i}]`
+    if (!str(item.skill)) fail(`${at}.skill missing`)
+    if (!skillSlugs.includes(item.skill)) fail(`${at}.skill "${item.skill}" is not a skill in skills.json`)
+    if (seen.has(item.skill)) fail(`${at}: skill "${item.skill}" has more than one question`)
+    seen.add(item.skill)
+    if (!str(item.q)) fail(`${at}.q missing`)
+    if (!Array.isArray(item.options) || item.options.length < 3 || item.options.length > 5) {
+      fail(`${at}.options needs 3-5 choices`)
+    }
+    item.options.forEach((o, j) => {
+      if (!str(o)) fail(`${at}.options[${j}] empty`)
+    })
+    if (!Number.isInteger(item.answer) || item.answer < 0 || item.answer >= item.options.length) {
+      fail(`${at}.answer must be a valid option index`)
+    }
+    if (!str(item.why)) fail(`${at}.why missing`)
+  })
+  const missing = skillSlugs.filter((s) => !seen.has(s))
+  if (missing.length) fail(`quiz has no question for: ${missing.join(', ')}`)
+  if (q.bands[q.bands.length - 1].min >= q.questions.length) {
+    fail('quiz.bands: top band starts above the maximum score')
+  }
+  return q
 }

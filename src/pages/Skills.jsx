@@ -90,7 +90,7 @@ export default function Skills() {
             to="/skills/assess"
             className="btn !px-2.5 !py-0.5 !text-[0.8125rem] no-underline"
           >
-            Rate yourself
+            Take the quiz
           </Link>
         }
       />
