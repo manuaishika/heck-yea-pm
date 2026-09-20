@@ -38,11 +38,19 @@ export function readJSON(key, fallback) {
   }
 }
 
+let writeListener = null
+
+/** Register a callback fired after every successful write (used for cloud sync). */
+export function setWriteListener(fn) {
+  writeListener = fn
+}
+
 /** Returns true on success, false if the write could not be persisted. */
 export function writeJSON(key, value) {
   if (!storageAvailable) return false
   try {
     window.localStorage.setItem(key, JSON.stringify(value))
+    if (writeListener) writeListener(key)
     return true
   } catch {
     // quota exceeded or serialization failure — keep running without persistence

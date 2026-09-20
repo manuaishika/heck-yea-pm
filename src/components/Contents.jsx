@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../lib/auth'
 
 const chapters = [
   { n: '1', to: '/role', label: 'The role' },
@@ -57,6 +58,7 @@ function Group({ heading, items, onNavigate }) {
 
 /** The site's table of contents. Rendered in the desktop rail and the mobile sheet. */
 export default function Contents({ onNavigate }) {
+  const { enabled, user } = useAuth()
   return (
     <nav aria-label="Contents" className="text-sm">
       <ul>
@@ -83,6 +85,13 @@ export default function Contents({ onNavigate }) {
       <Group heading="Study" items={tools} onNavigate={onNavigate} />
 
       <ul className="mt-4 border-t-2 border-rule-hard pt-2">
+        {enabled && (
+          <li>
+            <NavLink to="/login" className={itemClass} onClick={onNavigate}>
+              {user ? 'Account' : 'Sign in'}
+            </NavLink>
+          </li>
+        )}
         <li>
           <NavLink to="/about" className={itemClass} onClick={onNavigate}>
             About

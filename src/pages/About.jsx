@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { authEnabled } from '../lib/supabase'
 import { questions } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
@@ -30,9 +31,20 @@ export default function About() {
           a few weeks to prepare.
         </p>
         <p>
-          <strong>No login, no paywall, no email capture.</strong> It loads and
-          it works. Your review progress and self-assessment stay in your
-          browser and are never sent anywhere.
+          {authEnabled ? (
+            <>
+              <strong>No paywall, and no account needed.</strong> It loads and
+              it works, and your saves, flashcard progress and quiz results stay
+              in your browser. If you choose to sign in, those three things sync
+              across your devices. Nothing else is collected.
+            </>
+          ) : (
+            <>
+              <strong>No login, no paywall, no email capture.</strong> It loads and
+              it works. Your saves, flashcard progress and quiz results stay in
+              your browser and are never sent anywhere.
+            </>
+          )}
         </p>
         <p>
           The question bank was built by hand from real interview reports. The

@@ -9,11 +9,12 @@ import {
   curveballs,
 } from '../data/questions'
 import { useHead } from '../lib/useHead'
+import { authEnabled } from '../lib/supabase'
 import { Page } from '../components/Page'
 
 const chapters = [
   ['/role', '1', 'The role', 'What a PM does. Startup vs MNC. What it is not.'],
-  ['/skills', '2', 'Skills', 'Technical and non-technical, with a self-assessment.'],
+  ['/skills', '2', 'Skills', 'Technical and non-technical, with a quiz on where you stand.'],
   ['/browse', '3', 'Question bank', `${questions.length} questions with a model answer and the mistake that sinks most candidates.`],
   ['/companies', '4', 'Companies', 'Interview loops for the MNCs and the Indian APM programs, round by round.'],
 ]
@@ -56,7 +57,7 @@ export default function Landing() {
   useHead({
     title: null,
     description:
-      'Free, no-login prep for your first PM interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
+      'Free prep for your first PM interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
     path: '/',
   })
   const counts = categoryCounts()
@@ -66,7 +67,10 @@ export default function Landing() {
       <h1 className="text-3xl sm:text-[3.5rem]">Prep for your first PM interview.</h1>
       <p className="prose-body mt-3 max-w-[34rem]">
         For final-year students applying to PM intern and APM roles — including
-        the Indian programs nobody else builds prep for. No login, no paywall.
+        the Indian programs nobody else builds prep for. No paywall.
+        {authEnabled
+          ? ' Sign in only if you want your progress on more than one device.'
+          : ' No login needed.'}
       </p>
       <p className="mt-5 flex flex-wrap gap-3">
         <Link

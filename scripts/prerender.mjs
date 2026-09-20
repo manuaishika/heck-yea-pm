@@ -23,7 +23,7 @@ const routes = {
   '/': {
     title: null,
     description:
-      'Free, no-login prep for your first PM interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
+      'Free prep for your first PM interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
   },
   '/role': {
     title: 'The role',
@@ -61,9 +61,9 @@ const routes = {
       'The technical and non-technical skills a PM interview tests, what a good answer sounds like for each, and how deep you need to go.',
   },
   '/skills/assess': {
-    title: 'Self-assessment',
+    title: 'Where do you stand?',
     description:
-      'Rate yourself on each PM skill and get an honest starting point for what to prepare first.',
+      'A 15-question quiz across the technical and non-technical PM skills, with a read on where you stand and what to fix first.',
   },
   '/browse': {
     title: 'Question bank',

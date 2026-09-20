@@ -1,6 +1,6 @@
 # Heck Yea PM
 
-Free, no-login interview prep for a first product manager role — PM intern and
+Free interview prep for a first product manager role — PM intern and
 APM programs, including the Indian ones (Flipkart, Zomato, Swiggy, Razorpay,
 Zepto, Meesho).
 
