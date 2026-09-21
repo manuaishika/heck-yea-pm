@@ -197,7 +197,7 @@ export default function ModeRadar({ modes }) {
                 y={ly - (lines.length - 1) * 6 + (sin > 0.5 ? 8 : sin < -0.5 ? -2 : 4)}
                 textAnchor={anchor}
                 fontFamily="var(--font-sans)"
-                fontSize="12"
+                fontSize="14"
                 fontWeight={on ? 700 : 500}
                 fill="var(--text)"
                 textDecoration={on ? 'underline' : 'none'}
@@ -209,7 +209,7 @@ export default function ModeRadar({ modes }) {
                 ))}
               </text>
               {/* generous hit area */}
-              <circle cx={lx} cy={ly} r="26" fill="transparent" />
+              <circle cx={lx} cy={ly} r="30" fill="transparent" />
             </g>
           )
         })}

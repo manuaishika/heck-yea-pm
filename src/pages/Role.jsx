@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { role } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
@@ -46,10 +45,6 @@ export default function Role() {
         </Row>
       </div>
 
-      <p className="mt-8 text-text-muted">
-        Next: <Link to="/skills">the skills this needs</Link>, or{' '}
-        <Link to="/careers">where you can do this job</Link>.
-      </p>
     </Page>
   )
 }

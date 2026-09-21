@@ -26,7 +26,7 @@ export default function India() {
                 href={p.url}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="label shrink-0 !text-text"
+                className="label inline-flex min-h-11 shrink-0 items-center !text-text md:min-h-0"
               >
                 careers page →
               </a>

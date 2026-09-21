@@ -24,7 +24,7 @@ export default function LoopFlow({ rounds }) {
               aria-current={idx === i ? 'step' : undefined}
               aria-label={`Round ${idx + 1}: ${round.name}`}
               onClick={() => go(idx)}
-              className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-button border text-body font-semibold ${
+              className={`flex size-11 shrink-0 items-center justify-center md:size-7 rounded-button border text-body font-semibold ${
                 idx === i
                   ? 'border-border bg-accent text-surface'
                   : idx < i

@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
 import { categorySlug } from '../../data/questions'
+import { CategoryTag } from '../ui'
 
 const order = { heavy: 0, medium: 1, light: 2 }
 
@@ -21,21 +21,19 @@ export default function WeightBars({ weights, standout = [] }) {
   return (
     <ul className="card divide-y divide-border">
       {sorted.map(([cat, level]) => (
-        <li key={cat} className="flex items-baseline justify-between gap-3 px-4 py-2">
-          <Link
+        <li key={cat} className="flex items-center justify-between gap-3 px-4 py-2">
+          <CategoryTag
+            category={cat}
             to={`/browse?category=${categorySlug(cat)}`}
-            className="text-text no-underline hover:text-accent"
-          >
-            {cat}
-            {standout.includes(cat) && (
-              <>
-                <span aria-hidden="true" className="ml-1 font-semibold text-accent">
-                  ★
-                </span>
-                <span className="sr-only"> (weighted more than at most companies)</span>
-              </>
-            )}
-          </Link>
+            suffix={
+              standout.includes(cat) && (
+                <>
+                  <span aria-hidden="true">★</span>
+                  <span className="sr-only"> (weighted more than at most companies)</span>
+                </>
+              )
+            }
+          />
           <span className={levelClass[level]}>{level}</span>
         </li>
       ))}

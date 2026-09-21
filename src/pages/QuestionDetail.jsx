@@ -8,7 +8,8 @@ import {
 } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import { Detail, Block, Bullets } from '../components/ui'
+import { Detail, Block, Bullets, CategoryTag } from '../components/ui'
+import MethodLinks from '../components/MethodLinks'
 import SaveButton from '../components/SaveButton'
 import CompanyMark from '../components/CompanyMark'
 import NotFound from './NotFound'
@@ -83,7 +84,12 @@ export default function QuestionDetail() {
           </Link>
         }
         title={q.question}
-        intro={`${q.category}${q.hard ? ' · curveball' : ''}`}
+        intro={
+          <span className="flex flex-wrap items-center gap-2">
+            <CategoryTag category={q.category} />
+            {q.hard && <span className="label">curveball</span>}
+          </span>
+        }
         aside={
           <div className="flex shrink-0 items-center gap-2">
             <CopyLink id={q.id} />
@@ -107,6 +113,7 @@ export default function QuestionDetail() {
         <Block label="Failure mode">
           <p>{q.failureMode}</p>
         </Block>
+        <MethodLinks question={q} />
       </div>
 
       {q.companies.length > 0 && (

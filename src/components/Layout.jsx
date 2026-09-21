@@ -34,8 +34,8 @@ export default function Layout() {
       </a>
 
       {/* mobile top bar */}
-      <div className="flex items-center justify-between border-b border-border bg-surface px-4 py-3 lg:hidden">
-        <Link to="/" className="font-semibold text-text no-underline hover:no-underline">
+      <div className="flex items-center justify-between border-b border-border bg-surface px-4 py-1 lg:hidden">
+        <Link to="/" className="inline-flex min-h-11 items-center font-semibold text-text no-underline hover:no-underline">
           Heck Yea PM
         </Link>
         <button

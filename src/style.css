@@ -177,6 +177,48 @@
     border-color: var(--accent);
   }
 
+  /* category pill: the category's tint as fill, its ink as text. Needs data-cat.
+     Filter state is aria-pressed / .pill-on: fill flips to the ink colour. */
+  .cat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 12px;
+    font-size: var(--text-body);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--c);
+    background: var(--c-tint);
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  a.cat-pill:hover,
+  button.cat-pill:hover {
+    border-color: var(--c);
+    text-decoration: none;
+  }
+  .cat-pill.pill-on,
+  .cat-pill[aria-pressed='true'] {
+    color: var(--surface);
+    background: var(--c);
+    border-color: var(--c);
+  }
+  /* non-interactive variant used inside rows */
+  .cat-pill.cat-pill-static {
+    padding: 0 8px;
+    font-size: var(--text-label);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    cursor: default;
+  }
+  /* an icon or mark coloured by its category */
+  .cat-ink {
+    color: var(--c);
+  }
+
   /* emphasis on a phrase that matters; also cancels the browser's <mark> fill */
   .hl {
     color: var(--text);
@@ -236,6 +278,39 @@
     border-left: 1px solid var(--accent);
     padding-left: 12px;
     margin: 12px 0;
+  }
+}
+
+/* graph hubs are SVG links: give keyboard focus a visible ring */
+.graph-hub {
+  cursor: pointer;
+  outline: none;
+}
+.graph-hub:focus-visible circle:last-of-type {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+/* phones: every control is at least 44px tall */
+@media (max-width: 767px) {
+  .btn,
+  .btn-sm,
+  .pill,
+  a.cat-pill,
+  button.cat-pill {
+    min-height: 44px;
+  }
+  input[type='search'],
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    min-height: 44px;
+    font-size: 16px;
+  }
+  h1,
+  h2 {
+    text-wrap: balance;
+    overflow-wrap: anywhere;
   }
 }
 

@@ -15,6 +15,7 @@ import { matchesQuery, queryTokens } from '../lib/search'
 import { useDebounced } from '../lib/useDebounced'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
+import { CategoryTag } from '../components/ui'
 import QuestionList from '../components/QuestionList'
 
 const chip = 'pill'
@@ -103,7 +104,7 @@ export default function Browse() {
       <PageHead
         chapter="Chapter 3"
         title="Question bank"
-        intro={`${questions.length} questions across six categories. Expand one to read it here; open its page to share the link.`}
+        intro={`${questions.length} questions across ${categories.length} categories.`}
       />
 
       <div className="mt-4">
@@ -139,20 +140,18 @@ export default function Browse() {
           const slug = categorySlug(cat)
           const on = activeCategory === cat
           return (
-            <button
+            <CategoryTag
               key={cat}
-              type="button"
+              category={cat}
+              count={counts[cat]}
+              pressed={on}
               onClick={() =>
                 patchParams((p) => {
                   if (on) p.delete('category')
                   else p.set('category', slug)
                 })
               }
-              aria-pressed={on}
-              className={`${chip} ${on ? chipOn : chipOff}`}
-            >
-              {cat.toLowerCase()} {counts[cat]}
-            </button>
+            />
           )
         })}
         <button

@@ -31,8 +31,22 @@ export default function Careers() {
 
       {/* adjacent roles */}
       <h2 className="mt-10 text-section">PM vs the roles next to it</h2>
-      <div className="mt-3 overflow-x-auto">
-        <table className="w-full min-w-[34rem] border-collapse text-body">
+      <ul className="mt-3 divide-y divide-border border-y border-border md:hidden">
+        {careers.adjacent.map((r) => (
+          <li key={r.role} className="py-3">
+            <p className="font-semibold text-text">{r.role}</p>
+            <p className="mt-1 text-text-muted">
+              <Rich>{r.oneLine}</Rich>
+            </p>
+            <p className="label mt-2">vs PM</p>
+            <p className="mt-1 text-text-muted">
+              <Rich>{r.vsPm}</Rich>
+            </p>
+          </li>
+        ))}
+      </ul>
+      <div className="mt-3 hidden md:block">
+        <table className="w-full border-collapse text-body">
           <thead>
             <tr className="border-b border-border text-left">
               <th className="w-40 py-2 pr-3 font-semibold">Role</th>
@@ -63,12 +77,12 @@ export default function Careers() {
 
       {/* ladder */}
       <h2 className="mt-10 text-section">The ladder</h2>
-      <div className="mt-3 overflow-x-auto">
-        <table className="w-full min-w-[30rem] border-collapse text-body">
+      <div className="mt-3">
+        <table className="w-full border-collapse text-body">
           <thead>
             <tr className="border-b border-border text-left">
               <th className="py-2 pr-3 font-semibold">Level</th>
-              <th className="w-16 py-2 pr-3 font-semibold">Years</th>
+              <th className="py-2 pr-3 font-semibold">Years</th>
               <th className="py-2 font-semibold">Focus</th>
             </tr>
           </thead>

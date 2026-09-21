@@ -54,7 +54,7 @@ function Question({ item, index, chosen, onPick, onNext, isLast }) {
                 type="button"
                 disabled={answered}
                 onClick={() => onPick(i)}
-                className={`flex w-full items-start gap-3 rounded-button border border-border px-3 py-2 text-left text-body ${state} ${
+                className={`flex min-h-11 w-full items-start gap-3 rounded-button border border-border px-3 py-2 text-left text-body ${state} ${
                   item.mono ? 'font-mono text-body' : ''
                 }`}
               >

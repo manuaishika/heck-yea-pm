@@ -10,6 +10,7 @@ import { useFlashcardSession } from '../lib/useFlashcardSession'
 import { useReviews } from '../lib/useReviews'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
+import { CategoryTag } from '../components/ui'
 
 function shuffle(arr) {
   const a = [...arr]
@@ -65,9 +66,11 @@ function Picker({ onStart, reviewIds }) {
                 type="checkbox"
                 checked={selected.has(cat)}
                 onChange={() => toggle(cat)}
-                className="accent-accent"
+                className="size-5 accent-accent"
               />
-              <span className="flex-1 text-text">{cat}</span>
+              <span className="flex-1">
+                <CategoryTag category={cat} />
+              </span>
               <span className="label">{counts[cat]}</span>
             </label>
           </li>
@@ -212,9 +215,12 @@ function Deck({ session, prev, next, finish }) {
           className="card min-h-52 flex-1 p-4 text-left"
         >
           <span key={String(showBack)} className="flip block">
-          <span className="label block">
-            {q.category}
-            {q.hard ? ' · curveball' : ''} · {showBack ? 'answer' : 'question'}
+          <span className="flex flex-wrap items-center gap-2">
+            <CategoryTag category={q.category} />
+            <span className="label">
+              {q.hard ? 'curveball · ' : ''}
+              {showBack ? 'answer' : 'question'}
+            </span>
           </span>
           {!showBack ? (
             <span className="mt-3 block text-body text-text">{q.question}</span>
@@ -261,8 +267,8 @@ function Deck({ session, prev, next, finish }) {
         </button>
       </div>
 
-      <p className="mt-3 flex items-center justify-between text-body">
-        <Link to={`/browse/${q.id}`} className="font-semibold">
+      <p className="mt-3 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-body">
+        <Link to={`/browse/${q.id}`} className="whitespace-nowrap font-semibold">
           Full answer →
         </Link>
         <span className="label">tap card to flip · swipe to move</span>

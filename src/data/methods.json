@@ -1,0 +1,292 @@
+{
+  "methods": [
+    {
+      "slug": "star-car",
+      "name": "STAR / CAR",
+      "categories": ["Behavioral"],
+      "focus": "Any \"tell me about a time\" question",
+      "when": "Any question that starts with \"describe a time\" or \"tell me about a situation\".",
+      "steps": [
+        ["Situation", "One or two lines of context: where, when, what was at stake."],
+        ["Task", "Your own responsibility in it, not the team's."],
+        ["Action", "What you did, step by step. This is most of the answer."],
+        ["Result", "The outcome with a number, and one thing you would change."],
+        ["CAR", "Short on time? Drop Task: Context, Action, Result."]
+      ],
+      "example": {
+        "question": "deliver-against-tight-timelines",
+        "work": [
+          ["Situation", "A placement-portal project due in five days, team of four, two exams in between."],
+          ["Task", "I owned the backend: login and job-listing APIs by day 3 so the frontend could plug in."],
+          ["Action", "Cut scope to three flows, wrote the API contract first so the frontend could start in parallel, and replaced long meetings with a 20-minute daily check-in."],
+          ["Result", "Shipped on day 5 with all three flows; 40 classmates used it in week one. I would flag the scope cut on day 1, not day 2."]
+        ]
+      },
+      "failure": "Spending most of the time on the situation, then closing with \"and it went well\". The action is what is scored, so it should be well over half the answer, and it should say \"I\", not \"we\"."
+    },
+    {
+      "slug": "sbi",
+      "name": "SBI",
+      "categories": ["Behavioral"],
+      "narrow": ["feedback", "conflict"],
+      "focus": "Feedback and conflict questions",
+      "when": "Questions about giving or receiving feedback, or about a disagreement with a colleague.",
+      "steps": [
+        ["Situation", "When and where it happened."],
+        ["Behaviour", "What you observed. Facts only, no judgement of the person."],
+        ["Impact", "The effect it had on the team, the product, or you."],
+        ["Next step", "What you asked for or agreed, and what changed after."]
+      ],
+      "example": {
+        "question": "give-feedback-to-a-colleague",
+        "work": [
+          ["Situation", "In Tuesday's project review, a teammate presented the analysis."],
+          ["Behaviour", "The deck had eleven charts and no recommendation, and people kept asking what to do with them."],
+          ["Impact", "The meeting ran 20 minutes over and we left without a decision."],
+          ["Next step", "I suggested leading with the one-line recommendation and the two charts behind it. He tried it the next week and the decision took 10 minutes."]
+        ]
+      },
+      "failure": "Describing character instead of behaviour: \"he was careless\" instead of \"the deck had no recommendation\". The first is an opinion, the second is something the interviewer can picture."
+    },
+    {
+      "slug": "circles",
+      "name": "CIRCLES",
+      "categories": ["Product Design"],
+      "focus": "Open-ended design questions",
+      "when": "\"Design X\" or \"How would you build Y\" questions where you have to choose a user and a problem first.",
+      "steps": [
+        ["Comprehend", "Clarify the product, the goal and the constraints."],
+        ["Identify", "List the customer segments, then pick one."],
+        ["Report", "Their needs and pain points."],
+        ["Cut", "Prioritise: pick the one need that matters most."],
+        ["List", "Three or four distinct solutions."],
+        ["Evaluate", "The trade-offs of each: effort, risk, impact."],
+        ["Summarise", "Your recommendation and how you would measure it."]
+      ],
+      "example": {
+        "question": "design-for-elderly-users",
+        "work": [
+          ["Comprehend", "Assume a smartphone app in India. Is the goal safety or independence? Ask."],
+          ["Identify", "Over-60s living alone, over-60s living with family, caregivers. Pick over-60s living alone."],
+          ["Report", "Small text, forgetting medicines, slow to get help."],
+          ["Cut", "Missed medicines: most frequent, highest risk."],
+          ["List", "Large-print reminder with a photo of the pill; voice reminder in their language; a nudge to family when a dose is missed."],
+          ["Evaluate", "Voice is the easiest to adopt but needs accuracy. The family nudge depends on a second person."],
+          ["Summarise", "Ship the voice reminder first, the family nudge second. Success is doses confirmed per week."]
+        ]
+      },
+      "failure": "Reciting the seven letters out loud like a checklist instead of using them to structure your thinking. The interviewer wants to hear a user, a problem and a choice, not the acronym."
+    },
+    {
+      "slug": "user-pain-solution",
+      "name": "User → pain → solution → metrics",
+      "categories": ["Product Design"],
+      "narrow": ["improve", "redesign", "better", "feature", "favorite"],
+      "focus": "\"Improve X\" questions",
+      "when": "Short improvement questions where CIRCLES would be too heavy: \"How would you improve Spotify?\"",
+      "steps": [
+        ["User", "Who exactly, and in what moment."],
+        ["Pain", "The specific frustration and how often it happens."],
+        ["Solution", "One change that removes it, and what you would leave out."],
+        ["Metrics", "One number that moves if it works, plus one guardrail."]
+      ],
+      "example": {
+        "question": "improve-spotify",
+        "work": [
+          ["User", "A commuter who plays music on the way to work with patchy signal."],
+          ["Pain", "Assumed, to validate: songs stall mid-commute. A few times a week."],
+          ["Solution", "Auto-download the day's queue over wifi before they leave, and mark which songs are safe offline."],
+          ["Metrics", "Share of commute sessions with no playback failure. Guardrail: storage used."]
+        ]
+      },
+      "failure": "Listing five features instead of one fix tied to one pain. Also: picking a product because it sounds impressive. Use one you open every day; depth beats an impressive-sounding choice."
+    },
+    {
+      "slug": "north-star",
+      "name": "North Star + guardrails",
+      "categories": ["Analytics"],
+      "narrow": ["metric", "success", "measure", "okr", "engagement"],
+      "focus": "\"How would you measure success\" questions",
+      "when": "Any question asking which metrics you would track for a product or feature.",
+      "steps": [
+        ["Goal", "The product's purpose in one line."],
+        ["North Star", "The one metric that best captures value delivered to users."],
+        ["Inputs", "Three or four metrics you can move that drive the North Star."],
+        ["Guardrails", "Metrics that must not get worse: quality, speed, trust, cost."],
+        ["Conflict", "Say what you would do if the North Star rises while a guardrail falls."]
+      ],
+      "example": {
+        "question": "measure-success-post-launch",
+        "work": [
+          ["Goal", "A one-tap reorder for repeat grocery shoppers."],
+          ["North Star", "Weekly reorders completed through the feature."],
+          ["Inputs", "Discovery rate, tap-to-order conversion, share of baskets left unchanged."],
+          ["Guardrails", "Cancellation rate, delivery time, support tickets."],
+          ["Conflict", "If reorders rise but cancellations rise faster, pause and fix basket accuracy."]
+        ]
+      },
+      "failure": "Listing ten metrics with no priority, or choosing a vanity metric (sign-ups, page views) as the North Star. One metric, defended, beats a dashboard."
+    },
+    {
+      "slug": "aarrr",
+      "name": "AARRR",
+      "categories": ["Analytics"],
+      "narrow": ["metric", "engagement", "measure", "success"],
+      "focus": "Funnel and growth metrics",
+      "when": "Questions about growth, engagement, or where users drop off across the lifetime of a product.",
+      "steps": [
+        ["Acquisition", "How users arrive."],
+        ["Activation", "Whether they reach the first moment of value."],
+        ["Retention", "Whether they come back."],
+        ["Referral", "Whether they bring others."],
+        ["Revenue", "Whether they pay."]
+      ],
+      "example": {
+        "question": "metrics-for-user-engagement",
+        "work": [
+          ["Acquisition", "Installs by channel."],
+          ["Activation", "Share who finish the first lesson on day 1."],
+          ["Retention", "Day-7 and day-30 return rate."],
+          ["Referral", "Invites sent per active user."],
+          ["Revenue", "Free-to-paid conversion."],
+          ["Pick one", "If activation is 30%, engagement work starts there, not at acquisition."]
+        ]
+      },
+      "failure": "Reading out one metric per stage and stopping. The answer is the stage you would fix first for this product, and why."
+    },
+    {
+      "slug": "heart",
+      "name": "HEART",
+      "categories": ["Analytics"],
+      "narrow": ["measure", "success", "engagement", "metric", "feature"],
+      "focus": "Experience metrics (Google uses this)",
+      "when": "Measuring the quality of a user experience or a single feature. Google uses it, so expect it in Google loops.",
+      "steps": [
+        ["Happiness", "Satisfaction: ratings, NPS, thumbs up."],
+        ["Engagement", "How often and how deeply people use it."],
+        ["Adoption", "New users trying the feature."],
+        ["Retention", "Users still using it later."],
+        ["Task success", "Completion rate, time taken, error rate."],
+        ["Each one", "Goal, then signal, then metric."]
+      ],
+      "example": {
+        "question": "measure-an-ai-feature",
+        "work": [
+          ["Happiness", "Thumbs-up rate on answers."],
+          ["Engagement", "Questions per active user per week."],
+          ["Adoption", "Share of users who try it in their first week."],
+          ["Retention", "Users still asking in week 4."],
+          ["Task success", "Answer accepted without a rephrase or a human handoff."],
+          ["Lead with", "Task success and happiness for an AI feature. Add the rest only if asked."]
+        ]
+      },
+      "failure": "Using all five for everything. Pick the two or three that fit the feature and say why the others matter less."
+    },
+    {
+      "slug": "metric-drop",
+      "name": "Metric-drop diagnosis",
+      "categories": ["Analytics"],
+      "narrow": ["drop", "declin", "fell", "down"],
+      "focus": "\"Orders dropped 20%\" questions",
+      "when": "Any question that says a metric fell and asks you to find out why.",
+      "steps": [
+        ["Confirm", "Is the drop real? Check tracking, the data pipeline, and normal week-to-week noise."],
+        ["Segment", "Platform, region, new vs existing users, cohort."],
+        ["Funnel", "Find the step where users are lost."],
+        ["Internal vs external", "Releases, bugs, pricing and outages on our side; competitors, holidays and partners on theirs."],
+        ["Hypothesis", "One cause, how to test it cheaply, and what you would do next."]
+      ],
+      "example": {
+        "question": "flipkart-orders-drop-30",
+        "work": [
+          ["Confirm", "Compare with the same day last week and check the tracking is intact."],
+          ["Segment", "Platform, city, category, new vs repeat."],
+          ["Funnel", "Sessions, product views, cart, checkout, payment. Where did it start?"],
+          ["Internal", "Last night's app release, a payment gateway error, a promo change."],
+          ["External", "A sale ending, a competitor's sale, a regional outage."],
+          ["Hypothesis", "Checkout success fell on Android after the release. Check crash and payment logs, roll back if confirmed."]
+        ]
+      },
+      "failure": "Naming a cause in the first ten seconds (\"must be a bug\"). The method is the answer: narrow it with segments first, then guess."
+    },
+    {
+      "slug": "rice-moscow-kano",
+      "name": "RICE / MoSCoW / Kano",
+      "categories": ["Strategy"],
+      "narrow": ["prioriti", "roadmap", "requirement", "feature"],
+      "focus": "Prioritisation",
+      "when": "Questions about choosing what to build first, planning a roadmap, or cutting scope.",
+      "steps": [
+        ["Goal and limit", "The goal for the quarter and the constraint: people, time, money."],
+        ["RICE", "Score Reach × Impact × Confidence ÷ Effort to rank a long backlog."],
+        ["MoSCoW", "Must, should, could, won't: cut scope for a fixed deadline."],
+        ["Kano", "Separate basics, performance features and delighters."],
+        ["Sense-check", "Does the top of the list serve the goal? Say what you would cut."]
+      ],
+      "example": {
+        "question": "prioritize-product-features",
+        "work": [
+          ["Goal and limit", "Raise repeat orders this quarter. Two engineers, six weeks."],
+          ["Pick the tool", "A long backlog, so RICE."],
+          ["Score", "One-tap reorder: 60,000 users × impact 2 × 80% ÷ 1 month = 96,000. Dark mode: 20,000 × 0.5 × 90% ÷ 2 months = 4,500."],
+          ["Sense-check", "Reorder serves the goal directly."],
+          ["Cut", "Dark mode moves to next quarter."]
+        ]
+      },
+      "failure": "Computing a RICE score from invented numbers and presenting the output as the answer. The scores are a way to show your reasoning, so say where each number came from."
+    },
+    {
+      "slug": "tam-sam-som",
+      "name": "TAM / SAM / SOM",
+      "categories": ["Strategy"],
+      "narrow": ["estimate", "market size", "monetize", "pricing"],
+      "focus": "Estimation and market size",
+      "when": "Market-size, pricing and \"how big is this opportunity\" questions.",
+      "steps": [
+        ["TAM", "Total demand if everyone who could buy did."],
+        ["SAM", "The part your product, geography and segment can actually serve."],
+        ["SOM", "The share you can realistically win in one to three years."],
+        ["Top-down", "Start from a large population and filter it."],
+        ["Bottom-up", "Start from one customer and multiply: users × conversion × price."],
+        ["Cross-check", "If the two disagree, find the assumption that is off."]
+      ],
+      "example": {
+        "question": "market-size-and-pricing-strategy",
+        "work": [
+          ["TAM", "A study-planner app for Indian college students: ~40M students."],
+          ["SAM", "Smartphone users in metro and English-medium colleges: ~30% → 12M."],
+          ["SOM", "1% in year two → 120,000 users."],
+          ["Bottom-up", "120,000 × 5% pay × ₹99 × 12 months → ~₹71 lakh a year."],
+          ["Pricing", "Anchor on a subscription students already pay for. Test ₹99 against ₹149."]
+        ]
+      },
+      "failure": "Quoting a huge top-down number (\"1% of India is ₹X crore\") with no bottom-up check. Interviewers distrust a market size that was never tested from the other side."
+    },
+    {
+      "slug": "three-cs",
+      "name": "3Cs",
+      "categories": ["Strategy"],
+      "narrow": ["should", "stand out", "competitor", "launching", "pivot", "align"],
+      "focus": "Market entry and competitive strategy",
+      "when": "\"Should we enter X\" or \"how do we stand out\" questions.",
+      "steps": [
+        ["Customer", "Who they are, what they need, how many."],
+        ["Company", "Our strengths, assets and limits."],
+        ["Competitors", "Who else serves them, and where they are weak."],
+        ["Overlap", "The place where we can serve a need competitors do not."],
+        ["Decision", "Go or no-go, and the first move."]
+      ],
+      "example": {
+        "question": "should-razorpay-build-upi-app",
+        "work": [
+          ["Customer", "Consumers already use PhonePe, Google Pay and Paytm. Razorpay's customers are merchants."],
+          ["Company", "Strong merchant relationships and payments infrastructure. No consumer brand."],
+          ["Competitors", "Consumer UPI apps are free, heavily incentivised and habitual."],
+          ["Overlap", "The merchant side: UPI checkout and collection for existing merchants."],
+          ["Decision", "No consumer app. Deepen UPI for merchants."]
+        ]
+      },
+      "failure": "Describing each C in isolation and never joining them. Skipping Company is the usual gap: the answer depends on what this company is already good at."
+    }
+  ]
+}

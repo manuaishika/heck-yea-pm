@@ -15,6 +15,7 @@ const SITE = 'Heck Yea PM'
 const read = (f) => JSON.parse(readFileSync(join(dataDir, f), 'utf8'))
 const questions = read('questions.json')
 const companies = read('companies.json').companies
+const methods = read('methods.json').methods
 
 const clip = (s, n = 155) => s.replace(/\s+/g, ' ').trim().slice(0, n)
 
@@ -80,6 +81,11 @@ const routes = {
     description:
       'Study the PM question bank as flashcards. Mark each card known or needs review; your progress is saved on your device.',
   },
+  '/methods': {
+    title: 'Methods',
+    description:
+      'The answering frameworks PM candidates use: STAR, CIRCLES, North Star, AARRR, HEART, RICE, TAM/SAM/SOM and more, each with steps and a worked example.',
+  },
   '/about': {
     title: 'About',
     description:
@@ -94,6 +100,12 @@ for (const q of questions) {
   routes[`/browse/${q.id}`] = {
     title: clip(q.question, 70),
     description: clip((answer?.points || []).join('. ') || q.question),
+  }
+}
+for (const m of methods) {
+  routes[`/methods/${m.slug}`] = {
+    title: `${m.name} — answering method`,
+    description: clip(`${m.when} Steps, a worked example, and the common failure.`),
   }
 }
 for (const c of companies) {

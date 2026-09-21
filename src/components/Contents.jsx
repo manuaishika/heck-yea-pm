@@ -9,6 +9,7 @@ const chapters = [
 ]
 
 const library = [
+  { to: '/methods', label: 'Methods' },
   { to: '/guesstimates', label: 'Guesstimates' },
   { to: '/resume', label: 'Resume' },
   { to: '/careers', label: 'Careers & paths' },
@@ -20,7 +21,7 @@ const library = [
 
 function chapterClass({ isActive }) {
   return [
-    'flex items-baseline gap-3 rounded-button px-3 py-2 no-underline',
+    'flex min-h-11 items-center gap-3 rounded-button px-3 py-2 no-underline lg:min-h-0',
     isActive
       ? 'bg-accent font-semibold text-surface hover:no-underline'
       : 'text-text hover:bg-page hover:no-underline',
@@ -29,7 +30,7 @@ function chapterClass({ isActive }) {
 
 function libraryClass({ isActive }) {
   return [
-    'block rounded-button px-3 py-1 no-underline hover:text-text hover:no-underline',
+    'flex min-h-11 items-center rounded-button px-3 py-1 no-underline hover:text-text hover:no-underline lg:min-h-0',
     isActive ? 'font-semibold text-text' : 'text-text-muted',
   ].join(' ')
 }
@@ -44,7 +45,7 @@ export default function Sidebar({ onNavigate }) {
   return (
     <div className="flex h-full min-h-0 flex-col">
       <div className="px-3">
-        <Link to="/" onClick={onNavigate} className="text-section font-semibold text-text no-underline hover:no-underline">
+        <Link to="/" onClick={onNavigate} className="inline-flex min-h-11 items-center text-section font-semibold text-text no-underline hover:no-underline lg:min-h-0">
           Heck Yea PM
         </Link>
         <span aria-hidden="true" className="mt-1 block h-0.5 w-6 bg-accent" />

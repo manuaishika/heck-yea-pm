@@ -16,6 +16,7 @@ import {
   validateResources,
   validateQuiz,
 } from '../src/data/guides-schema.js'
+import { validateMethods } from '../src/lib/methods-schema.js'
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -38,6 +39,11 @@ const checks = [
   ['guesstimates.json', (d) => validateGuesstimates(d), () => 'guesstimates guide'],
   ['resume.json', (d) => validateResume(d), (d) => `${d.checklist.length}-point checklist`],
   ['resources.json', (d) => validateResources(d), (d) => `${d.groups.length} resource groups`],
+  [
+    'methods.json',
+    (d) => validateMethods(d, load('questions.json').map((q) => q.id)),
+    (d) => `${d.methods.length} methods`,
+  ],
   [
     'quiz.json',
     (d) => {

@@ -14,6 +14,8 @@ const India = lazy(() => import('./pages/India'))
 const Guesstimates = lazy(() => import('./pages/Guesstimates'))
 const Resume = lazy(() => import('./pages/Resume'))
 const Resources = lazy(() => import('./pages/Resources'))
+const Methods = lazy(() => import('./pages/Methods'))
+const MethodDetail = lazy(() => import('./pages/MethodDetail'))
 const Browse = lazy(() => import('./pages/Browse'))
 const QuestionDetail = lazy(() => import('./pages/QuestionDetail'))
 const Companies = lazy(() => import('./pages/Companies'))
@@ -48,6 +50,8 @@ export default function App() {
             <Route path="guesstimates" element={<Guesstimates />} />
             <Route path="resume" element={<Resume />} />
             <Route path="resources" element={<Resources />} />
+            <Route path="methods" element={<Methods />} />
+            <Route path="methods/:slug" element={<MethodDetail />} />
             <Route path="browse" element={<Browse />} />
             <Route path="browse/:id" element={<QuestionDetail />} />
             <Route path="companies" element={<Companies />} />

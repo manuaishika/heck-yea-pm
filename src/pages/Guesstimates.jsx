@@ -2,26 +2,9 @@ import { Link } from 'react-router-dom'
 import { guesstimates } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import { Row, Detail, Block } from '../components/ui'
+import { Row, Detail, Block, WorkTable } from '../components/ui'
 import Steps from '../components/diagrams/Steps'
 import Tree from '../components/diagrams/Tree'
-
-function WorkTable({ rows }) {
-  return (
-    <table className="w-full border-collapse">
-      <tbody>
-        {rows.map(([label, value]) => (
-          <tr key={label} className="border-b border-border align-top last:border-0">
-            <th scope="row" className="w-2/5 py-2 pr-3 text-left font-normal text-text">
-              {label}
-            </th>
-            <td className="py-2 text-text-muted">{value}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  )
-}
 
 function Question({ q }) {
   return (

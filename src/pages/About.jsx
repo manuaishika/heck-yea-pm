@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom'
 import { authEnabled } from '../lib/supabase'
-import { questions } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 
@@ -23,14 +21,6 @@ export default function About() {
       />
 
       <div className="prose-body mt-4 space-y-3">
-        <p>
-          Four chapters — the role, the skills, a{' '}
-          <Link to="/browse">{questions.length}-question bank</Link>, and{' '}
-          <Link to="/companies">company loops</Link> — plus a flashcard mode that
-          tracks what you know. It is built for a final-year
-          student in India applying to PM intern and APM roles, on a phone, with
-          a few weeks to prepare.
-        </p>
         <p>
           {authEnabled ? (
             <>
@@ -65,10 +55,6 @@ export default function About() {
           <a href={REPO} target="_blank" rel="noreferrer noopener">
             {REPO.replace('https://', '')}
           </a>
-        </p>
-        <p>
-          All content lives in typed data files with a documented shape; the
-          README covers how to add each type.
         </p>
       </div>
     </Page>
