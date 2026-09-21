@@ -139,6 +139,33 @@
 }
 
 /* phones: body text is 16px (also stops iOS zooming into inputs), headings step down */
+/* the same six colour pairs under neutral names, for boxes that are not categories
+   (guesstimate kinds, MECE buckets). data-tone="1".."6" on any element. */
+[data-tone='1'] {
+  --c: var(--cat-behavioral);
+  --c-tint: var(--cat-behavioral-tint);
+}
+[data-tone='2'] {
+  --c: var(--cat-product-design);
+  --c-tint: var(--cat-product-design-tint);
+}
+[data-tone='3'] {
+  --c: var(--cat-strategy);
+  --c-tint: var(--cat-strategy-tint);
+}
+[data-tone='4'] {
+  --c: var(--cat-analytics);
+  --c-tint: var(--cat-analytics-tint);
+}
+[data-tone='5'] {
+  --c: var(--cat-technical);
+  --c-tint: var(--cat-technical-tint);
+}
+[data-tone='6'] {
+  --c: var(--cat-general);
+  --c-tint: var(--cat-general-tint);
+}
+
 @media (max-width: 767px) {
   :root {
     --text-page: 1.375rem; /* 22 */
