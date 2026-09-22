@@ -1,125 +1,121 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  motion,
-  useAnimation,
-  useMotionValueEvent,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-} from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
 import { useViewed } from '../lib/useViewed'
 
 const SPRING = { type: 'spring', stiffness: 260, damping: 22 }
+// the invisible trigger line: ~45% down the viewport
+const TRIGGER_MARGIN = '-45% 0px -54% 0px'
 
-/** A node's dot: springs in with a slight overshoot once the travelling
- * marker reaches it; fills once its card has actually been viewed
- * (persisted — see useViewed), not just animated in for the session. */
-function NodeDot({ id, threshold, progress, className = '' }) {
-  const { isViewed } = useViewed()
-  const controls = useAnimation()
+/**
+ * Scroll-spy for one flowchart: which of its N stages is "active" right
+ * now, by watching each stage's element cross a line at ~45% of the
+ * viewport. -1 = the trigger line hasn't reached the first stage yet;
+ * N = it has passed the last one (everything's completed).
+ */
+function useActiveStage(refs) {
+  const [activeIndex, setActiveIndex] = useState(-1)
+  const activeRef = useRef(-1)
+  activeRef.current = activeIndex
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return undefined
+    const els = refs.map((r) => r.current).filter(Boolean)
+    if (els.length === 0) return undefined
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const i = els.indexOf(entry.target)
+          if (i === -1) continue
+          if (entry.isIntersecting) {
+            setActiveIndex(i)
+          } else if (entry.boundingClientRect.top < 0 && activeRef.current === i) {
+            // this stage has scrolled up past the trigger line — advance
+            setActiveIndex(i + 1)
+          } else if (entry.boundingClientRect.top > 0 && activeRef.current === i) {
+            // scrolled back above it
+            setActiveIndex(i - 1)
+          }
+        }
+      },
+      { rootMargin: TRIGGER_MARGIN, threshold: 0 }
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [refs])
+
+  return activeIndex
+}
+
+/** A node's dot: hollow while upcoming, fills with a glow pulse when it
+ * becomes active, fills with a check once completed (and persists that —
+ * see useViewed — so a repeat visit shows real progress, not a re-animation). */
+function NodeDot({ id, status, className = '' }) {
+  const { isViewed, markViewed } = useViewed()
   const reduce = useReducedMotion()
-  const fired = useRef(false)
 
-  useMotionValueEvent(progress, 'change', (v) => {
-    if (!fired.current && v >= threshold) {
-      fired.current = true
-      if (!reduce) controls.start({ scale: [0.5, 1.2, 1] })
-    }
-  })
+  useEffect(() => {
+    if (status === 'completed') markViewed(id)
+  }, [status, id, markViewed])
+
+  const completed = status === 'completed' || isViewed(id)
+  const active = status === 'active'
 
   return (
     <motion.span
       aria-hidden="true"
-      animate={controls}
-      transition={SPRING}
-      initial={{ scale: reduce ? 1 : 0.5 }}
-      className={`z-10 size-3.5 shrink-0 rounded-pill border-2 bg-surface ${
-        isViewed(id) ? 'border-accent bg-accent' : 'border-border'
+      initial={false}
+      animate={
+        reduce
+          ? undefined
+          : active
+            ? { scale: [1, 1.35, 1], boxShadow: ['0 0 0 0 var(--accent)', '0 0 0 6px transparent', '0 0 0 0 transparent'] }
+            : { scale: 1 }
+      }
+      transition={active ? { duration: 0.7, ease: 'easeOut' } : SPRING}
+      className={`z-10 grid shrink-0 place-items-center rounded-pill border-2 ${
+        completed
+          ? 'size-4 border-accent bg-accent text-surface'
+          : active
+            ? 'size-4 border-accent bg-accent'
+            : 'size-3.5 border-border bg-surface'
       } ${className}`}
-    />
+    >
+      {completed && (
+        <svg width="8" height="8" viewBox="0 0 10 10" aria-hidden="true">
+          <path d="M1.5 5.2 4 7.7 8.5 2.3" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      )}
+    </motion.span>
   )
 }
 
-/** One stage card. Marks itself viewed once ~60% on screen; slides in from
- * its side as it enters the viewport. */
-function StageCard({ id, label, side, children }) {
-  const { markViewed } = useViewed()
+/** One stage card: collapsed to its summary while upcoming/completed, full
+ * brightness and expanded to its deeper layer while active. Reduced motion
+ * keeps the same state changes, just without the slide/scale animation. */
+function StageCard({ elRef, id, label, side, status, summary, deeper }) {
   const reduce = useReducedMotion()
-  const ref = useRef(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el || typeof IntersectionObserver === 'undefined') return
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) markViewed(id)
-      },
-      { threshold: 0.6 }
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [id, markViewed])
+  const active = status === 'active'
+  const upcoming = status === 'upcoming'
 
   return (
     <motion.div
-      ref={ref}
+      ref={elRef}
       className="card p-3"
       initial={reduce ? false : { opacity: 0, x: side === 'left' ? -14 : side === 'right' ? 14 : -10 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-      whileHover={reduce ? undefined : { y: -2 }}
+      animate={{
+        opacity: upcoming && !reduce ? 0.45 : 1,
+        scale: active && !reduce ? 1.03 : 1,
+      }}
       transition={SPRING}
     >
       <p className="label">{label}</p>
-      <div className="mt-1 text-text">{children}</div>
+      <div className="mt-1 text-text">{summary}</div>
+      {active && deeper && <div className="mt-2 border-t border-border pt-2 text-text-muted">{deeper}</div>}
     </motion.div>
-  )
-}
-
-function DetailStage({ id, side, label, lead, detail }) {
-  const [open, setOpen] = useState(false)
-  return (
-    <StageCard id={id} label={label} side={side}>
-      <p>{lead}</p>
-      {detail && (
-        <>
-          <button
-            type="button"
-            className="label -mx-1 -my-1 mt-1 flex min-h-11 items-center px-1 py-1 text-accent"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? 'Less' : 'More'}
-          </button>
-          {open && (
-            <ul className="mt-2 space-y-1.5">
-              {detail.map((d, i) => (
-                <li key={i} className="flex gap-2 text-text-muted">
-                  <span aria-hidden="true" className="mt-2 size-1 shrink-0 bg-text-muted" />
-                  <span>{d}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-        </>
-      )}
-    </StageCard>
-  )
-}
-
-function PracticeStage({ id, side, question, fallback }) {
-  return (
-    <StageCard id={id} label="Practice" side={side}>
-      {question ? (
-        <Link to={`/browse/${question.id}`} className="font-semibold text-accent no-underline hover:underline">
-          {question.question}
-        </Link>
-      ) : (
-        <Link to={fallback} className="font-semibold text-accent no-underline hover:underline">
-          Related questions in the bank
-        </Link>
-      )}
-    </StageCard>
   )
 }
 
@@ -127,9 +123,15 @@ function PracticeStage({ id, side, question, fallback }) {
  * A topic as a 4-stage flow: what it is → how it works → what a PM needs to
  * know → a practice question. Desktop: cards alternate left/right of a
  * centre line, a node at each junction. Mobile: one column, line and nodes
- * down the left edge. Motion is scroll-driven: the line draws itself as the
- * section scrolls through view, a spring-smoothed marker travels it, and
- * each node springs in (slight overshoot) as the marker reaches it.
+ * down the left edge.
+ *
+ * Motion is scroll-driven in two layers: the connecting line fills with
+ * primary up to the active node (a spring-smoothed progress value drives
+ * both the line and a travelling marker), and each stage's own status —
+ * upcoming / active / completed — comes from a scroll-spy watching an
+ * invisible trigger line at ~45% of the viewport (useActiveStage above).
+ * Reaching a step's trigger line is what opens it: only the active card
+ * expands to its deeper layer; completed ones collapse back to a summary.
  *
  * @param {{
  *   slug: string, name: string, gist: string, howItWorks: string,
@@ -139,74 +141,109 @@ function PracticeStage({ id, side, question, fallback }) {
 export default function Flowchart({ slug, name, gist, howItWorks, need, question, fallback }) {
   const reduce = useReducedMotion()
   const containerRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 0.85', 'end 0.35'],
-  })
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start 0.85', 'end 0.35'] })
   const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 32, restDelta: 0.001 })
 
-  const ids = [`${slug}.what`, `${slug}.how`, `${slug}.pm`, `${slug}.practice`]
-  const N = ids.length
+  const ids = useMemo(() => [`${slug}.what`, `${slug}.how`, `${slug}.pm`, `${slug}.practice`], [slug])
+  const ref0 = useRef(null)
+  const ref1 = useRef(null)
+  const ref2 = useRef(null)
+  const ref3 = useRef(null)
+  // a stable array wrapper — the ref objects themselves never change
+  // identity, but a bare array literal would, re-running the observer setup
+  // on every render
+  const refs = useMemo(() => [ref0, ref1, ref2, ref3], []) // eslint-disable-line react-hooks/exhaustive-deps
+  const activeIndex = useActiveStage(refs)
+  const statusOf = (i) => (i < activeIndex ? 'completed' : i === activeIndex ? 'active' : 'upcoming')
+
   const stages = [
-    { id: ids[0], side: 'left', node: <StageCard id={ids[0]} label="What it is" side="left"><p>{gist}</p></StageCard> },
-    { id: ids[1], side: 'right', node: <StageCard id={ids[1]} label="How it works" side="right"><p>{howItWorks}</p></StageCard> },
-    { id: ids[2], side: 'left', node: <DetailStage id={ids[2]} side="left" label="What a PM needs to know" lead={need[0]} detail={need} /> },
-    { id: ids[3], side: 'right', node: <PracticeStage id={ids[3]} side="right" question={question} fallback={fallback} /> },
+    { id: ids[0], side: 'left', label: 'What it is', summary: <p>{gist}</p> },
+    { id: ids[1], side: 'right', label: 'How it works', summary: <p>{howItWorks}</p> },
+    {
+      id: ids[2],
+      side: 'left',
+      label: 'What a PM needs to know',
+      summary: <p>{need[0]}</p>,
+      deeper: (
+        <ul className="space-y-1.5">
+          {need.slice(1).map((d, i) => (
+            <li key={i} className="flex gap-2">
+              <span aria-hidden="true" className="mt-2 size-1 shrink-0 bg-text-muted" />
+              <span>{d}</span>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
+    {
+      id: ids[3],
+      side: 'right',
+      label: 'Practice',
+      summary: question ? (
+        <Link to={`/browse/${question.id}`} className="font-semibold text-accent no-underline hover:underline">
+          {question.question}
+        </Link>
+      ) : (
+        <Link to={fallback} className="font-semibold text-accent no-underline hover:underline">
+          Related questions in the bank
+        </Link>
+      ),
+      deeper: question && (
+        <ul className="space-y-1.5">
+          {question.sections[0]?.points.slice(0, 3).map((p, i) => (
+            <li key={i} className="flex gap-2">
+              <span aria-hidden="true" className="mt-2 size-1 shrink-0 bg-text-muted" />
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      ),
+    },
   ]
 
   return (
     <section className="mt-4" ref={containerRef}>
       <h3 className="text-body font-semibold text-text">{name}</h3>
 
-      {/* desktop: zigzag either side of a centre line */}
-      <div className="relative mt-3 hidden sm:block">
-        <span aria-hidden="true" className="absolute left-1/2 top-6 bottom-6 w-px -translate-x-1/2 bg-border" />
+      <ol className="relative mt-3 overflow-x-hidden">
+        <span
+          aria-hidden="true"
+          className="absolute bottom-2 left-[6px] top-2 w-px bg-border sm:bottom-6 sm:left-1/2 sm:top-6 sm:-translate-x-1/2"
+        />
         {!reduce && (
           <motion.span
             aria-hidden="true"
             style={{ scaleY: progress }}
-            className="absolute left-1/2 top-6 bottom-6 w-px origin-top -translate-x-1/2 bg-accent"
+            className="absolute bottom-2 left-[6px] top-2 w-px origin-top bg-accent sm:bottom-6 sm:left-1/2 sm:top-6 sm:-translate-x-1/2"
           />
         )}
         {!reduce && (
           <motion.span
             aria-hidden="true"
             style={{ top: progress }}
-            className="absolute left-1/2 z-20 size-2 -translate-x-1/2 -translate-y-1/2 rounded-pill bg-accent"
+            className="absolute left-[6px] z-20 size-2 -translate-x-1/2 -translate-y-1/2 rounded-pill bg-accent sm:left-1/2"
           />
         )}
-        <ol className="space-y-4">
-          {stages.map((s, i) => (
-            <li key={s.id} className="grid grid-cols-[1fr_2rem_1fr] items-center gap-x-0">
-              <div className={i % 2 === 0 ? 'col-start-1 pr-4' : 'invisible'}>{i % 2 === 0 && s.node}</div>
-              <div className="flex justify-center">
-                <NodeDot id={s.id} threshold={i / (N - 1)} progress={progress} />
-              </div>
-              <div className={i % 2 === 1 ? 'col-start-3 pl-4' : 'invisible'}>{i % 2 === 1 && s.node}</div>
-            </li>
-          ))}
-        </ol>
-      </div>
 
-      {/* phones: one column, line and nodes down the left edge */}
-      <div className="relative mt-3 overflow-x-hidden pl-8 sm:hidden">
-        <span aria-hidden="true" className="absolute left-[6px] top-2 bottom-2 w-px bg-border" />
-        {!reduce && (
-          <motion.span
-            aria-hidden="true"
-            style={{ scaleY: progress }}
-            className="absolute left-[6px] top-2 bottom-2 w-px origin-top bg-accent"
-          />
-        )}
-        <ol className="space-y-3">
-          {stages.map((s, i) => (
-            <li key={s.id} className="relative">
-              <NodeDot id={s.id} threshold={i / (N - 1)} progress={progress} className="absolute -left-8 top-4" />
-              {s.node}
+        {stages.map((s, i) => {
+          const status = statusOf(i)
+          return (
+            <li
+              key={s.id}
+              className="relative py-1.5 pl-8 sm:grid sm:grid-cols-[1fr_2rem_1fr] sm:items-center sm:gap-x-0 sm:pl-0"
+            >
+              <NodeDot
+                id={s.id}
+                status={status}
+                className="absolute -left-8 top-4 sm:static sm:col-start-2 sm:mx-auto sm:left-auto sm:top-auto"
+              />
+              <div className={i % 2 === 0 ? 'sm:col-start-1 sm:pr-4' : 'sm:col-start-3 sm:pl-4'}>
+                <StageCard elRef={refs[i]} id={s.id} label={s.label} side={s.side} status={status} summary={s.summary} deeper={s.deeper} />
+              </div>
             </li>
-          ))}
-        </ol>
-      </div>
+          )
+        })}
+      </ol>
     </section>
   )
 }
