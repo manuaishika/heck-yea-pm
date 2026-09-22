@@ -1,8 +1,8 @@
 {
   "technical": {
-    "intro": "You don't write code. You reason about how software works well enough to talk to engineers and spot risk. Conceptual is enough — except SQL and market sizing, which you should actually practice.",
+    "intro": "You don't write code; you talk to engineers and spot risk. Conceptual is enough — practice only SQL and market sizing.",
     "chain": {
-      "note": "Most of the technical skills are one story. A request travels this path; the rest are about making it fast, safe, and measurable.",
+      "note": "One request travels this path. The other skills make it fast, safe, measurable.",
       "steps": ["Client", "API", "Server", "Database"],
       "labels": [
         "the app or browser the user taps",
@@ -11,9 +11,9 @@
         "where the data lives"
       ],
       "extras": [
-        "Caching sits in front of the database so common answers don't get recomputed.",
-        "Latency is the total round trip. Slow here is a product problem.",
-        "A data pipeline copies the events out to a place you can query for metrics."
+        "Caching: common answers are stored, not recomputed.",
+        "Latency: the total round trip. Slow is a product problem.",
+        "Data pipeline: events copied to somewhere you can query."
       ]
     },
     "skills": [
@@ -22,9 +22,9 @@
         "name": "APIs",
         "gist": "How one service asks another for data.",
         "need": [
-          "An API is a contract — a fixed way to ask, and a fixed shape of answer.",
-          "Ask \"is there already an API for this?\" before assuming something must be built.",
-          "Every new API a feature depends on is a new thing that can break or slow down."
+          "An API is a contract: a fixed way to ask, a fixed shape of answer.",
+          "Before building, ask: is there already an API for this?",
+          "Each new API a feature depends on can break or slow down."
         ],
         "bankCategory": "Technical",
         "assess": "I can explain what an API is and why two teams agree on a contract before building against each other."
@@ -34,9 +34,9 @@
         "name": "Databases",
         "gist": "Where the data lives, and why the choice locks you in.",
         "need": [
-          "SQL (relational): structured, good for data with clear relationships and reporting.",
+          "SQL (relational): structured data, clear relationships, reporting.",
           "NoSQL: flexible shape, good for scale and simple lookups.",
-          "Changing the data model after launch is expensive. The early choice matters."
+          "Changing the data model after launch is costly. Choose carefully."
         ],
         "bankCategory": "Technical",
         "assess": "I can name one reason to choose a SQL database and one reason to choose NoSQL."
@@ -44,11 +44,11 @@
       {
         "slug": "client-server",
         "name": "Client vs server",
-        "gist": "What runs on the phone vs what runs on your machines.",
+        "gist": "What runs on the phone vs your servers.",
         "need": [
           "Client = the app or browser. Server = the backend you control.",
-          "A server change ships instantly. A client change waits for an app-store update.",
-          "In India this matters — many users sit on old app versions for months."
+          "Server changes ship instantly. Client changes wait for an app-store update.",
+          "In India, many users stay on old app versions for months."
         ],
         "bankCategory": "Technical",
         "assess": "I can explain why a bug fixed on the server reaches users faster than one fixed in the mobile app."
@@ -58,9 +58,9 @@
         "name": "Latency & caching",
         "gist": "Why things feel slow, and the main trick to fix it.",
         "need": [
-          "Latency is the delay before a response. Test on a real phone on 4G, not office wifi.",
-          "Caching stores a copy of a common answer so it isn't recomputed every time.",
-          "The risk: a stale cache serves an old answer after the real data changed."
+          "Latency is the delay before a response. Test on a phone on 4G.",
+          "Caching stores a copy of a common answer, so it isn't recomputed.",
+          "The risk: a stale cache serves an old answer."
         ],
         "bankCategory": "Technical",
         "assess": "I can explain what caching does and name one case where a stale cache would cause a bug."
@@ -68,11 +68,11 @@
       {
         "slug": "ab-tests",
         "name": "A/B tests",
-        "gist": "How you prove a change caused an outcome instead of coinciding with one.",
+        "gist": "How you prove a change caused the outcome.",
         "need": [
           "Split users at random, change one thing, compare the two groups.",
-          "Fix the success metric and the run length before you start, not after you peek.",
-          "\"Significant\" means the gap is unlikely to be noise — which needs enough users."
+          "Fix the success metric and run length before you start.",
+          "\"Significant\" means the gap is unlikely to be noise. That needs enough users."
         ],
         "bankCategory": "Analytics",
         "assess": "I can explain why you fix the success metric and sample size before starting an A/B test, not after."
@@ -82,9 +82,9 @@
         "name": "SQL",
         "gist": "Pulling your own numbers instead of waiting on an analyst.",
         "need": [
-          "SELECT, WHERE, GROUP BY, JOIN covers most of what a PM needs.",
-          "Practice on a real dataset — a weekend on Mode's tutorial is enough to start.",
-          "A PM who can query is faster and much harder to mislead."
+          "SELECT, WHERE, GROUP BY, JOIN cover most PM needs.",
+          "Practice on a real dataset. A weekend on Mode's tutorial is enough.",
+          "A PM who can query is faster and harder to mislead."
         ],
         "bankCategory": "Analytics",
         "assess": "Given the table, I could write a query to count sign-ups per day for the last week."
@@ -95,8 +95,8 @@
         "gist": "How a number gets from a user's tap to your dashboard.",
         "need": [
           "Events are logged, moved, processed, and loaded somewhere you can query.",
-          "Any step can fail or lag — so the number can be wrong even if users are fine.",
-          "When a metric looks off, first question: is it real, or did tracking break?"
+          "Any step can fail or lag, so the number can be wrong.",
+          "Metric looks off? First ask: is it real, or did tracking break?"
         ],
         "bankCategory": "Technical",
         "assess": "When a metric looks wrong, I'd check whether tracking or the pipeline broke before assuming user behaviour changed."
@@ -104,11 +104,11 @@
       {
         "slug": "ml-features",
         "name": "ML features",
-        "gist": "What a PM owns when the feature is a model — recommendations, ranking, fraud.",
+        "gist": "What a PM owns when the feature is a model.",
         "need": [
-          "A model needs training data, an objective to optimise, and a baseline to beat.",
-          "Cold start: a new user or new item has no history, so the model guesses badly.",
-          "A model can optimise the wrong thing — watch time instead of satisfaction."
+          "A model needs training data, an objective, and a baseline to beat.",
+          "Cold start: new users and items have no history, so the model guesses.",
+          "A model can optimise the wrong thing: watch time, not satisfaction."
         ],
         "bankCategory": "Technical",
         "assess": "I can explain what training data is and why a recommendation model needs an objective and a baseline."
@@ -119,8 +119,8 @@
         "gist": "\"It works\" vs \"it works under load, stays up, keeps data safe.\"",
         "need": [
           "The categories: performance, scalability, availability, security, reliability.",
-          "Before a big launch (a sale), set a target for each and load-test against it.",
-          "Decide what degrades gracefully — e.g. recommendations fail, checkout never does."
+          "Before a big launch, set a target for each and load-test it.",
+          "Decide what degrades gracefully: recommendations may fail, checkout never."
         ],
         "bankCategory": "Technical",
         "assess": "Before a high-traffic launch I could state a target for load and uptime, and say what happens when a dependency fails."
@@ -128,16 +128,16 @@
     ]
   },
   "nonTechnical": {
-    "intro": "This is where interviews are won or lost. All of it is learnable now with one real product and a notebook.",
+    "intro": "Interviews are won or lost here. Learn it with one real product and a notebook.",
     "skills": [
       {
         "slug": "user-research",
         "name": "User research",
         "gist": "Understanding the problem before you touch a solution.",
         "need": [
-          "Ask about the last time it actually happened, not what someone would hypothetically do.",
-          "Don't pitch your idea in the interview — you'll just hear agreement.",
-          "Five to ten conversations is usually enough to see a pattern."
+          "Ask about the last time it happened, not hypotheticals.",
+          "Don't pitch your idea in the interview; you'll hear only agreement.",
+          "Five to ten conversations reveal a pattern."
         ],
         "bankCategory": "Product Design",
         "assess": "I can run a 20-minute user interview without pitching my idea or asking leading questions."
@@ -147,8 +147,8 @@
         "name": "Prioritisation",
         "gist": "Saying no to good ideas so the great ones get built.",
         "need": [
-          "Know two frameworks — RICE and Impact/Effort — and when each fits.",
-          "Filter by \"does this fit the strategy\" before you score anything.",
+          "Know two frameworks, RICE and Impact/Effort, and when each fits.",
+          "Filter by \"does it fit the strategy?\" before scoring.",
           "Balance quick wins with a couple of bigger bets."
         ],
         "bankCategory": "Strategy",
@@ -159,7 +159,7 @@
         "name": "Metrics",
         "gist": "Picking the number you'll be judged on — and not gaming it.",
         "need": [
-          "A North Star (the one number), plus guardrails that stop you cheating it.",
+          "A North Star (the one number), plus guardrails against gaming it.",
           "Read a funnel and a retention cohort.",
           "Total sign-ups is vanity. Weekly-active-and-retained is real."
         ],
@@ -171,7 +171,7 @@
         "name": "Writing",
         "gist": "Most PM work is writing. A clear one-pager saves weeks.",
         "need": [
-          "A spec has: the problem, who it's for, what success looks like, what's out of scope.",
+          "A spec has: the problem, the user, success, what's out of scope.",
           "An engineer should be able to estimate it without a meeting.",
           "Short sentences. No jargon."
         ],

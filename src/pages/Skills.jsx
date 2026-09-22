@@ -18,7 +18,7 @@ function SkillRow({ skill }) {
             to={`/browse?category=${categorySlug(skill.bankCategory)}`}
             className="btn btn-primary no-underline hover:no-underline"
           >
-            practice {skill.bankCategory} questions →
+            {skill.bankCategory} questions
           </Link>
         </div>
       </Row>
@@ -59,7 +59,7 @@ export default function Skills() {
       <PageHead
         chapter="Chapter 2"
         title="Skills"
-        intro="Two tracks. Tap any skill for the three things you actually need to know."
+        intro="What interviews test, and how deep to go."
         aside={
           <Link to="/skills/assess" className="btn shrink-0 no-underline hover:no-underline">
             Take the quiz
