@@ -31,7 +31,7 @@ export default function Companies() {
   return (
     <Page>
       <PageHead
-        chapter="Chapter 4"
+        chapter="Module"
         title="Companies"
         intro="What each loop looks like — how many rounds, what format, what they weight."
       />

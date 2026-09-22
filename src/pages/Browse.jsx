@@ -102,7 +102,7 @@ export default function Browse() {
   return (
     <Page>
       <PageHead
-        chapter="Chapter 3"
+        chapter="Module"
         title="Question bank"
         intro={`${questions.length} questions across ${categories.length} categories.`}
       />

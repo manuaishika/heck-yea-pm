@@ -26,9 +26,9 @@ function SkillRow({ skill }) {
   )
 }
 
-function Track({ label, intro, list, children }) {
+function Track({ id, label, intro, list, children }) {
   return (
-    <section className="mt-8">
+    <section id={id} className="mt-8 scroll-mt-4">
       <div className="flex items-baseline gap-2">
         <h2>{label}</h2>
         <span className="label">{list.length} skills</span>
@@ -57,7 +57,7 @@ export default function Skills() {
   return (
     <Page>
       <PageHead
-        chapter="Chapter 2"
+        chapter="Module"
         title="Skills"
         intro="What interviews test, and how deep to go."
         aside={
@@ -67,7 +67,7 @@ export default function Skills() {
         }
       />
 
-      <Track label="Technical" intro={skills.technical.intro} list={skills.technical.skills}>
+      <Track id="technical" label="Technical" intro={skills.technical.intro} list={skills.technical.skills}>
         <div className="card mt-4 p-4">
           <p className="text-text-muted">{chain.note}</p>
           <Chain steps={chain.steps} labels={chain.labels} />
@@ -82,6 +82,7 @@ export default function Skills() {
       </Track>
 
       <Track
+        id="non-technical"
         label="Non-technical"
         intro={skills.nonTechnical.intro}
         list={skills.nonTechnical.skills}
