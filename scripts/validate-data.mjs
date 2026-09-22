@@ -17,6 +17,7 @@ import {
   validateQuiz,
 } from '../src/data/guides-schema.js'
 import { validateMethods } from '../src/lib/methods-schema.js'
+import { validateAI } from '../src/lib/ai-schema.js'
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -43,6 +44,11 @@ const checks = [
     'methods.json',
     (d) => validateMethods(d, load('questions.json').map((q) => q.id)),
     (d) => `${d.methods.length} methods`,
+  ],
+  [
+    'ai.json',
+    (d) => validateAI(d, load('questions.json').map((q) => q.id)),
+    (d) => `${d.topics.length} AI topics`,
   ],
   [
     'quiz.json',

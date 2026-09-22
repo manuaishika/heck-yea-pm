@@ -1,0 +1,81 @@
+{
+  "intro": "AI literacy is baseline for a PM role now, not a specialisation. Draft content — check it before it ships as final.",
+  "topics": [
+    {
+      "slug": "how-llms-work",
+      "name": "How LLMs work",
+      "gist": "A next-word predictor, not a database of facts.",
+      "howItWorks": "The model turns your prompt into tokens, then predicts the most likely next token, over and over.",
+      "need": [
+        "It has no real understanding — it's pattern-matching from training data, so it can be confidently wrong.",
+        "Context window: everything the model can “see” at once. More context costs more money and time.",
+        "Fine-tuning changes the model's behaviour; retrieval (RAG) gives it fresh facts without retraining."
+      ],
+      "practiceId": "design-an-ai-shopping-assistant"
+    },
+    {
+      "slug": "when-ai-is-wrong",
+      "name": "When AI is the wrong solution",
+      "gist": "A model is the answer to some problems, not every problem.",
+      "howItWorks": "Rules and lookups are cheaper, faster and predictable — use them until the problem genuinely needs judgement.",
+      "need": [
+        "If a simple rule or a database query solves it, an LLM adds cost and unpredictability for nothing.",
+        "AI is a bad fit where a wrong answer is expensive and hard to catch — legal, medical, financial calls.",
+        "Ask what error rate is tolerable before deciding whether AI is even in scope."
+      ],
+      "practiceId": "should-we-add-an-llm-feature"
+    },
+    {
+      "slug": "evaluating-ai-features",
+      "name": "Evaluating AI features",
+      "gist": "“It felt good in the demo” isn't an evaluation.",
+      "howItWorks": "Run the model against a labelled test set and score it before anyone sees a demo.",
+      "need": [
+        "Precision: of what it flagged, how much was right. Recall: of what was actually true, how much it caught.",
+        "Hallucination: a confident, wrong answer. Measure how often it happens, not just whether it can.",
+        "Pick the metric that matches the cost of being wrong — a spam filter and a fraud model trade off differently."
+      ],
+      "practiceId": "fraud-model-92-percent-accurate"
+    },
+    {
+      "slug": "cost-and-latency",
+      "name": "Cost and latency trade-offs",
+      "gist": "A bigger model is slower and costs more per answer.",
+      "howItWorks": "Every call to a model has a per-token cost and a response time that both grow with prompt size.",
+      "need": [
+        "A smaller, cheaper model that's good enough usually beats the best model that's too slow or costly to ship.",
+        "Caching common answers and streaming the response both make a slow model feel faster.",
+        "Put a budget on it: cost per request, and what happens to margin at scale."
+      ],
+      "practiceId": null
+    },
+    {
+      "slug": "prompt-design",
+      "name": "Prompt design basics",
+      "gist": "The instructions matter as much as the model.",
+      "howItWorks": "A good prompt gives the model its role, the exact task, and an example of the output you want.",
+      "need": [
+        "Show, don't just tell: one example of a good answer beats a paragraph of instructions.",
+        "Constrain the output format if downstream code has to parse it.",
+        "This is tunable, not fixed — know that before blaming the model for a bad first result."
+      ],
+      "practiceId": null
+    },
+    {
+      "slug": "ai-metrics",
+      "name": "Metrics for AI products",
+      "gist": "Model metrics and product metrics are not the same thing.",
+      "howItWorks": "The model has an accuracy score; the product has a metric for whether it actually helped the user.",
+      "need": [
+        "Track acceptance rate: how often a user keeps the AI's output instead of editing or rejecting it.",
+        "A model can hit its accuracy target and still fail the product if users don't trust or use it.",
+        "Watch for silent failures — a wrong answer nobody flags is worse than one that errors loudly."
+      ],
+      "practiceId": "measure-an-ai-feature"
+    }
+  ],
+  "responsibleAi": {
+    "drafted": false,
+    "note": "Left for you to write — fairness, bias, safety and data consent, at the depth your own research supports."
+  }
+}

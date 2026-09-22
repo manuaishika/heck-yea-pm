@@ -1,24 +1,49 @@
+import ai from '../data/ai.json'
+import { validateAI } from '../lib/ai-schema'
+import { getQuestion, questions } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
+import { Block } from '../components/ui'
+import Flowchart from '../components/Flowchart'
 
-// Stub — item 5 of the revamp fills this in with src/data/ai.json and the
-// flowchart format from Role & Skills. Routed and in the rail now so the
-// nav doesn't dead-end.
+validateAI(
+  ai,
+  questions.map((q) => q.id)
+)
+
 export default function AI() {
   useHead({
     title: 'AI for PMs',
-    description: 'AI literacy for product management interviews.',
+    description: 'AI literacy for product management interviews: how LLMs work, when AI is the wrong call, and how to evaluate an AI feature.',
     path: '/ai',
   })
 
   return (
     <Page>
       <PageHead
-        chapter="Module"
+        chapter="Module · Draft"
         title="AI for PMs"
-        intro="How LLMs work, when AI is the wrong call, and how to evaluate an AI feature."
+        intro={ai.intro}
       />
-      <p className="card p-4 text-text-muted">Coming next.</p>
+
+      {ai.topics.map((t) => (
+        <Flowchart
+          key={t.slug}
+          slug={t.slug}
+          name={t.name}
+          gist={t.gist}
+          howItWorks={t.howItWorks}
+          need={t.need}
+          question={t.practiceId ? getQuestion(t.practiceId) : null}
+          fallback="/browse?topic=ai"
+        />
+      ))}
+
+      <div className="card mt-8">
+        <Block label="Responsible AI" rule={false}>
+          <p className="text-text-muted">{ai.responsibleAi.note}</p>
+        </Block>
+      </div>
     </Page>
   )
 }
