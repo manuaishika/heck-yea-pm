@@ -255,6 +255,10 @@ export function validateSkills(s) {
       sk.need.forEach((n, j) => {
         if (!str(n)) fail(`${at}.need[${j}] empty`)
       })
+      // technical skills also drive the /role flowchart: one more stage
+      if (track === 'technical' && !str(sk.howItWorks)) {
+        fail(`${at}.howItWorks missing — technical skills need it for the flowchart`)
+      }
       if (!/^[a-z0-9-]+$/.test(sk.slug)) fail(`${at}.slug "${sk.slug}" is not a slug`)
       if (seen.has(sk.slug)) fail(`duplicate skill slug "${sk.slug}"`)
       seen.add(sk.slug)

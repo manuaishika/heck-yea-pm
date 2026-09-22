@@ -3,7 +3,12 @@
     "intro": "You don't write code; you talk to engineers and spot risk. Conceptual is enough — practice only SQL and market sizing.",
     "chain": {
       "note": "One request travels this path. The other skills make it fast, safe, measurable.",
-      "steps": ["Client", "API", "Server", "Database"],
+      "steps": [
+        "Client",
+        "API",
+        "Server",
+        "Database"
+      ],
       "labels": [
         "the app or browser the user taps",
         "the contract for asking",
@@ -27,7 +32,8 @@
           "Each new API a feature depends on can break or slow down."
         ],
         "bankCategory": "Technical",
-        "assess": "I can explain what an API is and why two teams agree on a contract before building against each other."
+        "assess": "I can explain what an API is and why two teams agree on a contract before building against each other.",
+        "howItWorks": "A request goes to an endpoint; the response comes back in an agreed shape, usually JSON."
       },
       {
         "slug": "databases",
@@ -39,7 +45,8 @@
           "Changing the data model after launch is costly. Choose carefully."
         ],
         "bankCategory": "Technical",
-        "assess": "I can name one reason to choose a SQL database and one reason to choose NoSQL."
+        "assess": "I can name one reason to choose a SQL database and one reason to choose NoSQL.",
+        "howItWorks": "Data is written once and read many times, so the read pattern usually decides the schema."
       },
       {
         "slug": "client-server",
@@ -51,7 +58,8 @@
           "In India, many users stay on old app versions for months."
         ],
         "bankCategory": "Technical",
-        "assess": "I can explain why a bug fixed on the server reaches users faster than one fixed in the mobile app."
+        "assess": "I can explain why a bug fixed on the server reaches users faster than one fixed in the mobile app.",
+        "howItWorks": "The client asks, the server decides and stores; the client only renders what it's told."
       },
       {
         "slug": "latency-caching",
@@ -63,7 +71,8 @@
           "The risk: a stale cache serves an old answer."
         ],
         "bankCategory": "Technical",
-        "assess": "I can explain what caching does and name one case where a stale cache would cause a bug."
+        "assess": "I can explain what caching does and name one case where a stale cache would cause a bug.",
+        "howItWorks": "A cache sits between the app and the slow source, answering from memory when it can."
       },
       {
         "slug": "ab-tests",
@@ -75,7 +84,8 @@
           "\"Significant\" means the gap is unlikely to be noise. That needs enough users."
         ],
         "bankCategory": "Analytics",
-        "assess": "I can explain why you fix the success metric and sample size before starting an A/B test, not after."
+        "assess": "I can explain why you fix the success metric and sample size before starting an A/B test, not after.",
+        "howItWorks": "Users split at random into two groups; only the metric fixed beforehand counts as a result."
       },
       {
         "slug": "sql",
@@ -87,7 +97,8 @@
           "A PM who can query is faster and harder to mislead."
         ],
         "bankCategory": "Analytics",
-        "assess": "Given the table, I could write a query to count sign-ups per day for the last week."
+        "assess": "Given the table, I could write a query to count sign-ups per day for the last week.",
+        "howItWorks": "SELECT picks columns, WHERE filters rows, GROUP BY rolls them up, JOIN combines tables."
       },
       {
         "slug": "data-pipelines",
@@ -99,7 +110,8 @@
           "Metric looks off? First ask: is it real, or did tracking break?"
         ],
         "bankCategory": "Technical",
-        "assess": "When a metric looks wrong, I'd check whether tracking or the pipeline broke before assuming user behaviour changed."
+        "assess": "When a metric looks wrong, I'd check whether tracking or the pipeline broke before assuming user behaviour changed.",
+        "howItWorks": "Events are logged, queued, transformed, and loaded into a warehouse you can query."
       },
       {
         "slug": "ml-features",
@@ -111,7 +123,8 @@
           "A model can optimise the wrong thing: watch time, not satisfaction."
         ],
         "bankCategory": "Technical",
-        "assess": "I can explain what training data is and why a recommendation model needs an objective and a baseline."
+        "assess": "I can explain what training data is and why a recommendation model needs an objective and a baseline.",
+        "howItWorks": "A model learns from past data, then scores new inputs against what it learned."
       },
       {
         "slug": "nfrs",
@@ -123,7 +136,8 @@
           "Decide what degrades gracefully: recommendations may fail, checkout never."
         ],
         "bankCategory": "Technical",
-        "assess": "Before a high-traffic launch I could state a target for load and uptime, and say what happens when a dependency fails."
+        "assess": "Before a high-traffic launch I could state a target for load and uptime, and say what happens when a dependency fails.",
+        "howItWorks": "Each requirement gets a number — a target latency, an uptime percent — and a test against it."
       }
     ]
   },
