@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
 import { useViewed } from '../lib/useViewed'
+import PipPracticePrompt from './PipPracticePrompt'
 
 const SPRING = { type: 'spring', stiffness: 260, damping: 22 }
 // the invisible trigger line: ~45% down the viewport
@@ -244,6 +245,8 @@ export default function Flowchart({ slug, name, gist, howItWorks, need, question
           )
         })}
       </ol>
+
+      <PipPracticePrompt slug={slug} active={statusOf(3) === 'active'} questionId={question?.id} />
     </section>
   )
 }

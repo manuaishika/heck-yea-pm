@@ -16,7 +16,7 @@ import { useDebounced } from '../lib/useDebounced'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { CategoryTag } from '../components/ui'
-import Mascot from '../components/Mascot'
+import Pip from '../components/Pip'
 import QuestionList from '../components/QuestionList'
 
 const chip = 'pill'
@@ -205,7 +205,7 @@ export default function Browse() {
         </div>
       ) : (
         <div className="mt-4 flex flex-col items-center border-t border-border pt-6 text-center">
-          <Mascot size={48} className="mb-3" />
+          <Pip mood="oops" size={56} className="mb-3" />
           <p className="text-text">Nothing matches that.</p>
           <p className="prose-body mt-2">
             Try a shorter or more general term

@@ -5,7 +5,7 @@ import { readLastSession, useFlashcardSession } from '../lib/useFlashcardSession
 import { useReviews } from '../lib/useReviews'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import Mascot from '../components/Mascot'
+import Pip from '../components/Pip'
 
 export default function FlashcardsComplete() {
   const navigate = useNavigate()
@@ -34,7 +34,7 @@ export default function FlashcardsComplete() {
   return (
     <Page>
       <div className="flex justify-center pt-2">
-        <Mascot size={56} />
+        <Pip mood="celebrating" size={72} />
       </div>
       <PageHead
         chapter="Library"

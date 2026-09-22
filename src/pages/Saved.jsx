@@ -3,7 +3,7 @@ import { getQuestion } from '../data/questions'
 import { useSaved } from '../lib/useSaved'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import Mascot from '../components/Mascot'
+import Pip from '../components/Pip'
 import QuestionList from '../components/QuestionList'
 
 export default function Saved() {
@@ -35,7 +35,7 @@ export default function Saved() {
         </>
       ) : (
         <div className="card flex flex-col items-center p-6 text-center">
-          <Mascot size={48} className="mb-3" />
+          <Pip mood="oops" size={56} className="mb-3" />
           <p className="font-semibold text-text">Nothing saved yet.</p>
           <p className="prose-body mt-1">
             Use the save button on any question in the <Link to="/browse">question bank</Link>.
