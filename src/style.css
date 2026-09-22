@@ -294,6 +294,20 @@
   }
 }
 
+/* companies marquee: an infinite horizontal loop, paused on hover (see
+   CompaniesMarquee.jsx) and replaced by a static list under reduced motion */
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* the one place motion is allowed: the flashcard flip */
 @keyframes card-flip {
   from {

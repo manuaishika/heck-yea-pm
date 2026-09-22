@@ -1,12 +1,7 @@
-import { Outlet, useLocation } from 'react-router-dom'
-import IconRail from './IconRail'
-import TabBar from './TabBar'
+import { Outlet } from 'react-router-dom'
 import TopNav from './TopNav'
 
 export default function Layout() {
-  const { pathname } = useLocation()
-  const isLanding = pathname === '/'
-
   return (
     <div className="min-h-screen">
       <a
@@ -16,21 +11,11 @@ export default function Layout() {
         Skip to content
       </a>
 
-      {isLanding && <TopNav />}
+      <TopNav />
 
-      <div className="mx-auto flex max-w-6xl">
-        {!isLanding && (
-          <aside className="sticky top-0 hidden h-screen w-20 shrink-0 border-r border-border bg-surface lg:block">
-            <IconRail />
-          </aside>
-        )}
-
-        <main id="main" className={`min-w-0 flex-1 ${!isLanding ? 'pb-20 lg:pb-0' : ''}`}>
-          <Outlet />
-        </main>
-      </div>
-
-      {!isLanding && <TabBar />}
+      <main id="main" className="mx-auto max-w-6xl">
+        <Outlet />
+      </main>
     </div>
   )
 }

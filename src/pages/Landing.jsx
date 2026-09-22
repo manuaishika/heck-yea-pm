@@ -1,27 +1,10 @@
 import { Link } from 'react-router-dom'
-import { questions, categories, categoryCounts, categorySlug } from '../data/questions'
-import { methods } from '../lib/methods'
+import { categories, categoryCounts, categorySlug } from '../data/questions'
 import { useHead } from '../lib/useHead'
-import { Page, PageHead } from '../components/Page'
-import { LinkRow, CategoryTag } from '../components/ui'
-import CategoryGraph from '../components/CategoryGraph'
-
-const chapters = [
-  ['/role', 'Role', 'What a PM does. Startup vs MNC. What it is not.', 'target'],
-  ['/skills', 'Skills', 'Technical and non-technical, with a quiz on where you stand.', 'chart'],
-  [
-    '/browse',
-    'Questions',
-    `${questions.length} questions with a model answer and the mistake that sinks most candidates.`,
-    'question',
-  ],
-  [
-    '/companies',
-    'Companies',
-    'Interview loops for the MNCs and the Indian APM programs, round by round.',
-    'briefcase',
-  ],
-]
+import { Page } from '../components/Page'
+import { CategoryTag } from '../components/ui'
+import Mascot from '../components/Mascot'
+import CompaniesMarquee from '../components/CompaniesMarquee'
 
 export default function Landing() {
   useHead({
@@ -34,31 +17,23 @@ export default function Landing() {
 
   return (
     <Page>
-      <PageHead
-        chapter="Heck Yea PM"
-        title="Prep for your first PM interview."
-        intro="Free interview prep for PM intern and APM roles."
-      />
-
-      <p>
-        <Link to="/browse" className="btn btn-primary no-underline hover:no-underline">
+      {/* hero: centred */}
+      <div className="flex flex-col items-center py-8 text-center">
+        <Mascot size={72} className="mb-4" />
+        <p className="label text-accent">Heck Yea PM</p>
+        <h1 className="mt-2">Prep for your first PM interview.</h1>
+        <p className="mt-2 max-w-md text-text-muted">
+          Free interview prep for PM intern and APM roles.
+        </p>
+        <Link to="/browse" className="btn btn-primary mt-5 no-underline hover:no-underline">
           Open the question bank
         </Link>
-      </p>
+      </div>
 
-      <ul className="mt-6 space-y-2">
-        {chapters.map(([to, label, desc, icon]) => (
-          <li key={to}>
-            <Link to={to} className="block no-underline hover:no-underline">
-              <LinkRow icon={icon} title={label} sub={desc} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      <section className="mt-8">
+      {/* categories */}
+      <section className="mt-6 text-center">
         <h2 className="label">Categories</h2>
-        <ul className="mt-2 flex flex-wrap gap-2">
+        <ul className="mt-3 flex flex-wrap justify-center gap-2">
           {categories.map((c) => (
             <li key={c}>
               <CategoryTag category={c} count={counts[c]} to={`/browse?category=${categorySlug(c)}`} />
@@ -67,23 +42,11 @@ export default function Landing() {
         </ul>
       </section>
 
-      <section className="mt-8">
-        <h2 className="label">Methods</h2>
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {methods.map((m) => (
-            <li key={m.slug}>
-              <Link to={`/methods/${m.slug}`} className="pill">
-                {m.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="mt-8">
-        <h2 className="label">Your progress</h2>
-        <div className="card mt-2 p-4">
-          <CategoryGraph />
+      {/* companies marquee */}
+      <section className="mt-10 text-center">
+        <h2 className="label">Companies</h2>
+        <div className="mt-3">
+          <CompaniesMarquee />
         </div>
       </section>
     </Page>
