@@ -16,6 +16,7 @@ import { useDebounced } from '../lib/useDebounced'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { CategoryTag } from '../components/ui'
+import Mascot from '../components/Mascot'
 import QuestionList from '../components/QuestionList'
 
 const chip = 'pill'
@@ -203,7 +204,8 @@ export default function Browse() {
           <QuestionList questions={results} linkTo={linkTo} />
         </div>
       ) : (
-        <div className="mt-4 border-t border-border pt-6">
+        <div className="mt-4 flex flex-col items-center border-t border-border pt-6 text-center">
+          <Mascot size={48} className="mb-3" />
           <p className="text-text">Nothing matches that.</p>
           <p className="prose-body mt-2">
             Try a shorter or more general term

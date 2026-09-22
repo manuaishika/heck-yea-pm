@@ -3,6 +3,7 @@ import { getQuestion } from '../data/questions'
 import { useSaved } from '../lib/useSaved'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
+import Mascot from '../components/Mascot'
 import QuestionList from '../components/QuestionList'
 
 export default function Saved() {
@@ -33,7 +34,8 @@ export default function Saved() {
           <QuestionList questions={items} linkTo={(q) => `/browse/${q.id}`} />
         </>
       ) : (
-        <div className="card p-4">
+        <div className="card flex flex-col items-center p-6 text-center">
+          <Mascot size={48} className="mb-3" />
           <p className="font-semibold text-text">Nothing saved yet.</p>
           <p className="prose-body mt-1">
             Use the save button on any question in the <Link to="/browse">question bank</Link>.

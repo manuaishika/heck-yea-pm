@@ -9,16 +9,22 @@ import { useLocation, useNavigationType } from 'react-router-dom'
  * string (filtering in Browse) does not scroll.
  */
 export default function ScrollManager() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const navType = useNavigationType()
   const prevPath = useRef(pathname)
 
   useEffect(() => {
-    if (pathname !== prevPath.current && navType !== 'POP') {
+    if (hash) {
+      // let the new route render first, then scroll to its section
+      const id = hash.slice(1)
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView()
+      })
+    } else if (pathname !== prevPath.current && navType !== 'POP') {
       window.scrollTo(0, 0)
     }
     prevPath.current = pathname
-  }, [pathname, navType])
+  }, [pathname, hash, navType])
 
   return null
 }

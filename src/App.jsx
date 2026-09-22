@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import ScrollManager from './components/ScrollManager'
 import { Page } from './components/Page'
@@ -10,7 +10,6 @@ const Role = lazy(() => import('./pages/Role'))
 const Skills = lazy(() => import('./pages/Skills'))
 const Assess = lazy(() => import('./pages/Assess'))
 const Careers = lazy(() => import('./pages/Careers'))
-const India = lazy(() => import('./pages/India'))
 const Guesstimates = lazy(() => import('./pages/Guesstimates'))
 const AI = lazy(() => import('./pages/AI'))
 const Resume = lazy(() => import('./pages/Resume'))
@@ -47,7 +46,7 @@ export default function App() {
             <Route path="skills" element={<Skills />} />
             <Route path="skills/assess" element={<Assess />} />
             <Route path="careers" element={<Careers />} />
-            <Route path="india" element={<India />} />
+            <Route path="india" element={<Navigate to="/careers#india" replace />} />
             <Route path="guesstimates" element={<Guesstimates />} />
             <Route path="ai" element={<AI />} />
             <Route path="resume" element={<Resume />} />
