@@ -5,6 +5,7 @@ import {
   categoryCounts,
   questionsInCategory,
   getQuestion,
+  shortAnswer,
 } from '../data/questions'
 import { useFlashcardSession } from '../lib/useFlashcardSession'
 import { useReviews } from '../lib/useReviews'
@@ -19,21 +20,6 @@ function shuffle(arr) {
     ;[a[i], a[j]] = [a[j], a[i]]
   }
   return a
-}
-
-/** The short answer for the back of a card: at most 5 bullets. */
-function cardPoints(q) {
-  const star = q.sections.filter((s) =>
-    /^(situation|task|action|result)/i.test(s.label)
-  )
-  if (star.length >= 3) {
-    // one line per STAR beat
-    return star.map((s) => `${s.label.split(' ')[0]}: ${s.points[0]}`)
-  }
-  const answer =
-    q.sections.find((s) => /answer/i.test(s.label)) ||
-    q.sections[q.sections.length - 1]
-  return answer.points.slice(0, 5)
 }
 
 /* ---------------------------------------------------------------- picker */
@@ -226,7 +212,7 @@ function Deck({ session, prev, next, finish }) {
             <span className="mt-3 block text-body text-text">{q.question}</span>
           ) : (
             <ul className="mt-3 space-y-2">
-              {cardPoints(q).map((p, i) => (
+              {shortAnswer(q).map((p, i) => (
                 <li
                   key={i}
                   className="flex gap-2 text-body leading-snug text-text-muted"

@@ -5,6 +5,7 @@ import {
   getQuestion,
   relatedQuestions,
   categoryNeighbors,
+  shortAnswer,
 } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
@@ -63,6 +64,7 @@ export default function QuestionDetail() {
   const q = getQuestion(canonicalId)
   const related = relatedQuestions(q, 3)
   const { prev, next } = categoryNeighbors(q)
+  const [fullOpen, setFullOpen] = useState(false)
 
   const answerSection =
     q.sections.find((s) => /answer/i.test(s.label)) ||
@@ -99,20 +101,35 @@ export default function QuestionDetail() {
       />
 
       <div className="card">
-        <Detail
-          columns={q.sections.map((sec) => ({
-            label: sec.label,
-            children: <Bullets items={sec.points} />,
-          }))}
-        />
-        {q.tip && (
-          <Block label="What they test">
-            <p>{q.tip}</p>
-          </Block>
-        )}
-        <Block label="Failure mode">
-          <p>{q.failureMode}</p>
+        <Block label="Answer" rule={false}>
+          <Bullets items={shortAnswer(q)} />
+          <button
+            type="button"
+            className="label mt-3 flex min-h-11 items-center text-accent"
+            aria-expanded={fullOpen}
+            onClick={() => setFullOpen((v) => !v)}
+          >
+            {fullOpen ? 'Show less' : 'Full answer'}
+          </button>
         </Block>
+        {fullOpen && (
+          <>
+            <Detail
+              columns={q.sections.map((sec) => ({
+                label: sec.label,
+                children: <Bullets items={sec.points} />,
+              }))}
+            />
+            {q.tip && (
+              <Block label="What they test">
+                <p>{q.tip}</p>
+              </Block>
+            )}
+            <Block label="Failure mode">
+              <p>{q.failureMode}</p>
+            </Block>
+          </>
+        )}
         <MethodLinks question={q} />
       </div>
 
