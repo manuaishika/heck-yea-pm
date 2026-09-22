@@ -6,6 +6,7 @@ import { Page, PageHead } from '../components/Page'
 import { Row, Bullets, iconForSkill } from '../components/ui'
 import Chain from '../components/diagrams/Chain'
 import Flowchart from '../components/Flowchart'
+import ScrollProgress from '../components/ScrollProgress'
 
 // One practice question per technical topic, picked by hand for fit. Two
 // topics (A/B tests, SQL) have no dedicated question in the bank yet, so
@@ -74,6 +75,7 @@ export default function Skills() {
 
   return (
     <Page>
+      <ScrollProgress />
       <PageHead
         chapter="Module"
         title="Skills"

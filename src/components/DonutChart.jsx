@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const W = 560
 const H = 380
@@ -74,6 +75,7 @@ function layout(slices) {
  */
 export default function DonutChart({ slices }) {
   const navigate = useNavigate()
+  const reduce = useReducedMotion()
   const [active, setActive] = useState(null)
   const pointer = useRef('mouse')
   const { slices: laid, total } = layout(slices)
@@ -136,9 +138,11 @@ export default function DonutChart({ slices }) {
               }}
               style={{ cursor: 'pointer', outline: 'none' }}
             >
-              <path
+              <motion.path
                 d={sectorPath(s.start, s.end)}
-                style={{ fill: s.color, opacity: active && active !== s.key ? 0.3 : 1, transition: 'opacity 120ms' }}
+                style={{ fill: s.color, opacity: active && active !== s.key ? 0.3 : 1, transformBox: 'fill-box', transformOrigin: 'center' }}
+                animate={{ scale: !reduce && active === s.key ? 1.04 : 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               />
               <circle
                 cx={s.lx}
@@ -158,25 +162,31 @@ export default function DonutChart({ slices }) {
         </svg>
 
         {laid.map((s) => (
-          <Link
+          <motion.div
             key={s.key}
-            to={s.to}
             onMouseEnter={() => enter(s.key)}
             onMouseLeave={leave}
-            onFocus={() => enter(s.key)}
-            onBlur={leave}
-            className="absolute flex flex-col justify-center rounded-card border bg-surface px-3 py-2 no-underline hover:no-underline"
+            className="absolute"
             style={{
               left: `${(s.cardX / W) * 100}%`,
               top: `${(s.cardY / H) * 100}%`,
               width: `${(CARD_W / W) * 100}%`,
               height: `${(CARD_H / H) * 100}%`,
-              borderColor: active === s.key ? s.color : 'var(--border)',
             }}
+            animate={{ y: !reduce && active === s.key ? -2 : 0 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          >
+          <Link
+            to={s.to}
+            onFocus={() => enter(s.key)}
+            onBlur={leave}
+            className="flex h-full flex-col justify-center rounded-card border bg-surface px-3 py-2 no-underline hover:no-underline"
+            style={{ borderColor: active === s.key ? s.color : 'var(--border)' }}
           >
             <span className="text-body font-semibold" style={{ color: s.color }}>{s.label}</span>
             <span className="text-text-muted">{s.note}</span>
           </Link>
+          </motion.div>
         ))}
       </div>
 

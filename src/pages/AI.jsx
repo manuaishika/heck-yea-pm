@@ -5,6 +5,7 @@ import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { Block } from '../components/ui'
 import Flowchart from '../components/Flowchart'
+import ScrollProgress from '../components/ScrollProgress'
 
 validateAI(
   ai,
@@ -20,6 +21,7 @@ export default function AI() {
 
   return (
     <Page>
+      <ScrollProgress />
       <PageHead
         chapter="Module · Draft"
         title="AI for PMs"

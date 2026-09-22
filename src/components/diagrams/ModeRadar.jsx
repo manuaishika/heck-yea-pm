@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const W = 440
 const H = 330
@@ -6,6 +7,7 @@ const CX = W / 2
 const CY = 165
 const R = 105 // radius of the outermost ring (level 3)
 const MAX = 3
+const AUTOPLAY_MS = 2600
 
 /**
  * How the three company types differ, as a radar: one shape per type, one axis
@@ -16,14 +18,30 @@ const MAX = 3
  * The table below it (ModeMatrix) is the accessible, exact view of the same data.
  *
  * Tap a legend btn btn-sm to isolate one type; hover, focus or tap an axis to read
- * what each type is like on it.
+ * what each type is like on it. The chart springs into view once, cycles the
+ * highlighted axis on its own until you touch it, and each marker drifts a
+ * couple of px at rest — all skipped under prefers-reduced-motion.
  *
  * @param {{ modes: import('../../data/guides').careers['modes'] }} props
  */
 export default function ModeRadar({ modes }) {
   const { columns, bars } = modes
+  const reduce = useReducedMotion()
   const [only, setOnly] = useState(null) // isolate one mode
   const [dim, setDim] = useState(0) // axis being read
+  const [autoplay, setAutoplay] = useState(!reduce)
+  const stopAutoplay = useRef(() => setAutoplay(false))
+
+  useEffect(() => {
+    if (!autoplay) return undefined
+    const id = setInterval(() => setDim((d) => (d + 1) % bars.length), AUTOPLAY_MS)
+    return () => clearInterval(id)
+  }, [autoplay, bars.length])
+
+  const pickDim = (i) => {
+    stopAutoplay.current()
+    setDim(i)
+  }
 
   const n = bars.length
   const angle = (i) => -Math.PI / 2 + (i * 2 * Math.PI) / n
@@ -62,7 +80,10 @@ export default function ModeRadar({ modes }) {
             <button
               type="button"
               aria-pressed={only === m}
-              onClick={() => setOnly(only === m ? null : m)}
+              onClick={() => {
+                stopAutoplay.current()
+                setOnly(only === m ? null : m)
+              }}
               className="btn btn-sm !py-1"
             >
               <svg width="26" height="10" viewBox="0 0 26 10" aria-hidden="true">
@@ -88,13 +109,17 @@ export default function ModeRadar({ modes }) {
         ))}
       </ul>
 
-      <svg
+      <motion.svg
         viewBox={`0 0 ${W} ${H}`}
         className="mx-auto mt-2 block w-full max-w-[30rem]"
         role="img"
         aria-label={`Radar chart comparing ${series.map((s) => s.name).join(', ')} across ${bars
           .map((b) => b.dim)
           .join(', ')}. The table below has the exact values.`}
+        initial={reduce ? false : { opacity: 0, scale: 0.86 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ type: 'spring', stiffness: 120, damping: 14 }}
       >
         {/* rings + spokes: recessive */}
         {[1, 2, 3].map((lv) => (
@@ -136,30 +161,44 @@ export default function ModeRadar({ modes }) {
                 strokeDasharray={look[m].dash}
                 strokeLinejoin="round"
               />
-              {s.points.map(([x, y], i) =>
-                look[m].marker === 'circle' ? (
-                  <circle
+              {s.points.map(([x, y], i) => {
+                const markerProps = {
+                  fill: look[m].stroke,
+                  stroke: 'var(--surface)',
+                  strokeWidth: 2,
+                }
+                // gentle idle drift: a couple of px, staggered so markers don't move in lockstep
+                const driftAnim = reduce
+                  ? undefined
+                  : { x: [0, (i % 2 ? 1 : -1) * 2, 0], y: [0, (m % 2 ? -1 : 1) * 2, 0] }
+                const driftTransition = reduce
+                  ? undefined
+                  : { duration: 4 + i * 0.4 + m * 0.3, repeat: Infinity, ease: 'easeInOut' }
+                return look[m].marker === 'circle' ? (
+                  <motion.circle
                     key={i}
                     cx={x}
                     cy={y}
                     r="4.5"
-                    fill={look[m].stroke}
-                    stroke="var(--surface)"
-                    strokeWidth="2"
+                    animate={driftAnim}
+                    transition={driftTransition}
+                    {...markerProps}
                   />
                 ) : (
-                  <rect
+                  <motion.rect
                     key={i}
                     x={x - 4.5}
                     y={y - 4.5}
                     width="9"
                     height="9"
+                    animate={driftAnim}
+                    transition={driftTransition}
                     fill="var(--surface)"
                     stroke={look[m].stroke}
                     strokeWidth="2"
                   />
                 )
-              )}
+              })}
             </g>
           )
         })}
@@ -181,13 +220,13 @@ export default function ModeRadar({ modes }) {
               tabIndex={0}
               aria-label={`${b.dim}: show how each company type compares`}
               aria-pressed={on}
-              onClick={() => setDim(i)}
-              onMouseEnter={() => setDim(i)}
-              onFocus={() => setDim(i)}
+              onClick={() => pickDim(i)}
+              onMouseEnter={() => pickDim(i)}
+              onFocus={() => pickDim(i)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                   e.preventDefault()
-                  setDim(i)
+                  pickDim(i)
                 }
               }}
               style={{ cursor: 'pointer', outline: 'none' }}
@@ -232,7 +271,7 @@ export default function ModeRadar({ modes }) {
         >
           more
         </text>
-      </svg>
+      </motion.svg>
 
       {/* reading of the chosen axis */}
       <div className="card mt-1 p-3" aria-live="polite">
