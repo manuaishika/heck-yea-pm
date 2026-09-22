@@ -1,10 +1,10 @@
-// Cloud sync for the three synced keys. Local-first: localStorage stays the
-// source the UI reads from, and works offline / logged out. When someone is
-// signed in, changes are pushed to Supabase and pulled on sign-in and when the
-// tab regains focus.
+// Cloud sync against user_progress (one row per item). Local-first:
+// localStorage stays the source the UI reads from, and works offline /
+// logged out. When someone is signed in, changes are pushed to Supabase and
+// pulled on sign-in and when the tab regains focus.
 
 import { readJSON, writeJSON, setWriteListener } from './storage'
-import { MERGERS, SYNCED_KEYS, EMPTY, same } from './syncMerge'
+import { SYNCED_KEYS, ITEM_TYPE, EMPTY, same, toRows, mergeFromRows } from './syncMerge'
 
 let client = null
 let userId = null
@@ -24,13 +24,20 @@ function refresh(key) {
 
 async function push(keys) {
   if (!client || !userId || keys.length === 0) return
-  const rows = keys.map((k) => ({
-    user_id: userId,
-    key: k,
-    value: readJSON(k, EMPTY[k]),
-    updated_at: new Date().toISOString(),
-  }))
-  const { error } = await client.from('user_state').upsert(rows, { onConflict: 'user_id,key' })
+  const rows = keys.flatMap((k) => {
+    const value = readJSON(k, EMPTY[k])
+    return toRows(k, value).map((r) => ({
+      user_id: userId,
+      item_type: ITEM_TYPE[k],
+      item_id: r.item_id,
+      status: r.status,
+      updated_at: new Date().toISOString(),
+    }))
+  })
+  if (rows.length === 0) return
+  const { error } = await client
+    .from('user_progress')
+    .upsert(rows, { onConflict: 'user_id,item_type,item_id' })
   if (error) throw error
 }
 
@@ -39,22 +46,29 @@ export async function pullAndMerge() {
   if (!client || !userId) return
   onStatus('syncing')
   try {
-    const { data, error } = await client.from('user_state').select('key,value').eq('user_id', userId)
+    const { data, error } = await client
+      .from('user_progress')
+      .select('item_type,item_id,status')
+      .eq('user_id', userId)
     if (error) throw error
-    const remote = Object.fromEntries((data || []).map((r) => [r.key, r.value]))
+    const rowsByType = {}
+    for (const r of data || []) {
+      ;(rowsByType[r.item_type] ??= []).push(r)
+    }
 
     const toPush = []
     applying = true
     for (const k of SYNCED_KEYS) {
+      const type = ITEM_TYPE[k]
       const local = readJSON(k, EMPTY[k])
-      const merged = MERGERS[k](local, remote[k])
+      const merged = mergeFromRows(k, rowsByType[type], local)
       if (!same(merged, local)) {
         writeJSON(k, merged)
         refresh(k)
       }
-      // don't create empty rows just because a key has never been used
       const isEmpty = same(merged, EMPTY[k])
-      if (k in remote ? !same(merged, remote[k]) : !isEmpty) toPush.push(k)
+      const hadRemote = Boolean(rowsByType[type]?.length)
+      if (!isEmpty && (!hadRemote || !same(merged, local))) toPush.push(k)
     }
     applying = false
     await push(toPush)
@@ -119,4 +133,13 @@ export function stopSync({ clearLocal = false } = {}) {
     }
     applying = false
   }
+}
+
+/** "Delete my account and data": removes cloud rows + the auth user, then this device's local copy. */
+export async function deleteAccount() {
+  if (!client) return { error: new Error('Not signed in') }
+  const { error } = await client.rpc('delete_my_account')
+  if (error) return { error }
+  stopSync({ clearLocal: true })
+  return { error: null }
 }

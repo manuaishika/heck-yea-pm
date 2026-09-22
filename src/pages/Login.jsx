@@ -12,11 +12,13 @@ const STATUS = {
 }
 
 export default function Login() {
-  const { enabled, loading, user, syncStatus, signInWithEmail, signInWithGoogle, signOut } =
+  const { enabled, loading, user, syncStatus, signInWithEmail, signInWithGoogle, signOut, deleteAccount } =
     useAuth()
   const [email, setEmail] = useState('')
   const [state, setState] = useState('idle') // idle | sending | sent | error
   const [message, setMessage] = useState('')
+  const [confirmDelete, setConfirmDelete] = useState(false)
+  const [deleting, setDeleting] = useState(false)
 
   useHead({
     title: 'Sign in',
@@ -66,7 +68,10 @@ export default function Login() {
         <div className="mt-4">
           <div className="card p-4">
             <p className="label">Signed in as</p>
-            <p className="mt-1 text-body font-semibold text-text">{user.email}</p>
+            {user.user_metadata?.full_name && (
+              <p className="mt-1 text-body font-semibold text-text">{user.user_metadata.full_name}</p>
+            )}
+            <p className="mt-1 text-body text-text-muted">{user.email}</p>
             <p className="mt-2 text-body text-text-muted" aria-live="polite">
               {STATUS[syncStatus] || ''}
             </p>
@@ -83,6 +88,47 @@ export default function Login() {
             Signing out removes your saves, marks and quiz results from this device. They stay in
             your account.
           </p>
+
+          <div className="mt-8 border-t border-border pt-4">
+            <p className="label !text-accent">Danger zone</p>
+            {!confirmDelete ? (
+              <button
+                type="button"
+                className="btn mt-2"
+                onClick={() => setConfirmDelete(true)}
+              >
+                Delete my account and data
+              </button>
+            ) : (
+              <div className="card mt-2 p-4">
+                <p className="text-body font-semibold text-text">
+                  This permanently deletes your account and every saved question, flashcard mark
+                  and quiz result. It can't be undone.
+                </p>
+                <p className="mt-3 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    disabled={deleting}
+                    onClick={async () => {
+                      setDeleting(true)
+                      const { error } = await deleteAccount()
+                      if (error) {
+                        setDeleting(false)
+                        setMessage(error.message || 'Could not delete your account. Try again.')
+                      }
+                    }}
+                  >
+                    {deleting ? 'Deleting…' : 'Yes, delete everything'}
+                  </button>
+                  <button type="button" className="btn" onClick={() => setConfirmDelete(false)}>
+                    Cancel
+                  </button>
+                </p>
+                {message && <p className="mt-2 text-body text-text-muted">{message}</p>}
+              </div>
+            )}
+          </div>
         </div>
       ) : (
         <div className="mt-4">

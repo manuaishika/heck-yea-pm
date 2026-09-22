@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { authEnabled, getClient } from './supabase'
-import { startSync, stopSync, flush, setSyncStatusListener } from './sync'
+import { startSync, stopSync, flush, setSyncStatusListener, deleteAccount as deleteAccountRow } from './sync'
 
 const notSetUp = async () => ({ error: new Error('Login is not set up') })
 
@@ -12,6 +12,7 @@ const AuthContext = createContext({
   signInWithEmail: notSetUp,
   signInWithGoogle: notSetUp,
   signOut: async () => {},
+  deleteAccount: notSetUp,
 })
 
 export function AuthProvider({ children }) {
@@ -78,6 +79,18 @@ export function AuthProvider({ children }) {
     setSyncStatus('idle')
   }, [])
 
+  const deleteAccount = useCallback(async () => {
+    const client = await getClient()
+    if (!client) return { error: new Error('Login is not set up') }
+    const { error } = await deleteAccountRow()
+    if (!error) {
+      await client.auth.signOut()
+      setUser(null)
+      setSyncStatus('idle')
+    }
+    return { error }
+  }, [])
+
   const value = useMemo(
     () => ({
       enabled: authEnabled,
@@ -87,8 +100,9 @@ export function AuthProvider({ children }) {
       signInWithEmail,
       signInWithGoogle,
       signOut,
+      deleteAccount,
     }),
-    [loading, user, syncStatus, signInWithEmail, signInWithGoogle, signOut]
+    [loading, user, syncStatus, signInWithEmail, signInWithGoogle, signOut, deleteAccount]
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
