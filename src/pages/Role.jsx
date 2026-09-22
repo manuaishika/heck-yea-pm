@@ -6,11 +6,12 @@ import { Page, PageHead } from '../components/Page'
 import { Row } from '../components/ui'
 import DonutChart from '../components/DonutChart'
 import FlowMap from '../components/diagrams/FlowMap'
-import Venn from '../components/diagrams/Venn'
 
 const AI_COUNT = questions.filter((q) => q.topic === 'ai').length
 const BEHAVIORAL_COUNT = questions.filter((q) => q.category === 'Behavioral').length
 
+// Slice colour is assigned by rank inside DonutChart (biggest = darkest
+// chart blue), not fixed per area, so nothing here names a colour.
 const SLICES = [
   {
     key: 'technical',
@@ -18,7 +19,6 @@ const SLICES = [
     note: 'How software works, well enough to spot risk.',
     count: skills.technical.skills.length,
     unit: 'skills',
-    tone: 'technical',
     to: '/skills#technical',
   },
   {
@@ -27,7 +27,6 @@ const SLICES = [
     note: 'Research, prioritisation, writing, stakeholders.',
     count: skills.nonTechnical.skills.length,
     unit: 'skills',
-    tone: 'strategy',
     to: '/skills#non-technical',
   },
   {
@@ -36,7 +35,6 @@ const SLICES = [
     note: 'How you’ve actually worked, told well.',
     count: BEHAVIORAL_COUNT,
     unit: 'questions',
-    tone: 'behavioral',
     to: '/browse?category=behavioral',
   },
   {
@@ -45,7 +43,6 @@ const SLICES = [
     note: 'Baseline literacy for a PM role now.',
     count: AI_COUNT,
     unit: 'questions',
-    tone: 'general',
     to: '/browse?topic=ai',
   },
 ]
@@ -58,7 +55,7 @@ export default function Role() {
     path: '/role',
   })
 
-  const { root, sub, constraints, flow } = role.whatPmDoes
+  const { root, sub, flow } = role.whatPmDoes
 
   return (
     <Page>
@@ -72,7 +69,7 @@ export default function Role() {
 
       <p className="mt-6 text-text-muted">{sub}</p>
 
-      <div className="mt-6 space-y-2">
+      <div className="mt-6">
         <Row
           icon="flow"
           title="The loop you run"
@@ -81,17 +78,6 @@ export default function Role() {
         >
           <div className="p-4">
             <FlowMap root="What to build, and why" steps={flow} />
-          </div>
-        </Row>
-
-        <Row
-          icon="target"
-          title="Every decision, three constraints"
-          sub={constraints.note}
-          defaultOpen
-        >
-          <div className="p-4">
-            <Venn corners={constraints.corners} />
           </div>
         </Row>
       </div>

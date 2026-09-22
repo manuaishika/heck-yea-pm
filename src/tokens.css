@@ -2,6 +2,7 @@
  *  THE ONLY PLACE colours, radii, type sizes and fonts are defined.
  *  Components use these by name (bg-surface, text-text-muted, rounded-card,
  *  text-body ...). Nothing else may hard-code a colour or a radius.
+ *  Enforced by scripts/check-colors.js in prebuild.
  * ==================================================================== */
 
 @font-face {
@@ -41,131 +42,67 @@
 }
 
 :root {
-  /* colour: one accent for actions and emphasis */
-  --accent: #b5173f;
-  --accent-tint: #fbeaef; /* eyebrow pills only */
-  --surface: #ffffff; /* every card and panel */
-  --page: #f7f5f3; /* page background */
-  --border: #e4e0db; /* hairline */
-  --text: #1b1a19;
-  --text-muted: #6b6864;
+  /* the 7 named tokens from the spec */
+  --white: #ffffff;
+  --blue-50: #eef5ff;
+  --blue-100: #d7e7fd;
+  --blue-300: #93b0e3;
+  --primary: #1e4a94;
+  --ink: #0f1b2d;
+  --ink-soft: #5b6b82;
+  /* charts: primary, this, blue-300, blue-100 — darkest to lightest, nothing else */
+  --chart-2: #5277bd;
 
-  /* category colours: one ink + one tint each, both AA (>=4.5:1) as text on the tint */
-  --cat-behavioral: #a63f0a; /* ink: text and marks */
-  --cat-behavioral-tint: #fdeadb; /* pill fill */
-  --cat-product-design: #6238b8; /* ink: text and marks */
-  --cat-product-design-tint: #efe8fb; /* pill fill */
-  --cat-strategy: #2f6f1d; /* ink: text and marks */
-  --cat-strategy-tint: #e6f2df; /* pill fill */
-  --cat-analytics: #1a58b5; /* ink: text and marks */
-  --cat-analytics-tint: #e2ecfa; /* pill fill */
-  --cat-technical: #0b6f61; /* ink: text and marks */
-  --cat-technical-tint: #dcf2ee; /* pill fill */
-  --cat-general: #9a2170; /* ink: text and marks */
-  --cat-general-tint: #fae6f2; /* pill fill */
+  /* semantic names components read — every one maps back to a token above */
+  --accent: var(--primary);
+  --accent-tint: var(--blue-50);
+  --surface: var(--white); /* cards: same value as page, separated by a border only */
+  --page: var(--white);
+  --border: var(--blue-100);
+  --text: var(--ink);
+  --text-muted: var(--ink-soft);
 }
 
 /* the same names, mirrored for people who browse in dark mode */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --accent: #e8577f;
-    --accent-tint: #3a1a24;
-    --surface: #211f1e;
-    --page: #171615;
-    --border: #383533;
-    --text: #efece8;
-    --text-muted: #a29e98;
-    --cat-behavioral: #f0a070; /* ink: text and marks */
-    --cat-behavioral-tint: #3a2216; /* pill fill */
-    --cat-product-design: #b79bf2; /* ink: text and marks */
-    --cat-product-design-tint: #2c2140; /* pill fill */
-    --cat-strategy: #8fd06f; /* ink: text and marks */
-    --cat-strategy-tint: #1f3018; /* pill fill */
-    --cat-analytics: #7fb0f5; /* ink: text and marks */
-    --cat-analytics-tint: #1b2a40; /* pill fill */
-    --cat-technical: #5fd1bd; /* ink: text and marks */
-    --cat-technical-tint: #123330; /* pill fill */
-    --cat-general: #f08fcb; /* ink: text and marks */
-    --cat-general-tint: #3d1a30; /* pill fill */
+    --white: #0f1725;
+    --blue-50: #16233a;
+    --blue-100: #263a5c;
+    --blue-300: #5f7fb8;
+    --primary: #6e9fe0;
+    --ink: #e8eef7;
+    --ink-soft: #93a3bc;
+    --chart-2: #4c6fa8;
+    --accent: var(--primary);
+    --accent-tint: var(--blue-50);
+    --surface: var(--white);
+    --page: var(--white);
+    --border: var(--blue-100);
+    --text: var(--ink);
+    --text-muted: var(--ink-soft);
   }
 }
 
 [data-theme='dark'] {
-  --accent: #e8577f;
-  --accent-tint: #3a1a24;
-  --surface: #211f1e;
-  --page: #171615;
-  --border: #383533;
-  --text: #efece8;
-  --text-muted: #a29e98;
-  --cat-behavioral: #f0a070; /* ink: text and marks */
-  --cat-behavioral-tint: #3a2216; /* pill fill */
-  --cat-product-design: #b79bf2; /* ink: text and marks */
-  --cat-product-design-tint: #2c2140; /* pill fill */
-  --cat-strategy: #8fd06f; /* ink: text and marks */
-  --cat-strategy-tint: #1f3018; /* pill fill */
-  --cat-analytics: #7fb0f5; /* ink: text and marks */
-  --cat-analytics-tint: #1b2a40; /* pill fill */
-  --cat-technical: #5fd1bd; /* ink: text and marks */
-  --cat-technical-tint: #123330; /* pill fill */
-  --cat-general: #f08fcb; /* ink: text and marks */
-  --cat-general-tint: #3d1a30; /* pill fill */
-}
-
-/* a category's two colours, addressed by data-cat="<slug>" on any element */
-[data-cat='behavioral'] {
-  --c: var(--cat-behavioral);
-  --c-tint: var(--cat-behavioral-tint);
-}
-[data-cat='product-design'] {
-  --c: var(--cat-product-design);
-  --c-tint: var(--cat-product-design-tint);
-}
-[data-cat='strategy'] {
-  --c: var(--cat-strategy);
-  --c-tint: var(--cat-strategy-tint);
-}
-[data-cat='analytics'] {
-  --c: var(--cat-analytics);
-  --c-tint: var(--cat-analytics-tint);
-}
-[data-cat='technical'] {
-  --c: var(--cat-technical);
-  --c-tint: var(--cat-technical-tint);
-}
-[data-cat='general'] {
-  --c: var(--cat-general);
-  --c-tint: var(--cat-general-tint);
+  --white: #0f1725;
+  --blue-50: #16233a;
+  --blue-100: #263a5c;
+  --blue-300: #5f7fb8;
+  --primary: #6e9fe0;
+  --ink: #e8eef7;
+  --ink-soft: #93a3bc;
+  --chart-2: #4c6fa8;
+  --accent: var(--primary);
+  --accent-tint: var(--blue-50);
+  --surface: var(--white);
+  --page: var(--white);
+  --border: var(--blue-100);
+  --text: var(--ink);
+  --text-muted: var(--ink-soft);
 }
 
 /* phones: body text is 16px (also stops iOS zooming into inputs), headings step down */
-/* the same six colour pairs under neutral names, for boxes that are not categories
-   (guesstimate kinds, MECE buckets). data-tone="1".."6" on any element. */
-[data-tone='1'] {
-  --c: var(--cat-behavioral);
-  --c-tint: var(--cat-behavioral-tint);
-}
-[data-tone='2'] {
-  --c: var(--cat-product-design);
-  --c-tint: var(--cat-product-design-tint);
-}
-[data-tone='3'] {
-  --c: var(--cat-strategy);
-  --c-tint: var(--cat-strategy-tint);
-}
-[data-tone='4'] {
-  --c: var(--cat-analytics);
-  --c-tint: var(--cat-analytics-tint);
-}
-[data-tone='5'] {
-  --c: var(--cat-technical);
-  --c-tint: var(--cat-technical-tint);
-}
-[data-tone='6'] {
-  --c: var(--cat-general);
-  --c-tint: var(--cat-general-tint);
-}
-
 @media (max-width: 767px) {
   :root {
     --text-page: 1.375rem; /* 22 */
@@ -176,8 +113,16 @@
 }
 
 @theme inline {
-  /* wipe Tailwind's defaults so an off-system class produces nothing */
+  /* wipe Tailwind's defaults so an off-system class (bg-blue-500, text-red-600 ...) produces nothing */
   --color-*: initial;
+  --color-white: var(--white);
+  --color-blue-50: var(--blue-50);
+  --color-blue-100: var(--blue-100);
+  --color-blue-300: var(--blue-300);
+  --color-primary: var(--primary);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-chart-2: var(--chart-2);
   --color-accent: var(--accent);
   --color-accent-tint: var(--accent-tint);
   --color-surface: var(--surface);
@@ -190,12 +135,15 @@
 }
 
 @theme {
-  /* shape: 8px cards and panels, 6px buttons, pill for tags only. No shadows. */
+  /* shape: 16px section panels, 12px cards, 8px buttons/inputs, pill for tags */
   --radius-*: initial;
-  --radius-card: 8px;
-  --radius-button: 6px;
+  --radius-panel: 16px;
+  --radius-card: 12px;
+  --radius-button: 8px;
   --radius-pill: 9999px;
+  /* very soft shadows only — a hover lift, never a hard or offset shadow */
   --shadow-*: initial;
+  --shadow-soft: 0 2px 8px rgba(15, 27, 45, 0.07);
   --drop-shadow-*: initial;
 
   /* type: one scale, four sizes */

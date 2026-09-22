@@ -168,6 +168,7 @@
   }
   .pill:hover {
     border-color: var(--accent);
+    background: var(--accent-tint);
     text-decoration: none;
   }
   .pill.pill-on,
@@ -176,95 +177,28 @@
     background: var(--accent);
     border-color: var(--accent);
   }
-
-  /* category pill: the category's tint as fill, its ink as text. Needs data-cat.
-     Filter state is aria-pressed / .pill-on: fill flips to the ink colour. */
-  .cat-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 2px 12px;
-    font-size: var(--text-body);
-    font-weight: 500;
-    line-height: 1.4;
-    color: var(--c);
-    background: var(--c-tint);
-    border: 1px solid transparent;
-    border-radius: var(--radius-pill);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  a.cat-pill:hover,
-  button.cat-pill:hover {
-    border-color: var(--c);
-    text-decoration: none;
-  }
-  .cat-pill.pill-on,
-  .cat-pill[aria-pressed='true'] {
-    color: var(--surface);
-    background: var(--c);
-    border-color: var(--c);
-  }
-  /* non-interactive variant used inside rows */
-  .cat-pill.cat-pill-static {
+  /* non-interactive variant used inside rows: a small static tag */
+  .pill.pill-static {
     padding: 0 8px;
     font-size: var(--text-label);
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     cursor: default;
-  }
-  /* tone boxes: a white box with a tinted header band. Colours come from
-     data-tone (see tokens.css); nothing here names a colour. */
-  .tone-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-  }
-  .tone-head {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: var(--c-tint);
-    border-bottom: 1px solid var(--border);
-  }
-  .tone-ink {
-    color: var(--c);
-  }
-  .tone-fill {
-    background: var(--c-tint);
-  }
-  .tone-solid {
-    background: var(--c);
-    color: var(--surface);
-  }
-  /* a tappable tile inside a box */
-  .tone-tile {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    min-height: 44px;
-    padding: 12px;
-    text-align: left;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-button);
-    cursor: pointer;
-  }
-  .tone-tile:hover,
-  .tone-tile[aria-expanded='true'] {
-    border-color: var(--c);
-  }
-  .tone-tile[aria-expanded='true'] {
-    background: var(--c-tint);
+    background: var(--accent-tint);
+    color: var(--accent);
+    border-color: transparent;
   }
 
-  /* an icon or mark coloured by its category */
-  .cat-ink {
-    color: var(--c);
+  /* section panel: the same card look at the larger, 16px radius */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-panel);
+  }
+  /* a tinted band inside a panel or card — hero strips, active states */
+  .tint {
+    background: var(--accent-tint);
   }
 
   /* emphasis on a phrase that matters; also cancels the browser's <mark> fill */
@@ -343,9 +277,7 @@
 @media (max-width: 767px) {
   .btn,
   .btn-sm,
-  .pill,
-  a.cat-pill,
-  button.cat-pill {
+  .pill {
     min-height: 44px;
   }
   input[type='search'],

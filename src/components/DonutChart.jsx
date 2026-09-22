@@ -13,6 +13,9 @@ const CARD_H = 66
 const SIDE_PAD = 16
 const V_PAD = 36
 
+// Charts use only these four, darkest to lightest — nothing else.
+const CHART_COLORS = ['var(--primary)', 'var(--chart-2)', 'var(--blue-300)', 'var(--blue-100)']
+
 const toXY = (r, deg) => {
   const a = ((deg - 90) * Math.PI) / 180
   return [CX + r * Math.cos(a), CY + r * Math.sin(a)]
@@ -31,9 +34,14 @@ function sectorPath(startDeg, endDeg) {
 
 /** Layout: mid-angle decides which side a slice's card sits on (by the sign
  * of its x offset from centre), and slices on the same side stack top to
- * bottom in the order their anchor points fall down the circle. */
+ * bottom in the order their anchor points fall down the circle. Colour is
+ * assigned by rank — the biggest slice gets the darkest of the 4 chart
+ * blues, not a fixed identity — so it stays correct if counts change. */
 function layout(slices) {
   const total = slices.reduce((n, s) => n + s.count, 0)
+  const byCount = [...slices].sort((a, b) => b.count - a.count)
+  const colorOf = Object.fromEntries(byCount.map((s, i) => [s.key, CHART_COLORS[i % CHART_COLORS.length]]))
+
   let cursor = 0
   const withAngles = slices.map((s) => {
     const sweep = (s.count / total) * 360
@@ -43,7 +51,7 @@ function layout(slices) {
     const mid = (start + end) / 2
     const [ax, ay] = toXY(OUTER, mid)
     const [lx, ly] = toXY(OUTER + 6, mid) // leader line's ring-side anchor
-    return { ...s, start, end, mid, side: ax < CX ? 'left' : 'right', anchorY: ay, lx, ly }
+    return { ...s, start, end, mid, color: colorOf[s.key], side: ax < CX ? 'left' : 'right', anchorY: ay, lx, ly }
   })
   for (const side of ['left', 'right']) {
     const group = withAngles.filter((s) => s.side === side).sort((a, b) => a.anchorY - b.anchorY)
@@ -104,8 +112,7 @@ export default function DonutChart({ slices }) {
               cx={s.cardAnchorX}
               cy={s.cardAnchorY}
               r="3"
-              data-cat={s.tone}
-              style={{ fill: 'var(--c)', opacity: active && active !== s.key ? 0.25 : 1 }}
+              style={{ fill: s.color, opacity: active && active !== s.key ? 0.25 : 1 }}
             />
           ))}
 
@@ -113,7 +120,6 @@ export default function DonutChart({ slices }) {
             <a
               key={s.key}
               href={s.to}
-              data-cat={s.tone}
               aria-label={`${s.label}: ${s.count} ${s.unit}`}
               onPointerDown={(e) => { pointer.current = e.pointerType }}
               onMouseEnter={() => enter(s.key)}
@@ -132,14 +138,13 @@ export default function DonutChart({ slices }) {
             >
               <path
                 d={sectorPath(s.start, s.end)}
-                style={{ fill: 'var(--c)', opacity: active && active !== s.key ? 0.3 : 1, transition: 'opacity 120ms' }}
+                style={{ fill: s.color, opacity: active && active !== s.key ? 0.3 : 1, transition: 'opacity 120ms' }}
               />
               <circle
                 cx={s.lx}
                 cy={s.ly}
                 r="3"
-                data-cat={s.tone}
-                style={{ fill: 'var(--c)', opacity: active && active !== s.key ? 0.3 : 1 }}
+                style={{ fill: s.color, opacity: active && active !== s.key ? 0.3 : 1 }}
               />
             </a>
           ))}
@@ -156,22 +161,20 @@ export default function DonutChart({ slices }) {
           <Link
             key={s.key}
             to={s.to}
-            data-cat={s.tone}
             onMouseEnter={() => enter(s.key)}
             onMouseLeave={leave}
             onFocus={() => enter(s.key)}
             onBlur={leave}
-            className={`absolute flex flex-col justify-center rounded-card border bg-surface px-3 py-2 no-underline hover:no-underline ${
-              active === s.key ? 'border-[var(--c)]' : 'border-border'
-            }`}
+            className="absolute flex flex-col justify-center rounded-card border bg-surface px-3 py-2 no-underline hover:no-underline"
             style={{
               left: `${(s.cardX / W) * 100}%`,
               top: `${(s.cardY / H) * 100}%`,
               width: `${(CARD_W / W) * 100}%`,
               height: `${(CARD_H / H) * 100}%`,
+              borderColor: active === s.key ? s.color : 'var(--border)',
             }}
           >
-            <span className="text-body font-semibold tone-ink">{s.label}</span>
+            <span className="text-body font-semibold" style={{ color: s.color }}>{s.label}</span>
             <span className="text-text-muted">{s.note}</span>
           </Link>
         ))}
@@ -183,7 +186,7 @@ export default function DonutChart({ slices }) {
           <circle cx={CX} cy={CY} r={OUTER + 34} fill="none" stroke="var(--border)" strokeWidth="1" opacity="0.5" />
           <circle cx={CX} cy={CY} r={OUTER + 18} fill="none" stroke="var(--border)" strokeWidth="1" opacity="0.5" />
           {laid.map((s) => (
-            <path key={s.key} d={sectorPath(s.start, s.end)} data-cat={s.tone} style={{ fill: 'var(--c)' }} />
+            <path key={s.key} d={sectorPath(s.start, s.end)} style={{ fill: s.color }} />
           ))}
           <text x={CX} y={CY - 6} textAnchor="middle" fontSize="13" fontWeight="600" fill="var(--text-muted)">
             {total}
@@ -197,10 +200,9 @@ export default function DonutChart({ slices }) {
             <li key={s.key}>
               <Link
                 to={s.to}
-                data-cat={s.tone}
                 className="flex items-center gap-3 rounded-card border border-border bg-surface px-3 py-2 no-underline hover:no-underline"
               >
-                <span aria-hidden="true" className="size-2.5 shrink-0 rounded-pill" style={{ background: 'var(--c)' }} />
+                <span aria-hidden="true" className="size-2.5 shrink-0 rounded-pill" style={{ background: s.color }} />
                 <span className="min-w-0 flex-1">
                   <span className="block font-semibold text-text">{s.label}</span>
                   <span className="block text-text-muted">{s.note}</span>

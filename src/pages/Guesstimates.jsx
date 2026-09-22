@@ -6,14 +6,10 @@ import { Page, PageHead } from '../components/Page'
 import { Icon } from '../components/ui'
 import Tree from '../components/diagrams/Tree'
 
-/* Each kind of question gets its own tone and icon, so the three boxes read as
-   three different things. Tones are neutral names for the shared colour pairs. */
-const KINDS = [
-  { tone: '4', icon: 'users' }, // population & scale
-  { tone: '1', icon: 'briefcase' }, // non-tech product
-  { tone: '2', icon: 'code' }, // tech product
-]
-const BUCKET_TONES = { System: '4', Internal: '1', External: '3', 'Out of control': '6' }
+// Charts and colour-coded groups use only these four, darkest to lightest.
+const CHART_COLORS = ['var(--primary)', 'var(--chart-2)', 'var(--blue-300)', 'var(--blue-100)']
+
+const KIND_ICONS = ['users', 'briefcase', 'code'] // population & scale, non-tech, tech
 
 const JUMP = [
   ['practice', 'Practice'],
@@ -32,8 +28,9 @@ function Ledger({ rows }) {
           <div
             key={label}
             className={`flex flex-col gap-1 border-b border-border py-2 last:border-0 sm:flex-row sm:gap-4 ${
-              check ? 'tone-fill -mx-4 px-4' : ''
+              check ? '-mx-4 px-4' : ''
             }`}
+            style={check ? { background: 'var(--accent-tint)' } : undefined}
           >
             <dt className="text-text sm:w-2/5 sm:shrink-0">{label}</dt>
             <dd className="m-0 text-text-muted">{value}</dd>
@@ -44,39 +41,39 @@ function Ledger({ rows }) {
   )
 }
 
-function AnswerPanel({ q }) {
+function AnswerPanel({ q, color }) {
   return (
-    <div className="col-span-full overflow-hidden rounded-card border bg-surface" style={{ borderColor: 'var(--c)' }}>
+    <div className="col-span-full overflow-hidden rounded-card border bg-surface" style={{ borderColor: color }}>
       <div className="px-4 pt-3">
         <p className="label">Working</p>
         <Ledger rows={q.steps} />
       </div>
-      <div className="tone-solid px-4 py-3">
+      <div className="px-4 py-3" style={{ background: color, color: 'var(--white)' }}>
         <p className="label !text-current opacity-80">Answer</p>
         <p className="mt-1 text-section font-semibold">{q.answer}</p>
       </div>
-      <div className="tone-fill px-4 py-3">
-        <p className="label tone-ink">Sanity check</p>
+      <div className="px-4 py-3" style={{ background: 'var(--accent-tint)' }}>
+        <p className="label" style={{ color }}>Sanity check</p>
         <p className="mt-1 text-text">{q.check}</p>
       </div>
     </div>
   )
 }
 
-/** One kind of question: a box, a header band, and a grid of question tiles. */
-function KindBox({ set, tone, icon }) {
+/** One kind of question: a panel, a header band, and a grid of question tiles. */
+function KindBox({ set, color, icon }) {
   const [open, setOpen] = useState(null)
   return (
-    <section data-tone={tone} className="tone-box mt-4">
-      <header className="tone-head">
-        <span className="tone-ink grid size-9 shrink-0 place-items-center rounded-button bg-surface">
+    <section className="panel mt-4 overflow-hidden">
+      <header className="flex items-center gap-3 border-b border-border px-4 py-3" style={{ background: 'var(--accent-tint)' }}>
+        <span className="grid size-9 shrink-0 place-items-center rounded-button bg-surface" style={{ color }}>
           <Icon name={icon} size={18} />
         </span>
         <div className="min-w-0 flex-1">
           <h3 className="text-section">{set.kind}</h3>
           <p className="text-text">{set.note}</p>
         </div>
-        <span className="label tone-ink shrink-0">{set.questions.length}</span>
+        <span className="label shrink-0" style={{ color }}>{set.questions.length}</span>
       </header>
       <div className="grid grid-flow-dense gap-2 p-3 sm:grid-cols-2">
         {set.questions.map((q) => {
@@ -85,14 +82,15 @@ function KindBox({ set, tone, icon }) {
             <Fragment key={q.q}>
               <button
                 type="button"
-                className="tone-tile"
+                className="flex min-h-11 flex-col items-start gap-1 rounded-button border px-3 py-2 text-left"
+                style={{ borderColor: on ? color : 'var(--border)', background: on ? 'var(--accent-tint)' : 'var(--surface)' }}
                 aria-expanded={on}
                 onClick={() => setOpen(on ? null : q.q)}
               >
                 <span className="text-text">{q.q}</span>
-                <span className="label tone-ink">{q.how}</span>
+                <span className="label" style={{ color }}>{q.how}</span>
               </button>
-              {on && <AnswerPanel q={q} />}
+              {on && <AnswerPanel q={q} color={color} />}
             </Fragment>
           )
         })}
@@ -102,12 +100,15 @@ function KindBox({ set, tone, icon }) {
 }
 
 /** Numbered steps as a grid of small boxes. */
-function StepTiles({ items, tone }) {
+function StepTiles({ items, color }) {
   return (
-    <ol data-tone={tone} className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+    <ol className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((text, i) => (
         <li key={i} className="card flex gap-3 p-3">
-          <span className="tone-solid grid size-7 shrink-0 place-items-center rounded-pill text-body font-semibold">
+          <span
+            className="grid size-7 shrink-0 place-items-center rounded-pill text-body font-semibold"
+            style={{ background: color, color: 'var(--white)' }}
+          >
             {i + 1}
           </span>
           <span className="min-w-0 text-text">{text}</span>
@@ -160,20 +161,20 @@ export default function Guesstimates() {
         note="Tap a question for one worked path and a sanity check. It is a path, not the answer: swap in your own assumptions."
       >
         {questionSets.map((set, i) => (
-          <KindBox key={set.kind} set={set} {...KINDS[i % KINDS.length]} />
+          <KindBox key={set.kind} set={set} color={CHART_COLORS[i % CHART_COLORS.length]} icon={KIND_ICONS[i % KIND_ICONS.length]} />
         ))}
       </Section>
 
       <Section id="sizing" title={`2 · ${sizing.title}`}>
-        <StepTiles items={sizing.steps} tone="5" />
+        <StepTiles items={sizing.steps} color={CHART_COLORS[0]} />
 
-        <div data-tone="5" className="tone-box mt-4">
-          <header className="tone-head">
-            <span className="tone-ink grid size-9 shrink-0 place-items-center rounded-button bg-surface">
+        <div className="panel mt-4 overflow-hidden">
+          <header className="flex items-center gap-3 border-b border-border px-4 py-3" style={{ background: 'var(--accent-tint)' }}>
+            <span className="grid size-9 shrink-0 place-items-center rounded-button bg-surface" style={{ color: CHART_COLORS[0] }}>
               <Icon name="list" size={18} />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="label tone-ink">Worked example</p>
+              <p className="label" style={{ color: CHART_COLORS[0] }}>Worked example</p>
               <p className="font-semibold text-text">{sizing.example.q}</p>
             </div>
           </header>
@@ -184,14 +185,16 @@ export default function Guesstimates() {
       </Section>
 
       <Section id="drops" title={`3 · ${diagnosis.title}`} note={diagnosis.note}>
-        <StepTiles items={diagnosis.steps} tone="2" />
+        <StepTiles items={diagnosis.steps} color={CHART_COLORS[1]} />
 
         <p className="label mt-6">Sort the causes (MECE)</p>
         <p className="mt-1 text-text-muted">{diagnosis.mece.note}</p>
         <div className="mt-3 grid gap-2 sm:grid-cols-2">
-          {diagnosis.mece.buckets.map((b) => (
-            <div key={b.label} data-tone={BUCKET_TONES[b.label] || '5'} className="tone-box">
-              <p className="tone-head tone-ink font-semibold">{b.label}</p>
+          {diagnosis.mece.buckets.map((b, i) => (
+            <div key={b.label} className="panel overflow-hidden">
+              <p className="px-4 py-3 font-semibold" style={{ background: 'var(--accent-tint)', color: CHART_COLORS[i % CHART_COLORS.length] }}>
+                {b.label}
+              </p>
               <p className="p-3 text-text-muted">{b.examples}</p>
             </div>
           ))}
@@ -209,10 +212,10 @@ export default function Guesstimates() {
       </Section>
 
       <Section id="numbers" title={`4 · ${anchors.title}`} note={anchors.note}>
-        <ul data-tone="3" className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
           {anchors.rows.map(([label, value]) => (
             <li key={label} className="card p-3">
-              <p className="tone-ink text-section font-semibold tabular-nums">{value}</p>
+              <p className="text-section font-semibold tabular-nums" style={{ color: 'var(--accent)' }}>{value}</p>
               <p className="mt-1 text-text-muted">{label}</p>
             </li>
           ))}

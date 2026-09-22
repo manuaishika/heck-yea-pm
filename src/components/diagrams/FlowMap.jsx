@@ -23,8 +23,8 @@ export default function FlowMap({ root, sub, steps }) {
 
   return (
     <div className="mt-4">
-      {/* root */}
-      <div className="card mx-auto max-w-sm px-3 py-2 text-center">
+      {/* root: tinted header band */}
+      <div className="tint mx-auto max-w-sm rounded-card px-3 py-2 text-center">
         <div className="text-body font-semibold text-text">{root}</div>
         {sub && <div className="mt-1 text-body text-text-muted">{sub}</div>}
       </div>
@@ -96,8 +96,8 @@ export default function FlowMap({ root, sub, steps }) {
         })}
       </div>
 
-      {/* detail */}
-      <div className="mt-3 border-l border-accent pl-3">
+      {/* detail: tinted strip */}
+      <div className="tint mt-3 rounded-card border-l-4 border-accent px-3 py-2">
         <p className="label !text-text">{current.step}</p>
         <p className="mt-1 text-body leading-relaxed text-text-muted">
           <Rich>{current.detail}</Rich>

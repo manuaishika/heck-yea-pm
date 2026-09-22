@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "validate": "node scripts/validate-data.mjs",
-    "prebuild": "node scripts/validate-data.mjs && node scripts/content-snapshot.js --check",
+    "prebuild": "node scripts/validate-data.mjs && node scripts/content-snapshot.js --check && node scripts/check-colors.js",
     "snapshot": "node scripts/content-snapshot.js",
     "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview"

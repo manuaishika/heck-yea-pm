@@ -1,6 +1,5 @@
 import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { categorySlug } from '../data/questions'
 
 /* ------------------------------------------------------------------ icons
  * A small stroke-icon set for the rounded-square tile on expandable rows.
@@ -160,11 +159,11 @@ const CATEGORY_ICONS = {
 export const iconForCategory = (category) => CATEGORY_ICONS[category] || 'question'
 
 /* ------------------------------------------------------- category tag
- * The one place a category is drawn as a pill. Colours come from the
- * --cat-* tokens through data-cat; nothing here names a colour.
+ * The one place a category is drawn as a pill. One colour, the accent —
+ * categories are no longer colour-coded against each other.
  */
 export function CategoryTag({ category, count, to, onClick, pressed, suffix = null, className = '' }) {
-  const cls = `cat-pill ${pressed ? 'pill-on' : ''} ${className}`.trim()
+  const cls = `pill ${pressed ? 'pill-on' : ''} ${className}`.trim()
   const label = (
     <>
       {category.toLowerCase()}
@@ -172,37 +171,29 @@ export function CategoryTag({ category, count, to, onClick, pressed, suffix = nu
       {suffix}
     </>
   )
-  const cat = categorySlug(category)
   if (to) {
     return (
-      <Link to={to} data-cat={cat} className={cls}>
+      <Link to={to} className={cls}>
         {label}
       </Link>
     )
   }
   if (onClick) {
     return (
-      <button type="button" data-cat={cat} aria-pressed={Boolean(pressed)} onClick={onClick} className={cls}>
+      <button type="button" aria-pressed={Boolean(pressed)} onClick={onClick} className={cls}>
         {label}
       </button>
     )
   }
-  return (
-    <span data-cat={cat} className={`${cls} cat-pill-static`}>
-      {category}
-    </span>
-  )
+  return <span className={`${cls} pill-static`}>{category}</span>
 }
 
 /* ------------------------------------------------------------------- tile */
 
-/** Rounded-square tile that holds an icon (or a logo). `category` tints the icon. */
-export function Tile({ children, category }) {
+/** Rounded-square tile that holds an icon (or a logo). */
+export function Tile({ children }) {
   return (
-    <span
-      data-cat={category ? categorySlug(category) : undefined}
-      className={`grid size-8 shrink-0 place-items-center rounded-button border border-border bg-page ${category ? 'cat-ink' : 'text-accent'}`}
-    >
+    <span className="grid size-8 shrink-0 place-items-center rounded-button border border-border bg-page text-accent">
       {children}
     </span>
   )
@@ -215,7 +206,6 @@ export function Tile({ children, category }) {
 export function Row({
   icon = 'dot',
   tile = null, // custom tile content (e.g. a logo) instead of an icon name
-  category = null, // tints the tile icon with this category's colour
   title,
   sub = null,
   open: openProp,
@@ -240,7 +230,7 @@ export function Row({
           onClick={toggle}
           className="flex min-h-11 min-w-0 flex-1 items-center gap-3 text-left"
         >
-          <Tile category={category}>{tile ?? <Icon name={icon} />}</Tile>
+          <Tile>{tile ?? <Icon name={icon} />}</Tile>
           <span className="min-w-0 flex-1">
             <span className="block font-semibold text-text">{title}</span>
             {sub && <span className="block text-text-muted">{sub}</span>}
@@ -335,10 +325,10 @@ export function WorkTable({ rows }) {
 }
 
 /** A list row that links (chapters on the landing page): same look as Row. */
-export function LinkRow({ icon, category = null, title, sub, children }) {
+export function LinkRow({ icon, title, sub, children }) {
   return (
     <div className="flex items-center gap-3 rounded-card border border-border bg-surface px-4 py-3 hover:border-accent">
-      <Tile category={category}>
+      <Tile>
         <Icon name={icon} />
       </Tile>
       <span className="min-w-0 flex-1">
