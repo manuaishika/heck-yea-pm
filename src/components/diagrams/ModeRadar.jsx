@@ -248,7 +248,7 @@ export default function ModeRadar({ modes }) {
                 ))}
               </text>
               {/* generous hit area */}
-              <circle cx={lx} cy={ly} r="30" fill="transparent" />
+              <circle cx={lx} cy={ly} r="34" fill="transparent" />
             </g>
           )
         })}

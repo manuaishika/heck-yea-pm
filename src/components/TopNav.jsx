@@ -72,7 +72,7 @@ export default function TopNav() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-surface">
         <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 sm:px-6">
-          <Link to="/" className="shrink-0 text-section font-semibold text-text no-underline hover:no-underline">
+          <Link to="/" className="inline-flex min-h-11 shrink-0 items-center text-section font-semibold text-text no-underline hover:no-underline">
             Heck Yea PM
           </Link>
 
@@ -103,7 +103,7 @@ export default function TopNav() {
                   type="button"
                   aria-label="Search questions"
                   onClick={() => setSearchOpen(true)}
-                  className="grid size-9 place-items-center rounded-button text-text-muted hover:text-accent"
+                  className="grid size-11 place-items-center rounded-button text-text-muted hover:text-accent"
                 >
                   <Icon name="question" />
                 </button>
@@ -112,7 +112,7 @@ export default function TopNav() {
             <Link
               to="/login"
               aria-label="Account"
-              className="grid size-9 shrink-0 place-items-center rounded-button text-text-muted no-underline hover:text-accent hover:no-underline"
+              className="grid size-11 shrink-0 place-items-center rounded-button text-text-muted no-underline hover:text-accent hover:no-underline"
             >
               <Icon name="user-circle" />
             </Link>

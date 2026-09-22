@@ -85,7 +85,7 @@ function DetailStage({ id, side, label, lead, detail }) {
         <>
           <button
             type="button"
-            className="label mt-2 text-accent"
+            className="label -mx-1 -my-1 mt-1 flex min-h-11 items-center px-1 py-1 text-accent"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
