@@ -22,12 +22,15 @@ const SIZE = { width: 1280, height: 720 }
 const ffmpeg = findFfmpeg()
 
 function findFfmpeg() {
-  const cache = join(process.env.USERPROFILE || process.env.HOME, 'AppData/Local/ms-playwright')
-  if (existsSync(cache)) {
-    const dir = readdirSync(cache).find((d) => d.startsWith('ffmpeg-'))
-    if (dir) return join(cache, dir, 'ffmpeg-win64.exe')
-  }
-  return 'ffmpeg' // fall back to PATH
+  // a real ffmpeg build (with libx264) is required for the MP4 step — an
+  // explicit FFMPEG_PATH wins, then whatever's on PATH. Playwright's own
+  // bundled ffmpeg (used only as a last-resort fallback) is a stripped-down
+  // build for its trace/video recorder: it can write the WebM, but has no
+  // libx264 and cannot produce the MP4 or the JPEG poster — if that's all
+  // that's found, install a real ffmpeg (e.g. https://www.gyan.dev/ffmpeg/builds/)
+  // and either put it on PATH or set FFMPEG_PATH to it.
+  if (process.env.FFMPEG_PATH) return process.env.FFMPEG_PATH
+  return 'ffmpeg'
 }
 
 async function main() {
@@ -48,18 +51,25 @@ async function main() {
   await page.evaluate(() => document.fonts.ready)
   await wait(1200)
 
-  // 2. open Role & Skills
-  await page.getByRole('link', { name: 'Role & Skills', exact: true }).first().click()
-  await page.waitForURL('**/role')
+  // 2. open Role & Skills — navigate directly rather than depend on the nav's
+  // exact desktop-vs-drawer breakpoint at this recording width
+  await page.goto(BASE + '/role', { waitUntil: 'networkidle' })
   await wait(900)
 
-  // 3. click a donut slice (Behavioral — reliably present, largest slice)
-  const slice = page.locator('a[aria-label^="Behavioral"]').first()
-  await slice.scrollIntoViewIfNeeded()
+  // 3. click a donut slice — the callout card, not the raw SVG wedge (a
+  // wedge's bounding-box centre falls in its own empty hole, so a normal
+  // click-at-centre misses it; the card is the same slice's click target)
+  // the callout card is the only match whose text includes its note line
+  // (the SVG wedge has an aria-label instead, and the mobile list is hidden
+  // at this width) — filter on that rather than an ambiguous href/class match
+  const card = page
+    .locator('a[href="/browse?category=behavioral"]:visible')
+    .filter({ hasText: 'How you' })
+  await card.scrollIntoViewIfNeeded()
   await wait(500)
-  await slice.hover()
+  await card.hover()
   await wait(700)
-  await slice.click()
+  await card.click()
   await page.waitForURL('**/browse*')
   await wait(900)
 
@@ -117,7 +127,8 @@ async function main() {
     '-movflags', '+faststart', '-an',
     mp4Path,
   ])
-  execFileSync(ffmpeg, ['-y', '-i', webmPath, '-vframes', '1', '-q:v', '3', posterPath])
+  // seek a few seconds in — frame 0 is the still-loading blank page
+  execFileSync(ffmpeg, ['-y', '-ss', '3', '-i', webmPath, '-vframes', '1', '-q:v', '3', posterPath])
 
   // if webm itself is over budget, recompress it too (libvpx-vp9, no audio)
   if (statSync(webmPath).size > 3 * 1024 * 1024) {
