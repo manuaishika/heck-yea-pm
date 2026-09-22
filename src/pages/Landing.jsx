@@ -17,7 +17,7 @@ const STEPS = [
 
 const LOOP_ROUNDS = [
   { name: 'Recruiter screen', tests: 'Fit for the role, your background, and why this company.' },
-  { name: 'Product sense', tests: 'How you structure a design or improvement question, not the final idea.' },
+  { name: 'Product sense', tests: 'How you structure a design question — not the final idea.' },
   { name: 'Analytics', tests: 'Metrics, a root-cause walkthrough, or a guesstimate — structure over speed.' },
   { name: 'Behavioral', tests: 'Real stories, told with STAR — your actual role, not the team’s.' },
   { name: 'Hiring manager', tests: 'Depth, judgement under pushback, and the questions you ask back.' },
@@ -49,7 +49,7 @@ export default function Landing() {
           <h1 className="mt-2">Prep for your first PM interview.</h1>
           <p className="mt-2 text-text-muted">Free interview prep for PM intern and APM roles.</p>
           <Link to="/browse" className="btn btn-primary mt-5 no-underline hover:no-underline">
-            Open the question bank
+            Browse questions
           </Link>
         </div>
         <DemoVideo />
