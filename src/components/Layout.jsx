@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import TopNav from './TopNav'
+import PageContainer from './PageContainer'
 
 export default function Layout() {
   return (
@@ -13,8 +14,12 @@ export default function Layout() {
 
       <TopNav />
 
-      <main id="main" className="mx-auto max-w-6xl">
-        <Outlet />
+      <main id="main">
+        <PageContainer>
+          <div className="py-6">
+            <Outlet />
+          </div>
+        </PageContainer>
       </main>
     </div>
   )

@@ -64,7 +64,7 @@ function StageCard({ id, label, side, children }) {
     <motion.div
       ref={ref}
       className="card p-3"
-      initial={reduce ? false : { opacity: 0, x: side === 'left' ? -20 : side === 'right' ? 20 : -14 }}
+      initial={reduce ? false : { opacity: 0, x: side === 'left' ? -14 : side === 'right' ? 14 : -10 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       whileHover={reduce ? undefined : { y: -2 }}
@@ -189,7 +189,7 @@ export default function Flowchart({ slug, name, gist, howItWorks, need, question
       </div>
 
       {/* phones: one column, line and nodes down the left edge */}
-      <div className="relative mt-3 pl-8 sm:hidden">
+      <div className="relative mt-3 overflow-x-hidden pl-8 sm:hidden">
         <span aria-hidden="true" className="absolute left-[6px] top-2 bottom-2 w-px bg-border" />
         {!reduce && (
           <motion.span
