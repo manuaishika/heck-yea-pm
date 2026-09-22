@@ -68,6 +68,47 @@ const PATHS = {
       <path d="M1.5 6.5h13" />
     </>
   ),
+  home: <path d="M2.5 8.2 8 3l5.5 5.2M4.3 6.7v6.8h7.4V6.7" />,
+  layers: (
+    <>
+      <path d="M8 2 14 5.5 8 9 2 5.5 8 2Z" />
+      <path d="M2 8.2 8 11.7l6-3.5" />
+      <path d="M2 11 8 14.5l6-3.5" />
+    </>
+  ),
+  compass: (
+    <>
+      <circle cx="8" cy="8" r="6.2" />
+      <path d="M10.3 5.7 9 9l-3.3 1.3L7 7l3.3-1.3Z" />
+    </>
+  ),
+  bot: (
+    <>
+      <rect x="2.5" y="5.5" width="11" height="8" rx="2.5" />
+      <path d="M8 5.5V3M6.3 1.8h3.4" />
+      <circle cx="5.8" cy="9.5" r=".9" fill="currentColor" stroke="none" />
+      <circle cx="10.2" cy="9.5" r=".9" fill="currentColor" stroke="none" />
+    </>
+  ),
+  book: (
+    <>
+      <path d="M8 4.3C6.6 3.3 4.6 3 2 3.3v9c2.6-.3 4.6 0 6 1 1.4-1 3.4-1.3 6-1v-9c-2.6-.3-4.6 0-6 1Z" />
+      <path d="M8 4.3v9" />
+    </>
+  ),
+  'user-circle': (
+    <>
+      <circle cx="8" cy="8" r="6.2" />
+      <circle cx="8" cy="6.6" r="2" />
+      <path d="M3.6 12.6c.7-2.1 2.4-3.2 4.4-3.2s3.7 1.1 4.4 3.2" />
+    </>
+  ),
+  info: (
+    <>
+      <circle cx="8" cy="8" r="6.2" />
+      <path d="M8 7.2v4M8 4.9v.1" />
+    </>
+  ),
   dot: <circle cx="8" cy="8" r="2.5" />,
 }
 

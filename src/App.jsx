@@ -12,6 +12,7 @@ const Assess = lazy(() => import('./pages/Assess'))
 const Careers = lazy(() => import('./pages/Careers'))
 const India = lazy(() => import('./pages/India'))
 const Guesstimates = lazy(() => import('./pages/Guesstimates'))
+const AI = lazy(() => import('./pages/AI'))
 const Resume = lazy(() => import('./pages/Resume'))
 const Resources = lazy(() => import('./pages/Resources'))
 const Methods = lazy(() => import('./pages/Methods'))
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="careers" element={<Careers />} />
             <Route path="india" element={<India />} />
             <Route path="guesstimates" element={<Guesstimates />} />
+            <Route path="ai" element={<AI />} />
             <Route path="resume" element={<Resume />} />
             <Route path="resources" element={<Resources />} />
             <Route path="methods" element={<Methods />} />

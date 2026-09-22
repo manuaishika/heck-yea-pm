@@ -105,8 +105,10 @@ export default function Careers() {
         </table>
       </div>
 
-      <p className="mt-8 text-body text-text-muted">
-        Interviewing in India? <Link to="/india">What's different</Link>.
+      <p className="mt-8 flex flex-wrap gap-3 border-t border-border pt-4 text-text-muted">
+        <Link to="/india">Getting in from India</Link>
+        <span aria-hidden="true">·</span>
+        <Link to="/resume">Resume</Link>
       </p>
     </Page>
   )

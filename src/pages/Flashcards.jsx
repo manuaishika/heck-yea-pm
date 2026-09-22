@@ -296,7 +296,7 @@ export default function Flashcards() {
   return (
     <Page>
       <PageHead
-        chapter="Library"
+        chapter="Module"
         title="Flashcards"
         intro={
           session
@@ -307,7 +307,12 @@ export default function Flashcards() {
       {session ? (
         <Deck session={session} prev={prev} next={next} finish={finish} />
       ) : (
-        <Picker onStart={start} reviewIds={reviewIds} />
+        <>
+          <Picker onStart={start} reviewIds={reviewIds} />
+          <p className="mt-8 border-t border-border pt-4 text-text-muted">
+            <Link to="/saved">Saved questions</Link>
+          </p>
+        </>
       )}
     </Page>
   )

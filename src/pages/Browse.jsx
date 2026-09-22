@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { useSearchParams, useLocation } from 'react-router-dom'
+import { useSearchParams, useLocation, Link } from 'react-router-dom'
 import {
   questions,
   categories,
@@ -221,6 +221,12 @@ export default function Browse() {
           )}
         </div>
       )}
+
+      <p className="mt-8 flex flex-wrap gap-3 border-t border-border pt-4 text-text-muted">
+        <Link to="/methods">Answering frameworks</Link>
+        <span aria-hidden="true">·</span>
+        <Link to="/guesstimates">Guesstimate practice</Link>
+      </p>
     </Page>
   )
 }
