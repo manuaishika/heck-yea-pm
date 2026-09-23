@@ -46,6 +46,27 @@ function useActiveStage(refs) {
     return () => io.disconnect()
   }, [refs])
 
+  // fallback: the trigger line sits at ~45% down the viewport, so the last
+  // stage only "advances" once its top scrolls above the viewport entirely
+  // — if this flowchart is the last thing on the page (nothing below it to
+  // scroll the page further), that can never happen and the final stage is
+  // stuck "upcoming" forever. Once the visitor hits the bottom of the
+  // document, force it to at least the last stage.
+  useEffect(() => {
+    const lastIndex = refs.length - 1
+    function checkBottom() {
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+      if (atBottom) setActiveIndex((a) => Math.max(a, lastIndex))
+    }
+    checkBottom()
+    window.addEventListener('scroll', checkBottom, { passive: true })
+    window.addEventListener('resize', checkBottom)
+    return () => {
+      window.removeEventListener('scroll', checkBottom)
+      window.removeEventListener('resize', checkBottom)
+    }
+  }, [refs])
+
   return activeIndex
 }
 

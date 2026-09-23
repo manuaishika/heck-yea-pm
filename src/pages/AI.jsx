@@ -46,6 +46,11 @@ export default function AI() {
           <p className="text-text-muted">{ai.responsibleAi.note}</p>
         </Block>
       </div>
+
+      {/* room for Pip's practice prompt, which docks to the bottom edge
+          below 2xl (see PipPracticePrompt.jsx) — without this the card
+          above can end up hidden behind it */}
+      <div aria-hidden="true" className="h-28 2xl:hidden" />
     </Page>
   )
 }
