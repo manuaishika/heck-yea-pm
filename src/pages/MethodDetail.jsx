@@ -4,6 +4,7 @@ import { categorySlug } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { Block, WorkTable, CategoryTag } from '../components/ui'
+import MethodDiagram from '../components/diagrams/MethodDiagram'
 import NotFound from './NotFound'
 
 export default function MethodDetail() {
@@ -42,24 +43,33 @@ export default function MethodDetail() {
         }
       />
 
-      <div className="card">
-        <Block label="Steps" rule={false}>
-          <ol className="space-y-3">
-            {m.steps.map(([label, detail], i) => (
-              <li key={label} className="flex gap-3">
-                <span className="w-5 shrink-0 tabular-nums text-text-muted" aria-hidden="true">
-                  {i + 1}
-                </span>
-                <span>
-                  <span className="font-semibold text-text">{label}.</span>{' '}
-                  <span className="text-text-muted">{detail}</span>
-                </span>
-              </li>
-            ))}
-          </ol>
-        </Block>
+      <div className="card p-4 sm:p-6">
+        <p className="label">The shape</p>
+        <p className="mt-1 text-text-muted">Tap any part for what it means and how it looked in the worked example below.</p>
+        <div className="mt-4">
+          <MethodDiagram method={m} />
+        </div>
+      </div>
 
-        <Block label="Worked example">
+      <details className="card mt-4 p-4">
+        <summary className="label cursor-pointer">All the steps, as text</summary>
+        <ol className="mt-3 space-y-3">
+          {m.steps.map(([label, detail], i) => (
+            <li key={label} className="flex gap-3">
+              <span className="w-5 shrink-0 tabular-nums text-text-muted" aria-hidden="true">
+                {i + 1}
+              </span>
+              <span>
+                <span className="font-semibold text-text">{label}.</span>{' '}
+                <span className="text-text-muted">{detail}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </details>
+
+      <div className="card mt-4">
+        <Block label="Worked example" rule={false}>
           <p>
             <Link to={`/browse/${example.id}`} className="font-semibold">
               {example.question}

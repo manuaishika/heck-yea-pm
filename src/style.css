@@ -294,6 +294,22 @@
   }
 }
 
+/* method diagrams (MethodDiagram.jsx): the whole diagram fades and rises in
+   once it's on screen, once, via the same IntersectionObserver pattern as
+   the interview-loop timeline below. Neutralised under reduced motion by
+   the global override further down this file. */
+.diagram-enter {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 500ms ease-out,
+    transform 500ms ease-out;
+}
+.diagram-enter.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* interview-loop timeline: the connector line draws in once the section
    enters the viewport, and the auto-cycling round gets a soft pulse (see
    InterviewLoopTimeline.jsx, which also stops the JS interval entirely

@@ -44,6 +44,41 @@ export function validateMethods(d, questionIds) {
         fail(`${at}: example.work ${j} must be [label, text]`)
       }
     })
+
+    // optional: sub-frameworks bundled under one method (e.g. RICE / MoSCoW /
+    // Kano living together under "rice-moscow-kano") — each drives its own
+    // diagram shape, so its own structured fields beyond the generic steps
+    if (m.frameworks !== undefined) {
+      if (!arr(m.frameworks)) fail(`${at}: frameworks must be a non-empty array if present`)
+      m.frameworks.forEach((f, j) => {
+        const fat = `${at}: frameworks[${j}]`
+        if (!str(f.key) || !str(f.name)) fail(`${fat}: key and name required`)
+        if (f.variables !== undefined) {
+          if (!arr(f.variables)) fail(`${fat}.variables must be non-empty`)
+          f.variables.forEach((v, k) => {
+            if (!Array.isArray(v) || v.length !== 2 || !str(v[0]) || !str(v[1])) {
+              fail(`${fat}.variables[${k}] must be [name, detail]`)
+            }
+          })
+        }
+        if (f.buckets !== undefined) {
+          if (!arr(f.buckets)) fail(`${fat}.buckets must be non-empty`)
+          f.buckets.forEach((b, k) => {
+            if (!Array.isArray(b) || b.length !== 3 || !b.every(str)) {
+              fail(`${fat}.buckets[${k}] must be [name, detail, example]`)
+            }
+          })
+        }
+        if (f.categories !== undefined) {
+          if (!arr(f.categories)) fail(`${fat}.categories must be non-empty`)
+          f.categories.forEach((c, k) => {
+            if (!Array.isArray(c) || c.length !== 3 || !c.every(str)) {
+              fail(`${fat}.categories[${k}] must be [name, detail, example]`)
+            }
+          })
+        }
+      })
+    }
   })
   return d
 }

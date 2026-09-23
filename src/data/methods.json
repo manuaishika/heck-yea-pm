@@ -233,7 +233,39 @@
           ["Cut", "Dark mode moves to next quarter."]
         ]
       },
-      "failure": "Computing a RICE score from invented numbers and presenting the output as the answer. The scores are a way to show your reasoning, so say where each number came from."
+      "failure": "Computing a RICE score from invented numbers and presenting the output as the answer. The scores are a way to show your reasoning, so say where each number came from.",
+      "frameworks": [
+        {
+          "key": "rice",
+          "name": "RICE",
+          "formula": "Reach × Impact × Confidence ÷ Effort",
+          "variables": [
+            ["Reach", "How many users it touches in a period — e.g. per quarter."],
+            ["Impact", "How much it moves the goal per user: 3 massive, 2 high, 1 medium, 0.5 low, 0.25 minimal."],
+            ["Confidence", "How sure you are of the Reach and Impact numbers, as a percentage."],
+            ["Effort", "Person-months to build — the denominator, so a bigger effort means a lower score."]
+          ]
+        },
+        {
+          "key": "moscow",
+          "name": "MoSCoW",
+          "buckets": [
+            ["Must", "Ships without it, the launch fails.", "One-tap reorder button"],
+            ["Should", "Important, but the launch survives without it.", "Order-again reminders"],
+            ["Could", "Nice to have if there's time.", "Reorder from a saved list"],
+            ["Won't", "Explicitly out of scope this cycle.", "Dark mode"]
+          ]
+        },
+        {
+          "key": "kano",
+          "name": "Kano",
+          "categories": [
+            ["Basic", "Expected — its absence causes dissatisfaction, its presence barely registers.", "Checkout has to work at all"],
+            ["Performance", "More is better; satisfaction scales with how much you invest.", "Faster checkout"],
+            ["Delighter", "Unexpected — absence isn't missed, but presence creates disproportionate delight.", "One-tap reorder"]
+          ]
+        }
+      ]
     },
     {
       "slug": "tam-sam-som",
