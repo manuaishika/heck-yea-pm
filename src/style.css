@@ -294,6 +294,41 @@
   }
 }
 
+/* interview-loop timeline: the connector line draws in once the section
+   enters the viewport, and the auto-cycling round gets a soft pulse (see
+   InterviewLoopTimeline.jsx, which also stops the JS interval entirely
+   under reduced motion — this block just makes the CSS half instant too) */
+.loop-line-x {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms ease-out;
+}
+.loop-line-x.in-view {
+  transform: scaleX(1);
+}
+.loop-line-y {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 900ms ease-out;
+}
+.loop-line-y.in-view {
+  transform: scaleY(1);
+}
+@keyframes loop-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 0%, transparent);
+  }
+}
+.loop-pulse {
+  animation: loop-pulse 900ms ease-out;
+}
+
 /* companies marquee: an infinite horizontal loop, paused on hover (see
    CompaniesMarquee.jsx) and replaced by a static list under reduced motion */
 .marquee-track {
