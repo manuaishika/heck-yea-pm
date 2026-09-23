@@ -4,19 +4,21 @@ import { CategoryTag } from '../ui'
 const order = { heavy: 0, medium: 1, light: 2 }
 
 /**
- * "What they weight" as plain text with accent emphasis: heavy is accent and
- * semibold, medium is normal, light is muted. Each label links into the bank.
- * Categories in `standout` get a star: this company weights them more than
- * most do. (Component keeps its old name; it no longer draws bars.)
+ * "What they weight" as a list with a colour-coded weight badge: heavy /
+ * medium / light each get their own badge colour (weight-heavy/-medium/
+ * -light in tokens.css — used nowhere else on the site). Each label links
+ * into the bank. Categories in `standout` get a star: this company weights
+ * them more than most do. (Component keeps its old name; it no longer draws
+ * bars.)
  *
  * @param {{ weights: [string, 'heavy'|'medium'|'light'][], standout?: string[] }} props
  */
 export default function WeightBars({ weights, standout = [] }) {
   const sorted = [...weights].sort((a, b) => order[a[1]] - order[b[1]])
-  const levelClass = {
-    heavy: 'font-semibold text-accent',
-    medium: 'text-text',
-    light: 'text-text-muted',
+  const badgeClass = {
+    heavy: 'bg-weight-heavy text-white',
+    medium: 'bg-weight-medium text-white',
+    light: 'bg-weight-light text-white',
   }
   return (
     <ul className="card divide-y divide-border">
@@ -34,7 +36,9 @@ export default function WeightBars({ weights, standout = [] }) {
               )
             }
           />
-          <span className={levelClass[level]}>{level}</span>
+          <span className={`rounded-pill px-2 py-0.5 text-label font-semibold uppercase tracking-wide ${badgeClass[level]}`}>
+            {level}
+          </span>
         </li>
       ))}
     </ul>

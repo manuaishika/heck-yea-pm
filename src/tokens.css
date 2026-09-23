@@ -61,6 +61,11 @@
   --border: var(--blue-100);
   --text: var(--ink);
   --text-muted: var(--ink-soft);
+
+  /* round-weight badges only (WeightBars.jsx) — nowhere else on the site */
+  --weight-heavy: #c0392b;
+  --weight-medium: #d97706;
+  --weight-light: #ca9a1f;
 }
 
 /* the same names, mirrored for people who browse in dark mode */
@@ -132,6 +137,9 @@
   --color-text-muted: var(--text-muted);
   --color-transparent: transparent;
   --color-current: currentColor;
+  --color-weight-heavy: var(--weight-heavy);
+  --color-weight-medium: var(--weight-medium);
+  --color-weight-light: var(--weight-light);
 }
 
 @theme {

@@ -45,6 +45,15 @@ const TAILWIND_DEFAULT = new RegExp(
 
 const OLD_ACCENT = [/#b5173f/i, /#e8577f/i, /\bcrimson\b/i, /\bburgundy\b/i]
 
+// round-weight badges (WeightBars.jsx) are the one sanctioned exception to
+// "7 tokens only" — three extra colours, used nowhere else on the site.
+// Asserted here so they read as allowed, not as drift to flag.
+const WEIGHT_TOKENS = [
+  ['--weight-heavy', '#c0392b'],
+  ['--weight-medium', '#d97706'],
+  ['--weight-light', '#ca9a1f'],
+]
+
 let problems = 0
 const files = walk(srcDir)
 
@@ -78,6 +87,15 @@ const allText = files.map((f) => readFileSync(f, 'utf8')).join('\n')
 if (/#3b82f6/i.test(allText) || /rgb\(\s*59\s*,\s*130\s*,\s*246\s*\)/i.test(allText)) {
   console.error('✗ [check-colors] #3B82F6 / rgb(59, 130, 246) found — must be zero results')
   problems++
+}
+
+const tokensText = readFileSync(TOKENS_FILE, 'utf8')
+for (const [name, hex] of WEIGHT_TOKENS) {
+  const re = new RegExp(`${name}:\\s*${hex}\\b`, 'i')
+  if (!re.test(tokensText)) {
+    console.error(`✗ [check-colors] tokens.css: expected ${name}: ${hex} (weight badge token missing or changed)`)
+    problems++
+  }
 }
 
 if (problems > 0) {
