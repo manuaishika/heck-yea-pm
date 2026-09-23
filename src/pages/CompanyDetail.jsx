@@ -35,6 +35,8 @@ export default function CompanyDetail() {
     path: `/companies/${c.slug}`,
   })
 
+  const hasLoop = c.rounds.length > 0
+
   return (
     <Page>
       <PageHead
@@ -44,43 +46,68 @@ export default function CompanyDetail() {
           </Link>
         }
         title={c.name}
-        intro={`${c.region} · ${c.program} · ${c.rounds.length} rounds`}
+        intro={
+          hasLoop
+            ? `${c.region} · ${c.program} · ${c.rounds.length} rounds`
+            : `${c.region} · ${c.sector} · ${c.program}`
+        }
         aside={<CompanyLogoLink name={c.name} size="size-10" />}
       />
 
-      {!c.verified && (
-        <p className="card p-4 text-text-muted">
-          Unverified — pieced together from public candidate reports. Confirm the current format
-          with your recruiter.
-        </p>
-      )}
+      {hasLoop ? (
+        <>
+          {!c.verified && (
+            <p className="card p-4 text-text-muted">
+              Unverified — pieced together from public candidate reports. Confirm the current
+              format with your recruiter.
+            </p>
+          )}
 
-      <h2 className="mt-6">The loop</h2>
-      <LoopFlow rounds={c.rounds} />
+          <h2 className="mt-6">The loop</h2>
+          <LoopFlow rounds={c.rounds} />
 
-      <h2 className="mt-8">What they weight</h2>
-      <div className="mt-2">
-        <WeightBars weights={c.weights} standout={standout} />
-      </div>
-      {standout.length > 0 && (
-        <p className="mt-2 text-text-muted">
-          <span className="font-semibold text-accent">★ {standout.join(', ')}</span> — weighted
-          more here than at most companies.
-        </p>
-      )}
+          <h2 className="mt-8">What they weight</h2>
+          <div className="mt-2">
+            <WeightBars weights={c.weights} standout={standout} />
+          </div>
+          {standout.length > 0 && (
+            <p className="mt-2 text-text-muted">
+              <span className="font-semibold text-accent">★ {standout.join(', ')}</span> — weighted
+              more here than at most companies.
+            </p>
+          )}
 
-      <div className="card mt-8">
-        <Block label="How it feels" rule={false}>
+          <div className="card mt-8">
+            <Block label="How it feels" rule={false}>
+              <p className="text-text-muted">
+                <Rich>{c.format}</Rich>
+              </p>
+            </Block>
+            <Block label="Prep this specifically">
+              <p>
+                <Rich>{c.whatToKnow}</Rich>
+              </p>
+            </Block>
+          </div>
+        </>
+      ) : (
+        <div className="card p-4">
           <p className="text-text-muted">
-            <Rich>{c.format}</Rich>
+            No verified round-by-round loop for {c.name} yet — we haven&rsquo;t found a real,
+            citable source for it. Here&rsquo;s what we know: {c.sector} · {c.region}. {c.program}.
           </p>
-        </Block>
-        <Block label="Prep this specifically">
-          <p>
-            <Rich>{c.whatToKnow}</Rich>
+          <p className="mt-3">
+            <a
+              href={c.careersUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary no-underline hover:no-underline"
+            >
+              Their careers page ↗
+            </a>
           </p>
-        </Block>
-      </div>
+        </div>
+      )}
 
       <h2 className="mt-8">Questions seen at {c.name}</h2>
       {tagged.length > 0 ? (

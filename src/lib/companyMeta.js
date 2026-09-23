@@ -25,9 +25,6 @@ const BRANDS = {
   Ola: { logo: null, url: 'https://www.olacabs.com' },
 }
 
-/** Companies shown as tiles at the top of /companies. Everyone stays in the full list. */
-export const FEATURED_SLUGS = ['google', 'microsoft', 'amazon', 'flipkart']
-
 /** @returns {{ logo: string | null, url: string } | null} */
 export function brandFor(name) {
   return BRANDS[name] ?? null

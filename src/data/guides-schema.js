@@ -199,6 +199,21 @@ export function validateResume(r) {
 
 const WEIGHT_LEVELS = ['heavy', 'medium', 'light']
 
+// the sectors a company card can be grouped under (Companies.jsx / Careers.jsx
+// hiring list) — every company picks exactly one
+export const SECTORS = [
+  'Consumer tech',
+  'Quick commerce',
+  'Fintech',
+  'Banks',
+  'B2B SaaS',
+  'Enterprise software',
+  'Edtech',
+  'Healthtech',
+  'Gaming',
+  'Telecom',
+]
+
 export function validateCompanies(c) {
   if (!c || typeof c !== 'object') fail('companies.json is not an object')
   if (!str(c.note)) fail('companies.note missing')
@@ -206,25 +221,37 @@ export function validateCompanies(c) {
   const seen = new Set()
   c.companies.forEach((co, i) => {
     const at = `companies[${i}]`
-    for (const f of ['slug', 'name', 'region', 'program', 'format', 'whatToKnow']) {
+    for (const f of ['slug', 'name', 'region', 'program', 'sector', 'careersUrl']) {
       if (!str(co[f])) fail(`${at}.${f} missing`)
     }
     if (!/^[a-z0-9-]+$/.test(co.slug)) fail(`${at}.slug "${co.slug}" is not a slug`)
     if (seen.has(co.slug)) fail(`duplicate company slug "${co.slug}"`)
     seen.add(co.slug)
+    if (!SECTORS.includes(co.sector)) fail(`${at}.sector: unknown sector "${co.sector}"`)
+    if (!/^https:\/\//.test(co.careersUrl)) fail(`${at}.careersUrl must be an https:// URL`)
     if (typeof co.verified !== 'boolean') fail(`${at}.verified must be a boolean`)
-    if (!arr(co.rounds)) fail(`${at}.rounds missing`)
+
+    // round-by-round loop detail is optional: many companies here have no
+    // sourced, verified interview loop, only a sector, a program note, and
+    // a careers link (see companies.json's own note on this). rounds/weights
+    // default to [] for those — once a company DOES have rounds, format and
+    // whatToKnow become required alongside them.
+    if (!Array.isArray(co.rounds)) fail(`${at}.rounds missing (use [] with no sourced loop data)`)
     co.rounds.forEach((r, j) => {
       if (typeof r !== 'object' || !str(r.name) || typeof r.detail !== 'string') {
         fail(`${at}.rounds[${j}] must be { name, detail }`)
       }
     })
-    if (!arr(co.weights)) fail(`${at}.weights missing`)
+    if (!Array.isArray(co.weights)) fail(`${at}.weights missing (use [] with no sourced loop data)`)
     co.weights.forEach((w, j) => {
       if (!Array.isArray(w) || w.length !== 2) fail(`${at}.weights[${j}] must be [category, level]`)
       if (!CATEGORIES.includes(w[0])) fail(`${at}.weights[${j}]: unknown category "${w[0]}"`)
       if (!WEIGHT_LEVELS.includes(w[1])) fail(`${at}.weights[${j}]: level must be heavy/medium/light`)
     })
+    if (co.rounds.length > 0) {
+      if (!str(co.format)) fail(`${at}.format missing (required once rounds are present)`)
+      if (!str(co.whatToKnow)) fail(`${at}.whatToKnow missing (required once rounds are present)`)
+    }
     if (!Array.isArray(co.questionTags)) fail(`${at}.questionTags must be an array`)
   })
   return c

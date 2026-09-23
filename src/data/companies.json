@@ -47,7 +47,9 @@
       "whatToKnow": "They score structure and trade-off thinking above domain knowledge. Always clarify the goal before designing. Name a North Star metric on every design answer.",
       "questionTags": [
         "Google"
-      ]
+      ],
+      "sector": "Consumer tech",
+      "careersUrl": "https://www.google.com/about/careers/applications/"
     },
     {
       "slug": "microsoft",
@@ -95,7 +97,9 @@
       "whatToKnow": "Show customer empathy early and check in with the interviewer as you go. Have a favourite Microsoft product you actually use and specific critiques of it.",
       "questionTags": [
         "Microsoft"
-      ]
+      ],
+      "sector": "Consumer tech",
+      "careersUrl": "https://careers.microsoft.com/"
     },
     {
       "slug": "amazon",
@@ -143,7 +147,9 @@
       "whatToKnow": "Prepare 8–10 STAR stories mapped to the 16 Leadership Principles, each with real metrics. Use \"I\", not \"we\". Know Customer Obsession and Ownership cold.",
       "questionTags": [
         "Amazon"
-      ]
+      ],
+      "sector": "Consumer tech",
+      "careersUrl": "https://www.amazon.jobs/"
     },
     {
       "slug": "meta",
@@ -191,7 +197,9 @@
       "whatToKnow": "Lead with the user and the goal, then one feature, then metrics. In execution rounds, structure the metric tree before proposing anything.",
       "questionTags": [
         "Meta"
-      ]
+      ],
+      "sector": "Consumer tech",
+      "careersUrl": "https://www.metacareers.com/"
     },
     {
       "slug": "flipkart",
@@ -239,7 +247,9 @@
       "whatToKnow": "Practice estimation with Indian numbers — population tiers, smartphone and UPI penetration, income bands. Know Flipkart's business: marketplace, ads, Flipkart Plus, logistics.",
       "questionTags": [
         "Flipkart"
-      ]
+      ],
+      "sector": "Consumer tech",
+      "careersUrl": "https://www.flipkartcareers.com/"
     },
     {
       "slug": "zomato",
@@ -287,7 +297,9 @@
       "whatToKnow": "Use Zomato and its neighbours (Swiggy, Blinkit, district) heavily and have sharp critiques. The assignment rewards a strong point of view over a balanced survey.",
       "questionTags": [
         "Zomato"
-      ]
+      ],
+      "sector": "Quick commerce",
+      "careersUrl": "https://www.zomato.com/careers"
     },
     {
       "slug": "swiggy",
@@ -339,7 +351,9 @@
       "whatToKnow": "Be fluent in delivery-marketplace metrics: order frequency, delivery time, contribution margin, rider utilisation, cancellations. Diagnose before prescribing.",
       "questionTags": [
         "Swiggy"
-      ]
+      ],
+      "sector": "Quick commerce",
+      "careersUrl": "https://careers.swiggy.com/"
     },
     {
       "slug": "razorpay",
@@ -387,7 +401,9 @@
       "whatToKnow": "Understand how a payment actually flows — gateway, network, bank, settlement — and why failure handling and compliance are product problems, not afterthoughts.",
       "questionTags": [
         "Razorpay"
-      ]
+      ],
+      "sector": "Fintech",
+      "careersUrl": "https://razorpay.com/jobs/"
     },
     {
       "slug": "zepto",
@@ -435,7 +451,9 @@
       "whatToKnow": "Think in unit economics and constraints. Be ready to reason about dark-store density, basket size, delivery cost per order, and what breaks at 10x volume.",
       "questionTags": [
         "Zepto"
-      ]
+      ],
+      "sector": "Quick commerce",
+      "careersUrl": "https://www.zeptonow.com/careers"
     },
     {
       "slug": "meesho",
@@ -487,7 +505,309 @@
       "whatToKnow": "Design for a user who may be new to online shopping, price-sensitive, and on a cheap phone. Trust, returns, and cash-on-delivery economics come up often.",
       "questionTags": [
         "Meesho"
-      ]
+      ],
+      "sector": "Quick commerce",
+      "careersUrl": "https://careers.meesho.com/"
+    },
+    {
+      "slug": "uber",
+      "name": "Uber",
+      "region": "Global (US-headquartered)",
+      "sector": "Consumer tech",
+      "program": "APM program — 2-year rotational, new-grad, Bay Area-based",
+      "careersUrl": "https://www.uber.com/us/en/careers/apm/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "airbnb",
+      "name": "Airbnb",
+      "region": "Global (US-headquartered)",
+      "sector": "Consumer tech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://careers.airbnb.com/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "booking-com",
+      "name": "Booking.com",
+      "region": "Global (Netherlands-headquartered)",
+      "sector": "Consumer tech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://careers.booking.com/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "cred",
+      "name": "CRED",
+      "region": "India",
+      "sector": "Fintech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://careers.cred.club/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "phonepe",
+      "name": "PhonePe",
+      "region": "India",
+      "sector": "Fintech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://www.phonepe.com/careers/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "paytm",
+      "name": "Paytm",
+      "region": "India",
+      "sector": "Fintech",
+      "program": "PM and APM hiring (APM roles posted at Paytm Money)",
+      "careersUrl": "https://paytm.com/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "groww",
+      "name": "Groww",
+      "region": "India",
+      "sector": "Fintech",
+      "program": "PM and APM hiring",
+      "careersUrl": "https://groww.in/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "zerodha",
+      "name": "Zerodha",
+      "region": "India",
+      "sector": "Fintech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://careers.zerodha.com/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "hdfc-bank",
+      "name": "HDFC Bank",
+      "region": "India",
+      "sector": "Banks",
+      "program": "PM hiring within digital/tech teams; no dedicated APM track found",
+      "careersUrl": "https://www.hdfcbank.com/personal/about-us/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "icici-bank",
+      "name": "ICICI Bank",
+      "region": "India",
+      "sector": "Banks",
+      "program": "PM hiring within Digital & Technology; no dedicated APM track found",
+      "careersUrl": "https://careers.icicibank.com/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "axis-bank",
+      "name": "Axis Bank",
+      "region": "India",
+      "sector": "Banks",
+      "program": "PM hiring within digital banking; no dedicated APM track found",
+      "careersUrl": "https://www.axisbank.com/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "freshworks",
+      "name": "Freshworks",
+      "region": "India-founded, global customers",
+      "sector": "B2B SaaS",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://www.freshworks.com/company/careers/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "zoho",
+      "name": "Zoho",
+      "region": "India-founded, global customers",
+      "sector": "B2B SaaS",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://www.zoho.com/careers/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "atlassian",
+      "name": "Atlassian",
+      "region": "Global (Australia-headquartered)",
+      "sector": "B2B SaaS",
+      "program": "APM program — rotational, new-grad",
+      "careersUrl": "https://www.atlassian.com/company/careers/graduates/apm",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "salesforce",
+      "name": "Salesforce",
+      "region": "Global (US-headquartered)",
+      "sector": "Enterprise software",
+      "program": "APM program — 12-week internship or 2-year rotational track",
+      "careersUrl": "https://www.salesforce.com/company/careers/university/associate-product-manager/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "adobe",
+      "name": "Adobe",
+      "region": "Global (US-headquartered)",
+      "sector": "Enterprise software",
+      "program": "APM roles and intern-APM positions posted",
+      "careersUrl": "https://careers.adobe.com/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "intuit",
+      "name": "Intuit",
+      "region": "Global (US-headquartered)",
+      "sector": "Enterprise software",
+      "program": "Rotational Product Management (RPM) program — 2-year, APM-equivalent",
+      "careersUrl": "https://www.intuit.com/careers/teams/product-management/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "sprinklr",
+      "name": "Sprinklr",
+      "region": "Global (US-headquartered)",
+      "sector": "Enterprise software",
+      "program": "APM roles posted (e.g. workforce management, AI agents)",
+      "careersUrl": "https://www.sprinklr.com/careers/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "byjus",
+      "name": "BYJU'S",
+      "region": "India",
+      "sector": "Edtech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://byjus.com/careers/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "pharmeasy",
+      "name": "PharmEasy",
+      "region": "India",
+      "sector": "Healthtech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://pharmeasy.in/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "tata-1mg",
+      "name": "Tata 1mg",
+      "region": "India",
+      "sector": "Healthtech",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://www.1mg.com/jobs",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "dream11",
+      "name": "Dream11",
+      "region": "India",
+      "sector": "Gaming",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://www.dream11.com/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "games24x7",
+      "name": "Games24x7",
+      "region": "India",
+      "sector": "Gaming",
+      "program": "PM hiring; no dedicated APM track found",
+      "careersUrl": "https://www.games24x7.com/careers/",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "reliance-jio",
+      "name": "Reliance Jio",
+      "region": "India",
+      "sector": "Telecom",
+      "program": "PM hiring (part of Reliance Industries); no dedicated APM track found",
+      "careersUrl": "https://www.ril.com/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
+    },
+    {
+      "slug": "airtel",
+      "name": "Airtel",
+      "region": "India",
+      "sector": "Telecom",
+      "program": "PM and APM hiring",
+      "careersUrl": "https://www.airtel.in/careers",
+      "verified": false,
+      "rounds": [],
+      "weights": [],
+      "questionTags": []
     }
   ]
 }
