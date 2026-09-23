@@ -13,7 +13,12 @@ export function getClient() {
   if (!authEnabled) return Promise.resolve(null)
   clientPromise ??= import('@supabase/supabase-js').then(({ createClient }) =>
     createClient(url, key, {
-      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true,
+        flowType: 'pkce',
+      },
     })
   )
   return clientPromise
