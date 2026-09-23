@@ -5,36 +5,42 @@
       "name": "Google APM",
       "who": "New grads, any degree. Bengaluru cohort.",
       "note": "Opens late September, closes late October. ~8,000 applications a year, under 1% taken. Rolling review — apply the day it opens.",
+      "mode": "Off-campus (open application) — not tied to a specific college list.",
       "url": "https://www.google.com/about/careers/applications/programs/apm/"
     },
     {
       "name": "Microsoft PM (new grad / intern)",
       "who": "Final-year students and new grads.",
       "note": "Campus hiring plus off-campus. Product design and collaboration-heavy interviews.",
+      "mode": "Both — campus drives at partner colleges, plus an off-campus track.",
       "url": "https://careers.microsoft.com/students/us/en"
     },
     {
       "name": "Meta Rotational PM (RPM)",
       "who": "New grads. 18 months across three teams.",
       "note": "Small cohort, mostly US but takes international grads. Metrics-heavy loop.",
+      "mode": "Off-campus (open application).",
       "url": "https://www.metacareers.com/careerprograms/pathways/rpm"
     },
     {
       "name": "Flipkart APM",
       "who": "Campus hire from select colleges, plus off-campus rounds.",
       "note": "Aptitude test, group case, then guesstimate and product rounds. India e-commerce context.",
+      "mode": "Both — a named campus list, plus an off-campus application form.",
       "url": "https://sites.google.com/flipkart.com/apm/home"
     },
     {
       "name": "Zomato, Swiggy, Zepto, Meesho, Razorpay APM",
       "who": "New grads and early-career. Assignment-led.",
       "note": "A written product teardown or growth problem is usually the main filter. Watch each careers page — cycles are irregular.",
+      "mode": "Mostly off-campus, posted on each company's own careers page.",
       "url": "https://www.zomato.com/careers"
     },
     {
       "name": "Atlassian, Uber, Adobe, PhonePe, Groww",
       "who": "New-grad APM or PM-I roles, when open.",
       "note": "Smaller intakes, often only via campus. Follow them on LinkedIn for the posting.",
+      "mode": "Mostly campus, at a small set of colleges each cycle.",
       "url": "https://www.atlassian.com/company/careers/early-career"
     }
   ],

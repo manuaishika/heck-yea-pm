@@ -64,6 +64,10 @@ export function validateCareers(c) {
   if (!c || typeof c !== 'object') fail('careers.json is not an object')
   if (!str(c.note)) fail('careers.note missing')
   validateModes(c.modes, 'careers')
+  if (!arr(c.roleTypes)) fail('careers.roleTypes missing')
+  c.roleTypes.forEach((x, i) => {
+    if (!str(x.name) || !str(x.what) || !str(x.focus)) fail(`careers.roleTypes ${i} incomplete`)
+  })
   if (!arr(c.adjacent)) fail('careers.adjacent missing')
   c.adjacent.forEach((x, i) => {
     if (!str(x.role) || !str(x.oneLine) || !str(x.vsPm)) fail(`careers.adjacent ${i} incomplete`)
@@ -81,7 +85,7 @@ export function validateIndia(d) {
 
   if (!arr(d.programs)) fail('india.programs missing')
   d.programs.forEach((p, i) => {
-    if (!str(p.name) || !str(p.who) || !str(p.note) || !str(p.url)) {
+    if (!str(p.name) || !str(p.who) || !str(p.note) || !str(p.url) || !str(p.mode)) {
       fail(`india.programs ${i} incomplete`)
     }
     if (!/^https?:\/\//.test(p.url)) fail(`india.programs ${i}.url must be a URL`)

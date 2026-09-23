@@ -32,9 +32,9 @@ const routes = {
       'What a product manager actually does, and how the job changes between an early startup, a scaled startup, and a large company.',
   },
   '/careers': {
-    title: 'Careers & India',
+    title: 'Careers',
     description:
-      'How the PM job changes across an early startup, a scaled startup, and a large company, how it compares to adjacent roles, and the new-grad programs that hire in India.',
+      'PM role types, how to break in without a PM background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
   },
   '/guesstimates': {
     title: 'Guesstimates',
@@ -92,9 +92,9 @@ const routes = {
       'How AI is showing up in the PM interview loop, and what changes in how you prep and answer.',
   },
   '/india': {
-    title: 'Careers & India',
+    title: 'Careers',
     description:
-      'How the PM job changes across an early startup, a scaled startup, and a large company, how it compares to adjacent roles, and the new-grad programs that hire in India.',
+      'PM role types, how to break in without a PM background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
   },
   '/flashcards/complete': {
     title: 'Flashcards — done',

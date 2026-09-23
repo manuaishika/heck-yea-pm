@@ -130,6 +130,28 @@
       }
     ]
   },
+  "roleTypes": [
+    {
+      "name": "APM (Associate Product Manager program)",
+      "what": "A named, structured entry-level track at a large company — usually 1–2 years, with 2–3 rotations across different products or teams, a cohort of peers, and formal mentorship. Google, Uber, Salesforce, Atlassian and Intuit all run one.",
+      "focus": "Judgement and learning speed under structure: can you go from an ambiguous prompt to a shipped, measured change, and can you defend your reasoning in front of senior people. Interviews test raw product thinking more than domain knowledge."
+    },
+    {
+      "name": "PM intern",
+      "what": "A summer or semester internship, 8–12 weeks, doing real PM work on a small, contained piece of a live product — usually the fast-track into that company's full-time APM or new-grad PM role.",
+      "focus": "Whether you can scope a problem correctly, write a clear one-pager, and get something shipped without a lot of hand-holding. Most interns are judged as much on how they work with engineers and designers as on the idea itself."
+    },
+    {
+      "name": "Associate PM (no formal program)",
+      "what": "A junior PM job title at a company with no named rotational program — you're hired directly onto one team, often at a startup or a company still building out its product org, with real ownership from week one.",
+      "focus": "Less polish than an APM-program interview, more \"can you actually do the job tomorrow.\" Expect fewer, more conversational rounds and a heavier weight on a portfolio or past projects."
+    },
+    {
+      "name": "Product Analyst",
+      "what": "Owns the data a PM uses: dashboards, funnel analysis, sizing a bet before or after it ships. Doesn't own the roadmap, but sits close enough to it to move into PM.",
+      "focus": "Rigor with numbers and a clean narrative from data to recommendation — SQL, metrics literacy, and being able to say what a chart means and what to do about it. The most common route into PM in India for people without a PM title yet."
+    }
+  ],
   "adjacent": [
     {
       "role": "APM / Associate PM",

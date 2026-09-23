@@ -25,7 +25,7 @@ const NAV_GROUPS = [
 ]
 const PLAIN_LINKS = [
   ['/companies', 'Companies'],
-  ['/careers', 'Careers & India'],
+  ['/careers', 'Careers'],
   ['/resources', 'Resources'],
 ]
 const ACTIVE_PREFIXES = {
