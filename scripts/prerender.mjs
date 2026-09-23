@@ -86,6 +86,29 @@ const routes = {
     description:
       'What this is, who made it, and how to contribute a question, a company loop, or a correction.',
   },
+  '/ai': {
+    title: 'AI in the PM interview',
+    description:
+      'How AI is showing up in the PM interview loop, and what changes in how you prep and answer.',
+  },
+  '/india': {
+    title: 'Careers & India',
+    description:
+      'How the PM job changes across an early startup, a scaled startup, and a large company, how it compares to adjacent roles, and the new-grad programs that hire in India.',
+  },
+  '/flashcards/complete': {
+    title: 'Flashcards — done',
+    description:
+      'You finished this flashcard set. Review what needs another pass, or start a new set.',
+  },
+  '/saved': {
+    title: 'Saved questions',
+    description: 'Questions you saved from the bank, kept on your device or synced to your account.',
+  },
+  '/login': {
+    title: 'Log in',
+    description: 'Sign in to sync your saved questions and flashcard progress across devices.',
+  },
 }
 
 for (const q of questions) {
