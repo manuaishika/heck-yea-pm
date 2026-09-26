@@ -1,11 +1,9 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { Icon } from './ui'
 import PageContainer from './PageContainer'
 import { useAuth } from '../lib/auth'
-import { globalSearch, SCOPES } from '../lib/globalSearch'
 
-const NAV_GROUPS = [
+const MENU_GROUPS = [
   {
     label: 'Learn',
     items: [
@@ -20,293 +18,67 @@ const NAV_GROUPS = [
     items: [
       ['/browse', 'Questions'],
       ['/flashcards', 'Flashcards'],
+      ['/skills/assess', 'Where do you stand?'],
+    ],
+  },
+  {
+    label: 'Reference',
+    items: [
+      ['/companies', 'Companies'],
+      ['/careers', 'Careers'],
+      ['/resources', 'Resources'],
+      ['/resume', 'Resume'],
+      ['/guesstimates', 'Guesstimates'],
+    ],
+  },
+  {
+    label: 'Site',
+    items: [
+      ['/index', 'Index'],
+      ['/about', 'About'],
+      ['/saved', 'Saved'],
     ],
   },
 ]
-const PLAIN_LINKS = [
-  ['/companies', 'Companies'],
-  ['/careers', 'Careers'],
-  ['/resources', 'Resources'],
-]
-const ACTIVE_PREFIXES = {
-  Learn: ['/role', '/skills', '/ai', '/methods'],
-  Practice: ['/browse', '/flashcards'],
-}
-
-const TYPE_ICON = { Question: 'question', Method: 'target', Company: 'briefcase', Topic: 'spark' }
-
-/** The pill search bar: scope dropdown, live results, Enter/click goes to the top match. */
-function SearchBar({ id, className = '', onNavigate }) {
-  const [q, setQ] = useState('')
-  const [scope, setScope] = useState('All')
-  const [scopeOpen, setScopeOpen] = useState(false)
-  const [focused, setFocused] = useState(false)
-  const navigate = useNavigate()
-  const boxRef = useRef(null)
-
-  const results = q.trim() ? globalSearch(q, scope) : []
-  const open = focused && q.trim().length > 0
-
-  useEffect(() => {
-    function onDocClick(e) {
-      if (boxRef.current && !boxRef.current.contains(e.target)) {
-        setFocused(false)
-        setScopeOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', onDocClick)
-    return () => document.removeEventListener('mousedown', onDocClick)
-  }, [])
-
-  function go(to) {
-    navigate(to)
-    setQ('')
-    setFocused(false)
-    onNavigate?.()
-  }
-
-  function submit(e) {
-    e.preventDefault()
-    if (results[0]) go(results[0].to)
-    else if (q.trim()) go(`/browse?q=${encodeURIComponent(q.trim())}`)
-  }
-
-  return (
-    <div ref={boxRef} className={`relative ${className}`}>
-      <form onSubmit={submit} className="flex items-stretch overflow-hidden rounded-pill border border-border bg-accent-tint">
-        <label htmlFor={id} className="sr-only">
-          Search questions, methods, companies and topics
-        </label>
-        <div className="relative shrink-0">
-          <button
-            type="button"
-            onClick={() => setScopeOpen((v) => !v)}
-            aria-expanded={scopeOpen}
-            aria-haspopup="listbox"
-            className="flex h-full items-center gap-1 border-r border-border px-3 text-body text-text-muted hover:text-text"
-          >
-            {scope}
-            <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true" className="shrink-0">
-              <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-          {scopeOpen && (
-            <ul role="listbox" className="card absolute left-0 top-full z-30 mt-1 min-w-[9rem] overflow-hidden py-1">
-              {SCOPES.map((s) => (
-                <li key={s}>
-                  <button
-                    type="button"
-                    role="option"
-                    aria-selected={scope === s}
-                    onClick={() => {
-                      setScope(s)
-                      setScopeOpen(false)
-                    }}
-                    className={`flex min-h-11 w-full items-center px-3 text-left hover:bg-accent-tint ${
-                      scope === s ? 'font-semibold text-accent' : 'text-text'
-                    }`}
-                  >
-                    {s}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-        <input
-          id={id}
-          type="search"
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          onFocus={() => setFocused(true)}
-          placeholder="Search questions, methods, companies…"
-          autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent px-3 py-2 text-body placeholder:text-text-muted focus:outline-none"
-        />
-        <button
-          type="submit"
-          aria-label="Search"
-          className="m-1 grid size-9 shrink-0 place-items-center rounded-pill bg-accent text-surface"
-        >
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <circle cx="7" cy="7" r="5.2" stroke="currentColor" strokeWidth="1.6" />
-            <path d="M11 11l3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-          </svg>
-        </button>
-      </form>
-
-      {open && (
-        <div className="card absolute left-0 right-0 top-full z-30 mt-1 max-h-80 overflow-y-auto py-1">
-          {results.length > 0 ? (
-            results.map((r) => (
-              <button
-                key={r.type + r.to}
-                type="button"
-                onClick={() => go(r.to)}
-                className="flex min-h-11 w-full items-center gap-3 px-3 text-left hover:bg-accent-tint"
-              >
-                <span className="grid size-7 shrink-0 place-items-center rounded-button bg-accent-tint text-accent">
-                  <Icon name={TYPE_ICON[r.type] || 'question'} size={14} />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-text">{r.label}</span>
-                  <span className="label">{r.type} · {r.sub}</span>
-                </span>
-              </button>
-            ))
-          ) : (
-            <p className="px-3 py-3 text-text-muted">No matches in {scope.toLowerCase()}.</p>
-          )}
-        </div>
-      )}
-    </div>
-  )
-}
-
-/** A "Learn"/"Practice" dropdown: opens on hover (desktop) or click, keyboard accessible. */
-function NavDropdown({ label, items, active }) {
-  const [open, setOpen] = useState(false)
-  const ref = useRef(null)
-  const closeTimer = useRef(null)
-
-  useEffect(() => {
-    function onDocClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false)
-    }
-    document.addEventListener('mousedown', onDocClick)
-    return () => document.removeEventListener('mousedown', onDocClick)
-  }, [])
-
-  function openNow() {
-    clearTimeout(closeTimer.current)
-    setOpen(true)
-  }
-  function closeSoon() {
-    closeTimer.current = setTimeout(() => setOpen(false), 120)
-  }
-
-  return (
-    <div ref={ref} className="relative" onMouseEnter={openNow} onMouseLeave={closeSoon}>
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-haspopup="menu"
-        onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-1 whitespace-nowrap no-underline hover:text-accent hover:no-underline ${
-          active ? 'font-semibold text-accent' : 'text-text-muted'
-        }`}
-      >
-        {label}
-        <svg width="9" height="6" viewBox="0 0 10 6" aria-hidden="true" className={`shrink-0 transition-transform ${open ? 'rotate-180' : ''}`}>
-          <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </button>
-      {open && (
-        <div role="menu" className="card absolute left-0 top-full z-30 mt-2 min-w-[11rem] overflow-hidden py-1">
-          {items.map(([to, label2]) => (
-            <Link
-              key={to}
-              to={to}
-              role="menuitem"
-              onClick={() => setOpen(false)}
-              className="flex min-h-11 items-center px-3 text-text no-underline hover:bg-accent-tint hover:no-underline"
-            >
-              {label2}
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
 
 function initials(user) {
   const name = user?.user_metadata?.full_name || user?.email || '?'
   return name.trim().charAt(0).toUpperCase()
 }
 
-/** Avatar + menu (Account, Sign out) once signed in. */
-function AccountMenu() {
-  const { user, signOut } = useAuth()
-  const [open, setOpen] = useState(false)
-  const ref = useRef(null)
-  useEffect(() => {
-    function onDocClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false)
-    }
-    document.addEventListener('mousedown', onDocClick)
-    return () => document.removeEventListener('mousedown', onDocClick)
-  }, [])
-  const photo = user?.user_metadata?.avatar_url
-
-  return (
-    <div ref={ref} className="relative">
-      <button
-        type="button"
-        aria-label="Account menu"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        className="grid size-11 shrink-0 place-items-center overflow-hidden rounded-pill border border-border bg-accent-tint text-body font-semibold text-accent"
-      >
-        {photo ? <img src={photo} alt="" className="size-full object-cover" /> : initials(user)}
-      </button>
-      {open && (
-        <div role="menu" className="card absolute right-0 top-full z-30 mt-2 min-w-[10rem] overflow-hidden py-1">
-          <Link
-            to="/login"
-            role="menuitem"
-            onClick={() => setOpen(false)}
-            className="flex min-h-11 items-center px-3 text-text no-underline hover:bg-accent-tint hover:no-underline"
-          >
-            Account
-          </Link>
-          <button
-            type="button"
-            role="menuitem"
-            onClick={() => {
-              setOpen(false)
-              signOut()
-            }}
-            className="flex min-h-11 w-full items-center px-3 text-left text-text hover:bg-accent-tint"
-          >
-            Sign out
-          </button>
-        </div>
-      )}
-    </div>
-  )
-}
-
 /**
- * The one nav bar, on every route: sticky, white, a hairline border beneath
- * it, inside the same PageContainer as the page content below it. Logo,
- * search pill, dropdown nav groups, sign in. Collapses to a logo + menu
- * button on phones; the menu opens as a drawer.
+ * The one nav bar, on every route: a single row of cells divided by
+ * hairlines — logo, two lines of standing copy, INDEX, ACCOUNT, MENU. Sticky,
+ * paper background, a hairline beneath it. On phones only logo/INDEX/MENU
+ * survive; MENU opens a full-screen takeover with every section.
  */
 export default function TopNav() {
   const { enabled, user, signInWithGoogle } = useAuth()
-  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
-  const drawerId = useId()
-  const searchId = useId()
+  const menuId = useId()
   const menuBtnRef = useRef(null)
 
   useEffect(() => {
-    setDrawerOpen(false)
+    setMenuOpen(false)
   }, [location.pathname])
 
   useEffect(() => {
-    if (!drawerOpen) return undefined
+    if (!menuOpen) return undefined
     function onKey(e) {
       if (e.key === 'Escape') {
-        setDrawerOpen(false)
+        setMenuOpen(false)
         menuBtnRef.current?.focus()
       }
     }
     window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [drawerOpen])
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [menuOpen])
 
   async function openSignIn() {
     if (!enabled) {
@@ -316,115 +88,142 @@ export default function TopNav() {
     await signInWithGoogle()
   }
 
+  const Cell = ({ children, className = '', ...rest }) => (
+    <div className={`flex items-center border-l border-border px-4 py-3 first:border-l-0 ${className}`} {...rest}>
+      {children}
+    </div>
+  )
+
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border bg-surface">
-        <PageContainer>
-          <div className="flex items-center gap-4 py-3">
-            <Link to="/" className="inline-flex min-h-11 shrink-0 items-center text-section font-semibold text-text no-underline hover:no-underline">
-              Heck Yea PM
-            </Link>
+      <header className="sticky top-0 z-40 border-b border-border bg-page">
+        <PageContainer className="">
+          <div className="flex items-stretch">
+            <Cell className="border-l-0">
+              <Link to="/" className="text-section font-display uppercase text-text no-underline hover:no-underline">
+                Heck Yea PM
+              </Link>
+            </Cell>
 
-            <SearchBar id={searchId} className="hidden max-w-md flex-1 xl:block" />
+            <Cell className="hidden min-w-0 flex-1 md:flex">
+              <p className="label leading-[1.4] text-text">
+                Free PM interview prep
+                <br />
+                Question bank
+              </p>
+            </Cell>
 
-            <nav aria-label="Main" className="hidden items-center gap-5 xl:flex">
-              {NAV_GROUPS.map((g) => (
-                <NavDropdown
-                  key={g.label}
-                  label={g.label}
-                  items={g.items}
-                  active={ACTIVE_PREFIXES[g.label].some((p) => location.pathname.startsWith(p))}
-                />
-              ))}
-              {PLAIN_LINKS.map(([to, label]) => (
+            <Cell className="hidden shrink-0 lg:flex">
+              <p className="label leading-[1.4] text-text">
+                Always free
+                <br />
+                No paywall
+              </p>
+            </Cell>
+
+            <Cell className="hidden shrink-0 sm:flex">
+              <NavLink
+                to="/index"
+                className={({ isActive }) =>
+                  `label no-underline hover:text-accent hover:no-underline ${isActive ? 'text-accent' : 'text-text'}`
+                }
+              >
+                Index
+              </NavLink>
+            </Cell>
+            <div className="sm:hidden">
+              <Cell>
                 <NavLink
-                  key={to}
-                  to={to}
-                  className={({ isActive }) =>
-                    `whitespace-nowrap no-underline hover:text-accent hover:no-underline ${
-                      isActive ? 'font-semibold text-accent' : 'text-text-muted'
-                    }`
-                  }
+                  to="/index"
+                  className={({ isActive }) => `label no-underline hover:no-underline ${isActive ? 'text-accent' : 'text-text'}`}
                 >
-                  {label}
+                  Index
                 </NavLink>
-              ))}
-            </nav>
+              </Cell>
+            </div>
 
-            <div className="ml-auto flex items-center gap-3">
+            <Cell className="hidden shrink-0 md:flex">
               {user ? (
-                <div className="hidden xl:block">
-                  <AccountMenu />
-                </div>
+                <Link
+                  to="/login"
+                  aria-label="Account"
+                  className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-pill border border-border bg-tag text-body font-semibold text-text no-underline hover:no-underline"
+                >
+                  {user.user_metadata?.avatar_url ? (
+                    <img src={user.user_metadata.avatar_url} alt="" className="size-full object-cover" />
+                  ) : (
+                    initials(user)
+                  )}
+                </Link>
               ) : (
-                <div className="hidden items-center gap-3 xl:flex">
-                  <button type="button" onClick={openSignIn} className="text-text-muted hover:text-accent">
-                    Sign up
-                  </button>
-                  <button type="button" onClick={openSignIn} className="btn btn-primary rounded-pill">
-                    Log in
-                  </button>
-                </div>
+                <button type="button" onClick={openSignIn} className="label text-text hover:text-accent">
+                  Log in
+                </button>
               )}
+            </Cell>
+
+            <Cell className="shrink-0">
               <button
                 ref={menuBtnRef}
                 type="button"
-                aria-expanded={drawerOpen}
-                aria-controls={drawerId}
-                onClick={() => setDrawerOpen((v) => !v)}
-                className="btn btn-sm xl:hidden"
+                aria-expanded={menuOpen}
+                aria-controls={menuId}
+                onClick={() => setMenuOpen((v) => !v)}
+                className="pill min-h-9"
               >
-                {drawerOpen ? 'Close' : 'Menu'}
+                {menuOpen ? 'Close' : 'Menu'}
               </button>
-            </div>
+            </Cell>
           </div>
         </PageContainer>
       </header>
 
-      {drawerOpen && (
-        <div className="fixed inset-0 z-40 xl:hidden">
-          <button
-            type="button"
-            aria-label="Close menu"
-            className="absolute inset-0 bg-ink/40"
-            onClick={() => setDrawerOpen(false)}
-          />
-          <aside
-            id={drawerId}
-            className="absolute inset-y-0 right-0 flex w-72 max-w-[85%] flex-col gap-4 overflow-y-auto border-l border-border bg-surface p-4"
-          >
-            <SearchBar id={`${searchId}-mobile`} onNavigate={() => setDrawerOpen(false)} />
-            <nav aria-label="Main" className="flex flex-col">
-              {NAV_GROUPS.flatMap((g) => g.items).concat(PLAIN_LINKS).map(([to, label]) => (
-                <NavLink
-                  key={to}
-                  to={to}
-                  className={({ isActive }) =>
-                    `flex min-h-11 items-center rounded-button px-2 no-underline hover:no-underline ${
-                      isActive ? 'font-semibold text-accent' : 'text-text'
-                    }`
-                  }
-                >
-                  {label}
-                </NavLink>
+      {menuOpen && (
+        <div id={menuId} role="dialog" aria-modal="true" aria-label="Site menu" className="fixed inset-0 z-50 overflow-y-auto bg-page">
+          <PageContainer className="">
+            <div className="flex items-center border-b border-l-0 border-border px-4 py-3">
+              <span className="text-section font-display uppercase text-text">Menu</span>
+              <button type="button" onClick={() => setMenuOpen(false)} className="pill ml-auto min-h-9">
+                Close
+              </button>
+            </div>
+
+            <div className="grid gap-x-8 px-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
+              {MENU_GROUPS.map((g) => (
+                <div key={g.label} className="border-t border-border pt-3 first:border-t-0 sm:border-t-0 sm:pt-0">
+                  <p className="label !text-current text-accent">{g.label}</p>
+                  <ul className="mt-2">
+                    {g.items.map(([to, label]) => (
+                      <li key={to} className="border-b border-border">
+                        <NavLink
+                          to={to}
+                          className={({ isActive }) =>
+                            `flex min-h-11 items-center py-2 text-body no-underline hover:no-underline hover:text-accent ${
+                              isActive ? 'font-semibold text-accent' : 'text-text'
+                            }`
+                          }
+                        >
+                          {label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </nav>
-            {user ? (
-              <>
-                <Link
-                  to="/login"
-                  className="flex min-h-11 items-center gap-2 rounded-button px-2 text-text no-underline hover:no-underline"
-                >
-                  <Icon name="user-circle" size={18} />
+            </div>
+
+            <div className="border-t border-border px-4 py-4">
+              {user ? (
+                <Link to="/login" className="btn no-underline hover:no-underline">
                   Account
                 </Link>
-              </>
-            ) : (
-              <button type="button" onClick={openSignIn} className="btn btn-primary">
-                Log in
-              </button>
-            )}
-          </aside>
+              ) : (
+                <button type="button" onClick={openSignIn} className="btn btn-primary">
+                  Log in
+                </button>
+              )}
+            </div>
+          </PageContainer>
         </div>
       )}
     </>

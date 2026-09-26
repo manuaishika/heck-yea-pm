@@ -60,6 +60,12 @@ const BY_TYPE = {
 
 export const SCOPES = ['All', 'Questions', 'Methods', 'Companies']
 
+/** The full flat index — every question, method, company and topic — for
+ * the /index page. Same shape globalSearch() returns, unfiltered. */
+export function allItems() {
+  return INDEX
+}
+
 /** Up to `limit` matches for `query` within `scope` ("All" by default). */
 export function globalSearch(query, scope = 'All', limit = 8) {
   const tokens = queryTokens(query)

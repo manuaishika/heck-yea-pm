@@ -35,6 +35,7 @@ const ROUTES = [
   '/saved',
   '/about',
   '/login',
+  '/index',
 ]
 
 test('every internal link on every route resolves, none land on NotFound', async ({ page }) => {

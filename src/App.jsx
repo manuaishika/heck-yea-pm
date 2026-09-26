@@ -22,6 +22,7 @@ const Companies = lazy(() => import('./pages/Companies'))
 const CompanyDetail = lazy(() => import('./pages/CompanyDetail'))
 const Flashcards = lazy(() => import('./pages/Flashcards'))
 const FlashcardsComplete = lazy(() => import('./pages/FlashcardsComplete'))
+const Index = lazy(() => import('./pages/Index'))
 const About = lazy(() => import('./pages/About'))
 const Saved = lazy(() => import('./pages/Saved'))
 const Login = lazy(() => import('./pages/Login'))
@@ -57,6 +58,7 @@ export default function App() {
             <Route path="browse/:id" element={<QuestionDetail />} />
             <Route path="companies" element={<Companies />} />
             <Route path="companies/:slug" element={<CompanyDetail />} />
+            <Route path="index" element={<Index />} />
             <Route path="flashcards" element={<Flashcards />} />
             <Route path="flashcards/complete" element={<FlashcardsComplete />} />
             <Route path="saved" element={<Saved />} />
