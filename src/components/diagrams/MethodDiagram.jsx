@@ -9,8 +9,8 @@ import { useEffect, useRef, useState } from 'react'
  * and respects reduced motion both via the JS check below and the site's
  * global CSS override on .diagram-enter's transition.
  *
- * Blues only throughout — var(--accent) / var(--accent-tint) / var(--border)
- * / var(--text) / var(--text-muted) / var(--surface) — nothing else.
+ * Ink and paper, with one block colour (block-blue) for emphasis — every
+ * active/selected part of every shape uses it; nothing else does.
  */
 
 function useInView(threshold = 0.3) {
@@ -136,7 +136,7 @@ function StepChain({ method, steps, trailingLabel, trailingText }) {
                 width={boxW}
                 height={boxH}
                 rx="10"
-                fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+                fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
                 stroke="var(--accent)"
                 strokeWidth={isActive ? 2 : 1}
                 {...rest}
@@ -206,7 +206,7 @@ function Wheel({ method, steps }) {
             <g key={label}>
               <path
                 d={sectorPath(start, end)}
-                fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+                fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
                 stroke="var(--accent)"
                 strokeWidth={isActive ? 2 : 1}
                 {...rest}
@@ -272,7 +272,7 @@ function HubSatellites({ method, steps }) {
                 cx={x}
                 cy={y}
                 r={satR}
-                fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+                fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
                 stroke="var(--accent)"
                 strokeWidth={isActive ? 2 : 1}
                 {...rest}
@@ -299,7 +299,7 @@ function HubSatellites({ method, steps }) {
                 cx={CX}
                 cy={CY}
                 r={hubR}
-                fill={isActive ? 'var(--accent)' : 'var(--accent)'}
+                fill={'var(--block-blue)'}
                 fillOpacity={isActive ? 1 : 0.85}
                 stroke="var(--accent)"
                 strokeWidth="2"
@@ -364,7 +364,7 @@ function Funnel({ method, steps }) {
             <g key={label}>
               <polygon
                 points={points}
-                fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+                fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
                 stroke="var(--accent)"
                 strokeWidth={isActive ? 2 : 1}
                 {...rest}
@@ -417,7 +417,7 @@ function DimensionGrid({ method, steps }) {
                 width={W}
                 height={rowH - 4}
                 rx="8"
-                fill={isActive ? 'var(--accent)' : i % 2 === 0 ? 'var(--accent-tint)' : 'var(--surface)'}
+                fill={isActive ? 'var(--block-blue)' : i % 2 === 0 ? 'var(--card)' : 'var(--paper)'}
                 stroke="var(--border)"
                 strokeWidth="1"
                 {...rest}
@@ -474,7 +474,7 @@ function NestedCircles({ method, steps, note }) {
               cx={CX}
               cy={CY}
               r={r}
-              fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+              fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
               fillOpacity={isActive ? 0.9 : 1}
               stroke="var(--accent)"
               strokeWidth={isActive ? 2 : 1}
@@ -555,7 +555,7 @@ function InteractiveVenn({ method, steps }) {
             const { isActive, ...rest } = pickProps(3, active, setActive)
             return (
               <g>
-                <circle cx="150" cy="141" r="17" fill="var(--accent)" {...rest} />
+                <circle cx="150" cy="141" r="17" fill="var(--block-blue)" {...rest} />
                 <text x="150" y="145" textAnchor="middle" fill="var(--surface)" fontSize="9" fontWeight="700" style={{ pointerEvents: 'none' }}>
                   {overlap[0]}
                 </text>
@@ -607,7 +607,7 @@ function DecisionTree({ method, steps }) {
           width={w}
           height={boxH}
           rx="8"
-          fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+          fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
           stroke="var(--accent)"
           strokeWidth={isActive ? 2 : 1}
           {...rest}
@@ -690,7 +690,7 @@ function RiceFormula({ method, framework }) {
                 width={boxW}
                 height={boxH}
                 rx="10"
-                fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+                fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
                 stroke="var(--accent)"
                 strokeWidth={isActive ? 2 : 1}
                 {...rest}
@@ -751,7 +751,7 @@ function MoscowBuckets({ framework }) {
                 width={boxW}
                 height={boxH}
                 rx="10"
-                fill={isActive ? 'var(--accent)' : 'var(--accent-tint)'}
+                fill={isActive ? 'var(--block-blue)' : 'var(--card)'}
                 stroke="var(--accent)"
                 strokeWidth={isActive ? 2 : 1}
                 {...rest}
@@ -860,7 +860,7 @@ function KanoCurve({ framework }) {
                 textAnchor="middle"
                 fontSize="16"
                 fontWeight="700"
-                fill={isActive ? 'var(--accent)' : 'var(--text-muted)'}
+                fill={isActive ? 'var(--block-blue)' : 'var(--text-muted)'}
               >
                 {label[0]}
               </text>
