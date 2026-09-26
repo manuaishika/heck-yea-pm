@@ -8,7 +8,7 @@ const LINKS = [
   ['/companies', 'Companies'],
   ['/careers', 'Careers'],
   ['/resources', 'Resources'],
-  ['/index', 'Index'],
+  ['/directory', 'Index'],
   ['/about', 'About'],
 ]
 

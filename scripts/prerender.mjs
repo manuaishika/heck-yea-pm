@@ -81,7 +81,7 @@ const routes = {
     description:
       'The answering frameworks PM candidates use: STAR, CIRCLES, North Star, AARRR, HEART, RICE, TAM/SAM/SOM and more, each with steps and a worked example.',
   },
-  '/index': {
+  '/directory': {
     title: 'Index',
     description: 'Every question, method and company on the site, in one list — search or filter to find one fast.',
   },

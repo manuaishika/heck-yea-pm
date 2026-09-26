@@ -34,7 +34,7 @@ const MENU_GROUPS = [
   {
     label: 'Site',
     items: [
-      ['/index', 'Index'],
+      ['/directory', 'Index'],
       ['/about', 'About'],
       ['/saved', 'Saved'],
     ],
@@ -123,7 +123,7 @@ export default function TopNav() {
 
             <Cell className="hidden shrink-0 sm:flex">
               <NavLink
-                to="/index"
+                to="/directory"
                 className={({ isActive }) =>
                   `label no-underline hover:text-accent hover:no-underline ${isActive ? 'text-accent' : 'text-text'}`
                 }
@@ -134,7 +134,7 @@ export default function TopNav() {
             <div className="sm:hidden">
               <Cell>
                 <NavLink
-                  to="/index"
+                  to="/directory"
                   className={({ isActive }) => `label no-underline hover:no-underline ${isActive ? 'text-accent' : 'text-text'}`}
                 >
                   Index

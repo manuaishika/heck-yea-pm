@@ -58,7 +58,7 @@ export default function App() {
             <Route path="browse/:id" element={<QuestionDetail />} />
             <Route path="companies" element={<Companies />} />
             <Route path="companies/:slug" element={<CompanyDetail />} />
-            <Route path="index" element={<Index />} />
+            <Route path="directory" element={<Index />} />
             <Route path="flashcards" element={<Flashcards />} />
             <Route path="flashcards/complete" element={<FlashcardsComplete />} />
             <Route path="saved" element={<Saved />} />

@@ -144,7 +144,7 @@ function FeaturedRow() {
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <p className="label">Featured</p>
-          <Link to="/index" className="btn btn-sm no-underline hover:no-underline">
+          <Link to="/directory" className="btn btn-sm no-underline hover:no-underline">
             View all
           </Link>
         </div>

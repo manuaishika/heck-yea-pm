@@ -12,7 +12,7 @@ export default function Index() {
   useHead({
     title: 'Index',
     description: 'Every question, method and company on the site, in one list — search or filter to find one fast.',
-    path: '/index',
+    path: '/directory',
   })
 
   const [q, setQ] = useState('')
