@@ -373,6 +373,21 @@
   animation: loop-pulse 900ms ease-out;
 }
 
+/* footer stamp badge: a slow continuous spin, off entirely under reduced
+   motion (Footer.jsx skips the class rather than relying on the duration
+   override alone, since a spinning badge is a bigger ask than a transition) */
+@keyframes stamp-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.stamp-spin {
+  animation: stamp-spin 16s linear infinite;
+}
+
 /* companies marquee: an infinite horizontal loop, paused on hover (see
    CompaniesMarquee.jsx) and replaced by a static list under reduced motion */
 .marquee-track {

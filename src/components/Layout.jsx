@@ -1,10 +1,11 @@
 import { Outlet } from 'react-router-dom'
 import TopNav from './TopNav'
 import PageContainer from './PageContainer'
+import Footer from './Footer'
 
 export default function Layout() {
   return (
-    <div className="min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:z-50 focus:rounded-button focus:border focus:border-border focus:bg-surface focus:px-3 focus:py-2"
@@ -14,13 +15,15 @@ export default function Layout() {
 
       <TopNav />
 
-      <main id="main">
+      <main id="main" className="flex-1">
         <PageContainer>
           <div className="py-6">
             <Outlet />
           </div>
         </PageContainer>
       </main>
+
+      <Footer />
     </div>
   )
 }
