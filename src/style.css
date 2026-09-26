@@ -29,19 +29,25 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* headings: medium/semibold, three levels only */
+  /* headings: giant condensed uppercase display type for h1/h2, New Spirit
+     for h3/h4 — a headline and a caption read as different materials */
   h1 {
+    font-family: var(--font-display);
     font-size: var(--text-page);
-    line-height: 1.2;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    line-height: 0.95;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
     margin: 0;
     text-wrap: pretty;
   }
   h2 {
+    font-family: var(--font-display);
     font-size: var(--text-section);
-    line-height: 1.3;
-    font-weight: 600;
+    line-height: 1.05;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
     margin: 0;
     text-wrap: pretty;
   }
@@ -50,6 +56,16 @@
     font-size: var(--text-body);
     font-weight: 600;
     margin: 0;
+  }
+  /* one word set in italic for emphasis inside a headline — Bebas Neue has
+     no italic cut of its own, so this leans on the body face's real italic */
+  h1 em,
+  h2 em {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
   }
 
   a {
@@ -80,14 +96,26 @@
 }
 
 @layer components {
-  /* tiny uppercase letterspaced label: eyebrows, column labels, block labels */
+  /* tiny uppercase letterspaced label: eyebrows, column labels, block labels,
+     nav cells, dates and versions — the mono face, per the spec */
   .label {
+    font-family: var(--font-mono);
     font-size: var(--text-label);
     line-height: 1.2;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--text-muted);
+  }
+
+  /* the sparing handwritten accent — a few words beside the hero, at the
+     odd section edge. Never for body copy, never for a whole sentence. */
+  .hand {
+    font-family: var(--font-hand);
+    font-weight: 600;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: normal;
   }
 
   /* eyebrow pill: accent text on accent-tint. The only use of accent-tint. */

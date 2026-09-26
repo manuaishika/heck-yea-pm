@@ -1,7 +1,9 @@
 // Enforces the one-token-file rule: fails the build if any hex/rgb/hsl
 // colour literal appears in src/ outside src/tokens.css, or if a Tailwind
 // default-palette colour class (bg-blue-500, text-red-600, ...) is written
-// anywhere. Also asserts the old accent is fully gone.
+// anywhere. Also asserts the old accent is fully gone, that every v4
+// palette token still holds its spec'd hex value, and that a block colour
+// is never used anywhere but a full-bleed panel or a tag pill.
 
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -45,13 +47,28 @@ const TAILWIND_DEFAULT = new RegExp(
 
 const OLD_ACCENT = [/#b5173f/i, /#e8577f/i, /\bcrimson\b/i, /\bburgundy\b/i]
 
-// round-weight badges (WeightBars.jsx) are the one sanctioned exception to
-// "7 tokens only" — three extra colours, used nowhere else on the site.
-// Asserted here so they read as allowed, not as drift to flag.
+// v4's full allowed list — the notebook palette (paper, card, ink, rule, tag,
+// six full-bleed block colours) plus the three round-weight badge colours,
+// which stay the one sanctioned exception used nowhere but WeightBars.jsx.
+// Asserted here, at their exact hex, so a future audit reads every one of
+// these as intentional rather than drift to flag.
 const WEIGHT_TOKENS = [
   ['--weight-heavy', '#c0392b'],
   ['--weight-medium', '#d97706'],
   ['--weight-light', '#ca9a1f'],
+]
+const PALETTE_TOKENS = [
+  ['--paper', '#f4f1ea'],
+  ['--card', '#ffffff'],
+  ['--ink', '#141414'],
+  ['--rule', '#d8d2c6'],
+  ['--tag', '#f5c518'],
+  ['--block-pink', '#f28bb0'],
+  ['--block-yellow', '#f2b705'],
+  ['--block-red', '#e04a2f'],
+  ['--block-blue', '#3c6fc4'],
+  ['--block-grey', '#c9c6bd'],
+  ['--block-green', '#3e8e6e'],
 ]
 
 let problems = 0
@@ -90,10 +107,28 @@ if (/#3b82f6/i.test(allText) || /rgb\(\s*59\s*,\s*130\s*,\s*246\s*\)/i.test(allT
 }
 
 const tokensText = readFileSync(TOKENS_FILE, 'utf8')
-for (const [name, hex] of WEIGHT_TOKENS) {
+for (const [name, hex] of [...PALETTE_TOKENS, ...WEIGHT_TOKENS]) {
   const re = new RegExp(`${name}:\\s*${hex}\\b`, 'i')
   if (!re.test(tokensText)) {
-    console.error(`✗ [check-colors] tokens.css: expected ${name}: ${hex} (weight badge token missing or changed)`)
+    console.error(`✗ [check-colors] tokens.css: expected ${name}: ${hex} (v4 palette token missing or changed)`)
+    problems++
+  }
+}
+
+// block colours are full-bleed section panels and featured-card tag pills
+// ONLY — never a card fill, a border, or body text. Scan every component for
+// the block-* token used through any other Tailwind property prefix.
+const BLOCK_NAMES = ['block-pink', 'block-yellow', 'block-red', 'block-blue', 'block-grey', 'block-green']
+const BLOCK_MISUSE = new RegExp(
+  `\\b(?:[\\w-]+:)*(?:border|ring|outline|divide|caret|placeholder|accent|decoration)-(?:${BLOCK_NAMES.join('|')})\\b`,
+  'g'
+)
+for (const file of files) {
+  if (file === TOKENS_FILE) continue
+  const text = readFileSync(file, 'utf8')
+  const rel = relative(root, file)
+  for (const m of text.matchAll(BLOCK_MISUSE)) {
+    console.error(`✗ [check-colors] ${rel}: block colour "${m[0]}" used outside a panel/tag (borders, rings, text etc. never take a block colour)`)
     problems++
   }
 }

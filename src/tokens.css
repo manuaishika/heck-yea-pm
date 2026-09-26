@@ -3,6 +3,10 @@
  *  Components use these by name (bg-surface, text-text-muted, rounded-card,
  *  text-body ...). Nothing else may hard-code a colour or a radius.
  *  Enforced by scripts/check-colors.js in prebuild.
+ *
+ *  v4: a printed creative-database notebook — cream paper, black ink,
+ *  hairline rules, flat colour blocks. Single visual world, deliberately
+ *  no dark-mode variant (see check-colors.js's note on this).
  * ==================================================================== */
 
 @font-face {
@@ -42,25 +46,27 @@
 }
 
 :root {
-  /* the 7 named tokens from the spec */
-  --white: #ffffff;
-  --blue-50: #eef5ff;
-  --blue-100: #d7e7fd;
-  --blue-300: #93b0e3;
-  --primary: #1e4a94;
-  --ink: #0f1b2d;
-  --ink-soft: #5b6b82;
-  /* charts: primary, this, blue-300, blue-100 — darkest to lightest, nothing else */
-  --chart-2: #5277bd;
+  /* the spec's table, verbatim */
+  --paper: #f4f1ea;
+  --card: #ffffff;
+  --ink: #141414;
+  --rule: #d8d2c6;
+  --tag: #f5c518;
+  --block-pink: #f28bb0;
+  --block-yellow: #f2b705;
+  --block-red: #e04a2f;
+  --block-blue: #3c6fc4;
+  --block-grey: #c9c6bd;
+  --block-green: #3e8e6e;
 
   /* semantic names components read — every one maps back to a token above */
-  --accent: var(--primary);
-  --accent-tint: var(--blue-50);
-  --surface: var(--white); /* cards: same value as page, separated by a border only */
-  --page: var(--white);
-  --border: var(--blue-100);
+  --accent: var(--ink);
+  --accent-tint: var(--tag);
+  --surface: var(--card);
+  --page: var(--paper);
+  --border: var(--rule);
   --text: var(--ink);
-  --text-muted: var(--ink-soft);
+  --text-muted: color-mix(in srgb, var(--ink) 62%, var(--paper));
 
   /* round-weight badges only (WeightBars.jsx) — nowhere else on the site */
   --weight-heavy: #c0392b;
@@ -68,50 +74,11 @@
   --weight-light: #ca9a1f;
 }
 
-/* the same names, mirrored for people who browse in dark mode */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --white: #0f1725;
-    --blue-50: #16233a;
-    --blue-100: #263a5c;
-    --blue-300: #5f7fb8;
-    --primary: #6e9fe0;
-    --ink: #e8eef7;
-    --ink-soft: #93a3bc;
-    --chart-2: #4c6fa8;
-    --accent: var(--primary);
-    --accent-tint: var(--blue-50);
-    --surface: var(--white);
-    --page: var(--white);
-    --border: var(--blue-100);
-    --text: var(--ink);
-    --text-muted: var(--ink-soft);
-  }
-}
-
-[data-theme='dark'] {
-  --white: #0f1725;
-  --blue-50: #16233a;
-  --blue-100: #263a5c;
-  --blue-300: #5f7fb8;
-  --primary: #6e9fe0;
-  --ink: #e8eef7;
-  --ink-soft: #93a3bc;
-  --chart-2: #4c6fa8;
-  --accent: var(--primary);
-  --accent-tint: var(--blue-50);
-  --surface: var(--white);
-  --page: var(--white);
-  --border: var(--blue-100);
-  --text: var(--ink);
-  --text-muted: var(--ink-soft);
-}
-
 /* phones: body text is 16px (also stops iOS zooming into inputs), headings step down */
 @media (max-width: 767px) {
   :root {
-    --text-page: 1.375rem; /* 22 */
-    --text-section: 1.125rem; /* 18 */
+    --text-page: 2.25rem; /* 36 */
+    --text-section: 1.375rem; /* 22 */
     --text-body: 1rem; /* 16 */
     --text-label: 0.75rem; /* 12 */
   }
@@ -120,14 +87,17 @@
 @theme inline {
   /* wipe Tailwind's defaults so an off-system class (bg-blue-500, text-red-600 ...) produces nothing */
   --color-*: initial;
-  --color-white: var(--white);
-  --color-blue-50: var(--blue-50);
-  --color-blue-100: var(--blue-100);
-  --color-blue-300: var(--blue-300);
-  --color-primary: var(--primary);
+  --color-paper: var(--paper);
+  --color-card: var(--card);
   --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-chart-2: var(--chart-2);
+  --color-rule: var(--rule);
+  --color-tag: var(--tag);
+  --color-block-pink: var(--block-pink);
+  --color-block-yellow: var(--block-yellow);
+  --color-block-red: var(--block-red);
+  --color-block-blue: var(--block-blue);
+  --color-block-grey: var(--block-grey);
+  --color-block-green: var(--block-green);
   --color-accent: var(--accent);
   --color-accent-tint: var(--accent-tint);
   --color-surface: var(--surface);
@@ -143,28 +113,34 @@
 }
 
 @theme {
-  /* shape: 16px section panels, 12px cards, 8px buttons/inputs, pill for tags */
+  /* shape: square corners on every cell, card and panel. Pills stay fully round. */
   --radius-*: initial;
-  --radius-panel: 16px;
-  --radius-card: 12px;
-  --radius-button: 8px;
+  --radius-panel: 0px;
+  --radius-card: 0px;
+  --radius-button: 0px;
   --radius-pill: 9999px;
-  /* very soft shadows only — a hover lift, never a hard or offset shadow */
+  /* no shadows anywhere */
   --shadow-*: initial;
-  --shadow-soft: 0 2px 8px rgba(15, 27, 45, 0.07);
+  --shadow-soft: none;
   --drop-shadow-*: initial;
 
-  /* type: one scale, four sizes */
+  /* type: New Spirit for body, a condensed uppercase face for headlines, a
+     mono face for micro-labels, Caveat for the sparing handwritten accents.
+     New Spirit Condensed itself isn't a font we hold a licence for or that
+     exists on Google Fonts — Bebas Neue stands in for it here, everywhere
+     a headline calls for "giant condensed uppercase". */
   --font-sans: 'New Spirit', ui-serif, Georgia, 'Times New Roman', serif;
-  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; /* code only */
+  --font-display: 'Bebas Neue', 'Oswald', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-hand: 'Caveat', cursive;
   --text-*: initial;
-  --text-page: 1.5rem; /* 24 */
-  --text-page--line-height: 1.2;
-  --text-section: 1rem; /* 16 */
-  --text-section--line-height: 1.3;
-  --text-body: 0.875rem; /* 14 */
+  --text-page: 3.5rem; /* 56 — giant condensed headline */
+  --text-page--line-height: 0.95;
+  --text-section: 1.75rem; /* 28 */
+  --text-section--line-height: 1.05;
+  --text-body: 0.9375rem; /* 15 */
   --text-body--line-height: 1.5;
-  --text-label: 0.65625rem; /* 10.5 — tiny uppercase, letterspaced */
+  --text-label: 0.6875rem; /* 11 — tiny uppercase, letterspaced, mono */
   --text-label--line-height: 1.2;
 
   /* spacing: Tailwind's 4px-based scale (p-1 = 4px, p-2 = 8px ...) */

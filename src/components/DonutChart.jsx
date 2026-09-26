@@ -14,8 +14,14 @@ const CARD_H = 66
 const SIDE_PAD = 16
 const V_PAD = 36
 
-// Charts use only these four, darkest to lightest — nothing else.
-const CHART_COLORS = ['var(--primary)', 'var(--chart-2)', 'var(--blue-300)', 'var(--blue-100)']
+// Charts use only ink at four tints against paper — block colours are
+// reserved for full-bleed panels and tag pills, never charts.
+const CHART_COLORS = [
+  'var(--ink)',
+  'color-mix(in srgb, var(--ink) 78%, var(--paper))',
+  'color-mix(in srgb, var(--ink) 58%, var(--paper))',
+  'color-mix(in srgb, var(--ink) 40%, var(--paper))',
+]
 
 const toXY = (r, deg) => {
   const a = ((deg - 90) * Math.PI) / 180

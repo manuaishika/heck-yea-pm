@@ -6,8 +6,14 @@ import { Page, PageHead } from '../components/Page'
 import { Icon } from '../components/ui'
 import Tree from '../components/diagrams/Tree'
 
-// Charts and colour-coded groups use only these four, darkest to lightest.
-const CHART_COLORS = ['var(--primary)', 'var(--chart-2)', 'var(--blue-300)', 'var(--blue-100)']
+// Charts and colour-coded groups use only ink, at four tints against paper —
+// block colours are reserved for full-bleed panels and tag pills, never charts.
+const CHART_COLORS = [
+  'var(--ink)',
+  'color-mix(in srgb, var(--ink) 78%, var(--paper))',
+  'color-mix(in srgb, var(--ink) 58%, var(--paper))',
+  'color-mix(in srgb, var(--ink) 40%, var(--paper))',
+]
 
 const KIND_ICONS = ['users', 'briefcase', 'code'] // population & scale, non-tech, tech
 
@@ -48,7 +54,7 @@ function AnswerPanel({ q, color }) {
         <p className="label">Working</p>
         <Ledger rows={q.steps} />
       </div>
-      <div className="px-4 py-3" style={{ background: color, color: 'var(--white)' }}>
+      <div className="px-4 py-3" style={{ background: color, color: 'var(--card)' }}>
         <p className="label !text-current opacity-80">Answer</p>
         <p className="mt-1 text-section font-semibold">{q.answer}</p>
       </div>
@@ -107,7 +113,7 @@ function StepTiles({ items, color }) {
         <li key={i} className="card flex gap-3 p-3">
           <span
             className="grid size-7 shrink-0 place-items-center rounded-pill text-body font-semibold"
-            style={{ background: color, color: 'var(--white)' }}
+            style={{ background: color, color: 'var(--card)' }}
           >
             {i + 1}
           </span>
