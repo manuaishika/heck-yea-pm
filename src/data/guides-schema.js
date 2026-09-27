@@ -57,6 +57,14 @@ export function validateRole(r) {
   w.flow.forEach((f, i) => {
     if (!str(f.step) || !str(f.short) || !str(f.detail)) fail(`role flow step ${i} incomplete`)
   })
+
+  const iw = r.interviewWeights
+  if (!str(iw?.note)) fail('role.interviewWeights.note missing')
+  if (!arr(iw?.areas)) fail('role.interviewWeights.areas missing')
+  iw.areas.forEach((a, i) => {
+    if (!CATEGORIES.includes(a.category)) fail(`role.interviewWeights area ${i}: unknown category "${a.category}"`)
+    if (!str(a.label) || !str(a.tests)) fail(`role.interviewWeights area ${i}: label/tests missing`)
+  })
   return r
 }
 

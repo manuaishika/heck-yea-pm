@@ -26,6 +26,11 @@ const chipOff = ''
 const curveballCount = curveballs().length
 const topicTotals = topicCounts()
 
+// first view: a few per category, not the whole bank
+const PER_GROUP = 3
+// filtered view: this many, then "show more"
+const PAGE = 10
+
 export default function Browse() {
   const [searchParams, setSearchParams] = useSearchParams()
   const location = useLocation()
@@ -70,6 +75,14 @@ export default function Browse() {
   }, [rawCategory, activeCategory])
 
   const counts = useMemo(() => categoryCounts(), [])
+
+  const filterKey = `${activeCategory}|${hardOnly}|${activeTopic}|${debouncedInput}`
+  const [shown, setShown] = useState(PAGE)
+  const [shownFor, setShownFor] = useState(filterKey)
+  if (shownFor !== filterKey) {
+    setShownFor(filterKey)
+    setShown(PAGE)
+  }
 
   const results = useMemo(() => {
     const tokens = queryTokens(debouncedInput)
@@ -123,7 +136,7 @@ export default function Browse() {
         />
       </div>
 
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="-mx-4 mt-3 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 [&>*]:shrink-0">
         <button
           type="button"
           onClick={() =>
@@ -199,9 +212,40 @@ export default function Browse() {
         {debouncedInput.trim() ? ` · "${debouncedInput.trim()}"` : ''}
       </p>
 
-      {results.length > 0 ? (
+      {results.length > 0 && !hasFilter ? (
+        <div className="mt-2 space-y-8">
+          {categories.map((cat) => {
+            const list = results.filter((q) => q.category === cat)
+            return (
+              <section key={cat}>
+                <div className="flex items-baseline justify-between gap-3 border-b border-ink pb-1">
+                  <h2 className="text-section">{cat}</h2>
+                  <span className="label">{list.length}</span>
+                </div>
+                <div className="mt-2">
+                  <QuestionList questions={list.slice(0, PER_GROUP)} linkTo={linkTo} showCategory={false} />
+                </div>
+                {list.length > PER_GROUP && (
+                  <button
+                    type="button"
+                    onClick={() => patchParams((p) => p.set('category', categorySlug(cat)))}
+                    className="btn btn-sm mt-2"
+                  >
+                    All {list.length} {cat.toLowerCase()} →
+                  </button>
+                )}
+              </section>
+            )
+          })}
+        </div>
+      ) : results.length > 0 ? (
         <div className="mt-2">
-          <QuestionList questions={results} linkTo={linkTo} />
+          <QuestionList questions={results.slice(0, shown)} linkTo={linkTo} showCategory={!activeCategory} />
+          {results.length > shown && (
+            <button type="button" onClick={() => setShown((n) => n + PAGE)} className="btn mt-3 w-full">
+              Show {Math.min(PAGE, results.length - shown)} more · {results.length - shown} left
+            </button>
+          )}
         </div>
       ) : (
         <div className="mt-4 flex flex-col items-center border-t border-border pt-6 text-center">

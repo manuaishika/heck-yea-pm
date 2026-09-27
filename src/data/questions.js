@@ -125,7 +125,7 @@ export function categoryNeighbors(question) {
 }
 
 /**
- * The two-layer answer's short layer: 3-5 key-move lines. STAR/CAR
+ * The two-layer answer's short layer: 3-4 key-move lines. STAR/CAR
  * questions get one line per beat; everything else gets the first few
  * points of its answer section. The full breakdown (every section, the
  * tip, the failure mode) is the layer behind "Full answer".
@@ -138,7 +138,7 @@ export function shortAnswer(question) {
   const answer =
     question.sections.find((s) => /answer/i.test(s.label)) ||
     question.sections[question.sections.length - 1]
-  return answer.points.slice(0, 5)
+  return answer.points.slice(0, 3)
 }
 
 /** Full-text haystack for search — question text plus every answer point. */

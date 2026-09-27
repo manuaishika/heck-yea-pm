@@ -1,11 +1,84 @@
+import { useId, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getMethod, questionsForMethod, exampleQuestion } from '../lib/methods'
-import { categorySlug } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import { Block, WorkTable, CategoryTag } from '../components/ui'
+import { Block, CategoryTag } from '../components/ui'
+import BackLink from '../components/BackLink'
 import MethodDiagram from '../components/diagrams/MethodDiagram'
 import NotFound from './NotFound'
+
+const RELATED_SHOWN = 5
+
+/** The worked example, closed by default: the question, then one box per
+ * step of the answer. */
+function WorkedExample({ method }) {
+  const [open, setOpen] = useState(false)
+  const panel = useId()
+  const example = exampleQuestion(method)
+
+  return (
+    <section className="card mt-4">
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={panel}
+        onClick={() => setOpen((v) => !v)}
+        className="flex min-h-12 w-full items-center justify-between gap-3 px-4 text-left"
+      >
+        <span className="label">Worked example</span>
+        <span className="text-text-muted">{open ? 'Hide −' : 'Show +'}</span>
+      </button>
+      <div id={panel} hidden={!open} className="border-t border-border p-4">
+        <Link to={`/browse/${example.id}`} className="font-semibold">
+          {example.question}
+        </Link>
+        <ol className="mt-4 grid gap-2 sm:grid-cols-2">
+          {method.example.work.map(([label, text], i) => (
+            <li key={label} className="border border-ink bg-page p-3">
+              <p className="flex items-baseline gap-2">
+                <span className="label">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-semibold text-text">{label}</span>
+              </p>
+              <p className="mt-1 text-text-muted">{text}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-3 text-label text-text-muted">An illustrative answer shape. Use your own story and numbers.</p>
+      </div>
+    </section>
+  )
+}
+
+function RelatedQuestions({ list }) {
+  const [all, setAll] = useState(false)
+  const shown = all ? list : list.slice(0, RELATED_SHOWN)
+  return (
+    <section className="mt-8">
+      <p className="label">Related questions · {list.length}</p>
+      <ul className="mt-2 divide-y divide-border border-y border-border">
+        {shown.map((q) => (
+          <li key={q.id}>
+            <Link
+              to={`/browse/${q.id}`}
+              className="flex min-h-11 items-center gap-3 py-2 text-text no-underline hover:text-accent hover:no-underline"
+            >
+              <span className="min-w-0 flex-1">{q.question}</span>
+              <span aria-hidden="true" className="text-text-muted">
+                →
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {list.length > RELATED_SHOWN && (
+        <button type="button" onClick={() => setAll((v) => !v)} className="btn btn-sm mt-3">
+          {all ? 'Show fewer' : `Show all ${list.length}`}
+        </button>
+      )}
+    </section>
+  )
+}
 
 export default function MethodDetail() {
   const { slug } = useParams()
@@ -19,11 +92,9 @@ export default function MethodDetail() {
 
   if (!m) return <NotFound />
 
-  const example = exampleQuestion(m)
-  const applies = questionsForMethod(m)
-
   return (
     <Page>
+      <BackLink to="/methods" />
       <PageHead
         chapter={
           <Link to="/methods" className="no-underline hover:no-underline">
@@ -44,65 +115,18 @@ export default function MethodDetail() {
       />
 
       <div className="card p-4 sm:p-6">
-        <p className="label">The shape</p>
-        <p className="mt-1 text-text-muted">Tap any part for what it means and how it looked in the worked example below.</p>
-        <div className="mt-4">
-          <MethodDiagram method={m} />
-        </div>
+        <MethodDiagram method={m} />
       </div>
 
-      <details className="card mt-4 p-4">
-        <summary className="label cursor-pointer">All the steps, as text</summary>
-        <ol className="mt-3 space-y-3">
-          {m.steps.map(([label, detail], i) => (
-            <li key={label} className="flex gap-3">
-              <span className="w-5 shrink-0 tabular-nums text-text-muted" aria-hidden="true">
-                {i + 1}
-              </span>
-              <span>
-                <span className="font-semibold text-text">{label}.</span>{' '}
-                <span className="text-text-muted">{detail}</span>
-              </span>
-            </li>
-          ))}
-        </ol>
-      </details>
+      <WorkedExample method={m} />
 
       <div className="card mt-4">
-        <Block label="Worked example" rule={false}>
-          <p>
-            <Link to={`/browse/${example.id}`} className="font-semibold">
-              {example.question}
-            </Link>
-          </p>
-          <div className="mt-2">
-            <WorkTable rows={m.example.work} />
-          </div>
-          <p className="mt-2 text-text-muted">An illustrative answer shape. Use your own story and numbers.</p>
-        </Block>
-
-        <Block label="Common failure">
+        <Block label="Common failure" rule={false}>
           <p>{m.failure}</p>
         </Block>
       </div>
 
-      <section className="mt-8">
-        <p className="label">
-          Questions it applies to · {applies.length}
-        </p>
-        <ul className="mt-2 divide-y divide-border border-y border-border">
-          {applies.map((q) => (
-            <li key={q.id}>
-              <Link
-                to={`/browse/${q.id}`}
-                className="flex min-h-11 items-center gap-3 py-2 text-text no-underline hover:text-accent hover:no-underline"
-              >
-                <span className="min-w-0 flex-1">{q.question}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <RelatedQuestions list={questionsForMethod(m)} />
     </Page>
   )
 }

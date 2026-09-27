@@ -1,43 +1,13 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '../components/ui'
 import { Page } from '../components/Page'
 import HeroStickers from '../components/HeroStickers'
 import CompaniesMarquee from '../components/CompaniesMarquee'
-import DemoVideo from '../components/DemoVideo'
+import HowItWorks from '../components/HowItWorks'
 import InterviewLoopTimeline from '../components/InterviewLoopTimeline'
 import Faq from '../components/Faq'
 import { useHead } from '../lib/useHead'
-
-const FEATURED = [
-  {
-    tag: 'New',
-    color: 'bg-block-yellow',
-    icon: 'spark',
-    title: 'AI for PMs',
-    desc: 'How AI shows up in the loop now, and how to evaluate an AI feature on the spot.',
-    date: 'Sep 2026',
-    to: '/ai',
-  },
-  {
-    tag: 'Hardest',
-    color: 'bg-block-red',
-    icon: 'chart',
-    title: 'Metric-drop diagnosis',
-    desc: 'Orders fell 30% overnight. The method for finding out why, live, without guessing.',
-    date: 'Sep 2026',
-    to: '/methods/metric-drop',
-  },
-  {
-    tag: 'Loop',
-    color: 'bg-block-blue',
-    icon: 'briefcase',
-    title: 'Google APM',
-    desc: 'Case-heavy, five rounds, judged on structure over the final idea, not the answer.',
-    date: 'Sep 2026',
-    to: '/companies/google',
-  },
-]
 
 const BLOCKS = [
   {
@@ -132,74 +102,6 @@ function StickyChecklist() {
   )
 }
 
-/** The featured row's horizontal scroller — three cards, prev/next arrows
- * scroll by one card width; snaps so a card never sits half-visible. */
-function FeaturedRow() {
-  const scroller = useRef(null)
-  function by(dir) {
-    scroller.current?.scrollBy({ left: dir * 320, behavior: 'smooth' })
-  }
-  return (
-    <section className="mt-16">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <p className="label">Featured</p>
-          <Link to="/directory" className="btn btn-sm no-underline hover:no-underline">
-            View all
-          </Link>
-        </div>
-        <div className="flex gap-2">
-          <button
-            type="button"
-            aria-label="Previous"
-            onClick={() => by(-1)}
-            className="grid size-9 place-items-center rounded-pill border border-border text-text hover:border-accent"
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M10 3 5 8l5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            aria-label="Next"
-            onClick={() => by(1)}
-            className="grid size-9 place-items-center rounded-pill border border-border text-text hover:border-accent"
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M6 3l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div ref={scroller} className="mt-4 flex snap-x gap-4 overflow-x-auto pb-2">
-        {FEATURED.map((f) => (
-          <Link
-            key={f.to}
-            to={f.to}
-            className="card flex w-72 shrink-0 snap-start flex-col p-0 no-underline hover:border-accent hover:no-underline"
-          >
-            <div className="flex h-28 items-center justify-center border-b border-border bg-card">
-              <Icon name={f.icon} size={28} />
-            </div>
-            <div className="flex flex-1 flex-col p-4">
-              <span className={`pill pill-static self-start !text-ink ${f.color}`}>{f.tag}</span>
-              <p className="mt-2 font-semibold text-text">{f.title}</p>
-              <p className="mt-1 flex-1 text-text-muted">{f.desc}</p>
-              <div className="mt-3 flex items-center justify-between">
-                <span className="label">{f.date}</span>
-                <span aria-hidden="true" className="text-text">
-                  →
-                </span>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  )
-}
-
 /** Six full-bleed colour panels, edge to edge regardless of the page's own
  * max-width container. */
 function SectionBlocks() {
@@ -252,18 +154,16 @@ export default function Landing() {
       <div className="relative py-10 lg:py-16">
         <HeroStickers />
         <div className="relative z-10 mx-auto max-w-2xl text-center">
-          <span className="pill pill-static">Heck Yea PM</span>
-          <h1 className="mt-4">
+          <h1>
             Prep for your <em>first</em> PM interview.
           </h1>
-          <p className="hand mt-3 text-[1.5rem]">+ learning, practising, landing it</p>
-          <Link to="/browse" className="btn btn-primary mt-6 no-underline hover:no-underline">
+          <p className="mt-3 text-text-muted">Learning, practising, landing it.</p>
+          <Link to="/browse" className="btn btn-primary mt-6 px-7 py-3 no-underline hover:no-underline">
             Browse questions
           </Link>
         </div>
       </div>
 
-      <FeaturedRow />
       <SectionBlocks />
 
       {/* study checklist */}
@@ -285,11 +185,11 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* the demo video */}
+      {/* how to prep with it, as a short animated explainer */}
       <section className="mt-16">
-        <h2 className="text-center">See it in ten seconds</h2>
-        <div className="mx-auto mt-4 max-w-xl">
-          <DemoVideo />
+        <h2 className="text-center">How to prep with it</h2>
+        <div className="mx-auto mt-4 max-w-3xl">
+          <HowItWorks />
         </div>
       </section>
 

@@ -9,9 +9,10 @@ import QuestionRow from './QuestionRow'
  * @param {{
  *   questions: import('../data/questions').Question[],
  *   linkTo: (q: import('../data/questions').Question) => string,
+ *   showCategory?: boolean,
  * }} props
  */
-export default function QuestionList({ questions, linkTo }) {
+export default function QuestionList({ questions, linkTo, showCategory = true }) {
   const [expanded, setExpanded] = useState(() => new Set())
 
   function toggle(id) {
@@ -32,6 +33,7 @@ export default function QuestionList({ questions, linkTo }) {
             expanded={expanded.has(q.id)}
             onToggle={() => toggle(q.id)}
             to={linkTo(q)}
+            showCategory={showCategory}
           />
         </li>
       ))}

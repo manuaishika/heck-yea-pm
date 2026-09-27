@@ -68,6 +68,11 @@
   --text: var(--ink);
   --text-muted: color-mix(in srgb, var(--ink) 62%, var(--paper));
 
+  /* footer only (Footer.jsx): pale butter paper and a royal-blue ink that
+     reads at 6:1 on it — the block blue is too light for small text there */
+  --butter: #fbe88a;
+  --royal: #2447b8;
+
   /* round-weight badges only (WeightBars.jsx) — nowhere else on the site */
   --weight-heavy: #c0392b;
   --weight-medium: #d97706;
@@ -107,6 +112,8 @@
   --color-text-muted: var(--text-muted);
   --color-transparent: transparent;
   --color-current: currentColor;
+  --color-butter: var(--butter);
+  --color-royal: var(--royal);
   --color-weight-heavy: var(--weight-heavy);
   --color-weight-medium: var(--weight-medium);
   --color-weight-light: var(--weight-light);
@@ -124,15 +131,14 @@
   --shadow-soft: none;
   --drop-shadow-*: initial;
 
-  /* type: New Spirit for body, a condensed uppercase face for headlines, a
-     mono face for micro-labels, Caveat for the sparing handwritten accents.
+  /* type: New Spirit for body and big editorial lines, a condensed uppercase
+     face for headlines, a mono face for micro-labels. No handwritten face.
      New Spirit Condensed itself isn't a font we hold a licence for or that
      exists on Google Fonts — Bebas Neue stands in for it here, everywhere
      a headline calls for "giant condensed uppercase". */
   --font-sans: 'New Spirit', ui-serif, Georgia, 'Times New Roman', serif;
   --font-display: 'Bebas Neue', 'Oswald', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-  --font-hand: 'Caveat', cursive;
   --text-*: initial;
   --text-page: 3.5rem; /* 56 — giant condensed headline */
   --text-page--line-height: 0.95;

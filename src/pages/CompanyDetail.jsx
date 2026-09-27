@@ -9,6 +9,7 @@ import QuestionList from '../components/QuestionList'
 import Rich from '../components/Rich'
 import LoopFlow from '../components/diagrams/LoopFlow'
 import WeightBars from '../components/diagrams/WeightBars'
+import BackLink from '../components/BackLink'
 import NotFound from './NotFound'
 
 function resolveSlug(raw) {
@@ -39,6 +40,7 @@ export default function CompanyDetail() {
 
   return (
     <Page>
+      <BackLink to="/companies" />
       <PageHead
         chapter={
           <Link to="/companies" className="no-underline hover:no-underline">

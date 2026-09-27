@@ -13,6 +13,7 @@ import { Detail, Block, Bullets, CategoryTag } from '../components/ui'
 import MethodLinks from '../components/MethodLinks'
 import SaveButton from '../components/SaveButton'
 import CompanyMark from '../components/CompanyMark'
+import BackLink from '../components/BackLink'
 import NotFound from './NotFound'
 
 function CopyLink({ id }) {
@@ -79,6 +80,7 @@ export default function QuestionDetail() {
 
   return (
     <Page>
+      <BackLink to={`/browse${location.search}`} />
       <PageHead
         chapter={
           <Link to={`/browse${location.search}`} className="no-underline hover:no-underline">

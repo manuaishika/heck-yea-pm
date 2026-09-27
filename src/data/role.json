@@ -37,5 +37,35 @@
         "detail": "Tell stakeholders what's happening before it goes wrong. A slipped date is manageable; a surprise slipped date is a crisis. Never blindside your manager."
       }
     ]
+  },
+  "interviewWeights": {
+    "note": "Heavy counts 3, medium 2, light 1, summed across every loop with a source.",
+    "areas": [
+      {
+        "category": "Product Design",
+        "label": "Product sense",
+        "tests": "Pick a user, find the pain, design one fix, name the metric."
+      },
+      {
+        "category": "Analytics",
+        "label": "Analytics",
+        "tests": "Metrics, root-cause walkthroughs and estimates, reasoned out loud."
+      },
+      {
+        "category": "Strategy",
+        "label": "Strategy",
+        "tests": "Markets, competitors, pricing, and what to build first."
+      },
+      {
+        "category": "Behavioral",
+        "label": "Behavioral",
+        "tests": "Real stories about what you did, told with STAR."
+      },
+      {
+        "category": "Technical",
+        "label": "Technical",
+        "tests": "How software works, well enough to spot risk and cost."
+      }
+    ]
   }
 }

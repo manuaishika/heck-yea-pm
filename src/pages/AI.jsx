@@ -4,7 +4,7 @@ import { getQuestion, questions } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { Block } from '../components/ui'
-import Flowchart from '../components/Flowchart'
+import Placards from '../components/Placards'
 import ScrollProgress from '../components/ScrollProgress'
 
 validateAI(
@@ -28,29 +28,16 @@ export default function AI() {
         intro={ai.intro}
       />
 
-      {ai.topics.map((t) => (
-        <Flowchart
-          key={t.slug}
-          slug={t.slug}
-          name={t.name}
-          gist={t.gist}
-          howItWorks={t.howItWorks}
-          need={t.need}
-          question={t.practiceId ? getQuestion(t.practiceId) : null}
-          fallback="/browse?topic=ai"
-        />
-      ))}
+      <Placards
+        items={ai.topics.map((t) => ({ ...t, question: t.practiceId ? getQuestion(t.practiceId) : null }))}
+        fallback="/browse?topic=ai"
+      />
 
       <div className="card mt-8">
         <Block label="Responsible AI" rule={false}>
           <p className="text-text-muted">{ai.responsibleAi.note}</p>
         </Block>
       </div>
-
-      {/* room for Pip's practice prompt, which docks to the bottom edge
-          below 2xl (see PipPracticePrompt.jsx) — without this the card
-          above can end up hidden behind it */}
-      <div aria-hidden="true" className="h-28 2xl:hidden" />
     </Page>
   )
 }

@@ -21,8 +21,10 @@
        100vw; 100vw includes the scrollbar's own width in most browsers,
        which is a few px wider than the actual visible viewport whenever
        a vertical scrollbar is present — this absorbs that gap instead of
-       it becoming a real horizontal scrollbar. */
-    overflow-x: hidden;
+       it becoming a real horizontal scrollbar. `clip`, not `hidden`:
+       hidden turns body into a scroll container, which silently breaks
+       every position: sticky element (the nav, the AI placards). */
+    overflow-x: clip;
   }
 
   body {
@@ -33,7 +35,7 @@
     font-size: var(--text-body);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   /* headings: giant condensed uppercase display type for h1/h2, New Spirit
@@ -115,16 +117,6 @@
     color: var(--text-muted);
   }
 
-  /* the sparing handwritten accent — a few words beside the hero, at the
-     odd section edge. Never for body copy, never for a whole sentence. */
-  .hand {
-    font-family: var(--font-hand);
-    font-weight: 600;
-    color: var(--ink);
-    text-transform: none;
-    letter-spacing: normal;
-  }
-
   /* eyebrow pill: accent text on accent-tint. The only use of accent-tint. */
   .eyebrow {
     display: inline-block;
@@ -141,7 +133,7 @@
     border-radius: var(--radius-card);
   }
 
-  /* buttons: 6px radius. Primary = accent fill; default = hairline. */
+  /* buttons: fully round (pill). Primary = accent fill; default = hairline. */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -154,7 +146,7 @@
     color: var(--text);
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius-button);
+    border-radius: var(--radius-pill);
     text-decoration: none;
     cursor: pointer;
   }
@@ -312,7 +304,7 @@
 @media (max-width: 767px) {
   .btn,
   .btn-sm,
-  .pill {
+  .pill:not(.pill-static) {
     min-height: 44px;
   }
   input[type='search'],
@@ -343,6 +335,93 @@
 .diagram-enter.in-view {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* auto-play progress segments (ProgressFill.jsx) */
+.progress-fill {
+  width: 0;
+  animation: progress-fill linear forwards;
+}
+@keyframes progress-fill {
+  to {
+    width: 100%;
+  }
+}
+
+/* method diagrams in motion (MethodDiagram.jsx): connectors whose dashes
+   flow toward the next step, a slow orbit, users dripping through the
+   AARRR funnel, a ping round the current TAM circle, the 3Cs breathing.
+   All stop under the reduced-motion override at the bottom of this file. */
+.flow-line-x {
+  background: repeating-linear-gradient(90deg, var(--ink) 0 4px, transparent 4px 8px);
+  background-size: 8px 100%;
+  animation: flow-x 0.6s linear infinite;
+}
+@keyframes flow-x {
+  to {
+    background-position: 8px 0;
+  }
+}
+.flow-dash {
+  stroke-dasharray: 4 5;
+  animation: flow-dash 0.7s linear infinite;
+}
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -9;
+  }
+}
+.spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.drip {
+  animation: drip 2.7s ease-in infinite;
+}
+@keyframes drip {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--drip));
+    opacity: 0;
+  }
+}
+.ping {
+  animation: ping 1.6s ease-out infinite;
+}
+@keyframes ping {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1.12);
+    opacity: 0;
+  }
+}
+.breathe {
+  animation: breathe 3.2s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--bx), var(--by));
+  }
 }
 
 /* interview-loop timeline: the connector line draws in once the section

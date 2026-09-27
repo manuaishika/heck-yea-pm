@@ -1,51 +1,10 @@
 import { Link } from 'react-router-dom'
-import { role, skills } from '../data/guides'
-import { questions } from '../data/questions'
+import { role } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { Row } from '../components/ui'
-import DonutChart from '../components/DonutChart'
+import InterviewWeights from '../components/InterviewWeights'
 import FlowMap from '../components/diagrams/FlowMap'
-
-const AI_COUNT = questions.filter((q) => q.topic === 'ai').length
-const BEHAVIORAL_COUNT = questions.filter((q) => q.category === 'Behavioral').length
-
-// Slice colour is assigned by rank inside DonutChart (biggest = darkest
-// chart blue), not fixed per area, so nothing here names a colour.
-const SLICES = [
-  {
-    key: 'technical',
-    label: 'Technical',
-    note: 'How software works, well enough to spot risk.',
-    count: skills.technical.skills.length,
-    unit: 'skills',
-    to: '/skills#technical',
-  },
-  {
-    key: 'non-technical',
-    label: 'Non-technical',
-    note: 'Research, prioritisation, writing, stakeholders.',
-    count: skills.nonTechnical.skills.length,
-    unit: 'skills',
-    to: '/skills#non-technical',
-  },
-  {
-    key: 'behavioral',
-    label: 'Behavioral',
-    note: 'How you’ve actually worked, told well.',
-    count: BEHAVIORAL_COUNT,
-    unit: 'questions',
-    to: '/browse?category=behavioral',
-  },
-  {
-    key: 'ai',
-    label: 'AI',
-    note: 'Baseline literacy for a PM role now.',
-    count: AI_COUNT,
-    unit: 'questions',
-    to: '/browse?topic=ai',
-  },
-]
 
 export default function Role() {
   useHead({
@@ -61,9 +20,9 @@ export default function Role() {
     <Page>
       <PageHead chapter="Module" title="Role & Skills" intro={root} />
 
-      <Row icon="chart" title="What makes a PM" sub="Tap a slice or a card." defaultOpen>
+      <Row icon="chart" title="What the interview weighs" sub="Across every loop we have a source for. Tap a company." defaultOpen>
         <div className="p-4">
-          <DonutChart slices={SLICES} />
+          <InterviewWeights />
         </div>
       </Row>
 

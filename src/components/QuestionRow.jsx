@@ -7,7 +7,7 @@ import MethodLinks from './MethodLinks'
 
 /**
  * One question as the shared expandable row. Two-layer answer: the short
- * 3-5 line version shows first, "Full answer" reveals every section, the
+ * 3-4 line version shows first, "Full answer" reveals every section, the
  * tip, and the failure mode.
  *
  * @param {{
@@ -16,16 +16,18 @@ import MethodLinks from './MethodLinks'
  *   onToggle?: () => void,
  *   defaultOpen?: boolean,
  *   to: string,
+ *   showCategory?: boolean,
  * }} props
  */
-export default function QuestionRow({ question, expanded, onToggle, defaultOpen, to }) {
+export default function QuestionRow({ question, expanded, onToggle, defaultOpen, to, showCategory = true }) {
   const [fullOpen, setFullOpen] = useState(false)
-  const sub = (
-    <span className="flex flex-wrap items-center gap-2">
-      <CategoryTag category={question.category} />
-      {question.hard && <span className="label">curveball</span>}
-    </span>
-  )
+  const sub =
+    showCategory || question.hard ? (
+      <span className="mt-1 flex flex-wrap items-center gap-2">
+        {showCategory && <CategoryTag category={question.category} />}
+        {question.hard && <span className="label">curveball</span>}
+      </span>
+    ) : null
 
   return (
     <Row
