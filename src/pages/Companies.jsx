@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom'
 import { companies, companiesNote } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import { Row, Detail } from '../components/ui'
-import CompanyMark, { CompanyLogo } from '../components/CompanyMark'
-import Rich from '../components/Rich'
-import { standoutsFor } from '../lib/companyMeta'
+import { brandFor, logoSrc } from '../lib/companyMeta'
 import { SECTORS } from '../data/guides-schema'
+
+/** A name set as its own logo: sized off the tile's width (container units)
+ * and the longest line it will wrap to, so "Booking.com" fits as well as "Zoho". */
+function wordmarkSize(name) {
+  const words = name.split(' ')
+  const line = words.length > 1 ? Math.max(...words.map((w) => w.length), Math.ceil(name.length / 2)) : name.length
+  return `min(1.75rem, calc(100cqi / ${(line * 0.62 + 0.8).toFixed(2)}))`
+}
 
 function matches(c, q) {
   return [c.name, c.slug, c.region, c.program, c.sector].some((f) => f.toLowerCase().includes(q))
@@ -39,7 +44,7 @@ export default function Companies() {
       <PageHead
         chapter="Module"
         title="Companies"
-        intro="What each loop looks like — how many rounds, what format, what they weight. Sector, programme and a careers link for everyone else."
+        intro="Tap a company for its loop, programme and careers link. Loop marks the ones with sourced rounds."
       />
 
       <p className="card p-4 text-text-muted">{companiesNote}</p>
@@ -60,7 +65,7 @@ export default function Companies() {
       </div>
 
       <p className="label mt-4">Sector</p>
-      <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Filter by sector">
+      <div className="-mx-4 mt-2 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 [&>*]:shrink-0" role="group" aria-label="Filter by sector">
         {['All', ...SECTORS].map((s) => (
           <button
             key={s}
@@ -79,75 +84,29 @@ export default function Companies() {
       </p>
 
       {results.length > 0 ? (
-        <ul className="mt-2 space-y-2">
+        <ul className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
           {results.map((c) => {
-            const hasLoop = c.rounds.length > 0
-            const standout = standoutsFor(c)
-            const sub = hasLoop
-              ? [
-                  c.region,
-                  `${c.program} · ${c.rounds.length} rounds`,
-                  standout.length ? `★ heavy on ${standout.join(', ').toLowerCase()}` : null,
-                ]
-                  .filter(Boolean)
-                  .join(' · ')
-              : [c.sector, c.region, c.program].filter(Boolean).join(' · ')
-
-            if (!hasLoop) {
-              // no sourced loop to expand into — a plain row: profile + careers link
-              return (
-                <li key={c.slug} className="rounded-card border border-border bg-surface">
-                  <div className="flex items-center gap-3 px-4 py-3">
-                    <CompanyLogo name={c.name} />
-                    <span className="min-w-0 flex-1">
-                      <span className="block font-semibold text-text">{c.name}</span>
-                      <span className="block text-text-muted">{sub}</span>
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 border-t border-border p-4">
-                    <Link
-                      to={`/companies/${c.slug}`}
-                      className="btn btn-primary no-underline hover:no-underline"
-                    >
-                      Profile →
-                    </Link>
-                    <a
-                      href={c.careersUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn no-underline hover:no-underline"
-                    >
-                      Careers page ↗
-                    </a>
-                  </div>
-                </li>
-              )
-            }
-
+            const src = logoSrc(brandFor(c.name))
             return (
               <li key={c.slug}>
-                <Row
-                  tile={<CompanyLogo name={c.name} />}
-                  icon="briefcase"
-                  title={c.name}
-                  sub={sub}
+                <Link
+                  to={`/companies/${c.slug}`}
+                  aria-label={`${c.name}${c.rounds.length ? `, ${c.rounds.length}-round loop` : ''}`}
+                  style={{ containerType: 'inline-size' }}
+                  className="group relative flex aspect-square flex-col items-center justify-center gap-2 border border-border bg-card p-2 text-center text-text no-underline transition-colors hover:border-ink hover:no-underline"
                 >
-                  <Detail
-                    columns={[
-                      { label: 'How it feels', children: <Rich>{c.format}</Rich> },
-                      { label: 'Prep this specifically', children: <Rich>{c.whatToKnow}</Rich> },
-                    ]}
-                  />
-                  <div className="flex flex-wrap gap-2 border-t border-border p-4">
-                    <Link
-                      to={`/companies/${c.slug}`}
-                      className="btn btn-primary no-underline hover:no-underline"
-                    >
-                      The loop →
-                    </Link>
-                    <CompanyMark name={c.name} />
-                  </div>
-                </Row>
+                  {src ? (
+                    <img src={src} alt="" width="56" height="56" loading="lazy" className="size-12 object-contain sm:size-14" />
+                  ) : (
+                    <span className="font-sans font-semibold leading-[1.05] tracking-tight" style={{ fontSize: wordmarkSize(c.name) }}>
+                      {c.name}
+                    </span>
+                  )}
+                  {src && <span className="text-label font-semibold">{c.name}</span>}
+                  {c.rounds.length > 0 && (
+                    <span className="label absolute top-1.5 right-1.5 !text-text">Loop</span>
+                  )}
+                </Link>
               </li>
             )
           })}
