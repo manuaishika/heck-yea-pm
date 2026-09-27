@@ -4,7 +4,7 @@ import { Icon } from '../components/ui'
 import { Page } from '../components/Page'
 import HeroStickers from '../components/HeroStickers'
 import CompaniesMarquee from '../components/CompaniesMarquee'
-import HowItWorks from '../components/HowItWorks'
+import IntroVideo from '../components/IntroVideo'
 import InterviewLoopTimeline from '../components/InterviewLoopTimeline'
 import Faq from '../components/Faq'
 import { useHead } from '../lib/useHead'
@@ -185,11 +185,11 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* how to prep with it, as a short animated explainer */}
+      {/* intro video: how to get into PM */}
       <section className="mt-16">
-        <h2 className="text-center">How to prep with it</h2>
+        <h2 className="text-center">Getting into PM, in 30 seconds</h2>
         <div className="mx-auto mt-4 max-w-3xl">
-          <HowItWorks />
+          <IntroVideo />
         </div>
       </section>
 

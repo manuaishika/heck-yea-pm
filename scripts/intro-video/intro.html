@@ -1,0 +1,351 @@
+<!doctype html>
+<!--
+  The homepage intro video, as one HTML page. Every frame is a pure function
+  of time: window.render(t) sets each element's state for second t, so
+  render.mjs can step through it frame by frame and pipe the frames to
+  ffmpeg. Nothing here animates on its own. 1280x720, 30 seconds.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@500;700&display=block"
+    />
+    <style>
+      @font-face {
+        font-family: 'New Spirit';
+        src: url('/fonts/NewSpirit-Regular.otf') format('opentype');
+        font-weight: 400;
+      }
+      @font-face {
+        font-family: 'New Spirit';
+        src: url('/fonts/NewSpirit-SemiBold.otf') format('opentype');
+        font-weight: 600;
+      }
+      :root {
+        --paper: #f4f1ea;
+        --card: #ffffff;
+        --ink: #141414;
+        --tag: #f5c518;
+        --pink: #f28bb0;
+        --yellow: #f2b705;
+        --blue: #3c6fc4;
+        --green: #3e8e6e;
+        --red: #e04a2f;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: 'New Spirit', Georgia, serif;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        padding: 72px 88px;
+        display: flex;
+        gap: 56px;
+        align-items: center;
+      }
+      .display {
+        font-family: 'Bebas Neue', sans-serif;
+        line-height: 0.9;
+        letter-spacing: 0.005em;
+      }
+      .mono {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 15px;
+      }
+      .copy {
+        width: 520px;
+        flex-shrink: 0;
+      }
+      .num {
+        font-size: 150px;
+      }
+      .title {
+        font-size: 44px;
+        font-weight: 600;
+        line-height: 1.05;
+        margin-top: 8px;
+      }
+      .line {
+        font-size: 24px;
+        line-height: 1.35;
+        margin-top: 18px;
+      }
+      .art {
+        flex: 1;
+        height: 100%;
+        position: relative;
+      }
+      .a {
+        will-change: transform, opacity;
+      }
+      .card {
+        background: var(--card);
+        border: 2px solid var(--ink);
+        color: var(--ink);
+      }
+      .pill {
+        display: inline-block;
+        padding: 10px 22px;
+        border: 2px solid currentColor;
+        border-radius: 999px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 0 · title -->
+    <section class="scene" id="s0" style="background: var(--paper); flex-direction: column; justify-content: center; gap: 0">
+      <p class="mono a" id="s0-eyebrow">Heck Yea PM</p>
+      <h1 class="display" style="font-size: 150px; text-align: center; margin-top: 20px">
+        <span class="a" id="s0-l1" style="display: block">How do you</span>
+        <span class="a" id="s0-l2" style="display: block">become a
+          <span id="s0-tag" style="position: relative; display: inline-block; padding: 0 18px">
+            <span class="a" id="s0-tagbg" style="position: absolute; inset: 6px 0 14px; background: var(--tag); transform-origin: left"></span>
+            <span style="position: relative">PM?</span>
+          </span>
+        </span>
+      </h1>
+      <p class="line a" id="s0-sub" style="margin-top: 26px">Five moves. Thirty seconds.</p>
+    </section>
+
+    <!-- 1 · know the job -->
+    <section class="scene" id="s1" style="background: var(--pink)">
+      <div class="copy">
+        <p class="display num a" id="s1-num">01</p>
+        <p class="title a" id="s1-title">Know the job</p>
+        <p class="line a" id="s1-line">A PM decides what to build, and why. Not the code, not the pixels: the call.</p>
+      </div>
+      <div class="art">
+        <svg viewBox="0 0 520 460" width="100%" height="100%">
+          <g class="a" id="s1-c0"><circle cx="260" cy="170" r="130" fill="#ffffff" fill-opacity="0.55" stroke="#141414" stroke-width="3" /><text x="260" y="110" text-anchor="middle" font-size="26" font-weight="600">Users</text></g>
+          <g class="a" id="s1-c1"><circle cx="190" cy="290" r="130" fill="#ffffff" fill-opacity="0.55" stroke="#141414" stroke-width="3" /><text x="130" y="350" text-anchor="middle" font-size="26" font-weight="600">Business</text></g>
+          <g class="a" id="s1-c2"><circle cx="330" cy="290" r="130" fill="#ffffff" fill-opacity="0.55" stroke="#141414" stroke-width="3" /><text x="392" y="350" text-anchor="middle" font-size="26" font-weight="600">Tech</text></g>
+          <g class="a" id="s1-you" style="transform-origin: 260px 250px"><circle cx="260" cy="250" r="34" fill="#141414" /><text x="260" y="259" text-anchor="middle" font-size="22" font-weight="600" fill="#ffffff">PM</text></g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 2 · build the skills -->
+    <section class="scene" id="s2" style="background: var(--yellow)">
+      <div class="copy">
+        <p class="display num a" id="s2-num">02</p>
+        <p class="title a" id="s2-title">Build the skills</p>
+        <p class="line a" id="s2-line">The same five, in every loop. All learnable in weeks, not years.</p>
+      </div>
+      <div class="art card" style="height: auto; padding: 36px 40px">
+        <p class="mono">Skills tested</p>
+        <div id="s2-bars" style="margin-top: 22px; display: grid; gap: 20px"></div>
+      </div>
+    </section>
+
+    <!-- 3 · show proof -->
+    <section class="scene" id="s3" style="background: var(--blue); color: #ffffff">
+      <div class="copy">
+        <p class="display num a" id="s3-num">03</p>
+        <p class="title a" id="s3-title">Show proof</p>
+        <p class="line a" id="s3-line">No PM title needed. Evidence you think like one is.</p>
+      </div>
+      <div class="art">
+        <div class="card a" id="s3-k0" style="position: absolute; left: 20px; top: 0px; width: 380px; padding: 24px 28px"><p class="mono">Built</p><p style="font-size: 28px; font-weight: 600; margin-top: 6px">A side project people use</p></div>
+        <div class="card a" id="s3-k1" style="position: absolute; left: 120px; top: 140px; width: 380px; padding: 24px 28px"><p class="mono">Wrote</p><p style="font-size: 28px; font-weight: 600; margin-top: 6px">A product teardown</p></div>
+        <div class="card a" id="s3-k2" style="position: absolute; left: 40px; top: 280px; width: 380px; padding: 24px 28px"><p class="mono">Moved</p><p style="font-size: 28px; font-weight: 600; margin-top: 6px">One metric, with a number</p></div>
+        <div class="a" id="s3-stamp" style="position: absolute; right: 10px; top: 450px; transform-origin: center">
+          <p class="display" style="font-size: 58px; padding: 10px 22px; border: 5px solid var(--tag); color: var(--tag)">Proof &gt; pedigree</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · apply -->
+    <section class="scene" id="s4" style="background: var(--green); color: #ffffff">
+      <div class="copy">
+        <p class="display num a" id="s4-num">04</p>
+        <p class="title a" id="s4-title">Apply where freshers get in</p>
+        <p class="line a" id="s4-line">These roles hire straight out of college. Start here, move up fast.</p>
+      </div>
+      <div class="art" style="display: flex; flex-direction: column; justify-content: center; gap: 18px">
+        <div id="s4-pills" style="display: flex; flex-wrap: wrap; gap: 14px"></div>
+        <div id="s4-logos" class="a" style="display: flex; gap: 14px; margin-top: 26px"></div>
+      </div>
+    </section>
+
+    <!-- 5 · crack the loop -->
+    <section class="scene" id="s5" style="background: var(--ink); color: #ffffff">
+      <div class="copy">
+        <p class="display num a" id="s5-num">05</p>
+        <p class="title a" id="s5-title">Crack the loop</p>
+        <p class="line a" id="s5-line">Five rounds. Structure beats a clever idea in every one.</p>
+      </div>
+      <div class="art">
+        <div style="position: absolute; left: 20px; right: 20px; top: 200px; height: 4px; background: #555"></div>
+        <div class="a" id="s5-fill" style="position: absolute; left: 20px; right: 20px; top: 200px; height: 4px; background: var(--tag); transform-origin: left"></div>
+        <div id="s5-rounds" style="position: absolute; left: 0; right: 0; top: 172px; display: flex; justify-content: space-between"></div>
+        <div class="a" id="s5-offer" style="position: absolute; left: 50%; top: 330px; transform-origin: center">
+          <p class="display" style="font-size: 96px; background: var(--tag); color: var(--ink); padding: 8px 30px 0">Offer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · end card -->
+    <section class="scene" id="s6" style="background: var(--paper); flex-direction: column; justify-content: center; gap: 0">
+      <p class="display a" id="s6-logo" style="font-size: 170px">Heck Yea PM</p>
+      <p class="line a" id="s6-line" style="margin-top: 10px; font-size: 30px">Free prep for your first PM interview.</p>
+      <p class="mono a" id="s6-url" style="margin-top: 26px; font-size: 20px">heck-yea-pm.vercel.app</p>
+    </section>
+
+    <script>
+      const SKILLS = [
+        ['Product sense', 0.86],
+        ['Metrics', 0.72],
+        ['Prioritisation', 0.64],
+        ['Communication', 0.8],
+        ['Tech basics', 0.52],
+      ]
+      const ROLES = ['APM programmes', 'PM intern', 'Associate PM', 'Analyst → PM']
+      const LOGOS = ['google', 'microsoft', 'flipkart', 'razorpay', 'swiggy', 'zomato', 'meesho']
+      const ROUNDS = ['Screen', 'Product', 'Analytics', 'Behavioral', 'Manager']
+
+      // scene start times (s); each wipes in over WIPE seconds
+      const START = [0, 4, 9.2, 14.4, 19.6, 24.8, 27.8]
+      const WIPE = 0.55
+
+      const $ = (id) => document.getElementById(id)
+      const clamp = (x) => Math.min(Math.max(x, 0), 1)
+      const outCubic = (x) => 1 - Math.pow(1 - x, 3)
+      const outBack = (x) => 1 + 2.4 * Math.pow(x - 1, 3) + 1.4 * Math.pow(x - 1, 2)
+      const p = (t, a, dur, ease = outCubic) => ease(clamp((t - a) / dur))
+
+      function set(el, { o = 1, x = 0, y = 0, s = 1, r = 0, sx = null }) {
+        el.style.opacity = o
+        el.style.transform = sx === null ? `translate(${x}px, ${y}px) scale(${s}) rotate(${r}deg)` : `scaleX(${sx})`
+      }
+      // fade + rise, the default entrance
+      const rise = (el, t, a, dist = 30, dur = 0.5) => {
+        const k = p(t, a, dur)
+        set(el, { o: k, y: (1 - k) * dist })
+      }
+
+      // build the repeated parts once
+      $('s2-bars').innerHTML = SKILLS.map(
+        ([name], i) => `<div><div style="display:flex;justify-content:space-between;font-size:22px;font-weight:600"><span>${name}</span><span id="s2-v${i}" style="font-family:'JetBrains Mono';font-size:18px"></span></div>
+        <div style="height:14px;background:#f4f1ea;margin-top:8px"><div id="s2-b${i}" style="height:100%;background:#141414;width:0"></div></div></div>`
+      ).join('')
+      $('s4-pills').innerHTML = ROLES.map((r, i) => `<span class="pill a" id="s4-p${i}">${r}</span>`).join('')
+      $('s4-logos').innerHTML = LOGOS.map(
+        (l) => `<span style="width:64px;height:64px;background:#fff;border:2px solid #141414;display:grid;place-items:center"><img src="/logos/${l}.png" style="width:40px;height:40px;object-fit:contain"></span>`
+      ).join('')
+      $('s5-rounds').innerHTML = ROUNDS.map(
+        (r, i) => `<div style="width:96px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <span id="s5-d${i}" style="width:60px;height:60px;border-radius:50%;border:3px solid #fff;background:#141414;display:grid;place-items:center;font-family:'Bebas Neue';font-size:34px">${i + 1}</span>
+          <span style="font-size:17px;font-weight:600">${r}</span></div>`
+      ).join('')
+
+      window.render = function (t) {
+        // scene visibility + wipe from the left
+        START.forEach((a, k) => {
+          const el = $('s' + k)
+          const next = START[k + 1] ?? Infinity
+          const on = t >= a && t < next + WIPE
+          el.style.display = on ? 'flex' : 'none'
+          el.style.zIndex = k
+          const w = k === 0 ? 1 : p(t, a, WIPE, (x) => x * x * (3 - 2 * x))
+          el.style.clipPath = `inset(0 ${(1 - w) * 100}% 0 0)`
+        })
+
+        // 0 · title
+        rise($('s0-eyebrow'), t, 0.1, 12)
+        rise($('s0-l1'), t, 0.3, 60)
+        rise($('s0-l2'), t, 0.6, 60)
+        set($('s0-tagbg'), { sx: p(t, 1.1, 0.45) })
+        rise($('s0-sub'), t, 1.7, 20)
+
+        // 1 · know the job
+        const a1 = START[1] + 0.3
+        rise($('s1-num'), t, a1, 40)
+        rise($('s1-title'), t, a1 + 0.2)
+        rise($('s1-line'), t, a1 + 0.5)
+        const c = p(t, a1 + 0.4, 1.1)
+        set($('s1-c0'), { o: c, y: (1 - c) * -120 })
+        set($('s1-c1'), { o: c, x: (1 - c) * -140, y: (1 - c) * 60 })
+        set($('s1-c2'), { o: c, x: (1 - c) * 140, y: (1 - c) * 60 })
+        const you = p(t, a1 + 1.6, 0.5, outBack)
+        set($('s1-you'), { o: clamp(you * 2), s: you })
+
+        // 2 · build the skills
+        const a2 = START[2] + 0.3
+        rise($('s2-num'), t, a2, 40)
+        rise($('s2-title'), t, a2 + 0.2)
+        rise($('s2-line'), t, a2 + 0.5)
+        SKILLS.forEach(([, v], i) => {
+          const k = p(t, a2 + 0.7 + i * 0.35, 0.9)
+          $('s2-b' + i).style.width = `${k * v * 100}%`
+          $('s2-v' + i).textContent = `${Math.round(k * v * 100)}%`
+        })
+
+        // 3 · show proof
+        const a3 = START[3] + 0.3
+        rise($('s3-num'), t, a3, 40)
+        rise($('s3-title'), t, a3 + 0.2)
+        rise($('s3-line'), t, a3 + 0.5)
+        ;[-4, 3, -2].forEach((rot, i) => {
+          const k = p(t, a3 + 0.6 + i * 0.45, 0.55, outBack)
+          set($('s3-k' + i), { o: clamp(k * 1.5), x: (1 - k) * 260, r: rot * k })
+        })
+        const st = p(t, a3 + 2.4, 0.35, outBack)
+        set($('s3-stamp'), { o: clamp(st * 2), s: 2.2 - 1.2 * st, r: -8 })
+
+        // 4 · apply
+        const a4 = START[4] + 0.3
+        rise($('s4-num'), t, a4, 40)
+        rise($('s4-title'), t, a4 + 0.2)
+        rise($('s4-line'), t, a4 + 0.5)
+        ROLES.forEach((_, i) => {
+          const k = p(t, a4 + 0.6 + i * 0.3, 0.5, outBack)
+          set($('s4-p' + i), { o: clamp(k * 1.5), y: (1 - k) * 40, s: 0.8 + 0.2 * k })
+        })
+        const lg = p(t, a4 + 2, 0.6)
+        set($('s4-logos'), { o: lg, x: (1 - lg) * 80 - (t - a4) * 6 })
+
+        // 5 · crack the loop
+        const a5 = START[5] + 0.3
+        rise($('s5-num'), t, a5, 40)
+        rise($('s5-title'), t, a5 + 0.2)
+        rise($('s5-line'), t, a5 + 0.5)
+        set($('s5-fill'), { sx: p(t, a5 + 0.5, 1.6, (x) => x) })
+        ROUNDS.forEach((_, i) => {
+          const lit = t >= a5 + 0.5 + i * 0.4
+          const d = $('s5-d' + i)
+          d.style.background = lit ? '#f5c518' : '#141414'
+          d.style.color = lit ? '#141414' : '#ffffff'
+          d.style.borderColor = lit ? '#f5c518' : '#ffffff'
+        })
+        const of = p(t, a5 + 2.3, 0.4, outBack)
+        set($('s5-offer'), { o: clamp(of * 2), x: -110, s: of, r: -4 })
+
+        // 6 · end card
+        const a6 = START[6] + 0.3
+        const lo = p(t, a6, 0.6, outBack)
+        set($('s6-logo'), { o: clamp(lo * 1.5), s: 0.85 + 0.15 * lo })
+        rise($('s6-line'), t, a6 + 0.5)
+        rise($('s6-url'), t, a6 + 0.8, 12)
+      }
+
+      window.DURATION = 30
+      window.render(0)
+    </script>
+  </body>
+</html>
