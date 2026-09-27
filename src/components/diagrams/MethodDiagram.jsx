@@ -150,12 +150,12 @@ function Motion({ parts, drawn = parts.length, label, children }) {
  */
 function Chain({ steps, active, pick }) {
   return (
-    <ol className="flex items-stretch">
+    <ol className="flex items-stretch gap-3 sm:gap-8">
       {steps.map(([label], i) => {
         const on = active === i
         const done = i < active
         return (
-          <li key={label} className="flex min-w-0 flex-1 items-center">
+          <li key={label} className="relative flex min-w-0 flex-1">
             <button
               type="button"
               onClick={() => pick(i)}
@@ -167,7 +167,9 @@ function Chain({ steps, active, pick }) {
               <span className="font-display text-[2.5rem] leading-none sm:text-[3rem]">{label[0]}</span>
               <span className="mt-1 max-w-full text-center text-[0.6875rem] font-semibold leading-tight sm:text-body">{label}</span>
             </button>
-            {i < steps.length - 1 && <span aria-hidden="true" className="flow-line-x h-0.5 w-3 shrink-0 sm:w-8" />}
+            {i < steps.length - 1 && (
+              <span aria-hidden="true" className="flow-line-x absolute top-1/2 left-full h-0.5 w-3 sm:w-8" />
+            )}
           </li>
         )
       })}
