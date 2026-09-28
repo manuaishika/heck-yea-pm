@@ -115,8 +115,8 @@ function SectionBlocks() {
             className={`group flex min-h-72 flex-col justify-between border-b border-border ${b.color} p-6 text-text no-underline hover:no-underline sm:border-r lg:min-h-96`}
           >
             <div className="flex items-baseline gap-2">
-              <span className="font-display text-[3.5rem] leading-none">{b.letter}</span>
-              <span className="font-display text-section uppercase">{b.word}</span>
+              <span className="text-[3.5rem] leading-none lg:text-[3rem]">{b.letter}</span>
+              <span className="text-section font-semibold lg:text-[1.2rem]">{b.word}</span>
             </div>
             <div>
               <span className="mb-3 block opacity-70">

@@ -10,9 +10,9 @@ import Tree from '../components/diagrams/Tree'
 // block colours are reserved for full-bleed panels and tag pills, never charts.
 const CHART_COLORS = [
   'var(--ink)',
-  'color-mix(in srgb, var(--ink) 78%, var(--paper))',
-  'color-mix(in srgb, var(--ink) 58%, var(--paper))',
-  'color-mix(in srgb, var(--ink) 40%, var(--paper))',
+  'color-mix(in srgb, var(--ink) 78%, var(--card))',
+  'color-mix(in srgb, var(--ink) 58%, var(--card))',
+  'color-mix(in srgb, var(--ink) 40%, var(--card))',
 ]
 
 const KIND_ICONS = ['users', 'briefcase', 'code'] // population & scale, non-tech, tech

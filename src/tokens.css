@@ -4,7 +4,7 @@
  *  text-body ...). Nothing else may hard-code a colour or a radius.
  *  Enforced by scripts/check-colors.js in prebuild.
  *
- *  v4: a printed creative-database notebook — cream paper, black ink,
+ *  v4: a printed creative-database notebook — butter paper, black ink,
  *  hairline rules, flat colour blocks. Single visual world, deliberately
  *  no dark-mode variant (see check-colors.js's note on this).
  * ==================================================================== */
@@ -47,7 +47,7 @@
 
 :root {
   /* the spec's table, verbatim */
-  --paper: #f4f1ea;
+  --paper: #fbe88a; /* butter: the whole site's paper, same as the footer */
   --card: #ffffff;
   --ink: #141414;
   --rule: #d8d2c6;
@@ -70,7 +70,7 @@
 
   /* footer only (Footer.jsx): pale butter paper and a royal-blue ink that
      reads at 6:1 on it — the block blue is too light for small text there */
-  --butter: #fbe88a;
+  --butter: var(--paper);
   --royal: #2447b8;
 
   /* round-weight badges only (WeightBars.jsx) — nowhere else on the site */
@@ -131,17 +131,15 @@
   --shadow-soft: none;
   --drop-shadow-*: initial;
 
-  /* type: New Spirit for body and big editorial lines, a condensed uppercase
-     face for headlines, a mono face for micro-labels. No handwritten face.
-     New Spirit Condensed itself isn't a font we hold a licence for or that
-     exists on Google Fonts — Bebas Neue stands in for it here, everywhere
-     a headline calls for "giant condensed uppercase". */
+  /* type: one family, New Spirit, for everything — body, headlines and
+     micro-labels alike. display and mono are kept as names so existing
+     classes keep working; both resolve to the same face. */
   --font-sans: 'New Spirit', ui-serif, Georgia, 'Times New Roman', serif;
-  --font-display: 'Bebas Neue', 'Oswald', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-display: 'New Spirit', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono: 'New Spirit', ui-serif, Georgia, 'Times New Roman', serif;
   --text-*: initial;
-  --text-page: 3.5rem; /* 56 — giant condensed headline */
-  --text-page--line-height: 0.95;
+  --text-page: 3.5rem; /* 56 */
+  --text-page--line-height: 1;
   --text-section: 1.75rem; /* 28 */
   --text-section--line-height: 1.05;
   --text-body: 0.9375rem; /* 15 */

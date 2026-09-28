@@ -167,21 +167,7 @@ function SyncBox() {
 export default function Footer() {
   return (
     <footer className="text-royal">
-      <div className="border-t border-royal bg-paper">
-        <PageContainer className="flex flex-wrap items-center justify-between gap-4 py-6">
-          <p className="font-mono text-section font-bold tracking-tight">built in the open</p>
-          <a
-            href={REPO}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="font-mono text-body font-bold text-royal underline-offset-4 hover:underline sm:text-section"
-          >
-            @manuaishika/heck-yea-pm ↗
-          </a>
-        </PageContainer>
-      </div>
-
-      <div className="bg-butter">
+      <div className="border-t border-royal bg-butter">
         <PageContainer className="pt-12 sm:pt-16">
           <p className="text-center font-sans text-[2.75rem] font-normal leading-[0.95] tracking-[-0.02em] sm:text-[4.5rem] lg:text-[6.25rem]">
             Come back when the nerves kick in.
@@ -236,11 +222,6 @@ export default function Footer() {
             <li>
               <Link to="/about" className="text-royal no-underline hover:underline">
                 About
-              </Link>
-            </li>
-            <li>
-              <Link to="/directory" className="text-royal no-underline hover:underline">
-                Index
               </Link>
             </li>
             <li>

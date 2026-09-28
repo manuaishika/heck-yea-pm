@@ -18,7 +18,8 @@ import { motion, useReducedMotion } from 'framer-motion'
 const NAV = 72
 const STEP = 60
 
-const tint = (i, n) => `color-mix(in srgb, var(--block-blue) ${14 + Math.round((i / Math.max(n - 1, 1)) * 48)}%, var(--paper))`
+// mixed with white, not the paper: blue into butter would turn green
+const tint = (i, n) => `color-mix(in srgb, var(--block-blue) ${14 + Math.round((i / Math.max(n - 1, 1)) * 48)}%, var(--card))`
 
 export default function Placards({ items, fallback }) {
   const reduce = useReducedMotion()

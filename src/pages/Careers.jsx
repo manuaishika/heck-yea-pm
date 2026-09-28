@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { careers, india, companies } from '../data/guides'
+import { careers, india, companies, companyHref } from '../data/guides'
 import { SECTORS } from '../data/guides-schema'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
@@ -267,7 +267,7 @@ export default function Careers() {
                 </span>
               </span>
               <span className="flex shrink-0 flex-wrap gap-2">
-                <Link to={`/companies/${c.slug}`} className="btn btn-sm no-underline hover:no-underline">
+                <Link to={companyHref(c)} className="btn btn-sm no-underline hover:no-underline">
                   Prep this company
                 </Link>
                 <a

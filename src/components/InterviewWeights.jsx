@@ -24,10 +24,10 @@ const COUNTS = categoryCounts()
 
 const TINTS = [
   'var(--ink)',
-  'color-mix(in srgb, var(--ink) 80%, var(--paper))',
-  'color-mix(in srgb, var(--ink) 62%, var(--paper))',
-  'color-mix(in srgb, var(--ink) 44%, var(--paper))',
-  'color-mix(in srgb, var(--ink) 28%, var(--paper))',
+  'color-mix(in srgb, var(--ink) 80%, var(--card))',
+  'color-mix(in srgb, var(--ink) 62%, var(--card))',
+  'color-mix(in srgb, var(--ink) 44%, var(--card))',
+  'color-mix(in srgb, var(--ink) 28%, var(--card))',
 ]
 const onTint = (i) => (i < 3 ? 'var(--card)' : 'var(--ink)')
 

@@ -34,7 +34,6 @@ const MENU_GROUPS = [
   {
     label: 'Site',
     items: [
-      ['/directory', 'Index'],
       ['/about', 'About'],
       ['/saved', 'Saved'],
     ],
@@ -100,7 +99,7 @@ export default function TopNav() {
         <PageContainer className="">
           <div className="flex items-stretch">
             <Cell className="border-l-0">
-              <Link to="/" className="text-section font-display uppercase text-text no-underline hover:no-underline">
+              <Link to="/" className="text-section font-semibold tracking-tight text-text no-underline hover:no-underline">
                 Heck Yea PM
               </Link>
             </Cell>
@@ -112,35 +111,6 @@ export default function TopNav() {
                 Question bank
               </p>
             </Cell>
-
-            <Cell className="hidden shrink-0 lg:flex">
-              <p className="label leading-[1.4] text-text">
-                Always free
-                <br />
-                No paywall
-              </p>
-            </Cell>
-
-            <Cell className="hidden shrink-0 sm:flex">
-              <NavLink
-                to="/directory"
-                className={({ isActive }) =>
-                  `label no-underline hover:text-accent hover:no-underline ${isActive ? 'text-accent' : 'text-text'}`
-                }
-              >
-                Index
-              </NavLink>
-            </Cell>
-            <div className="sm:hidden">
-              <Cell>
-                <NavLink
-                  to="/directory"
-                  className={({ isActive }) => `label no-underline hover:no-underline ${isActive ? 'text-accent' : 'text-text'}`}
-                >
-                  Index
-                </NavLink>
-              </Cell>
-            </div>
 
             <Cell className="hidden shrink-0 md:flex">
               {user ? (
@@ -182,7 +152,7 @@ export default function TopNav() {
         <div id={menuId} role="dialog" aria-modal="true" aria-label="Site menu" className="fixed inset-0 z-50 overflow-y-auto bg-page">
           <PageContainer className="">
             <div className="flex items-center border-b border-l-0 border-border px-4 py-3">
-              <span className="text-section font-display uppercase text-text">Menu</span>
+              <span className="text-section font-semibold text-text">Menu</span>
               <button type="button" onClick={() => setMenuOpen(false)} className="pill ml-auto min-h-9">
                 Close
               </button>

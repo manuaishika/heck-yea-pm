@@ -60,3 +60,13 @@ export function questionsForCompany(company) {
   const tags = new Set(company.questionTags)
   return questions.filter((q) => q.companies.some((c) => tags.has(c)))
 }
+
+/** A company worth its own page: a sourced loop, or questions tagged to it.
+ * Everything else links to the general question bank instead. */
+export function companyHasData(company) {
+  return company.rounds.length > 0 || questionsForCompany(company).length > 0
+}
+
+/** Where a company's logo leads: its own page when there's data behind it,
+ * otherwise the general question bank. */
+export const companyHref = (company) => (companyHasData(company) ? `/companies/${company.slug}` : '/browse')

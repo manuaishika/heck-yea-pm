@@ -31,7 +31,6 @@ const ROUTES = [
   '/saved',
   '/about',
   '/login',
-  '/directory',
   '/does-not-exist',
 ]
 

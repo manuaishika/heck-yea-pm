@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
-import companiesData from '../data/companies.json'
+import { companies, companyHref } from '../data/guides'
 
-const companies = companiesData.companies
 const loop = [...companies, ...companies] // duplicated once for a seamless loop
 
 const maskStyle = {
@@ -20,7 +19,7 @@ export default function CompaniesMarquee() {
       <ul className="marquee-track motion-reduce:hidden flex w-max items-center gap-3 group-hover:[animation-play-state:paused] hover:[animation-play-state:paused]">
         {loop.map((c, i) => (
           <li key={`${c.slug}-${i}`}>
-            <Link to={`/companies/${c.slug}`} className="pill whitespace-nowrap">
+            <Link to={companyHref(c)} className="pill whitespace-nowrap">
               {c.name}
             </Link>
           </li>
@@ -29,7 +28,7 @@ export default function CompaniesMarquee() {
       <ul className="hidden flex-wrap items-center justify-center gap-3 motion-reduce:flex">
         {companies.map((c) => (
           <li key={c.slug}>
-            <Link to={`/companies/${c.slug}`} className="pill whitespace-nowrap">
+            <Link to={companyHref(c)} className="pill whitespace-nowrap">
               {c.name}
             </Link>
           </li>

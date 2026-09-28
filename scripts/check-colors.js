@@ -57,13 +57,10 @@ const WEIGHT_TOKENS = [
   ['--weight-medium', '#d97706'],
   ['--weight-light', '#ca9a1f'],
 ]
-// footer-only pair (Footer.jsx): butter paper, royal ink
-const FOOTER_TOKENS = [
-  ['--butter', '#fbe88a'],
-  ['--royal', '#2447b8'],
-]
+// footer ink (Footer.jsx); the footer's butter is the site paper now
+const FOOTER_TOKENS = [['--royal', '#2447b8']]
 const PALETTE_TOKENS = [
-  ['--paper', '#f4f1ea'],
+  ['--paper', '#fbe88a'],
   ['--card', '#ffffff'],
   ['--ink', '#141414'],
   ['--rule', '#d8d2c6'],

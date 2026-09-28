@@ -81,10 +81,6 @@ const routes = {
     description:
       'The answering frameworks PM candidates use: STAR, CIRCLES, North Star, AARRR, HEART, RICE, TAM/SAM/SOM and more, each with steps and a worked example.',
   },
-  '/directory': {
-    title: 'Index',
-    description: 'Every question, method and company on the site, in one list — search or filter to find one fast.',
-  },
   '/about': {
     title: 'About',
     description:
@@ -130,7 +126,9 @@ for (const m of methods) {
     description: clip(`${m.when} Steps, a worked example, and the common failure.`),
   }
 }
-for (const c of companies) {
+// only companies with a page of their own; the rest redirect to /browse
+const tagged = (c) => questions.some((q) => q.companies.some((t) => c.questionTags.includes(t)))
+for (const c of companies.filter((c) => c.rounds.length > 0 || tagged(c))) {
   routes[`/companies/${c.slug}`] = {
     title: `${c.name} PM interview`,
     description: clip(`${c.name}: ${c.rounds.length}-round ${c.program} loop. ${c.format}`),

@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { companies, getCompany, questionsForCompany } from '../data/guides'
+import { companies, getCompany, questionsForCompany, companyHasData } from '../data/guides'
+import { questions } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { Block } from '../components/ui'
@@ -22,19 +23,25 @@ function resolveSlug(raw) {
 export default function CompanyDetail() {
   const { slug } = useParams()
   const canonical = resolveSlug(slug)
+  const c = canonical ? getCompany(canonical) : null
 
-  if (!canonical) return <NotFound />
+  // before any early return, so the hook order never changes between companies
+  useHead({
+    title: c ? `${c.name} PM interview` : 'Company not found',
+    description: c ? `${c.name}: ${c.rounds.length}-round ${c.program} loop. ${c.format}`.slice(0, 155) : '',
+    path: `/companies/${c?.slug ?? slug}`,
+  })
+
+  if (!c) return <NotFound />
   if (canonical !== slug) return <Navigate to={`/companies/${canonical}`} replace />
+  // nothing sourced for this company: the general bank, not an empty page
+  if (!companyHasData(c)) return <Navigate to="/browse" replace />
 
-  const c = getCompany(canonical)
   const tagged = questionsForCompany(c)
   const standout = standoutsFor(c)
-
-  useHead({
-    title: `${c.name} PM interview`,
-    description: `${c.name}: ${c.rounds.length}-round ${c.program} loop. ${c.format}`.slice(0, 155),
-    path: `/companies/${c.slug}`,
-  })
+  // no questions tagged to them yet: the ones from what they weigh heavily
+  const heavy = c.weights.filter(([, l]) => l === 'heavy').map(([cat]) => cat)
+  const practise = tagged.length > 0 ? [] : questions.filter((q) => heavy.includes(q.category)).slice(0, 6)
 
   const hasLoop = c.rounds.length > 0
 
@@ -111,16 +118,23 @@ export default function CompanyDetail() {
         </div>
       )}
 
-      <h2 className="mt-8">Questions seen at {c.name}</h2>
       {tagged.length > 0 ? (
-        <div className="mt-2">
-          <QuestionList questions={tagged} linkTo={(q) => `/browse/${q.id}`} />
-        </div>
+        <>
+          <h2 className="mt-8">Questions seen at {c.name}</h2>
+          <div className="mt-2">
+            <QuestionList questions={tagged} linkTo={(q) => `/browse/${q.id}`} />
+          </div>
+        </>
       ) : (
-        <p className="mt-2 text-text-muted">
-          None tagged yet. Work the heavy categories above from the{' '}
-          <Link to="/browse">question bank</Link>.
-        </p>
+        <>
+          <h2 className="mt-8">Practise for {c.name}</h2>
+          <p className="mt-1 text-text-muted">
+            From what they weigh heavily: {heavy.join(' and ').toLowerCase()}.
+          </p>
+          <div className="mt-2">
+            <QuestionList questions={practise} linkTo={(q) => `/browse/${q.id}`} />
+          </div>
+        </>
       )}
     </Page>
   )

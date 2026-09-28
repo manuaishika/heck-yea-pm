@@ -1,10 +1,46 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { companies, companiesNote } from '../data/guides'
+import { companies, companiesNote, companyHasData, companyHref, questionsForCompany } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { brandFor, logoSrc } from '../lib/companyMeta'
 import { SECTORS } from '../data/guides-schema'
+
+/** Logos as they are, no frames: the mark, the name under it. A company
+ * with no saved logo shows its name set large in its place. */
+function LogoWall({ list }) {
+  return (
+    <ul className="mt-4 grid grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
+      {list.map((c) => {
+        const src = logoSrc(brandFor(c.name))
+        const n = questionsForCompany(c).length
+        return (
+          <li key={c.slug}>
+            <Link
+              to={companyHref(c)}
+              style={{ containerType: 'inline-size' }}
+              className="group flex flex-col items-center gap-2 text-center text-text no-underline hover:no-underline"
+            >
+              <span className="grid h-16 w-full place-items-center transition-transform group-hover:-translate-y-1">
+                {src ? (
+                  <img src={src} alt="" width="64" height="64" loading="lazy" className="max-h-14 w-auto max-w-[80%] object-contain" />
+                ) : (
+                  <span className="font-semibold leading-[1.05] tracking-tight" style={{ fontSize: wordmarkSize(c.name) }}>
+                    {c.name}
+                  </span>
+                )}
+              </span>
+              {src && <span className="text-body font-semibold leading-tight">{c.name}</span>}
+              {companyHasData(c) && (
+                <span className="label -mt-1">{n > 0 ? `${n} question${n === 1 ? '' : 's'}` : 'Loop'}</span>
+              )}
+            </Link>
+          </li>
+        )
+      })}
+    </ul>
+  )
+}
 
 /** A name set as its own logo: sized off the tile's width (container units)
  * and the longest line it will wrap to, so "Booking.com" fits as well as "Zoho". */
@@ -44,7 +80,7 @@ export default function Companies() {
       <PageHead
         chapter="Module"
         title="Companies"
-        intro="Tap a company for its loop, programme and careers link. Loop marks the ones with sourced rounds."
+        intro="Tap a logo for that company's questions and interview loop."
       />
 
       <p className="card p-4 text-text-muted">{companiesNote}</p>
@@ -84,33 +120,16 @@ export default function Companies() {
       </p>
 
       {results.length > 0 ? (
-        <ul className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-5">
-          {results.map((c) => {
-            const src = logoSrc(brandFor(c.name))
-            return (
-              <li key={c.slug}>
-                <Link
-                  to={`/companies/${c.slug}`}
-                  aria-label={`${c.name}${c.rounds.length ? `, ${c.rounds.length}-round loop` : ''}`}
-                  style={{ containerType: 'inline-size' }}
-                  className="group relative flex aspect-square flex-col items-center justify-center gap-2 border border-border bg-card p-2 text-center text-text no-underline transition-colors hover:border-ink hover:no-underline"
-                >
-                  {src ? (
-                    <img src={src} alt="" width="56" height="56" loading="lazy" className="size-12 object-contain sm:size-14" />
-                  ) : (
-                    <span className="font-sans font-semibold leading-[1.05] tracking-tight" style={{ fontSize: wordmarkSize(c.name) }}>
-                      {c.name}
-                    </span>
-                  )}
-                  {src && <span className="text-label font-semibold">{c.name}</span>}
-                  {c.rounds.length > 0 && (
-                    <span className="label absolute top-1.5 right-1.5 !text-text">Loop</span>
-                  )}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
+        <>
+          <LogoWall list={results.filter(companyHasData)} />
+          {results.some((c) => !companyHasData(c)) && (
+            <>
+              <h2 className="mt-10">Also hiring PMs</h2>
+              <p className="mt-1 text-text-muted">No sourced loop or tagged questions yet. Each one opens the full question bank.</p>
+              <LogoWall list={results.filter((c) => !companyHasData(c))} />
+            </>
+          )}
+        </>
       ) : (
         /* not on the list: send them to the questions instead of a dead end */
         <div className="card mt-2 p-4">

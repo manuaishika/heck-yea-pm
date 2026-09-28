@@ -38,25 +38,23 @@
     overflow-x: clip;
   }
 
-  /* headings: giant condensed uppercase display type for h1/h2, New Spirit
-     for h3/h4 — a headline and a caption read as different materials */
+  /* headings: New Spirit, sentence case, set tight — the same voice as
+     the footer's big line */
   h1 {
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
     font-size: var(--text-page);
-    line-height: 0.95;
+    line-height: 1;
     font-weight: 400;
-    letter-spacing: 0.005em;
-    text-transform: uppercase;
+    letter-spacing: -0.02em;
     margin: 0;
     text-wrap: pretty;
   }
   h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-sans);
     font-size: var(--text-section);
-    line-height: 1.05;
-    font-weight: 400;
-    letter-spacing: 0.005em;
-    text-transform: uppercase;
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     margin: 0;
     text-wrap: pretty;
   }
@@ -66,15 +64,10 @@
     font-weight: 600;
     margin: 0;
   }
-  /* one word set in italic for emphasis inside a headline — Bebas Neue has
-     no italic cut of its own, so this leans on the body face's real italic */
+  /* one word set in italic for emphasis inside a headline */
   h1 em,
   h2 em {
-    font-family: var(--font-sans);
     font-style: italic;
-    font-weight: 600;
-    text-transform: none;
-    letter-spacing: normal;
   }
 
   a {
