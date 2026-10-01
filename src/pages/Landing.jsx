@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { Icon } from '../components/ui'
 import { Page } from '../components/Page'
 import CompaniesMarquee from '../components/CompaniesMarquee'
 import IntroVideo from '../components/IntroVideo'
@@ -7,51 +6,6 @@ import InterviewLoopTimeline from '../components/InterviewLoopTimeline'
 import Faq from '../components/Faq'
 import { useHead } from '../lib/useHead'
 import { useChecklist } from '../lib/useProgress'
-
-const BLOCKS = [
-  {
-    letter: 'R',
-    word: 'Role',
-    color: 'bg-block-pink',
-    lines: ['What a product manager does, day to day.', 'Startup vs scaled vs large, compared.', 'What good looks like at each level.'],
-    to: '/role',
-  },
-  {
-    letter: 'S',
-    word: 'Skills',
-    color: 'bg-block-yellow',
-    lines: ['The 8 skills every loop tests.', 'Where you stand, in 15 questions.', 'A track built for each one.'],
-    to: '/skills',
-  },
-  {
-    letter: 'Q',
-    word: 'Questions',
-    color: 'bg-block-red',
-    lines: ['87 questions, from real reports.', 'A model answer for every one.', 'The mistake that sinks most.'],
-    to: '/browse',
-  },
-  {
-    letter: 'M',
-    word: 'Methods',
-    color: 'bg-block-blue',
-    lines: ['STAR, CIRCLES, RICE and eight more.', 'Now a diagram, not a paragraph.', 'Tap through to see how it works.'],
-    to: '/methods',
-  },
-  {
-    letter: 'C',
-    word: 'Companies',
-    color: 'bg-block-grey',
-    lines: ['35 companies, across ten sectors.', 'Real loops, where we have a source.', 'A careers link for the rest.'],
-    to: '/companies',
-  },
-  {
-    letter: 'C',
-    word: 'Careers',
-    color: 'bg-block-green',
-    lines: ['APM, intern, associate product manager, analyst.', 'Breaking in with no product background.', "Who's hiring, filtered by sector."],
-    to: '/careers',
-  },
-]
 
 const LOOP_ROUNDS = [
   { name: 'Recruiter screen', tests: 'Fit for the role, your background, and why this company.' },
@@ -99,44 +53,6 @@ function StickyChecklist() {
   )
 }
 
-/** Six full-bleed colour panels, edge to edge regardless of the page's own
- * max-width container. */
-function SectionBlocks() {
-  return (
-    <section className="relative left-1/2 mt-16 w-screen -translate-x-1/2">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-6">
-        {BLOCKS.map((b) => (
-          <Link
-            key={b.word}
-            to={b.to}
-            className={`group flex min-h-72 flex-col justify-between border-b border-border ${b.color} p-6 text-text no-underline hover:no-underline sm:border-r lg:min-h-96`}
-          >
-            <div className="flex items-baseline gap-2">
-              <span className="text-[3.5rem] leading-none lg:text-[3rem]">{b.letter}</span>
-              <span className="text-section font-semibold lg:text-[1.2rem]">{b.word}</span>
-            </div>
-            <div>
-              <span className="mb-3 block opacity-70">
-                <Icon name="spark" size={22} />
-              </span>
-              <ul className="space-y-1">
-                {b.lines.map((l) => (
-                  <li key={l} className="text-body">
-                    {l}
-                  </li>
-                ))}
-              </ul>
-              <span aria-hidden="true" className="mt-4 block text-section transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </section>
-  )
-}
-
 export default function Landing() {
   useHead({
     title: null,
@@ -167,8 +83,6 @@ export default function Landing() {
           <IntroVideo />
         </div>
       </section>
-
-      <SectionBlocks />
 
       {/* study checklist */}
       <section className="mt-16">
