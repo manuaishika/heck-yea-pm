@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const SITE = 'Heck Yea PM'
+const SITE = 'Product Practice'
 const ORIGIN =
   typeof window !== 'undefined' && window.location
     ? window.location.origin

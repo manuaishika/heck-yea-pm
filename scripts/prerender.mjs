@@ -10,7 +10,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(root, 'dist')
 const dataDir = join(root, 'src', 'data')
 const ORIGIN = process.env.SITE_ORIGIN || 'https://heck-yea-pm.vercel.app'
-const SITE = 'Heck Yea PM'
+const SITE = 'Product Practice'
 
 const read = (f) => JSON.parse(readFileSync(join(dataDir, f), 'utf8'))
 const questions = read('questions.json')

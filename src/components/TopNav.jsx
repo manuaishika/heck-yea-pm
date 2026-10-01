@@ -100,7 +100,7 @@ export default function TopNav() {
           <div className="flex items-stretch">
             <Cell className="border-l-0">
               <Link to="/" className="text-section font-semibold tracking-tight text-text no-underline hover:no-underline">
-                Heck Yea PM
+                Product Practice
               </Link>
             </Cell>
 

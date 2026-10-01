@@ -1,4 +1,4 @@
-# Heck Yea PM
+# Product Practice
 
 Free interview prep for a first product manager role — PM intern and
 APM programs, including the Indian ones (Flipkart, Zomato, Swiggy, Razorpay,

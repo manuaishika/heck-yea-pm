@@ -1,4 +1,4 @@
-# Heck Yea PM
+# Product Practice
 
 Free PM intern / APM interview prep site. Vite + React 19 + Tailwind v4, deployed to Vercel. Built for a final-year student in India, on a phone, a few weeks from an interview.
 

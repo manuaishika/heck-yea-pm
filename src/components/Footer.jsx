@@ -43,7 +43,7 @@ const STAMP_TEXT = 'FREE · NO PAYWALL · BUILT IN INDIA · '
 function StampBadge() {
   const reduce = useReducedMotion()
   return (
-    <svg viewBox="0 0 160 160" className="size-28 shrink-0" role="img" aria-label="Free. No paywall. Built in India.">
+    <svg viewBox="0 0 160 160" className="size-20 shrink-0" role="img" aria-label="Free. No paywall. Built in India.">
       <g className={reduce ? '' : 'stamp-spin'} style={{ transformOrigin: '80px 80px' }}>
         <path id="stamp-circle" fill="none" d="M 80,80 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0" />
         <text fontFamily="var(--font-mono)" fontSize="10.5" fontWeight="700" letterSpacing="1.5" fill="var(--royal)">
@@ -54,7 +54,7 @@ function StampBadge() {
       </g>
       <circle cx="80" cy="80" r="30" fill="var(--royal)" />
       <text x="80" y="86" textAnchor="middle" fontFamily="var(--font-display)" fontSize="17" fill="var(--butter)">
-        HYPM
+        PP
       </text>
     </svg>
   )
@@ -64,7 +64,7 @@ function StampBadge() {
 function WavingPip() {
   const line = { fill: 'none', stroke: 'var(--royal)', strokeWidth: 2.2, strokeLinecap: 'round', strokeLinejoin: 'round' }
   return (
-    <svg viewBox="0 0 90 80" className="h-16 w-auto shrink-0" aria-hidden="true">
+    <svg viewBox="0 0 90 80" className="h-12 w-auto shrink-0" aria-hidden="true">
       <circle cx="40" cy="44" r="26" fill="var(--card)" stroke="var(--royal)" strokeWidth="2.2" />
       <circle cx="31" cy="41" r="2" fill="var(--royal)" />
       <circle cx="49" cy="41" r="2" fill="var(--royal)" />
@@ -160,20 +160,21 @@ function SyncBox() {
 
 /**
  * Full-bleed footer, built on a grocer's "thank you for your curiosity"
- * sign-off: a cream strip pointing at the source, then butter paper with one
- * giant serif line in royal blue, link columns, the sign-in box, a wavy
- * rule and a strip of small print.
+ * sign-off: butter paper with one serif line in royal blue (kept smaller
+ * than the homepage headline), link columns, the sign-in box, a wavy rule
+ * and a strip of small print.
  */
 export default function Footer() {
   return (
     <footer className="text-royal">
       <div className="border-t border-royal bg-butter">
-        <PageContainer className="pt-12 sm:pt-16">
-          <p className="text-center font-sans text-[2.75rem] font-normal leading-[0.95] tracking-[-0.02em] sm:text-[4.5rem] lg:text-[6.25rem]">
+        <PageContainer className="pt-8 sm:pt-10">
+          {/* deliberately smaller than the homepage headline (h1) */}
+          <p className="text-center font-sans text-[1.75rem] font-normal leading-[1.05] tracking-[-0.02em] sm:text-[2.25rem] lg:text-[2.75rem]">
             Come back when the nerves kick in.
           </p>
 
-          <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-[auto_1fr_1fr_1fr_1fr_1.6fr]">
+          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-[auto_1fr_1fr_1fr_1fr_1.6fr]">
             <div className="col-span-2 flex justify-center sm:col-span-3 lg:col-span-1 lg:block">
               <StampBadge />
             </div>
@@ -181,7 +182,7 @@ export default function Footer() {
             {COLUMNS.map((col) => (
               <nav key={col.label} aria-label={col.label}>
                 <p className="font-semibold uppercase tracking-wide">{col.label}</p>
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-2 space-y-1">
                   {col.links.map(([to, label]) => (
                     <li key={to}>
                       <Link to={to} className="text-royal no-underline hover:underline">
@@ -195,7 +196,7 @@ export default function Footer() {
 
             <div>
               <p className="font-semibold uppercase tracking-wide">Talk to us</p>
-              <p className="mt-3">Wrong answer? Missing company?</p>
+              <p className="mt-2">Wrong answer? Missing company?</p>
               <a href={`${REPO}/issues`} target="_blank" rel="noreferrer noopener" className="text-royal underline underline-offset-2">
                 Open an issue
               </a>
@@ -203,21 +204,21 @@ export default function Footer() {
 
             <div className="col-span-2 sm:col-span-3 lg:col-span-1">
               <p>Sign in to sync saved questions and flashcards across devices. We only email the sign-in link.</p>
-              <div className="mt-4">
+              <div className="mt-3">
                 <SyncBox />
               </div>
             </div>
           </div>
         </PageContainer>
 
-        <div className="mt-12 flex items-end gap-4 pl-4 pr-4 sm:pl-6 sm:pr-6">
+        <div className="mt-8 flex items-end gap-4 pl-4 pr-4 sm:pl-6 sm:pr-6">
           <div className="min-w-0 flex-1">
             <WavyRule />
           </div>
           <WavingPip />
         </div>
 
-        <PageContainer className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5">
+        <PageContainer className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-label font-semibold uppercase tracking-wide">
             <li>
               <Link to="/about" className="text-royal no-underline hover:underline">

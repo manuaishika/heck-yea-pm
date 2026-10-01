@@ -452,29 +452,6 @@
   animation: loop-pulse 900ms ease-out;
 }
 
-/* hero stickers (HeroStickers.jsx): a gentle float loop at each sticker's
-   own base rotation (--rot, set inline per sticker), pausing and tilting
-   further on hover. The reduced-motion override further down neutralises
-   the loop's duration; the hover tilt is a deliberate response to input,
-   not ambient motion, so it stays. */
-@keyframes sticker-float {
-  0%,
-  100% {
-    transform: translateY(0) rotate(var(--rot));
-  }
-  50% {
-    transform: translateY(-8px) rotate(calc(var(--rot) + 3deg));
-  }
-}
-.sticker-drift {
-  animation: sticker-float 5s ease-in-out infinite;
-  transition: transform 200ms ease-out;
-}
-.sticker-drift:hover {
-  animation-play-state: paused;
-  transform: rotate(calc(var(--rot) * -1.6)) scale(1.08) !important;
-}
-
 /* footer stamp badge: a slow continuous spin, off entirely under reduced
    motion (Footer.jsx skips the class rather than relying on the duration
    override alone, since a spinning badge is a bigger ask than a transition) */

@@ -1,13 +1,12 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Icon } from '../components/ui'
 import { Page } from '../components/Page'
-import HeroStickers from '../components/HeroStickers'
 import CompaniesMarquee from '../components/CompaniesMarquee'
 import IntroVideo from '../components/IntroVideo'
 import InterviewLoopTimeline from '../components/InterviewLoopTimeline'
 import Faq from '../components/Faq'
 import { useHead } from '../lib/useHead'
+import { useChecklist } from '../lib/useProgress'
 
 const BLOCKS = [
   {
@@ -54,8 +53,6 @@ const BLOCKS = [
   },
 ]
 
-const CHECKLIST = ['Learn the role', 'Pick a method', 'Do ten questions', 'Run flashcards']
-
 const LOOP_ROUNDS = [
   { name: 'Recruiter screen', tests: 'Fit for the role, your background, and why this company.' },
   { name: 'Product sense', tests: 'How you structure a design question — not the final idea.' },
@@ -72,30 +69,30 @@ const FAQS = [
   { q: 'Is this really free?', a: 'Yes. No paywall, no account required. Sign in only if you want progress synced across devices.' },
 ]
 
-/** Checkboxes on the sticky note — purely a this-session convenience, not
- * synced or graded; nothing here is progress tracking. */
+/** The sticky note ticks itself: each step is checked by what the visitor
+ * has actually done on the site (useChecklist), and links to where it's
+ * done. Synced with everything else when signed in. */
 function StickyChecklist() {
-  const [checked, setChecked] = useState(() => new Set())
-  function toggle(i) {
-    setChecked((prev) => {
-      const next = new Set(prev)
-      next.has(i) ? next.delete(i) : next.add(i)
-      return next
-    })
-  }
+  const items = useChecklist()
   return (
     <ul className="mt-4 space-y-2">
-      {CHECKLIST.map((item, i) => (
-        <li key={item}>
-          <label className="flex min-h-8 cursor-pointer items-center gap-2">
-            <input
-              type="checkbox"
-              checked={checked.has(i)}
-              onChange={() => toggle(i)}
-              className="size-4 shrink-0 accent-ink"
-            />
-            <span className={checked.has(i) ? 'text-text-muted line-through' : 'text-text'}>{item}</span>
-          </label>
+      {items.map((item) => (
+        <li key={item.label}>
+          <Link to={item.to} className="flex min-h-8 items-center gap-2 text-text no-underline hover:no-underline">
+            <span
+              aria-hidden="true"
+              className={`grid size-4 shrink-0 place-items-center border border-ink transition-colors duration-300 ${item.done ? 'bg-ink text-tag' : 'bg-card'}`}
+            >
+              {item.done && (
+                <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M2 6.5 5 9l5-6" />
+                </svg>
+              )}
+            </span>
+            <span className={item.done ? 'text-text-muted line-through' : 'text-text'}>{item.label}</span>
+            {item.count && !item.done && <span className="label ml-auto !text-text">{item.count}</span>}
+            <span className="sr-only">{item.done ? '(done)' : '(not done yet)'}</span>
+          </Link>
         </li>
       ))}
     </ul>
@@ -151,11 +148,10 @@ export default function Landing() {
   return (
     <Page wide>
       {/* hero */}
-      <div className="relative py-10 lg:py-16">
-        <HeroStickers />
-        <div className="relative z-10 mx-auto max-w-2xl text-center">
+      <div className="py-10 lg:py-16">
+        <div className="mx-auto max-w-2xl text-center">
           <h1>
-            Prep for your <em>first</em> PM interview.
+            Prep for your <em>first</em> product interview.
           </h1>
           <p className="mt-3 text-text-muted">Learning, practising, landing it.</p>
           <Link to="/browse" className="btn btn-primary mt-6 px-7 py-3 no-underline hover:no-underline">
@@ -163,6 +159,14 @@ export default function Landing() {
           </Link>
         </div>
       </div>
+
+      {/* intro video: how to get into product */}
+      <section>
+        <h2 className="text-center">Getting into product in 30 seconds</h2>
+        <div className="mx-auto mt-4 max-w-3xl">
+          <IntroVideo />
+        </div>
+      </section>
 
       <SectionBlocks />
 
@@ -182,14 +186,6 @@ export default function Landing() {
           <Link to="/about" className="btn mt-4 no-underline hover:no-underline">
             Read more
           </Link>
-        </div>
-      </section>
-
-      {/* intro video: how to get into PM */}
-      <section className="mt-16">
-        <h2 className="text-center">Getting into PM, in 30 seconds</h2>
-        <div className="mx-auto mt-4 max-w-3xl">
-          <IntroVideo />
         </div>
       </section>
 

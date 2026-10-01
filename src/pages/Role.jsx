@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 import { role } from '../data/guides'
 import { useHead } from '../lib/useHead'
+import { useMarkProgress } from '../lib/useProgress'
 import { Page, PageHead } from '../components/Page'
 import { Row } from '../components/ui'
 import InterviewWeights from '../components/InterviewWeights'
 import FlowMap from '../components/diagrams/FlowMap'
 
 export default function Role() {
+  useMarkProgress('progress.role')
   useHead({
     title: 'Role & Skills',
     description:
