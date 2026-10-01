@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { careers, india, companies, companyHref } from '../data/guides'
+import { careers, india, companies } from '../data/guides'
 import { SECTORS } from '../data/guides-schema'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
@@ -15,15 +15,14 @@ const JUMP = [
   ['modes', 'Startup vs scaled vs large'],
   ['adjacent', 'Roles next to it'],
   ['ladder', 'The ladder'],
-  ['india', 'Getting in from India'],
-  ['hiring', "Who's hiring"],
+  ['india', "Getting in from India, and who's hiring"],
 ]
 
 export default function Careers() {
   useHead({
     title: 'Careers',
     description:
-      'Product role types — APM, product intern, associate product manager, product analyst — how to break in without a product background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
+      'Product role types — APM, product intern, product analyst — how to break in without a product background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
     path: '/careers',
   })
 
@@ -55,20 +54,12 @@ export default function Careers() {
       <h2 id="roles" className="mt-8 scroll-mt-4 text-section">
         1 · Product role types
       </h2>
-      <p className="mt-1 text-body text-text-muted">
-        Four different doors into the same career. Know which one you're applying to.
-      </p>
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+      <p className="mt-1 text-body text-text-muted">Three doors into the same career.</p>
+      <div className="mt-3 grid gap-3 sm:grid-cols-3">
         {careers.roleTypes.map((r) => (
-          <div key={r.name} className="card p-4">
-            <p className="font-semibold text-text">{r.name}</p>
-            <p className="mt-1 text-text-muted">
-              <Rich>{r.what}</Rich>
-            </p>
-            <p className="label mt-3">What they pay attention to</p>
-            <p className="mt-1 text-text-muted">
-              <Rich>{r.focus}</Rich>
-            </p>
+          <div key={r.name} className="card p-3">
+            <p className="font-semibold leading-tight text-text">{r.name}</p>
+            <p className="mt-1 text-text-muted">{r.what}</p>
           </div>
         ))}
       </div>
@@ -96,8 +87,10 @@ export default function Careers() {
       </h2>
       <p className="mt-1 text-body text-text-muted">{careers.modes.note}</p>
       <ModeRadar modes={careers.modes} />
-      <p className="label mt-5">The detail</p>
-      <ModeMatrix modes={careers.modes} />
+      {/* the exact figures, for screen readers; the radar carries the picture */}
+      <div className="sr-only">
+        <ModeMatrix modes={careers.modes} />
+      </div>
 
       {/* adjacent roles */}
       <h2 id="adjacent" className="mt-10 scroll-mt-4 text-section">
@@ -171,9 +164,9 @@ export default function Careers() {
         </table>
       </div>
 
-      {/* india */}
+      {/* india + who's hiring: one section */}
       <h2 id="india" className="mt-10 scroll-mt-4 text-section">
-        6 · Getting in from India
+        6 · Getting in from India, and who&rsquo;s hiring
       </h2>
       <p className="mt-1 text-body text-text-muted">{indiaIntro}</p>
 
@@ -199,27 +192,10 @@ export default function Careers() {
         ))}
       </div>
 
-      <p className="label mt-8">Myths to ignore</p>
-      <dl className="mt-3 border-t border-border">
-        {misconceptions.map(([claim, reality]) => (
-          <div key={claim} className="border-b border-border py-3">
-            <dt className="text-body text-text-muted line-through">{claim}</dt>
-            <dd className="mt-1 border-l border-accent pl-3 text-body text-text-muted">{reality}</dd>
-          </div>
-        ))}
-      </dl>
-
-      {/* hiring now */}
-      <h2 id="hiring" className="mt-10 scroll-mt-4 text-section">
-        7 · Who&rsquo;s hiring
-      </h2>
-      <p className="mt-1 text-body text-text-muted">
-        Every company in the bank, one row each, with a direct link to their careers page.
-      </p>
-
+      <p className="label mt-8">Hiring now · tap a name for their careers page</p>
       <div className="mt-3 flex flex-wrap gap-4">
         <div>
-          <label htmlFor="hiring-sector" className="label">
+          <label htmlFor="hiring-sector" className="label block">
             Sector
           </label>
           <select
@@ -235,7 +211,7 @@ export default function Careers() {
           </select>
         </div>
         <div>
-          <label htmlFor="hiring-location" className="label">
+          <label htmlFor="hiring-location" className="label block">
             Location
           </label>
           <select
@@ -256,35 +232,40 @@ export default function Careers() {
       </p>
 
       {hiring.length > 0 ? (
-        <ul className="mt-2 divide-y divide-border border-y border-border">
+        <ul className="mt-2 grid gap-x-8 border-t border-border sm:grid-cols-2 lg:grid-cols-3">
           {hiring.map((c) => (
-            <li key={c.slug} className="flex flex-wrap items-center gap-3 py-3">
-              <CompanyLogo name={c.name} />
-              <span className="min-w-0 flex-1">
-                <span className="block font-semibold text-text">{c.name}</span>
-                <span className="block text-text-muted">
-                  {c.sector} · {c.region} · {c.program}
+            <li key={c.slug} className="border-b border-border">
+              <a
+                href={c.careersUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${c.name} careers page, opens in a new tab`}
+                className="flex min-h-11 items-center gap-3 py-2 text-text no-underline hover:no-underline"
+              >
+                <span className="grid size-6 shrink-0 place-items-center">
+                  <CompanyLogo name={c.name} />
                 </span>
-              </span>
-              <span className="flex shrink-0 flex-wrap gap-2">
-                <Link to={companyHref(c)} className="btn btn-sm no-underline hover:no-underline">
-                  Prep this company
-                </Link>
-                <a
-                  href={c.careersUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-sm btn-primary no-underline hover:no-underline"
-                >
-                  Careers page ↗
-                </a>
-              </span>
+                <span className="min-w-0 flex-1 truncate font-semibold">{c.name}</span>
+                <span aria-hidden="true" className="text-text-muted">
+                  ↗
+                </span>
+              </a>
             </li>
           ))}
         </ul>
       ) : (
         <p className="card mt-2 p-4 text-text-muted">No companies match that combination.</p>
       )}
+
+      <p className="label mt-8">Myths to ignore</p>
+      <dl className="mt-3 border-t border-border">
+        {misconceptions.map(([claim, reality]) => (
+          <div key={claim} className="border-b border-border py-3">
+            <dt className="text-body text-text-muted line-through">{claim}</dt>
+            <dd className="mt-1 border-l border-accent pl-3 text-body text-text-muted">{reality}</dd>
+          </div>
+        ))}
+      </dl>
 
       <p className="mt-8 border-t border-border pt-4 text-text-muted">
         <Link to="/resume">Resume</Link>

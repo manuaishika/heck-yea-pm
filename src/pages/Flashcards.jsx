@@ -171,15 +171,17 @@ function Deck({ session, prev, next, finish }) {
       </span>
 
       {/* card + arrows */}
-      <div className="mt-3 flex items-stretch gap-2">
+      <div className="mt-3 flex items-center gap-2 sm:gap-3">
         <button
           type="button"
           onClick={prev}
           disabled={atStart}
           aria-label="Previous card"
-          className="shrink-0 px-1 text-page text-text disabled:opacity-25"
+          className="arrow-btn"
         >
-          ‹
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M15 5l-7 7 7 7" />
+          </svg>
         </button>
 
         <button
@@ -226,13 +228,10 @@ function Deck({ session, prev, next, finish }) {
           </span>
         </button>
 
-        <button
-          type="button"
-          onClick={advance}
-          aria-label="Next card"
-          className="shrink-0 px-1 text-page text-text"
-        >
-          ›
+        <button type="button" onClick={advance} aria-label="Next card" className="arrow-btn">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
 
@@ -257,7 +256,7 @@ function Deck({ session, prev, next, finish }) {
         <Link to={`/browse/${q.id}`} className="whitespace-nowrap font-semibold">
           Full answer →
         </Link>
-        <span className="label">tap card to flip · swipe to move</span>
+        <span className="label">tap the card to flip</span>
       </p>
     </div>
   )

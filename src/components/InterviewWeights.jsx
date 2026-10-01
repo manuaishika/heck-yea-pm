@@ -133,7 +133,7 @@ export default function InterviewWeights() {
                 dominantBaseline="central"
                 fontSize="10"
                 fontWeight="700"
-                fill={s.i === active ? 'var(--card)' : onTint(s.i)}
+                fill={s.i === active ? 'var(--on-blue)' : onTint(s.i)}
                 style={{ transform: `translate(${x}px, ${y}px)`, transition: 'transform 700ms ease', pointerEvents: 'none' }}
               >
                 {pct(s.share)}

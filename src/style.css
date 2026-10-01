@@ -122,8 +122,8 @@
     display: inline-block;
     padding: 2px 8px;
     border-radius: var(--radius-pill);
-    background: var(--accent-tint);
-    color: var(--accent);
+    background: var(--tag);
+    color: var(--on-tag);
   }
 
   /* card / panel: white surface, hairline border */
@@ -176,6 +176,34 @@
     border-color: var(--accent);
   }
 
+  /* round arrow buttons: the flashcards' previous / next */
+  .arrow-btn {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+  }
+  .arrow-btn:hover:not(:disabled) {
+    color: var(--surface);
+    background: var(--accent);
+  }
+  .arrow-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+  @media (min-width: 640px) {
+    .arrow-btn {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+
   /* tag pill: hairline, text colour, no fill at rest; accent fill when active.
      Categories, companies and filters all use this. */
   .pill {
@@ -212,8 +240,8 @@
     text-transform: uppercase;
     letter-spacing: 0.06em;
     cursor: default;
-    background: var(--accent-tint);
-    color: var(--accent);
+    background: var(--tag);
+    color: var(--on-tag);
     border-color: transparent;
   }
 
@@ -288,6 +316,14 @@
     padding-left: 12px;
     margin: 12px 0;
   }
+}
+
+/* behind company logos and the Pip mascot (tokens.css --logo-plate): clear
+   in light, a white plate in dark. The plate is an outline so it adds no layout space. */
+.logo-plate {
+  background: var(--logo-plate);
+  outline: 4px solid var(--logo-plate);
+  border-radius: var(--radius-card);
 }
 
 /* graph hubs are SVG links: give keyboard focus a visible ring */

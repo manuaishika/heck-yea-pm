@@ -104,16 +104,20 @@ export default function Skills() {
           />
         )}
       >
-        <div className="card mt-4 p-4">
-          <p className="text-text-muted">{chain.note}</p>
+        <div className="card mt-4 p-4 sm:p-6">
+          <p className="text-text">{chain.note}</p>
           <Chain steps={chain.steps} labels={chain.labels} />
-          <ul className="mt-3 space-y-1">
-            {chain.extras.map((e) => (
-              <li key={e} className="text-text-muted">
-                {e}
-              </li>
-            ))}
-          </ul>
+          <dl className="mt-6 grid gap-4 border-t border-border pt-4 sm:grid-cols-3 sm:gap-6">
+            {chain.extras.map((e) => {
+              const [term, ...rest] = e.split(': ')
+              return (
+                <div key={e}>
+                  <dt className="label !text-text">{term}</dt>
+                  <dd className="mt-1 text-text-muted">{rest.join(': ')}</dd>
+                </div>
+              )
+            })}
+          </dl>
         </div>
       </Track>
 

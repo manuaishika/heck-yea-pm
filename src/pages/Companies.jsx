@@ -23,7 +23,7 @@ function LogoWall({ list }) {
             >
               <span className="grid h-16 w-full place-items-center transition-transform group-hover:-translate-y-1">
                 {src ? (
-                  <img src={src} alt="" width="64" height="64" loading="lazy" className="max-h-14 w-auto max-w-[80%] object-contain" />
+                  <img src={src} alt="" width="64" height="64" loading="lazy" className="logo-plate max-h-14 w-auto max-w-[80%] object-contain" />
                 ) : (
                   <span className="font-semibold leading-[1.05] tracking-tight" style={{ fontSize: wordmarkSize(c.name) }}>
                     {c.name}
@@ -108,7 +108,7 @@ export default function Companies() {
             type="button"
             aria-pressed={sector === s}
             onClick={() => setSector(s)}
-            className={`pill min-h-9 ${sector === s ? '!border-accent !bg-accent !text-white' : ''}`}
+            className={`pill min-h-9 ${sector === s ? '!border-accent !bg-accent !text-surface' : ''}`}
           >
             {s} <span className={sector === s ? 'opacity-80' : 'text-text-muted'}>({counts[s]})</span>
           </button>

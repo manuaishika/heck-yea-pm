@@ -14,7 +14,7 @@ export default function Pip({ mood = 'happy', size = 64, className = '' }) {
       alt=""
       width={size}
       height={size}
-      className={className}
+      className={`logo-plate ${className}`.trim()}
       style={{ width: size, height: 'auto' }}
     />
   )

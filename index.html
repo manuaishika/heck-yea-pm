@@ -4,8 +4,19 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)" />
+    <script>
+      // theme before first paint: the saved choice, else the system setting
+      (function () {
+        try {
+          var t = localStorage.getItem('pp.theme');
+          if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preload" href="/fonts/NewSpirit-Regular.otf" as="font" type="font/otf" crossorigin />
     <link rel="preload" href="/fonts/NewSpirit-SemiBold.otf" as="font" type="font/otf" crossorigin />
     <title>Product Practice — Product manager interview prep</title>

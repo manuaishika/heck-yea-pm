@@ -74,7 +74,7 @@ export function validateCareers(c) {
   validateModes(c.modes, 'careers')
   if (!arr(c.roleTypes)) fail('careers.roleTypes missing')
   c.roleTypes.forEach((x, i) => {
-    if (!str(x.name) || !str(x.what) || !str(x.focus)) fail(`careers.roleTypes ${i} incomplete`)
+    if (!str(x.name) || !str(x.what)) fail(`careers.roleTypes ${i} incomplete`)
   })
   if (!arr(c.adjacent)) fail('careers.adjacent missing')
   c.adjacent.forEach((x, i) => {

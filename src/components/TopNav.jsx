@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import PageContainer from './PageContainer'
+import ThemeToggle from './ThemeToggle'
 import { useAuth } from '../lib/auth'
 
 const MENU_GROUPS = [
@@ -99,19 +100,23 @@ export default function TopNav() {
         <PageContainer className="">
           <div className="flex items-stretch">
             <Cell className="border-l-0">
-              <Link to="/" className="text-section font-semibold tracking-tight text-text no-underline hover:no-underline">
+              <Link to="/" className="whitespace-nowrap text-[1.125rem] font-semibold tracking-tight text-text no-underline hover:no-underline sm:text-section">
                 Product Practice
               </Link>
             </Cell>
 
             <div className="flex-1" />
 
+            <Cell className="shrink-0">
+              <ThemeToggle />
+            </Cell>
+
             <Cell className="hidden shrink-0 md:flex">
               {user ? (
                 <Link
                   to="/login"
                   aria-label="Account"
-                  className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-pill border border-border bg-tag text-body font-semibold text-text no-underline hover:no-underline"
+                  className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-pill border border-border bg-tag text-body font-semibold text-on-tag no-underline hover:no-underline"
                 >
                   {user.user_metadata?.avatar_url ? (
                     <img src={user.user_metadata.avatar_url} alt="" className="size-full object-cover" />

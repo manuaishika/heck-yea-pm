@@ -32,10 +32,10 @@ function StickyChecklist() {
     <ul className="mt-4 space-y-2">
       {items.map((item) => (
         <li key={item.label}>
-          <Link to={item.to} className="flex min-h-8 items-center gap-2 text-text no-underline hover:no-underline">
+          <Link to={item.to} className="flex min-h-8 items-center gap-2 text-on-tag no-underline hover:no-underline">
             <span
               aria-hidden="true"
-              className={`grid size-4 shrink-0 place-items-center border border-ink transition-colors duration-300 ${item.done ? 'bg-ink text-tag' : 'bg-card'}`}
+              className={`grid size-4 shrink-0 place-items-center border border-on-tag transition-colors duration-300 ${item.done ? 'bg-on-tag text-tag' : 'bg-surface'}`}
             >
               {item.done && (
                 <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2">
@@ -43,8 +43,8 @@ function StickyChecklist() {
                 </svg>
               )}
             </span>
-            <span className={item.done ? 'text-text-muted line-through' : 'text-text'}>{item.label}</span>
-            {item.count && !item.done && <span className="label ml-auto !text-text">{item.count}</span>}
+            <span className={item.done ? 'text-on-tag/60 line-through' : 'text-on-tag'}>{item.label}</span>
+            {item.count && !item.done && <span className="label ml-auto !text-on-tag">{item.count}</span>}
             <span className="sr-only">{item.done ? '(done)' : '(not done yet)'}</span>
           </Link>
         </li>
@@ -86,8 +86,8 @@ export default function Landing() {
 
       {/* study checklist */}
       <section className="mt-16">
-        <div className="mx-auto max-w-xs rotate-[-2deg] border border-ink bg-tag p-5">
-          <p className="label !text-current text-text">Before you start</p>
+        <div className="mx-auto max-w-xs rotate-[-2deg] border border-on-tag bg-tag p-5">
+          <p className="label !text-on-tag">Before you start</p>
           <StickyChecklist />
         </div>
       </section>

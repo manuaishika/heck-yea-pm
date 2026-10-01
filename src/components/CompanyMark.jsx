@@ -35,7 +35,7 @@ export default function CompanyMark({ name }) {
           width="16"
           height="16"
           loading="lazy"
-          className="size-4 rounded-button"
+          className="logo-plate size-4 rounded-button"
         />
       )}
       <span>{name}</span>
@@ -48,7 +48,7 @@ export default function CompanyMark({ name }) {
 export function CompanyLogo({ name, size = 'size-6' }) {
   const src = logoSrc(brandFor(name))
   if (!src) return null
-  return <img src={src} alt="" width="24" height="24" className={`${size} shrink-0 rounded-button`} />
+  return <img src={src} alt="" width="24" height="24" className={`logo-plate ${size} shrink-0 rounded-button`} />
 }
 
 /** Just the logo, as a link to the company's own site. */
@@ -66,7 +66,7 @@ export function CompanyLogoLink({ name, size = 'size-8', className = '' }) {
       title={opensNew(name)}
       className={`shrink-0 rounded-button border border-border bg-surface p-1 ${className}`}
     >
-      <img src={src} alt="" width="40" height="40" className={`${size} rounded-button`} />
+      <img src={src} alt="" width="40" height="40" className={`logo-plate ${size} rounded-button`} />
     </a>
   )
 }

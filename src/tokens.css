@@ -5,8 +5,9 @@
  *  Enforced by scripts/check-colors.js in prebuild.
  *
  *  v4: a printed creative-database notebook — white paper, black ink,
- *  hairline rules, flat colour blocks. Single visual world, deliberately
- *  no dark-mode variant (see check-colors.js's note on this).
+ *  hairline rules, flat colour blocks. Light by default; dark mode is the
+ *  same page with these tokens swapped (see the :root[data-theme='dark']
+ *  block below) — layout, type and shape never change between the two.
  * ==================================================================== */
 
 @font-face {
@@ -76,10 +77,36 @@
   --butter: #fbe88a;
   --royal: #2447b8;
 
+  /* text that sits on a fixed colour never flips with the theme: black on
+     the yellow tag, white on the block blue */
+  --on-tag: #141414;
+  --on-blue: #ffffff;
+
+  /* behind company logos: nothing in light, a white plate in dark so dark
+     marks (Uber, Paytm, HDFC) stay readable */
+  --logo-plate: transparent;
+
   /* round-weight badges only (WeightBars.jsx) — nowhere else on the site */
   --weight-heavy: #c0392b;
   --weight-medium: #d97706;
   --weight-light: #ca9a1f;
+}
+
+/* dark mode: the same tokens, new values. The inline script in index.html
+   sets data-theme from the saved choice or the system setting before first
+   paint; the toggle in the nav changes it. Block colours, the tag yellow and
+   the weight badges are the same in both. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #121211;
+  --grid: #1f262b;
+  --card: #1c1c1a;
+  --ink: #f3f0e8;
+  --rule: #3a3935;
+  --accent-tint: #3a3414;
+  --butter: #1f1d10;
+  --royal: #fbe88a;
+  --logo-plate: #ffffff;
 }
 
 /* phones: body text is 16px (also stops iOS zooming into inputs), headings step down */
@@ -117,6 +144,8 @@
   --color-current: currentColor;
   --color-butter: var(--butter);
   --color-royal: var(--royal);
+  --color-on-tag: var(--on-tag);
+  --color-on-blue: var(--on-blue);
   --color-weight-heavy: var(--weight-heavy);
   --color-weight-medium: var(--weight-medium);
   --color-weight-light: var(--weight-light);

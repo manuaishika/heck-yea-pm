@@ -40,7 +40,7 @@ const polar = (cx, cy, r, deg) => {
 }
 
 const fillFor = (on) => (on ? 'var(--block-blue)' : 'var(--card)')
-const inkFor = (on) => (on ? 'var(--card)' : 'var(--ink)')
+const inkFor = (on) => (on ? 'var(--on-blue)' : 'var(--ink)')
 
 /* ------------------------------------------------------------- the frame
  * Runs the clock, draws the progress segments, the play/pause control and
@@ -161,7 +161,7 @@ function Chain({ steps, active, pick }) {
               onClick={() => pick(i)}
               aria-pressed={on}
               className={`flex min-h-24 min-w-0 flex-1 flex-col items-center justify-center border border-ink px-1 py-3 transition-[background-color,color,transform] duration-300 ${
-                on ? '-translate-y-1.5 bg-block-blue text-card' : done ? 'bg-paper text-ink' : 'bg-card text-ink'
+                on ? '-translate-y-1.5 bg-block-blue text-on-blue' : done ? 'bg-paper text-ink' : 'bg-card text-ink'
               }`}
             >
               <span className="font-display text-[2.5rem] leading-none sm:text-[3rem]">{label[0]}</span>
@@ -279,10 +279,10 @@ function HubSatellites({ steps, active, pick }) {
       <g {...pickProps(hub, active, pick, steps[hub][0])}>
         <circle cx={CX} cy={CY} r="50" fill="none" stroke="var(--ink)" strokeWidth="1" strokeDasharray="3 5" className="spin-slow" style={{ transformOrigin: `${CX}px ${CY}px` }} />
         <circle cx={CX} cy={CY} r="44" fill={active === hub ? 'var(--block-blue)' : 'var(--ink)'} style={{ transition: 'fill 300ms' }} />
-        <text x={CX} y={CY - 2} textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--card)" style={{ pointerEvents: 'none' }}>
+        <text x={CX} y={CY - 2} textAnchor="middle" fontSize="12" fontWeight="700" fill={active === hub ? 'var(--on-blue)' : 'var(--card)'} style={{ pointerEvents: 'none' }}>
           North
         </text>
-        <text x={CX} y={CY + 13} textAnchor="middle" fontSize="12" fontWeight="700" fill="var(--card)" style={{ pointerEvents: 'none' }}>
+        <text x={CX} y={CY + 13} textAnchor="middle" fontSize="12" fontWeight="700" fill={active === hub ? 'var(--on-blue)' : 'var(--card)'} style={{ pointerEvents: 'none' }}>
           Star
         </text>
       </g>
@@ -344,7 +344,7 @@ function Rows({ steps, active, pick }) {
               type="button"
               onClick={() => pick(i)}
               aria-pressed={on}
-              className={`flex min-h-12 w-full items-center gap-3 px-3 text-left transition-colors duration-300 ${on ? 'bg-block-blue text-card' : 'bg-card text-ink'}`}
+              className={`flex min-h-12 w-full items-center gap-3 px-3 text-left transition-colors duration-300 ${on ? 'bg-block-blue text-on-blue' : 'bg-card text-ink'}`}
             >
               <span className="w-8 shrink-0 font-display text-section leading-none">{label[0]}</span>
               <span className="w-28 shrink-0 font-semibold">{label}</span>
@@ -431,7 +431,7 @@ function Venn({ steps, active, pick }) {
       {overlap && (
         <g {...pickProps(3, active, pick, overlap[0])}>
           <circle cx="150" cy="141" r="20" fill={active === 3 ? 'var(--block-blue)' : 'var(--ink)'} style={{ transition: 'fill 300ms' }} />
-          <text x="150" y="145" textAnchor="middle" fill="var(--card)" fontSize="9" fontWeight="700" style={{ pointerEvents: 'none' }}>
+          <text x="150" y="145" textAnchor="middle" fill={active === 3 ? 'var(--on-blue)' : 'var(--card)'} fontSize="9" fontWeight="700" style={{ pointerEvents: 'none' }}>
             {overlap[0]}
           </text>
         </g>
@@ -654,7 +654,7 @@ function RiceCalculator({ framework }) {
         </Var>
       </div>
 
-      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2 border border-ink bg-block-blue px-4 py-3 text-card">
+      <div className="mt-3 flex flex-wrap items-baseline justify-between gap-2 border border-ink bg-block-blue px-4 py-3 text-on-blue">
         <span className="text-body">
           {fmt(v.reach)} × {v.impact} × {v.confidence}% ÷ {v.effort}
         </span>

@@ -1,32 +1,35 @@
 /**
  * A left-to-right request chain: Client → API → Server → Database. Static, no
- * interaction. Each node has a one-line label under it. Wraps on narrow screens.
+ * interaction. Four equal columns that fill the card, each a box with a
+ * one-line label under it; the arrow sits in the gap, level with the boxes.
+ * Two by two on narrow screens (arrows only where a pair shares a row).
  *
  * @param {{ steps: string[], labels: string[] }} props
  */
 export default function Chain({ steps, labels }) {
   return (
-    <ol className="mt-3 flex flex-wrap items-stretch gap-y-3 text-body">
-      {steps.map((step, i) => (
-        <li key={step} className="flex items-start">
-          <div className="w-28 shrink-0">
-            <div className="card px-2 py-1 text-center font-semibold text-text">
-              {step}
+    <ol className="mt-4 grid grid-cols-2 gap-x-8 gap-y-5 text-body sm:grid-cols-4">
+      {steps.map((step, i) => {
+        const last = i === steps.length - 1
+        return (
+          <li key={step}>
+            <div className="relative">
+              <div className="card px-2 py-2 text-center font-semibold text-text">{step}</div>
+              {!last && (
+                <span
+                  aria-hidden="true"
+                  className={`absolute top-1/2 left-full ml-2 w-4 -translate-y-1/2 text-center text-text-muted ${
+                    i % 2 === 1 ? 'hidden sm:block' : ''
+                  }`}
+                >
+                  →
+                </span>
+              )}
             </div>
-            <div className="mt-1 text-center text-body leading-tight text-text-muted">
-              {labels[i]}
-            </div>
-          </div>
-          {i < steps.length - 1 && (
-            <span
-              className="mx-1 self-center text-text-muted"
-              aria-hidden="true"
-            >
-              →
-            </span>
-          )}
-        </li>
-      ))}
+            <p className="mt-2 text-center leading-tight text-text-muted">{labels[i]}</p>
+          </li>
+        )
+      })}
     </ol>
   )
 }
