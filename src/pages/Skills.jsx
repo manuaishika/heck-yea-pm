@@ -67,7 +67,7 @@ export default function Skills() {
   useHead({
     title: 'Skills',
     description:
-      'The technical and non-technical skills a PM interview tests, each as a flow: what it is, how it works, what a PM needs to know, and a practice question.',
+      'The technical and non-technical skills a product interview tests, each as a flow: what it is, how it works, what a product manager needs to know, and a practice question.',
     path: '/skills',
   })
 

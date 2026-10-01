@@ -24,14 +24,14 @@ export default function About() {
         <p>
           {authEnabled ? (
             <>
-              <strong>No paywall, and no account needed.</strong> It loads and
+              <strong>No account needed.</strong> It loads and
               it works, and your saves, flashcard progress and quiz results stay
               in your browser. If you choose to sign in, those three things sync
               across your devices. Nothing else is collected.
             </>
           ) : (
             <>
-              <strong>No login, no paywall, no email capture.</strong> It loads and
+              <strong>No login and no email capture.</strong> It loads and
               it works. Your saves, flashcard progress and quiz results stay in
               your browser and are never sent anywhere.
             </>

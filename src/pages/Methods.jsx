@@ -23,7 +23,7 @@ export default function Methods() {
   useHead({
     title: 'Methods',
     description:
-      'The answering frameworks PM candidates use: STAR, CIRCLES, North Star, AARRR, HEART, RICE, TAM/SAM/SOM and more, each with steps and a worked example.',
+      'The answering frameworks candidates use for product interviews: STAR, CIRCLES, North Star, AARRR, HEART, RICE, TAM/SAM/SOM and more, each with steps and a worked example.',
     path: '/methods',
   })
 

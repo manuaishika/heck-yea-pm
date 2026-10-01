@@ -108,15 +108,40 @@
     "writing"
   ],
   "companies": [
+    "adobe",
+    "airbnb",
+    "airtel",
     "amazon",
+    "atlassian",
+    "axis-bank",
+    "booking-com",
+    "byjus",
+    "cred",
+    "dream11",
     "flipkart",
+    "freshworks",
+    "games24x7",
     "google",
+    "groww",
+    "hdfc-bank",
+    "icici-bank",
+    "intuit",
     "meesho",
     "meta",
     "microsoft",
+    "paytm",
+    "pharmeasy",
+    "phonepe",
     "razorpay",
+    "reliance-jio",
+    "salesforce",
+    "sprinklr",
     "swiggy",
+    "tata-1mg",
+    "uber",
     "zepto",
+    "zerodha",
+    "zoho",
     "zomato"
   ],
   "methods": [
@@ -148,9 +173,9 @@
     "Study design"
   ],
   "careers.adjacent": [
-    "APM / Associate PM",
+    "APM / Associate product manager",
     "Founder's office / Chief of staff",
-    "Growth PM",
+    "Growth product manager",
     "Product Analyst",
     "Program / Project Manager",
     "Technical Program Manager"
@@ -159,8 +184,8 @@
     "Atlassian, Uber, Adobe, PhonePe, Groww",
     "Flipkart APM",
     "Google APM",
-    "Meta Rotational PM (RPM)",
-    "Microsoft PM (new grad / intern)",
+    "Meta Rotational Product Manager (RPM)",
+    "Microsoft Product Manager (new grad / intern)",
     "Zomato, Swiggy, Zepto, Meesho, Razorpay APM"
   ],
   "guesstimates.questions": [

@@ -6,7 +6,7 @@ export default function Resources() {
   useHead({
     title: 'Resources',
     description:
-      'Newsletters, launch trackers, design references, and practice sites to build product taste before a PM interview.',
+      'Newsletters, launch trackers, design references, and practice sites to build product taste before a product interview.',
     path: '/resources',
   })
 

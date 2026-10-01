@@ -13,7 +13,7 @@ const BLOCKS = [
     letter: 'R',
     word: 'Role',
     color: 'bg-block-pink',
-    lines: ['What a PM actually does, day to day.', 'Startup vs scaled vs large, compared.', 'What good looks like at each level.'],
+    lines: ['What a product manager does, day to day.', 'Startup vs scaled vs large, compared.', 'What good looks like at each level.'],
     to: '/role',
   },
   {
@@ -48,7 +48,7 @@ const BLOCKS = [
     letter: 'C',
     word: 'Careers',
     color: 'bg-block-green',
-    lines: ['APM, intern, associate PM, analyst.', 'Breaking in with no PM background.', "Who's hiring, filtered by sector."],
+    lines: ['APM, intern, associate product manager, analyst.', 'Breaking in with no product background.', "Who's hiring, filtered by sector."],
     to: '/careers',
   },
 ]
@@ -63,10 +63,10 @@ const LOOP_ROUNDS = [
 
 const FAQS = [
   { q: 'Do I need to code?', a: 'No. You reason about how software works well enough to talk to engineers — that’s the Technical skill track, not a coding test.' },
-  { q: 'Do I need an MBA?', a: 'No. Most APM programs hire straight from a bachelor’s degree. An MBA matters more for a senior PM move later.' },
+  { q: 'Do I need an MBA?', a: 'No. Most APM programs hire straight from a bachelor’s degree. An MBA matters more for a senior move later.' },
   { q: 'Can a non-CS student get in?', a: 'Yes. Product thinking and communication are what’s tested — see Skills for exactly what that means.' },
   { q: 'How long should I prepare?', a: 'Two to four weeks of focused practice covers the bank. Cramming the night before does not.' },
-  { q: 'Is this really free?', a: 'Yes. No paywall, no account required. Sign in only if you want progress synced across devices.' },
+  { q: 'Is it free?', a: 'Yes. Every page reads signed out. Sign in only to sync progress across devices.' },
 ]
 
 /** The sticky note ticks itself: each step is checked by what the visitor
@@ -141,7 +141,7 @@ export default function Landing() {
   useHead({
     title: null,
     description:
-      'Free prep for your first PM interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
+      'Free prep for your first product interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
     path: '/',
   })
 
@@ -171,27 +171,16 @@ export default function Landing() {
       <SectionBlocks />
 
       {/* study checklist */}
-      <section className="mt-16 grid items-start gap-8 lg:grid-cols-[20rem_1fr]">
-        <div className="rotate-[-2deg] border border-border bg-tag p-5">
+      <section className="mt-16">
+        <div className="mx-auto max-w-xs rotate-[-2deg] border border-ink bg-tag p-5">
           <p className="label !text-current text-text">Before you start</p>
           <StickyChecklist />
         </div>
-        <div>
-          <h2>What this is</h2>
-          <p className="prose-body mt-2">
-            A free question bank and interview guide for your first product-manager role — PM intern
-            or APM. Every question has a model answer and the mistake that sinks most candidates. No
-            paywall, no account required.
-          </p>
-          <Link to="/about" className="btn mt-4 no-underline hover:no-underline">
-            Read more
-          </Link>
-        </div>
       </section>
 
-      {/* how a PM interview loop works */}
+      {/* how a product interview loop works */}
       <section className="mt-16">
-        <h2 className="text-center">How a PM interview loop works</h2>
+        <h2 className="text-center">How a product interview loop works</h2>
         <p className="mt-1 text-center text-text-muted">A typical loop, round by round. Every company varies this.</p>
         <div className="mt-4">
           <InterviewLoopTimeline rounds={LOOP_ROUNDS} />

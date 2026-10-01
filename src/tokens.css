@@ -4,7 +4,7 @@
  *  text-body ...). Nothing else may hard-code a colour or a radius.
  *  Enforced by scripts/check-colors.js in prebuild.
  *
- *  v4: a printed creative-database notebook — butter paper, black ink,
+ *  v4: a printed creative-database notebook — white paper, black ink,
  *  hairline rules, flat colour blocks. Single visual world, deliberately
  *  no dark-mode variant (see check-colors.js's note on this).
  * ==================================================================== */
@@ -47,7 +47,7 @@
 
 :root {
   /* the spec's table, verbatim */
-  --paper: #fbe88a; /* butter: the whole site's paper, same as the footer */
+  --paper: #ffffff;
   --card: #ffffff;
   --ink: #141414;
   --rule: #d8d2c6;
@@ -70,7 +70,7 @@
 
   /* footer only (Footer.jsx): pale butter paper and a royal-blue ink that
      reads at 6:1 on it — the block blue is too light for small text there */
-  --butter: var(--paper);
+  --butter: #fbe88a;
   --royal: #2447b8;
 
   /* round-weight badges only (WeightBars.jsx) — nowhere else on the site */

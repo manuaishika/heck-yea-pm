@@ -1,5 +1,5 @@
 {
-  "intro": "A PM intern resume gets **~20 seconds**. It has to show **product thinking without product experience**. Here's what that looks like.",
+  "intro": "A product intern resume gets **~20 seconds**. It has to show **product thinking without product experience**. Here's what that looks like.",
   "bulletFormula": {
     "parts": [
       "What you did",
@@ -22,7 +22,7 @@
       "keep": [
         "**3–5 bullets** each, newest first",
         "Every bullet: **action verb + number + scope**",
-        "Show the PM parts: **research, prioritisation, a trade-off you made, a metric you moved**",
+        "Show the product work: **research, prioritisation, a trade-off you made, a metric you moved**",
         "**Cut anything with no outcome**"
       ]
     },
@@ -54,7 +54,7 @@
     "**One page**",
     "Every bullet has a **number**",
     "Every bullet starts with a **verb**",
-    "The PM skills are visible: **research, prioritisation, metrics, a trade-off**",
+    "The product skills are visible: **research, prioritisation, metrics, a trade-off**",
     "**No typos** — read it backwards, word by word",
     "A friend can tell **what you actually did** in each role in 5 seconds",
     "**Links work** and point somewhere real"
@@ -81,7 +81,7 @@
               },
               {
                 "text": "Cut the first release to **3 features** (listing, chat, pickup slot) from a list of **11**, using an impact/effort grid.",
-                "note": "A trade-off you made. The most PM-like line on the page."
+                "note": "A trade-off you made. The most product-minded line on the page."
               },
               {
                 "text": "Shipped to **200 students in 6 weeks**; **38%** listed a second item within a week.",

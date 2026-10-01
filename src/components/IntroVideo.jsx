@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 
 /**
- * The homepage intro: 30 seconds on how to get into PM. Autoplays muted
+ * The homepage intro: 30 seconds on how to get into product. Autoplays muted
  * and loops, with a visible pause control (autoplaying video always needs
  * one). Rendered by scripts/intro-video/render.mjs into public/intro/.
  */

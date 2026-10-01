@@ -26,7 +26,7 @@ function setMeta(selector, attr, value) {
  */
 export function useHead({ title, description, path } = {}) {
   useEffect(() => {
-    const fullTitle = title ? `${title} — ${SITE}` : `${SITE} — PM intern interview prep`
+    const fullTitle = title ? `${title} — ${SITE}` : `${SITE} — Product manager interview prep`
     document.title = fullTitle
 
     if (description) {

@@ -12,7 +12,7 @@ export default function Role() {
   useHead({
     title: 'Role & Skills',
     description:
-      'What a product manager actually does, and the technical, non-technical, behavioral and AI ground a PM interview covers.',
+      'What a product manager does, and the technical, non-technical, behavioral and AI ground a product interview covers.',
     path: '/role',
   })
 

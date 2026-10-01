@@ -95,7 +95,7 @@ export default function InterviewWeights() {
       </div>
 
       <div className="mt-4 grid items-center gap-6 sm:grid-cols-[minmax(0,15rem)_1fr]">
-        <svg viewBox="0 0 200 200" className="mx-auto block w-full max-w-[15rem]" role="img" aria-label={`What ${scope === 'all' ? 'PM loops' : loops[0].name} weigh: ${slices.map((s) => `${s.label} ${pct(s.share)}`).join(', ')}`}>
+        <svg viewBox="0 0 200 200" className="mx-auto block w-full max-w-[15rem]" role="img" aria-label={`What ${scope === 'all' ? 'product interviews' : loops[0].name} weigh: ${slices.map((s) => `${s.label} ${pct(s.share)}`).join(', ')}`}>
           <g transform="rotate(-90 100 100)">
             {slices.map((s) => {
               const len = inView ? Math.max(s.share * C - GAP, 0) : 0

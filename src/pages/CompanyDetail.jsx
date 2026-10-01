@@ -27,7 +27,7 @@ export default function CompanyDetail() {
 
   // before any early return, so the hook order never changes between companies
   useHead({
-    title: c ? `${c.name} PM interview` : 'Company not found',
+    title: c ? `${c.name} product interview` : 'Company not found',
     description: c ? `${c.name}: ${c.rounds.length}-round ${c.program} loop. ${c.format}`.slice(0, 155) : '',
     path: `/companies/${c?.slug ?? slug}`,
   })

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 /**
- * A generic PM interview loop as a horizontal timeline: numbered rounds
+ * A generic product interview loop as a horizontal timeline: numbered rounds
  * connected by a line, each independently expandable to say what it tests.
  * Stacks to one column on mobile, line moves to the left edge.
  *

@@ -1,5 +1,5 @@
 {
-  "note": "The same job **feels different depending on where you do it**, and it sits next to several roles that **aren't quite PM**. Interviewers ask about both.",
+  "note": "The same job **feels different depending on where you do it**, and it sits next to several roles that **aren't quite product management**. Interviewers ask about both.",
   "modes": {
     "note": "Three modes, not two. An early startup and a scaled one are as different from each other as either is from a large company.",
     "columns": [
@@ -123,9 +123,9 @@
       {
         "dim": "Leads to",
         "values": [
-          "founding PM, or your own thing",
-          "senior PM, then group PM",
-          "senior PM on a defined ladder"
+          "founding product manager, or your own thing",
+          "senior product manager, then group product manager",
+          "senior product manager on a defined ladder"
         ]
       }
     ]
@@ -137,36 +137,36 @@
       "focus": "Judgement and learning speed under structure: can you go from an ambiguous prompt to a shipped, measured change, and can you defend your reasoning in front of senior people. Interviews test raw product thinking more than domain knowledge."
     },
     {
-      "name": "PM intern",
-      "what": "A summer or semester internship, 8–12 weeks, doing real PM work on a small, contained piece of a live product — usually the fast-track into that company's full-time APM or new-grad PM role.",
+      "name": "Product intern",
+      "what": "A summer or semester internship, 8–12 weeks, doing real product work on a small, contained piece of a live product — usually the fast-track into that company's full-time APM or new-grad product role.",
       "focus": "Whether you can scope a problem correctly, write a clear one-pager, and get something shipped without a lot of hand-holding. Most interns are judged as much on how they work with engineers and designers as on the idea itself."
     },
     {
-      "name": "Associate PM (no formal program)",
-      "what": "A junior PM job title at a company with no named rotational program — you're hired directly onto one team, often at a startup or a company still building out its product org, with real ownership from week one.",
+      "name": "Associate product manager (no formal program)",
+      "what": "A junior product job title at a company with no named rotational program — you're hired directly onto one team, often at a startup or a company still building out its product org, with real ownership from week one.",
       "focus": "Less polish than an APM-program interview, more \"can you actually do the job tomorrow.\" Expect fewer, more conversational rounds and a heavier weight on a portfolio or past projects."
     },
     {
       "name": "Product Analyst",
-      "what": "Owns the data a PM uses: dashboards, funnel analysis, sizing a bet before or after it ships. Doesn't own the roadmap, but sits close enough to it to move into PM.",
-      "focus": "Rigor with numbers and a clean narrative from data to recommendation — SQL, metrics literacy, and being able to say what a chart means and what to do about it. The most common route into PM in India for people without a PM title yet."
+      "what": "Owns the data a product manager uses: dashboards, funnel analysis, sizing a bet before or after it ships. Doesn't own the roadmap, but sits close enough to it to move into product management.",
+      "focus": "Rigor with numbers and a clean narrative from data to recommendation — SQL, metrics literacy, and being able to say what a chart means and what to do about it. The most common route into product management in India for people without a product manager title yet."
     }
   ],
   "adjacent": [
     {
-      "role": "APM / Associate PM",
-      "oneLine": "PM, **junior**. Rotational, mentored. **The normal way in.**",
+      "role": "APM / Associate product manager",
+      "oneLine": "Product manager, **junior**. Rotational, mentored. **The normal way in.**",
       "vsPm": "Same job, **smaller scope**, more support."
     },
     {
       "role": "Product Analyst",
       "oneLine": "Owns the **data**, not the roadmap. Dashboards, analysis, sizing bets.",
-      "vsPm": "A **common route into PM in India**. You inform decisions; the PM makes them."
+      "vsPm": "A **common route into product management in India**. You inform decisions; the product manager makes them."
     },
     {
       "role": "Program / Project Manager",
       "oneLine": "Owns **delivery** — timelines, dependencies, coordination.",
-      "vsPm": "Makes sure it **ships**. The PM decides **what** ships."
+      "vsPm": "Makes sure it **ships**. The product manager decides **what** ships."
     },
     {
       "role": "Technical Program Manager",
@@ -174,36 +174,36 @@
       "vsPm": "Needs **real engineering depth**. Less about users, more about systems."
     },
     {
-      "role": "Growth PM",
-      "oneLine": "A PM on the **funnel** — acquisition, activation, retention, revenue.",
+      "role": "Growth product manager",
+      "oneLine": "A product manager on the **funnel** — acquisition, activation, retention, revenue.",
       "vsPm": "Same craft, aimed at the funnel. **Experiment-heavy.**"
     },
     {
       "role": "Founder's office / Chief of staff",
       "oneLine": "Whatever the founder needs this month. **Broad, unstructured.**",
-      "vsPm": "**High exposure, no fixed remit.** Can lead to PM; isn't PM."
+      "vsPm": "**High exposure, no fixed remit.** Can lead to product management; isn't product management."
     }
   ],
   "growth": [
     {
-      "level": "APM / PM intern",
+      "level": "APM / product intern",
       "years": "0",
       "focus": "Learn the craft. Ship small things well. Build judgement."
     },
     {
-      "level": "PM",
+      "level": "Product manager",
       "years": "1–3",
       "focus": "Own a feature or area end to end. Move a metric."
     },
     {
-      "level": "Senior PM",
+      "level": "Senior product manager",
       "years": "3–6",
       "focus": "Own a hard problem or a large area. Set the local strategy."
     },
     {
-      "level": "Group PM / Principal",
+      "level": "Group product manager / Principal",
       "years": "6+",
-      "focus": "Own a product line through other PMs, or go deep as an individual expert."
+      "focus": "Own a product line through other product managers, or go deep as an individual expert."
     },
     {
       "level": "Director / VP Product",

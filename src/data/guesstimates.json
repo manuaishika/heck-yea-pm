@@ -37,7 +37,7 @@
   },
   "diagnosis": {
     "title": "RCA — a metric dropped, explain it",
-    "note": "The most common PM interview format there is: \"Orders dropped 20% this week. Do a root cause analysis.\" Don't guess a cause — narrow it down with a method.",
+    "note": "The most common product interview format there is: \"Orders dropped 20% this week. Do a root cause analysis.\" Don't guess a cause — narrow it down with a method.",
     "steps": [
       "Confirm it's real. Is the drop bigger than normal week-to-week noise? Is the tracking still working?",
       "Segment. Platform, region, new vs existing, free vs paid. Everywhere, or one slice?",

@@ -92,9 +92,9 @@
         "name": "SQL",
         "gist": "Pulling your own numbers instead of waiting on an analyst.",
         "need": [
-          "SELECT, WHERE, GROUP BY, JOIN cover most PM needs.",
+          "SELECT, WHERE, GROUP BY, JOIN cover most product manager needs.",
           "Practice on a real dataset. A weekend on Mode's tutorial is enough.",
-          "A PM who can query is faster and harder to mislead."
+          "A product manager who can query is faster and harder to mislead."
         ],
         "bankCategory": "Analytics",
         "assess": "Given the table, I could write a query to count sign-ups per day for the last week.",
@@ -116,7 +116,7 @@
       {
         "slug": "ml-features",
         "name": "ML features",
-        "gist": "What a PM owns when the feature is a model.",
+        "gist": "What a product manager owns when the feature is a model.",
         "need": [
           "A model needs training data, an objective, and a baseline to beat.",
           "Cold start: new users and items have no history, so the model guesses.",
@@ -183,7 +183,7 @@
       {
         "slug": "writing",
         "name": "Writing",
-        "gist": "Most PM work is writing. A clear one-pager saves weeks.",
+        "gist": "Most product work is writing. A clear one-pager saves weeks.",
         "need": [
           "A spec has: the problem, the user, success, what's out of scope.",
           "An engineer should be able to estimate it without a meeting.",

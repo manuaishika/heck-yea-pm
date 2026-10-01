@@ -13,7 +13,7 @@ const COLUMNS = [
       ['/role', 'Role & skills'],
       ['/skills', 'Skills'],
       ['/methods', 'Methods'],
-      ['/ai', 'AI for PMs'],
+      ['/ai', 'AI for product managers'],
     ],
   },
   {
@@ -36,14 +36,14 @@ const COLUMNS = [
   },
 ]
 
-const STAMP_TEXT = 'FREE · NO PAYWALL · BUILT IN INDIA · '
+const STAMP_TEXT = 'FREE FOR EVERY STUDENT · BUILT IN INDIA · '
 
 /** The circular rotating stamp: mono type set on a circle, spinning slowly.
  * Static under reduced motion. Sits where a logo would. */
 function StampBadge() {
   const reduce = useReducedMotion()
   return (
-    <svg viewBox="0 0 160 160" className="size-20 shrink-0" role="img" aria-label="Free. No paywall. Built in India.">
+    <svg viewBox="0 0 160 160" className="size-20 shrink-0" role="img" aria-label="Free for every student. Built in India.">
       <g className={reduce ? '' : 'stamp-spin'} style={{ transformOrigin: '80px 80px' }}>
         <path id="stamp-circle" fill="none" d="M 80,80 m -58,0 a 58,58 0 1,1 116,0 a 58,58 0 1,1 -116,0" />
         <text fontFamily="var(--font-mono)" fontSize="10.5" fontWeight="700" letterSpacing="1.5" fill="var(--royal)">

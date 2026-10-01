@@ -263,7 +263,7 @@ export default function Assess() {
   useHead({
     title: 'Where do you stand?',
     description:
-      'A 15-question quiz across the technical and non-technical PM skills, with a read on where you stand and what to fix first.',
+      'A 15-question quiz across the technical and non-technical product skills, with a read on where you stand and what to fix first.',
     path: '/skills/assess',
   })
 

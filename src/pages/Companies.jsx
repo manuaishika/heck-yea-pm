@@ -58,7 +58,7 @@ export default function Companies() {
   useHead({
     title: 'Companies',
     description:
-      'What the PM interview loop looks like at Google, Microsoft, Amazon, Meta, and the Indian APM programs — Flipkart, Zomato, Swiggy, Razorpay, Zepto, Meesho.',
+      'What the product interview loop looks like at Google, Microsoft, Amazon, Meta, and the Indian APM programs — Flipkart, Zomato, Swiggy, Razorpay, Zepto, Meesho.',
     path: '/companies',
   })
 
@@ -124,7 +124,7 @@ export default function Companies() {
           <LogoWall list={results.filter(companyHasData)} />
           {results.some((c) => !companyHasData(c)) && (
             <>
-              <h2 className="mt-10">Also hiring PMs</h2>
+              <h2 className="mt-10">Also hiring product managers</h2>
               <p className="mt-1 text-text-muted">No sourced loop or tagged questions yet. Each one opens the full question bank.</p>
               <LogoWall list={results.filter((c) => !companyHasData(c))} />
             </>
@@ -135,7 +135,7 @@ export default function Companies() {
         <div className="card mt-2 p-4">
           <p className="font-semibold text-text">No loop page for &ldquo;{input.trim()}&rdquo; yet.</p>
           <p className="prose-body mt-1">
-            Most PM interviews test the same things whatever the company: product design,
+            Most product interviews test the same things whatever the company: product design,
             analytics, strategy, behavioral. Practice those and you are most of the way there.
           </p>
           <p className="mt-3 flex flex-wrap gap-3">

@@ -142,7 +142,7 @@ function StageCard({ elRef, id, label, side, status, summary, deeper }) {
 }
 
 /**
- * A topic as a 4-stage flow: what it is → how it works → what a PM needs to
+ * A topic as a 4-stage flow: what it is → how it works → what a product manager needs to
  * know → a practice question. Desktop: cards alternate left/right of a
  * centre line, a node at each junction. Mobile: one column, line and nodes
  * down the left edge.
@@ -184,7 +184,7 @@ export default function Flowchart({ slug, name, gist, howItWorks, need, question
     {
       id: ids[2],
       side: 'left',
-      label: 'What a PM needs to know',
+      label: 'What a product manager needs to know',
       summary: <p>{need[0]}</p>,
       deeper: (
         <ul className="space-y-1.5">

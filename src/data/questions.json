@@ -3,7 +3,7 @@
     "id": "tell-me-about-yourself",
     "type": "question",
     "category": "Behavioral",
-    "question": "Tell me about yourself. / Why do you want to be a PM?",
+    "question": "Tell me about yourself. / Why do you want to be a product manager?",
     "sections": [
       {
         "label": "How to answer",
@@ -18,7 +18,7 @@
         "points": [
           "I study [major] at [university]. On [project] I saw good product calls decide the outcome more than the code",
           "So I ran user interviews, shipped a [side project], learned RICE and JTBD",
-          "That confirmed it — PM is where analysis, user empathy and coordination meet",
+          "That confirmed it — product is where analysis, user empathy and coordination meet",
           "I want [company] because of [specific product or bet they made]"
         ]
       }
@@ -51,7 +51,7 @@
         ]
       }
     ],
-    "tip": "Use evidence (data, examples) + empathy (acknowledge their view) + a bridge (a hybrid idea). This mirrors exactly how PMs influence without authority.",
+    "tip": "Use evidence (data, examples) + empathy (acknowledge their view) + a bridge (a hybrid idea). This mirrors exactly how product managers influence without authority.",
     "failureMode": "Telling a story where you won by being louder or more senior, instead of showing you changed someone's mind with evidence.",
     "companies": [],
     "hard": false
@@ -108,7 +108,7 @@
         ]
       }
     ],
-    "tip": "Scope management is timeline management. Show you understand that PMs protect the team from scope creep.",
+    "tip": "Scope management is timeline management. Show you understand that product managers protect the team from scope creep.",
     "failureMode": "Claiming you hit the deadline by working harder, with no mention of what you cut or how you protected scope.",
     "companies": [],
     "hard": false
@@ -190,7 +190,7 @@
         ]
       }
     ],
-    "tip": "Process improvement stories are gold for PM interviews — they show you don't just execute, you optimize systems.",
+    "tip": "Process improvement stories are gold for product interviews — they show you don't just execute, you optimize systems.",
     "failureMode": "Describing a change you suggested but never drove to adoption, so there is no result.",
     "companies": [],
     "hard": false
@@ -246,7 +246,7 @@
         ]
       }
     ],
-    "tip": "Scope decisions under pressure are what distinguish good PMs. Show you cut features purposefully, not randomly.",
+    "tip": "Scope decisions under pressure are what distinguish good product managers. Show you cut features purposefully, not randomly.",
     "failureMode": "Listing everything the team did instead of the decisions you personally made, especially the scope cuts.",
     "companies": [],
     "hard": false
@@ -289,7 +289,7 @@
         "label": "How to answer",
         "points": [
           "Say \"I\", not \"we\" — the interviewer needs to know what you did",
-          "Name the PM parts: research, prioritisation, facilitation"
+          "Name the product work: research, prioritisation, facilitation"
         ]
       },
       {
@@ -302,7 +302,7 @@
         ]
       }
     ],
-    "tip": "Show your specific PM contribution — user research, prioritization, facilitation. Not just \"we all worked together.\"",
+    "tip": "Show your specific product contribution — user research, prioritization, facilitation. Not just \"we all worked together.\"",
     "failureMode": "Saying \"we\" the whole time, so the interviewer cannot tell what you actually did.",
     "companies": [],
     "hard": false
@@ -901,7 +901,7 @@
         "label": "Worked answer",
         "points": [
           "Example: B2B project-management SaaS for teams of 5–50",
-          "TAM: global PM software ~$7B. SAM: small-business slice ~40% → ~$2.8B",
+          "TAM: global project-management software ~$7B. SAM: small-business slice ~40% → ~$2.8B",
           "SOM: realistic 3-year capture 1–2% → $28–56M",
           "Price: $12 per seat/month, benchmarked to Asana and Notion",
           "Freemium up to 5 seats — teams outgrow it and pay",
@@ -909,7 +909,7 @@
         ]
       }
     ],
-    "tip": "TAM / SAM / SOM plus a pricing model in one answer shows PM and business acumen together. Practice this for at least 3 product categories.",
+    "tip": "TAM / SAM / SOM plus a pricing model in one answer shows product and business acumen together. Practice this for at least 3 product categories.",
     "failureMode": "Doing TAM / SAM / SOM but skipping pricing, or pricing with no benchmark or logic behind the number.",
     "companies": [],
     "hard": true
@@ -1028,7 +1028,7 @@
         ]
       }
     ],
-    "tip": "Show you understand sustainable versus temporary differentiation. That signals strategic PM thinking.",
+    "tip": "Show you understand sustainable versus temporary differentiation. That signals strategic product thinking.",
     "failureMode": "Naming a feature as the differentiator — features get copied — instead of something defensible like a network effect or data advantage.",
     "companies": [],
     "hard": true
@@ -1171,7 +1171,7 @@
         ]
       }
     ],
-    "tip": "Adding guardrail metrics signals PM maturity — it shows you understand that optimizing engagement metrics blindly can harm the product.",
+    "tip": "Adding guardrail metrics signals product maturity — it shows you understand that optimizing engagement metrics blindly can harm the product.",
     "failureMode": "Listing metrics with no North Star, no guardrails, and no definition of what engagement means for this product.",
     "companies": [],
     "hard": false
@@ -1257,7 +1257,7 @@
         ]
       }
     ],
-    "tip": "PMs who can write basic SQL and read analytics dashboards themselves are significantly more effective. Mention it if you can.",
+    "tip": "Product managers who can write basic SQL and read analytics dashboards themselves are significantly more effective. Mention it if you can.",
     "failureMode": "Describing dashboards in general instead of how a specific metric would change a specific decision.",
     "companies": [],
     "hard": false
@@ -1316,7 +1316,7 @@
         ]
       },
       {
-        "label": "In a PM interview",
+        "label": "In a product interview",
         "points": [
           "\"Search users retain 2x better\" — do not say \"make search prominent\"",
           "Maybe power users just happen to use search (self-selection)",
@@ -1349,7 +1349,7 @@
         "points": [
           "Pick a project you know cold",
           "Layer it: frontend → backend → database → third-party → hosting",
-          "For each choice, know WHY — that is the PM value"
+          "For each choice, know WHY — that is what a product manager adds"
         ]
       },
       {
@@ -1362,8 +1362,8 @@
         ]
       }
     ],
-    "tip": "You don't need to know how to build each layer — but you need to know why each decision was made. That's the PM value-add.",
-    "failureMode": "Naming technologies without being able to say why each choice was made — the \"why\" is the PM's value here.",
+    "tip": "You don't need to know how to build each layer — but you need to know why each decision was made. That's what a product manager adds.",
+    "failureMode": "Naming technologies without being able to say why each choice was made — the \"why\" is the product manager's value here.",
     "companies": [],
     "hard": false
   },
@@ -1420,7 +1420,7 @@
         ]
       }
     ],
-    "tip": "Mention PRDs if you have experience writing them. Even a simple one for a student project demonstrates PM craft.",
+    "tip": "Mention PRDs if you have experience writing them. Even a simple one for a student project demonstrates product craft.",
     "failureMode": "Going straight to solutions without user stories, and writing nothing down for engineering to review.",
     "companies": [],
     "hard": false
@@ -1434,7 +1434,7 @@
       {
         "label": "Framework",
         "points": [
-          "A negotiation between user value and feasibility, run by the PM"
+          "A negotiation between user value and feasibility, run by the product manager"
         ]
       },
       {
@@ -1447,7 +1447,7 @@
         ]
       }
     ],
-    "tip": "Show that you protect both the user and the engineering team — PMs who overpromise to users burn out their engineers.",
+    "tip": "Show that you protect both the user and the engineering team — product managers who overpromise to users burn out their engineers.",
     "failureMode": "Overpromising to the user, or caving to the constraint without exploring a simpler or phased approach.",
     "companies": [],
     "hard": false
@@ -1558,7 +1558,7 @@
         ]
       }
     ],
-    "tip": "Feature flags are a key concept for PM interviews at tech companies. Know what they are and why they're valuable.",
+    "tip": "Feature flags are a key concept for product interviews at tech companies. Know what they are and why they're valuable.",
     "failureMode": "Not knowing what feature flags are, or why decoupling deploy from release reduces risk.",
     "companies": [],
     "hard": false
@@ -1804,7 +1804,7 @@
           "A product is ongoing — it evolves, no end date, the goal is to keep improving it",
           "A project is time-bound — a scope, a start, an end. Done when the goal is hit",
           "A product contains many projects (e.g. \"new checkout flow\" is a project inside the e-commerce product)",
-          "PMs own products; project managers own projects"
+          "Product managers own products; project managers own projects"
         ]
       }
     ],
@@ -1841,7 +1841,7 @@
     "id": "stay-updated-on-tech-and-pm",
     "type": "question",
     "category": "General",
-    "question": "How do you stay updated on tech trends and PM best practices?",
+    "question": "How do you stay updated on tech trends and product best practices?",
     "sections": [
       {
         "label": "Answer",
@@ -1876,7 +1876,7 @@
         ]
       }
     ],
-    "tip": "Show that communication is a two-way process. PMs who only broadcast strategy and never listen miss critical signals from their own team.",
+    "tip": "Show that communication is a two-way process. Product managers who only broadcast strategy and never listen miss critical signals from their own team.",
     "failureMode": "Describing one-way broadcast only, with no mechanism to check the team actually absorbed it.",
     "companies": [],
     "hard": false
@@ -1898,7 +1898,7 @@
         ]
       }
     ],
-    "tip": "Amazon's \"Earn Trust\" principle applies here — stakeholders trust PMs who are consistently honest, even about setbacks.",
+    "tip": "Amazon's \"Earn Trust\" principle applies here — stakeholders trust product managers who are consistently honest, even about setbacks.",
     "failureMode": "Only communicating when things go wrong; letting a slipped timeline surprise people.",
     "companies": [],
     "hard": false
@@ -2010,7 +2010,7 @@
         ]
       }
     ],
-    "tip": "Acknowledge that some unmet expectations are the PM's fault — we built the wrong thing. Owning that shows maturity.",
+    "tip": "Acknowledge that some unmet expectations are the product manager's fault — we built the wrong thing. Owning that shows maturity.",
     "failureMode": "Not diagnosing whether it is an expectations gap or a product-market-fit gap — they need different fixes.",
     "companies": [],
     "hard": false
@@ -2172,7 +2172,7 @@
     "id": "swiggy-orders-drop-20",
     "type": "question",
     "category": "Analytics",
-    "question": "As a PM at Swiggy, daily orders dropped 20% last week versus every week before. Walk through your RCA.",
+    "question": "As a product manager at Swiggy, daily orders dropped 20% last week versus every week before. Walk through your RCA.",
     "sections": [
       {
         "label": "Clarify first",
@@ -2314,7 +2314,7 @@
         ]
       }
     ],
-    "tip": "The PM answer is the trade-offs, not the boxes. Say what encryption, offline delivery and low data each cost you in features.",
+    "tip": "The product answer is the trade-offs, not the boxes. Say what encryption, offline delivery and low data each cost you in features.",
     "failureMode": "Drawing servers and databases with no user goal. Never saying what 'delivered' should feel like or what you would give up to get it.",
     "companies": [],
     "hard": false
@@ -2442,7 +2442,7 @@
         ]
       }
     ],
-    "tip": "Say what a good suggestion is before you say how to build one. That is the PM part.",
+    "tip": "Say what a good suggestion is before you say how to build one. That is the product part.",
     "failureMode": "Treating it as a pure lookup problem and never defining what a good suggestion is or how you would measure it.",
     "companies": [
       "Flipkart"

@@ -14,7 +14,7 @@ validateAI(
 
 export default function AI() {
   useHead({
-    title: 'AI for PMs',
+    title: 'AI for product managers',
     description: 'AI literacy for product management interviews: how LLMs work, when AI is the wrong call, and how to evaluate an AI feature.',
     path: '/ai',
   })
@@ -24,7 +24,7 @@ export default function AI() {
       <ScrollProgress />
       <PageHead
         chapter="Module · Draft"
-        title="AI for PMs"
+        title="AI for product managers"
         intro={ai.intro}
       />
 

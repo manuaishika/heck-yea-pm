@@ -9,7 +9,7 @@ const MENU_GROUPS = [
     items: [
       ['/role', 'Role & Skills'],
       ['/skills#technical', 'Technical'],
-      ['/ai', 'AI for PMs'],
+      ['/ai', 'AI for product managers'],
       ['/methods', 'Methods'],
     ],
   },
@@ -104,13 +104,7 @@ export default function TopNav() {
               </Link>
             </Cell>
 
-            <Cell className="hidden min-w-0 flex-1 md:flex">
-              <p className="label leading-[1.4] text-text">
-                Free PM interview prep
-                <br />
-                Question bank
-              </p>
-            </Cell>
+            <div className="flex-1" />
 
             <Cell className="hidden shrink-0 md:flex">
               {user ? (

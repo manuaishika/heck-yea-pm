@@ -10,8 +10,8 @@ import ModeRadar from '../components/diagrams/ModeRadar'
 import Rich from '../components/Rich'
 
 const JUMP = [
-  ['roles', 'PM role types'],
-  ['breakin', 'Breaking in without a PM background'],
+  ['roles', 'Product role types'],
+  ['breakin', 'Breaking in without a product background'],
   ['modes', 'Startup vs scaled vs large'],
   ['adjacent', 'Roles next to it'],
   ['ladder', 'The ladder'],
@@ -23,7 +23,7 @@ export default function Careers() {
   useHead({
     title: 'Careers',
     description:
-      'PM role types — APM, PM intern, associate PM, product analyst — how to break in without a PM background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
+      'Product role types — APM, product intern, associate product manager, product analyst — how to break in without a product background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
     path: '/careers',
   })
 
@@ -53,7 +53,7 @@ export default function Careers() {
 
       {/* role types */}
       <h2 id="roles" className="mt-8 scroll-mt-4 text-section">
-        1 · PM role types
+        1 · Product role types
       </h2>
       <p className="mt-1 text-body text-text-muted">
         Four different doors into the same career. Know which one you're applying to.
@@ -75,7 +75,7 @@ export default function Careers() {
 
       {/* breaking in */}
       <h2 id="breakin" className="mt-10 scroll-mt-4 text-section">
-        2 · Breaking in without a PM background
+        2 · Breaking in without a product background
       </h2>
       <p className="mt-1 text-body text-text-muted">{noProgram.note}</p>
       <div className="mt-3 border-t border-border">
@@ -101,7 +101,7 @@ export default function Careers() {
 
       {/* adjacent roles */}
       <h2 id="adjacent" className="mt-10 scroll-mt-4 text-section">
-        4 · PM vs the roles next to it
+        4 · Product manager vs the roles next to it
       </h2>
       <ul className="mt-3 divide-y divide-border border-y border-border md:hidden">
         {careers.adjacent.map((r) => (
@@ -110,7 +110,7 @@ export default function Careers() {
             <p className="mt-1 text-text-muted">
               <Rich>{r.oneLine}</Rich>
             </p>
-            <p className="label mt-2">vs PM</p>
+            <p className="label mt-2">vs product manager</p>
             <p className="mt-1 text-text-muted">
               <Rich>{r.vsPm}</Rich>
             </p>
@@ -123,7 +123,7 @@ export default function Careers() {
             <tr className="border-b border-border text-left">
               <th className="w-40 py-2 pr-3 font-semibold">Role</th>
               <th className="py-2 pr-3 font-semibold">What it is</th>
-              <th className="py-2 font-semibold">vs PM</th>
+              <th className="py-2 font-semibold">vs product manager</th>
             </tr>
           </thead>
           <tbody>

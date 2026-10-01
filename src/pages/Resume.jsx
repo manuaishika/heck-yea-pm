@@ -7,7 +7,7 @@ export default function Resume() {
   useHead({
     title: 'Resume',
     description:
-      'What a PM intern resume needs when you have no PM experience: the bullet formula, what goes in each section, and a checklist.',
+      'What a product intern resume needs when you have no product experience: the bullet formula, what goes in each section, and a checklist.',
     path: '/resume',
   })
 

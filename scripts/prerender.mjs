@@ -24,7 +24,7 @@ const routes = {
   '/': {
     title: null,
     description:
-      'Free prep for your first PM interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
+      'Free prep for your first product interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
   },
   '/role': {
     title: 'The role',
@@ -34,7 +34,7 @@ const routes = {
   '/careers': {
     title: 'Careers',
     description:
-      'PM role types, how to break in without a PM background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
+      'Product role types, how to break in without a product background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
   },
   '/guesstimates': {
     title: 'Guesstimates',
@@ -44,42 +44,42 @@ const routes = {
   '/resources': {
     title: 'Resources',
     description:
-      'Newsletters, launch trackers, design references, and practice sites to build product taste before a PM interview.',
+      'Newsletters, launch trackers, design references, and practice sites to build product taste before a product interview.',
   },
   '/resume': {
     title: 'Resume',
     description:
-      'What a PM intern resume needs when you have no PM experience: the bullet formula, what goes in each section, and a checklist.',
+      'What a product intern resume needs when you have no product experience: the bullet formula, what goes in each section, and a checklist.',
   },
   '/skills': {
     title: 'Skills',
     description:
-      'The technical and non-technical skills a PM interview tests, what a good answer sounds like for each, and how deep you need to go.',
+      'The technical and non-technical skills a product interview tests, what a good answer sounds like for each, and how deep you need to go.',
   },
   '/skills/assess': {
     title: 'Where do you stand?',
     description:
-      'A 15-question quiz across the technical and non-technical PM skills, with a read on where you stand and what to fix first.',
+      'A 15-question quiz across the technical and non-technical product skills, with a read on where you stand and what to fix first.',
   },
   '/browse': {
     title: 'Question bank',
     description:
-      'Every PM intern interview question, filterable by category and keyword, each with a model answer and the mistake that sinks most candidates.',
+      'Every product intern interview question, filterable by category and keyword, each with a model answer and the mistake that sinks most candidates.',
   },
   '/companies': {
     title: 'Companies',
     description:
-      'What the PM interview loop looks like at Google, Microsoft, Amazon, Meta, and the Indian APM programs — Flipkart, Zomato, Swiggy, Razorpay, Zepto, Meesho.',
+      'What the product interview loop looks like at Google, Microsoft, Amazon, Meta, and the Indian APM programs — Flipkart, Zomato, Swiggy, Razorpay, Zepto, Meesho.',
   },
   '/flashcards': {
     title: 'Flashcards',
     description:
-      'Study the PM question bank as flashcards. Mark each card known or needs review; your progress is saved on your device.',
+      'Study the question bank as flashcards. Mark each card known or needs review; your progress is saved on your device.',
   },
   '/methods': {
     title: 'Methods',
     description:
-      'The answering frameworks PM candidates use: STAR, CIRCLES, North Star, AARRR, HEART, RICE, TAM/SAM/SOM and more, each with steps and a worked example.',
+      'The answering frameworks candidates use for product interviews: STAR, CIRCLES, North Star, AARRR, HEART, RICE, TAM/SAM/SOM and more, each with steps and a worked example.',
   },
   '/about': {
     title: 'About',
@@ -87,14 +87,14 @@ const routes = {
       'What this is, who made it, and how to contribute a question, a company loop, or a correction.',
   },
   '/ai': {
-    title: 'AI in the PM interview',
+    title: 'AI in the product interview',
     description:
-      'How AI is showing up in the PM interview loop, and what changes in how you prep and answer.',
+      'How AI is showing up in the product interview loop, and what changes in how you prep and answer.',
   },
   '/india': {
     title: 'Careers',
     description:
-      'PM role types, how to break in without a PM background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
+      'Product role types, how to break in without a product background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
   },
   '/flashcards/complete': {
     title: 'Flashcards — done',
@@ -130,7 +130,7 @@ for (const m of methods) {
 const tagged = (c) => questions.some((q) => q.companies.some((t) => c.questionTags.includes(t)))
 for (const c of companies.filter((c) => c.rounds.length > 0 || tagged(c))) {
   routes[`/companies/${c.slug}`] = {
-    title: `${c.name} PM interview`,
+    title: `${c.name} product interview`,
     description: clip(`${c.name}: ${c.rounds.length}-round ${c.program} loop. ${c.format}`),
   }
 }
@@ -140,7 +140,7 @@ const esc = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 function render(path, { title, description }) {
-  const fullTitle = title ? `${esc(title)} — ${SITE}` : `${SITE} — PM intern interview prep`
+  const fullTitle = title ? `${esc(title)} — ${SITE}` : `${SITE} — Product manager interview prep`
   const desc = esc(description)
   const url = ORIGIN + path
   const metaContent = (attr, name, value) =>
