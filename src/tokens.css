@@ -48,6 +48,9 @@
 :root {
   /* the spec's table, verbatim */
   --paper: #ffffff;
+  /* the faint graph-paper lines on the page backdrop (style.css, body) */
+  --grid: #dae7ee;
+  --grid-size: 56px;
   --card: #ffffff;
   --ink: #141414;
   --rule: #d8d2c6;

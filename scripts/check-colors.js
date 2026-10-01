@@ -57,6 +57,8 @@ const WEIGHT_TOKENS = [
   ['--weight-medium', '#d97706'],
   ['--weight-light', '#ca9a1f'],
 ]
+// the page backdrop's graph-paper line colour (style.css, body)
+const GRID_TOKENS = [['--grid', '#dae7ee']]
 // footer only (Footer.jsx): butter paper, royal ink
 const FOOTER_TOKENS = [
   ['--butter', '#fbe88a'],
@@ -112,7 +114,7 @@ if (/#3b82f6/i.test(allText) || /rgb\(\s*59\s*,\s*130\s*,\s*246\s*\)/i.test(allT
 }
 
 const tokensText = readFileSync(TOKENS_FILE, 'utf8')
-for (const [name, hex] of [...PALETTE_TOKENS, ...WEIGHT_TOKENS, ...FOOTER_TOKENS]) {
+for (const [name, hex] of [...PALETTE_TOKENS, ...WEIGHT_TOKENS, ...FOOTER_TOKENS, ...GRID_TOKENS]) {
   const re = new RegExp(`${name}:\\s*${hex}\\b`, 'i')
   if (!re.test(tokensText)) {
     console.error(`✗ [check-colors] tokens.css: expected ${name}: ${hex} (v4 palette token missing or changed)`)

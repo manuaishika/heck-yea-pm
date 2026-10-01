@@ -29,7 +29,14 @@
 
   body {
     margin: 0;
-    background: var(--page);
+    /* graph paper: white with faint blue lines, 1px every --grid-size.
+       Cards, the header and inputs are solid white, so text on them never
+       sits on a line. */
+    background-color: var(--page);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
     color: var(--text);
     font-family: var(--font-sans);
     font-size: var(--text-body);
@@ -180,7 +187,7 @@
     font-weight: 500;
     line-height: 1.4;
     color: var(--text);
-    background: transparent;
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-pill);
     text-decoration: none;
