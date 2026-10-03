@@ -373,17 +373,6 @@
   transform: translateY(0);
 }
 
-/* auto-play progress segments (ProgressFill.jsx) */
-.progress-fill {
-  width: 0;
-  animation: progress-fill linear forwards;
-}
-@keyframes progress-fill {
-  to {
-    width: 100%;
-  }
-}
-
 /* method diagrams in motion (MethodDiagram.jsx): connectors whose dashes
    flow toward the next step, a slow orbit, users dripping through the
    AARRR funnel, a ping round the current TAM circle, the 3Cs breathing.

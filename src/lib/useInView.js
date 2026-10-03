@@ -30,9 +30,8 @@ export function useInView(threshold = 0.3) {
 
 /**
  * A step index that advances by itself every `ms` while `running`, keeping
- * the unspent time across pauses. No per-frame state: pair it with
- * <ProgressFill>, a CSS animation keyed on `run`, which restarts whenever
- * the step changes or `jump` is called.
+ * the unspent time across pauses. `jump(i)` goes to step i and restarts its
+ * time. Used by the method diagrams.
  */
 export function useAutoStep(count, ms, running) {
   const [index, setIndex] = useState(0)
@@ -61,7 +60,7 @@ export function useAutoStep(count, ms, running) {
     setRun((r) => r + 1)
   }
 
-  return [index, jump, run]
+  return [index, jump]
 }
 
 /** prefers-reduced-motion, read once on the client. */

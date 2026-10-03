@@ -1,21 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useAutoStep, useInView } from '../../lib/useInView'
-import ProgressFill from '../ProgressFill'
 
 /**
  * Every answering method's main element: a diagram shaped for that
  * framework (a chain for STAR, a wheel for CIRCLES, a funnel for AARRR …)
  * that is always in motion. Once on screen it steps through the method by
  * itself — the current part lights up in block-blue and a caption under it
- * says what that part means — while connectors flow and rings turn. Tap any
- * part to stop on it; the play button resumes. Under reduced motion nothing
- * moves by itself and tapping is the only way through.
+ * says what that part means — while connectors flow and rings turn. Nothing
+ * needs pressing. A tap on a part jumps to it and holds it for a few
+ * seconds before the loop carries on. Under reduced motion nothing moves by
+ * itself and tapping is the only way through.
  *
  * Ink and paper, with block-blue for the current part only.
  */
 
-const STEP_MS = 3200
+const STEP_MS = 2200 // how long each part is lit
+const HOLD_MS = 6000 // how long a tapped part is held before the loop resumes
 
 function pickProps(i, active, pick, label) {
   return {
@@ -43,98 +44,45 @@ const fillFor = (on) => (on ? 'var(--block-blue)' : 'var(--card)')
 const inkFor = (on) => (on ? 'var(--on-blue)' : 'var(--ink)')
 
 /* ------------------------------------------------------------- the frame
- * Runs the clock, draws the progress segments, the play/pause control and
- * the caption. `drawn` = how many parts the shape itself draws; any parts
- * after that sit in a row of chips under it, so no step is left out.
+ * Runs the clock and shows the caption for the lit part. Steps that are not
+ * a shape of their own (CAR, "Each one", "Decision", top-down ...) are drawn
+ * by the shape itself as a different way of lighting its parts, so every
+ * step plays and there is nothing to press.
  */
-function Motion({ parts, drawn = parts.length, label, children }) {
+function Motion({ parts, label, ms = STEP_MS, children }) {
   const reduce = useReducedMotion()
   const [ref, inView] = useInView(0.3)
-  const [paused, setPaused] = useState(false)
-  // true after a tap on a part: the bar shows that part as reached, and
-  // playing again starts it fresh
   const [held, setHeld] = useState(false)
-  const running = inView && !paused && !reduce
-  const [active, jump, run] = useAutoStep(parts.length, STEP_MS, running)
+  const holdTimer = useRef(null)
+  const running = inView && !held && !reduce
+  const [active, jump] = useAutoStep(parts.length, ms, running)
+
+  useEffect(() => () => clearTimeout(holdTimer.current), [])
 
   function pick(i) {
     jump(i)
-    setPaused(true)
     setHeld(true)
-  }
-
-  function toggle() {
-    setPaused((p) => !p)
-    setHeld(false)
+    clearTimeout(holdTimer.current)
+    holdTimer.current = setTimeout(() => setHeld(false), HOLD_MS)
   }
 
   const part = parts[active]
-  const extras = parts.slice(drawn)
 
   return (
     <div ref={ref} className={`diagram-enter ${inView ? 'in-view' : ''}`} aria-label={label}>
       {children(active, pick)}
 
-      {extras.length > 0 && (
-        <ul className="mt-4 flex flex-wrap justify-center gap-2">
-          {extras.map(([l], k) => {
-            const i = drawn + k
-            return (
-              <li key={l}>
-                <button type="button" aria-pressed={active === i} onClick={() => pick(i)} className="pill">
-                  {l}
-                </button>
-              </li>
-            )
-          })}
-        </ul>
-      )}
-
-      <div className="mt-5 flex items-center gap-2">
-        <div className="flex flex-1 gap-1">
-          {parts.map(([l], i) => (
-            <button key={l} type="button" onClick={() => pick(i)} aria-label={l} className="flex h-6 flex-1 items-center">
-              <span className="block h-1 w-full bg-border">
-                {(i < active || (i === active && (held || reduce))) && <span className="block h-full bg-ink" />}
-                {i === active && !held && !reduce && <ProgressFill run={run} ms={STEP_MS} playing={running} />}
-              </span>
-            </button>
-          ))}
-        </div>
-        {!reduce && (
-          <button
-            type="button"
-            onClick={toggle}
-            aria-label={paused ? 'Play' : 'Pause'}
-            className="grid size-11 shrink-0 place-items-center rounded-pill border border-border text-text hover:border-accent"
-          >
-            {paused ? (
-              <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M3 2l11 6-11 6V2Z" fill="currentColor" />
-              </svg>
-            ) : (
-              <svg width="12" height="12" viewBox="0 0 16 16" aria-hidden="true">
-                <rect x="3" y="2" width="4" height="12" fill="currentColor" />
-                <rect x="9" y="2" width="4" height="12" fill="currentColor" />
-              </svg>
-            )}
-          </button>
-        )}
-      </div>
-
-      <div className="relative mt-2 min-h-32" aria-live="polite">
+      {/* the loop changes this on its own, so it only announces after a tap */}
+      <div className="relative mt-5 min-h-28" aria-live={held ? 'polite' : 'off'}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={active}
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
           >
-            <p className="label">
-              {active + 1} of {parts.length}
-            </p>
-            <p className="mt-1 text-section font-semibold leading-tight text-text">{part[0]}</p>
+            <p className="text-section font-semibold leading-tight text-text">{part[0]}</p>
             <p className="mt-1 text-text-muted">{part[1]}</p>
             {part[2] && <p className="mt-1 text-text-muted">e.g. {part[2]}</p>}
           </motion.div>
@@ -148,12 +96,15 @@ function Motion({ parts, drawn = parts.length, label, children }) {
  * STAR, SBI, user → pain → solution → metrics: letter boxes in a row,
  * joined by connectors whose dashes flow toward the next step.
  */
-function Chain({ steps, active, pick }) {
+function Chain({ steps, active, pick, extra }) {
+  // an extra step (CAR) isn't a box: it lights some boxes and strikes others
+  const combo = extra && active === extra.at ? extra : null
   return (
     <ol className="flex items-stretch gap-3 sm:gap-8">
       {steps.map(([label], i) => {
-        const on = active === i
-        const done = i < active
+        const on = combo ? combo.lit.includes(i) : active === i
+        const dim = combo ? combo.dim.includes(i) : false
+        const done = !combo && i < active
         return (
           <li key={label} className="relative flex min-w-0 flex-1">
             <button
@@ -161,11 +112,19 @@ function Chain({ steps, active, pick }) {
               onClick={() => pick(i)}
               aria-pressed={on}
               className={`flex min-h-24 min-w-0 flex-1 flex-col items-center justify-center border border-ink px-1 py-3 transition-[background-color,color,transform] duration-300 ${
-                on ? '-translate-y-1.5 bg-block-blue text-on-blue' : done ? 'bg-paper text-ink' : 'bg-card text-ink'
+                on
+                  ? '-translate-y-1.5 bg-block-blue text-on-blue'
+                  : dim
+                    ? 'bg-card text-ink opacity-40'
+                    : done
+                      ? 'bg-paper text-ink'
+                      : 'bg-card text-ink'
               }`}
             >
               <span className="font-display text-[2.5rem] leading-none sm:text-[3rem]">{label[0]}</span>
-              <span className="mt-1 max-w-full text-center text-[0.6875rem] font-semibold leading-tight sm:text-body">{label}</span>
+              <span className={`mt-1 max-w-full text-center text-[0.6875rem] font-semibold leading-tight sm:text-body ${dim ? 'line-through' : ''}`}>
+                {label}
+              </span>
             </button>
             {i < steps.length - 1 && (
               <span aria-hidden="true" className="flow-line-x absolute top-1/2 left-full h-0.5 w-3 sm:w-8" />
@@ -334,10 +293,11 @@ function Funnel({ steps, active, pick }) {
  * HEART: one row per dimension, what it means beside it.
  */
 function Rows({ steps, active, pick }) {
+  const all = active >= steps.length // "Each one": the same goal-signal-metric for every row
   return (
     <ul className="divide-y divide-border border border-ink">
       {steps.map(([label, detail], i) => {
-        const on = active === i
+        const on = all || active === i
         return (
           <li key={label}>
             <button
@@ -364,11 +324,14 @@ function NestedCircles({ steps, active, pick }) {
   const CX = 150
   const CY = 150
   const radii = [130, 90, 48]
+  // the three sizing steps light their own circle; top-down starts from the
+  // big one, bottom-up from the small one, cross-check compares the two
+  const lit = active < steps.length ? [active] : ({ 3: [0], 4: [2], 5: [0, 2] }[active] ?? [])
 
   return (
     <svg viewBox="0 0 300 300" className="mx-auto block w-full max-w-sm" aria-hidden="true">
       {steps.map(([label], i) => {
-        const on = active === i
+        const on = lit.includes(i)
         return (
           <g key={label} {...pickProps(i, active, pick, label)}>
             <circle cx={CX} cy={CY} r={radii[i]} fill={fillFor(on)} stroke="var(--ink)" strokeWidth="1" style={{ transition: 'fill 300ms' }} />
@@ -379,7 +342,7 @@ function NestedCircles({ steps, active, pick }) {
         )
       })}
       {steps.map(([label], i) => (
-        <text key={`t-${label}`} x={CX} y={CY - radii[i] + 22} textAnchor="middle" fontSize="15" fontWeight="700" fill={inkFor(active === i)} style={{ pointerEvents: 'none' }}>
+        <text key={`t-${label}`} x={CX} y={CY - radii[i] + 22} textAnchor="middle" fontSize="15" fontWeight="700" fill={inkFor(lit.includes(i))} style={{ pointerEvents: 'none' }}>
           {label}
         </text>
       ))}
@@ -398,15 +361,16 @@ function Venn({ steps, active, pick }) {
   ]
   const positions = [
     { x: 150, y: 20 },
-    { x: 40, y: 244 },
-    { x: 260, y: 244 },
+    { x: 46, y: 244 },
+    { x: 254, y: 244 },
   ]
   const overlap = steps[3]
+  const all = active >= 4 // "Decision": go or no-go on the whole picture
 
   return (
     <svg viewBox="0 0 300 260" className="mx-auto block w-full max-w-sm" aria-hidden="true">
       {circles.map(({ cx, cy }, i) => {
-        const on = active === i
+        const on = all || active === i
         return (
           <g key={i} className="breathe" style={{ animationDelay: `${i * 0.8}s`, '--bx': `${(cx - 150) / 14}px`, '--by': `${(cy - 141) / 14}px` }}>
             <circle
@@ -430,8 +394,8 @@ function Venn({ steps, active, pick }) {
       ))}
       {overlap && (
         <g {...pickProps(3, active, pick, overlap[0])}>
-          <circle cx="150" cy="141" r="20" fill={active === 3 ? 'var(--block-blue)' : 'var(--ink)'} style={{ transition: 'fill 300ms' }} />
-          <text x="150" y="145" textAnchor="middle" fill={active === 3 ? 'var(--on-blue)' : 'var(--card)'} fontSize="9" fontWeight="700" style={{ pointerEvents: 'none' }}>
+          <circle cx="150" cy="141" r="20" fill={all || active === 3 ? 'var(--block-blue)' : 'var(--ink)'} style={{ transition: 'fill 300ms' }} />
+          <text x="150" y="145" textAnchor="middle" fill={all || active === 3 ? 'var(--on-blue)' : 'var(--card)'} fontSize="9" fontWeight="700" style={{ pointerEvents: 'none' }}>
             {overlap[0]}
           </text>
         </g>
@@ -673,27 +637,29 @@ export default function MethodDiagram({ method }) {
   const { slug, steps, name } = method
   const label = `${name}: ${steps.map((s) => s[0]).join(', ')}`
 
-  const shape = (drawn, Shape) => (
-    <Motion parts={steps} drawn={drawn} label={label}>
-      {(active, pick) => <Shape steps={steps.slice(0, drawn)} active={active} pick={pick} />}
+  // `drawn` parts get a shape; any further steps are shown by the shape itself
+  const shape = (drawn, Shape, { ms, extra } = {}) => (
+    <Motion parts={steps} ms={ms} label={label}>
+      {(active, pick) => <Shape steps={steps.slice(0, drawn)} active={active} pick={pick} extra={extra} />}
     </Motion>
   )
 
   switch (slug) {
     case 'star-car':
-      return shape(4, Chain)
+      // CAR: Context, Action, Result. Task drops out.
+      return shape(4, Chain, { ms: 2400, extra: { at: 4, lit: [0, 2, 3], dim: [1] } })
     case 'sbi':
       return shape(4, Chain)
     case 'user-pain-solution':
       return shape(4, Chain)
     case 'circles':
-      return shape(steps.length, Wheel)
+      return shape(steps.length, Wheel, { ms: 1500 })
     case 'north-star':
       return shape(steps.length, HubSatellites)
     case 'aarrr':
-      return shape(5, Funnel)
+      return shape(5, Funnel, { ms: 1600 })
     case 'heart':
-      return shape(5, Rows)
+      return shape(5, Rows, { ms: 2000 })
     case 'metric-drop':
       return shape(steps.length, DecisionTree)
     case 'tam-sam-som':
@@ -716,7 +682,7 @@ export default function MethodDiagram({ method }) {
           </section>
           <section>
             <p className="label mb-2">Kano — separate basics from delighters</p>
-            <Motion parts={kano.categories} label={`Kano: ${kano.categories.map((c) => c[0]).join(', ')}`}>
+            <Motion parts={kano.categories} ms={2400} label={`Kano: ${kano.categories.map((c) => c[0]).join(', ')}`}>
               {(active, pick) => <KanoCurve cats={kano.categories} active={active} pick={pick} />}
             </Motion>
           </section>
