@@ -124,7 +124,9 @@ function StageCard({ elRef, id, label, side, status, summary, deeper }) {
   return (
     <motion.div
       ref={elRef}
-      className="card p-3"
+      className={`card p-3 transition-[background-color,border-color,box-shadow] duration-300 ${
+        active ? 'bg-accent-tint !border-accent shadow-[inset_4px_0_0_0_var(--accent)]' : ''
+      }`}
       initial={reduce ? false : { opacity: 0, x: side === 'left' ? -14 : side === 'right' ? 14 : -10 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
@@ -134,9 +136,9 @@ function StageCard({ elRef, id, label, side, status, summary, deeper }) {
       }}
       transition={SPRING}
     >
-      <p className="label">{label}</p>
+      <p className={`label ${active ? '!text-text' : ''}`}>{label}</p>
       <div className="mt-1 text-text">{summary}</div>
-      {active && deeper && <div className="mt-2 border-t border-border pt-2 text-text-muted">{deeper}</div>}
+      {active && deeper && <div className="mt-2 border-t border-accent/30 pt-2 text-text">{deeper}</div>}
     </motion.div>
   )
 }
@@ -153,7 +155,8 @@ function StageCard({ elRef, id, label, side, status, summary, deeper }) {
  * upcoming / active / completed — comes from a scroll-spy watching an
  * invisible trigger line at ~45% of the viewport (useActiveStage above).
  * Reaching a step's trigger line is what opens it: only the active card
- * expands to its deeper layer; completed ones collapse back to a summary.
+ * expands to its deeper layer and takes the yellow highlight with an ink bar
+ * down its left edge; completed ones collapse back to a summary.
  *
  * @param {{
  *   slug: string, name: string, gist: string, howItWorks: string,

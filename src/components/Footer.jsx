@@ -64,7 +64,7 @@ function StampBadge() {
 function WavingPip() {
   const line = { fill: 'none', stroke: 'var(--royal)', strokeWidth: 2.2, strokeLinecap: 'round', strokeLinejoin: 'round' }
   return (
-    <svg viewBox="0 0 90 80" className="h-12 w-auto shrink-0" aria-hidden="true">
+    <svg viewBox="0 0 90 80" className="h-9 w-auto shrink-0 sm:h-12" aria-hidden="true">
       <circle cx="40" cy="44" r="26" fill="var(--card)" stroke="var(--royal)" strokeWidth="2.2" />
       <circle cx="31" cy="41" r="2" fill="var(--royal)" />
       <circle cx="49" cy="41" r="2" fill="var(--royal)" />
@@ -168,14 +168,14 @@ export default function Footer() {
   return (
     <footer className="text-royal">
       <div className="border-t border-royal bg-butter">
-        <PageContainer className="pt-8 sm:pt-10">
+        <PageContainer className="pt-6 sm:pt-10">
           {/* deliberately smaller than the homepage headline (h1) */}
-          <p className="text-center font-sans text-[1.75rem] font-normal leading-[1.05] tracking-[-0.02em] sm:text-[2.25rem] lg:text-[2.75rem]">
+          <p className="text-center font-sans text-[1.5rem] font-normal leading-[1.05] tracking-[-0.02em] max-sm:text-balance sm:text-[2.25rem] lg:text-[2.75rem]">
             Come back when the nerves kick in.
           </p>
 
-          <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-3 lg:grid-cols-[auto_1fr_1fr_1fr_1fr_1.6fr]">
-            <div className="col-span-2 flex justify-center sm:col-span-3 lg:col-span-1 lg:block">
+          <div className="mt-5 grid grid-cols-3 gap-x-4 gap-y-4 text-[0.875rem] sm:mt-8 sm:gap-x-6 sm:gap-y-6 sm:text-body lg:grid-cols-[auto_1fr_1fr_1fr_1fr_1.6fr]">
+            <div className="hidden sm:col-span-3 sm:flex sm:justify-center lg:col-span-1 lg:block">
               <StampBadge />
             </div>
 
@@ -194,31 +194,31 @@ export default function Footer() {
               </nav>
             ))}
 
-            <div>
+            <div className="col-span-3 flex flex-wrap items-baseline gap-x-3 sm:col-span-1 sm:block">
               <p className="font-semibold uppercase tracking-wide">Talk to us</p>
-              <p className="mt-2">Wrong answer? Missing company?</p>
+              <p className="hidden sm:mt-2 sm:block">Wrong answer? Missing company?</p>
               <a href={`${REPO}/issues`} target="_blank" rel="noreferrer noopener" className="text-royal underline underline-offset-2">
                 Open an issue
               </a>
             </div>
 
-            <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+            <div className="col-span-3 lg:col-span-1">
               <p>Sign in to sync saved questions and flashcards across devices. We only email the sign-in link.</p>
-              <div className="mt-3">
+              <div className="mt-2 sm:mt-3">
                 <SyncBox />
               </div>
             </div>
           </div>
         </PageContainer>
 
-        <div className="mt-8 flex items-end gap-4 pl-4 pr-4 sm:pl-6 sm:pr-6">
+        <div className="mt-5 flex items-end gap-4 pl-4 pr-4 sm:mt-8 sm:pl-6 sm:pr-6">
           <div className="min-w-0 flex-1">
             <WavyRule />
           </div>
           <WavingPip />
         </div>
 
-        <PageContainer className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4">
+        <PageContainer className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-3 sm:py-4">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-label font-semibold uppercase tracking-wide">
             <li>
               <Link to="/about" className="text-royal no-underline hover:underline">
@@ -236,7 +236,7 @@ export default function Footer() {
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
             </svg>
           </a>
-          <p className="font-mono text-label font-semibold uppercase tracking-wide">Learning, practising, landing it.</p>
+          <p className="hidden font-mono text-label font-semibold uppercase tracking-wide sm:block">Learning, practising, landing it.</p>
         </PageContainer>
       </div>
     </footer>

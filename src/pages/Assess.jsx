@@ -45,8 +45,8 @@ function Question({ item, index, chosen, onPick, onNext, isLast }) {
           const isAnswer = i === item.answer
           const isChosen = i === chosen
           let state = 'bg-surface hover:border-accent'
-          if (answered && isAnswer) state = 'bg-accent text-surface !border-accent'
-          else if (answered && isChosen) state = '!border-accent text-accent'
+          if (answered && isAnswer) state = 'bg-correct text-on-answer !border-correct'
+          else if (answered && isChosen) state = 'bg-wrong text-on-answer !border-wrong'
           else if (answered) state = 'bg-surface opacity-60'
           return (
             <li key={i}>
@@ -77,8 +77,11 @@ function Question({ item, index, chosen, onPick, onNext, isLast }) {
       </ul>
 
       {answered && (
-        <div className="card mt-3 p-3" role="status">
-          <p className="label !text-text">{chosen === item.answer ? 'Right' : 'Not quite'}</p>
+        <div
+          className={`card mt-3 border-l-4 p-3 ${chosen === item.answer ? '!border-l-correct' : '!border-l-wrong'}`}
+          role="status"
+        >
+          <p className="label !text-text">{chosen === item.answer ? '✓ Right' : '✗ Not quite'}</p>
           <p className="mt-1 text-body text-text-muted">{item.why}</p>
         </div>
       )}
@@ -236,7 +239,10 @@ function Results({ answers, onRetake }) {
             key={it.skill}
             className="flex items-baseline gap-3 border-b border-border py-2 text-body"
           >
-            <span className="w-4 shrink-0 font-semibold text-text" aria-label={ok ? 'correct' : 'missed'}>
+            <span
+              className={`grid size-5 shrink-0 place-items-center font-semibold text-on-answer ${ok ? 'bg-correct' : 'bg-wrong'}`}
+              aria-label={ok ? 'correct' : 'missed'}
+            >
               {ok ? '✓' : '✗'}
             </span>
             <span className="text-text">{skill.name}</span>

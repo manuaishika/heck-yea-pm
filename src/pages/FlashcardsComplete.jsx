@@ -4,7 +4,6 @@ import { getQuestion } from '../data/questions'
 import { readLastSession, useFlashcardSession } from '../lib/useFlashcardSession'
 import { useReviews } from '../lib/useReviews'
 import { useHead } from '../lib/useHead'
-import { useMarkProgress } from '../lib/useProgress'
 import { Page, PageHead } from '../components/Page'
 import Pip from '../components/Pip'
 
@@ -15,7 +14,6 @@ export default function FlashcardsComplete() {
   useHead({ title: 'Session done', description: 'Your flashcard session summary.', path: '/flashcards/complete' })
 
   const deck = useMemo(() => readLastSession() || [], [])
-  useMarkProgress(deck.length > 0 ? 'progress.flashcards' : null)
 
   // no session to summarise — someone hit the URL directly
   if (deck.length === 0) {

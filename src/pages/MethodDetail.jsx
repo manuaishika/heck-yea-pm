@@ -2,7 +2,6 @@ import { useId, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { getMethod, questionsForMethod, exampleQuestion } from '../lib/methods'
 import { useHead } from '../lib/useHead'
-import { useMarkProgress } from '../lib/useProgress'
 import { Page, PageHead } from '../components/Page'
 import { Block, CategoryTag } from '../components/ui'
 import BackLink from '../components/BackLink'
@@ -91,7 +90,6 @@ export default function MethodDetail() {
     path: `/methods/${slug}`,
   })
 
-  useMarkProgress(m ? `progress.method.${m.slug}` : null)
 
   if (!m) return <NotFound />
 

@@ -6,6 +6,10 @@ import Rich from '../Rich'
  * SVG connector. Hovering or focusing a node previews it; clicking pins it. The
  * detail for the active node shows in a card below.
  *
+ * On a phone the nodes wrap three over two (the six-column grid below) and
+ * show only their name; the one-line summary moves into the detail card so
+ * nothing clips. The connector only draws where the nodes sit in one row.
+ *
  * Real buttons, keyboard navigable, works on touch (tap = pin). The connector
  * is decorative and aria-hidden.
  *
@@ -33,7 +37,7 @@ export default function FlowMap({ root, sub, steps }) {
       <svg
         viewBox="0 0 100 14"
         preserveAspectRatio="none"
-        className="mx-auto block h-4 w-full max-w-md text-border"
+        className="mx-auto hidden h-4 w-full max-w-md text-border sm:block"
         aria-hidden="true"
       >
         <path
@@ -62,8 +66,8 @@ export default function FlowMap({ root, sub, steps }) {
 
       {/* step nodes */}
       <div
-        className="grid gap-2"
-        style={{ gridTemplateColumns: `repeat(${steps.length}, minmax(0, 1fr))` }}
+        className="mt-3 grid grid-cols-6 gap-1.5 sm:mt-0 sm:gap-2 sm:[grid-template-columns:repeat(var(--steps),minmax(0,1fr))]"
+        style={{ '--steps': steps.length }}
       >
         {steps.map((s, i) => {
           const on = i === active
@@ -77,7 +81,9 @@ export default function FlowMap({ root, sub, steps }) {
               onMouseLeave={() => setHovered(null)}
               onFocus={() => setHovered(i)}
               onBlur={() => setHovered(null)}
-              className={`flex flex-col rounded-button border border-border px-2 py-2 text-left ${
+              className={`flex min-h-11 flex-col items-center justify-center rounded-button border border-border px-1 py-2 text-center sm:col-span-1 sm:items-stretch sm:justify-start sm:px-2 sm:text-left ${
+                i < 3 ? 'col-span-2' : 'col-span-3'
+              } ${
                 on ? 'bg-accent text-surface' : 'bg-surface hover:border-accent'
               }`}
             >
@@ -87,7 +93,7 @@ export default function FlowMap({ root, sub, steps }) {
                 {s.step}
               </span>
               <span
-                className={`mt-1 text-body leading-tight ${on ? 'text-surface' : 'text-text-muted'}`}
+                className={`mt-1 hidden text-body leading-tight sm:block ${on ? 'text-surface' : 'text-text-muted'}`}
               >
                 {s.short}
               </span>
@@ -98,8 +104,11 @@ export default function FlowMap({ root, sub, steps }) {
 
       {/* detail: tinted strip */}
       <div className="tint mt-3 rounded-card border-l-4 border-accent px-3 py-2">
-        <p className="label !text-text">{current.step}</p>
-        <p className="mt-1 text-body leading-relaxed text-text-muted">
+        <p className="label !text-text">
+          {current.step}
+          <span className="sm:hidden"> · {current.short}</span>
+        </p>
+        <p className="mt-1 text-body leading-relaxed text-text">
           <Rich>{current.detail}</Rich>
         </p>
       </div>

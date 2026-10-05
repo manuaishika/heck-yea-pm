@@ -86,6 +86,12 @@
      marks (Uber, Paytm, HDFC) stay readable */
   --logo-plate: transparent;
 
+  /* quiz feedback only (Assess.jsx): right answer, wrong answer, and the
+     white text that sits on both. Same in light and dark. */
+  --correct: #1f7a4d;
+  --wrong: #b3261e;
+  --on-answer: #ffffff;
+
   /* round-weight badges only (WeightBars.jsx) — nowhere else on the site */
   --weight-heavy: #c0392b;
   --weight-medium: #d97706;
@@ -146,6 +152,9 @@
   --color-royal: var(--royal);
   --color-on-tag: var(--on-tag);
   --color-on-blue: var(--on-blue);
+  --color-correct: var(--correct);
+  --color-wrong: var(--wrong);
+  --color-on-answer: var(--on-answer);
   --color-weight-heavy: var(--weight-heavy);
   --color-weight-medium: var(--weight-medium);
   --color-weight-light: var(--weight-light);

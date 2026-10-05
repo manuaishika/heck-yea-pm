@@ -8,7 +8,6 @@ import {
   shortAnswer,
 } from '../data/questions'
 import { useHead } from '../lib/useHead'
-import { useMarkProgress } from '../lib/useProgress'
 import { Page, PageHead } from '../components/Page'
 import { Detail, Block, Bullets, CategoryTag } from '../components/ui'
 import MethodLinks from '../components/MethodLinks'
@@ -57,7 +56,6 @@ export default function QuestionDetail() {
   const { id } = useParams()
   const location = useLocation()
   const canonicalId = resolveQuestionId(id)
-  useMarkProgress(canonicalId ? `progress.question.${canonicalId}` : null)
 
   if (!canonicalId) return <NotFound />
   if (canonicalId !== id) {
