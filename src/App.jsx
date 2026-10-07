@@ -7,6 +7,7 @@ import Landing from './pages/Landing'
 import { AuthProvider } from './lib/auth'
 
 const Role = lazy(() => import('./pages/Role'))
+const Today = lazy(() => import('./pages/Today'))
 const Skills = lazy(() => import('./pages/Skills'))
 const Assess = lazy(() => import('./pages/Assess'))
 const Careers = lazy(() => import('./pages/Careers'))
@@ -43,6 +44,7 @@ export default function App() {
           <Route element={<Layout />}>
             <Route index element={<Landing />} />
             <Route path="role" element={<Role />} />
+            <Route path="today" element={<Today />} />
             <Route path="skills" element={<Skills />} />
             <Route path="skills/assess" element={<Assess />} />
             <Route path="careers" element={<Careers />} />

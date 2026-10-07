@@ -9,6 +9,7 @@ import {
 } from '../data/questions'
 import { useFlashcardSession } from '../lib/useFlashcardSession'
 import { useReviews } from '../lib/useReviews'
+import { useActivity } from '../lib/useActivity'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { CategoryTag } from '../components/ui'
@@ -103,6 +104,7 @@ function Picker({ onStart, reviewIds }) {
 function Deck({ session, prev, next, finish }) {
   const navigate = useNavigate()
   const { marks, mark } = useReviews()
+  const { log } = useActivity()
   const [showBack, setShowBack] = useState(false)
   const touch = useRef(null)
 
@@ -127,6 +129,7 @@ function Deck({ session, prev, next, finish }) {
   }
   function markCard(status) {
     mark(id, status)
+    log()
     advance()
   }
 

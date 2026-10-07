@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { quiz, getSkill } from '../data/guides'
 import { categorySlug } from '../data/questions'
 import { useQuiz } from '../lib/useQuiz'
+import { useActivity } from '../lib/useActivity'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 
@@ -266,6 +267,7 @@ function Results({ answers, onRetake }) {
 
 export default function Assess() {
   const { answers, answer, reset, canPersist } = useQuiz()
+  const { log } = useActivity()
   useHead({
     title: 'Where do you stand?',
     description:
@@ -323,6 +325,7 @@ export default function Assess() {
           onPick={(i) => {
             setCursor(index) // stay on this question so the feedback shows
             answer(item.skill, i)
+            log()
           }}
           onNext={next}
           isLast={isLast}

@@ -26,6 +26,11 @@ const routes = {
     description:
       'Free prep for your first product interview. The role, the skills, a question bank, and company loops — built for students applying to APM programs.',
   },
+  '/today': {
+    title: 'Today’s question',
+    description:
+      'One product interview question a day, the same for everyone. Say your answer, check the model answer, keep your streak.',
+  },
   '/role': {
     title: 'The role',
     description:
@@ -150,6 +155,8 @@ function render(path, { title, description }) {
     .replace(metaContent('name', 'description'), `$1${desc}$2`)
     .replace(metaContent('property', 'og:title'), `$1${fullTitle}$2`)
     .replace(metaContent('property', 'og:description'), `$1${desc}$2`)
+    .replace(metaContent('property', 'og:image'), `$1${ORIGIN}/og.png$2`)
+    .replace(metaContent('name', 'twitter:image'), `$1${ORIGIN}/og.png$2`)
     .replace(
       '</head>',
       `  <meta property="og:url" content="${url}" />\n    <link rel="canonical" href="${url}" />\n  </head>`
@@ -170,4 +177,19 @@ for (const [path, meta] of Object.entries(routes)) {
   count += 1
 }
 
-console.log(`✓ prerendered ${count} routes`)
+// sitemap.xml and robots.txt — every public route, none of the personal ones
+const PRIVATE = new Set(['/login', '/saved', '/flashcards/complete', '/india'])
+const today = new Date().toISOString().slice(0, 10)
+const urls = Object.keys(routes)
+  .filter((p) => !PRIVATE.has(p))
+  .map((p) => `  <url><loc>${ORIGIN}${p === '/' ? '/' : p}</loc><lastmod>${today}</lastmod></url>`)
+writeFileSync(
+  join(dist, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`
+)
+writeFileSync(
+  join(dist, 'robots.txt'),
+  `User-agent: *\nAllow: /\n${[...PRIVATE].map((p) => `Disallow: ${p}`).join('\n')}\n\nSitemap: ${ORIGIN}/sitemap.xml\n`
+)
+
+console.log(`✓ prerendered ${count} routes, sitemap.xml with ${urls.length} urls, robots.txt`)

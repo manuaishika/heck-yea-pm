@@ -17,6 +17,7 @@ const MENU_GROUPS = [
   {
     label: 'Practice',
     items: [
+      ['/today', 'Today’s question'],
       ['/browse', 'Questions'],
       ['/flashcards', 'Flashcards'],
       ['/skills/assess', 'Where do you stand?'],

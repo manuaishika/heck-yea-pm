@@ -11,6 +11,7 @@ const methods = load('methods.json').methods
 
 const ROUTES = [
   '/',
+  '/today',
   '/role',
   '/skills',
   '/skills/assess',

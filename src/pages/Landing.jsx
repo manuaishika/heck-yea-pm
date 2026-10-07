@@ -5,6 +5,7 @@ import IntroVideo from '../components/IntroVideo'
 import InterviewLoopTimeline from '../components/InterviewLoopTimeline'
 import Faq from '../components/Faq'
 import { useHead } from '../lib/useHead'
+import { useActivity } from '../lib/useActivity'
 
 const LOOP_ROUNDS = [
   { name: 'Recruiter screen', tests: 'Fit for the role, your background, and why this company.' },
@@ -30,6 +31,8 @@ export default function Landing() {
     path: '/',
   })
 
+  const { streak } = useActivity()
+
   return (
     <Page wide>
       {/* hero */}
@@ -39,9 +42,15 @@ export default function Landing() {
             Prep for your <em>first</em> product interview.
           </h1>
           <p className="mt-3 text-text-muted">Learning, practising, landing it.</p>
-          <Link to="/browse" className="btn btn-primary mt-6 px-7 py-3 no-underline hover:no-underline">
-            Browse questions
-          </Link>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link to="/browse" className="btn btn-primary px-7 py-3 no-underline hover:no-underline">
+              Browse questions
+            </Link>
+            <Link to="/today" className="btn px-7 py-3 no-underline hover:no-underline">
+              Today’s question
+            </Link>
+          </div>
+          {streak > 0 && <p className="label mt-3">{streak} day streak</p>}
         </div>
       </div>
 
