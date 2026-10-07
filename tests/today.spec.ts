@@ -73,6 +73,77 @@ test.describe('today', () => {
   })
 })
 
+test.describe('revisit and share', () => {
+  test('a question marked needs work comes back on Today', async ({ page }) => {
+    await page.addInitScript(`localStorage.setItem('hyp.reviews.v1', JSON.stringify({ 'tell-me-about-yourself': 'review' }))`)
+    await page.goto('/today')
+    const card = page.getByRole('region', { name: 'Question' }).last()
+    await expect(card.getByText('Revisit')).toBeVisible()
+    await expect(card.getByText('You marked this needs work.')).toBeVisible()
+    await expect(card.getByRole('heading', { level: 2 })).toContainText('Tell me about yourself')
+    await card.getByRole('button', { name: 'Show model answer' }).click()
+    await card.getByRole('button', { name: 'Nailed it' }).click()
+    // rating it swaps the mark and counts as practice, without replacing the card
+    await expect(card.getByRole('heading', { level: 2 })).toContainText('Tell me about yourself')
+    await expect(page.getByText('1 day streak')).toBeVisible()
+    const marks = await page.evaluate(`JSON.parse(localStorage.getItem('hyp.reviews.v1'))`)
+    expect(marks['tell-me-about-yourself']).toBe('known')
+  })
+
+  test('with nothing to revisit there is one card', async ({ page }) => {
+    await page.goto('/today')
+    await expect(page.getByRole('region', { name: 'Question' })).toHaveCount(1)
+  })
+
+  test('a missed quiz skill brings a weak-spot question', async ({ page }) => {
+    // first quiz question (APIs, technical): option 0 is wrong
+    await page.addInitScript(`localStorage.setItem('hyp.quiz.v1', JSON.stringify({ answers: { apis: 0 }, at: 1 }))`)
+    await page.goto('/today')
+    await expect(page.getByText(/Weak spot from the quiz/)).toBeVisible()
+  })
+
+  test('sharing offers WhatsApp where there is no share sheet', async ({ page }) => {
+    await page.addInitScript(`localStorage.setItem('hyp.viewed.v1', JSON.stringify({ ['day.' + (() => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') })()]: true }))`)
+    await page.addInitScript(`Object.defineProperty(navigator, 'share', { value: undefined, configurable: true })`)
+    await page.goto('/today')
+    const link = page.getByRole('link', { name: 'Share on WhatsApp' })
+    await expect(link).toHaveAttribute('href', /^https:\/\/wa\.me\/\?text=.+today/)
+  })
+
+  test('sharing uses the share sheet when the phone has one', async ({ page }) => {
+    await page.addInitScript(`
+      window.__shared = null
+      Object.defineProperty(navigator, 'share', { value: (data) => { window.__shared = data; return Promise.resolve() }, configurable: true })
+      localStorage.setItem('hyp.viewed.v1', JSON.stringify({ ['day.' + (() => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') })()]: true }))
+    `)
+    await page.goto('/today')
+    await page.getByRole('button', { name: 'Share your streak' }).click()
+    const shared = await page.evaluate(() => (window as any).__shared)
+    expect(shared.url).toMatch(/\/today$/)
+    expect(shared.text).toContain('Today’s product interview question')
+  })
+})
+
+test.describe('offline', () => {
+  test('the site opens with no connection after one visit', async ({ page, context }) => {
+    await page.goto('/')
+    await page.evaluate(() => navigator.serviceWorker.ready)
+    const cached = await page.evaluate(async () => {
+      const keys = await caches.keys()
+      const cache = await caches.open(keys.find((k) => k.startsWith('pp-'))!)
+      return { shell: Boolean(await cache.match('/')), files: (await cache.keys()).length }
+    })
+    expect(cached.shell).toBe(true)
+    expect(cached.files).toBeGreaterThan(40)
+
+    await context.setOffline(true)
+    await page.goto('/today')
+    await expect(page.getByRole('heading', { level: 1, name: 'Today’s question' })).toBeVisible()
+    await page.goto('/browse')
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  })
+})
+
 test.describe('launch basics', () => {
   test('sitemap lists the public routes and robots.txt points at it', async ({ request }) => {
     const sitemap = await (await request.get('/sitemap.xml')).text()

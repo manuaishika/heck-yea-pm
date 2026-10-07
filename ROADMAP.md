@@ -18,22 +18,25 @@ What keeps people coming back to prep apps: one problem a day, streaks, resurfac
 
 Win: free with no sign-up; built for freshers and APM programs; Indian company loops (Flipkart, Swiggy, Zomato, Razorpay, Zepto, Meesho); plain-language skills for non-technical students; moving method diagrams.
 
-Lose: depth (87 questions against 10,000), no human mock interviews, no video, no feedback on a typed answer.
+Lose: depth (131 questions against 10,000), no human mock interviews, no video, no feedback on a typed answer.
 
 ## Shipped
 
 - Daily loop: `/today` question (same for everyone, rotates categories), self-rating, streak and week view, interview date with a daily target, calendar reminder. Streaks sync through the existing progress store.
 - Practice from flashcards and the quiz counts toward the streak.
+- Today also brings back a question you marked needs work, or an unrated one from a category the quiz said is weak.
+- Share today's question and your streak: the phone share sheet, or a WhatsApp link elsewhere.
+- Offline: a service worker (written at build, no new dependency) keeps the app shell, scripts, fonts, icons and logos on the device, so the site opens with no connection after one visit.
+- Question bank grown from 87 to 131: behavioral, product design, strategy, analytics, technical and general. None are tagged to a company, so no "asked at" claim is made without a source.
 - Launch basics: real favicon and app icons, installable manifest that opens on Today, share image for link previews, `sitemap.xml`, `robots.txt`.
 
 ## Next, in order
 
 1. **Measure.** Cookieless analytics so daily visitors and returns are visible. Needs a decision (below).
-2. **Habit.** Resurface "needs work" questions on Today. Weak-area picks from the quiz. Share today's question and your streak to WhatsApp. Offline use via a service worker.
-3. **Depth.** Grow the bank from 87 to 200+, tagged by difficulty. Tag a question to a company only when sourced. More Indian company loops. A way to submit "I was asked this".
-4. **People.** A WhatsApp or Discord group for peer mock partners. Matching needs a backend, so start with a group.
-5. **Feedback on answers.** Type an answer, get a structured critique. Needs an API key, a server route, rate limits and a cost cap.
-6. **Email reminders.** Opt-in only. Needs an email provider and a server.
+2. **Depth.** Keep growing the bank toward 200+, tagged by difficulty. Tag a question to a company only when sourced. More Indian company loops. A way to submit "I was asked this".
+3. **People.** A WhatsApp or Discord group for peer mock partners. Matching needs a backend, so start with a group.
+4. **Feedback on answers.** Type an answer, get a structured critique. Needs an API key, a server route, rate limits and a cost cap.
+5. **Email reminders.** Opt-in only. Needs an email provider and a server.
 
 ## Decisions needed
 

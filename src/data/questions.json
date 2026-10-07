@@ -2706,5 +2706,1270 @@
     "failureMode": "Answering with a model technique and skipping the product side: what the new user actually sees in the first minute.",
     "companies": [],
     "hard": false
+  },
+  {
+    "id": "disagree-with-your-manager",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Tell me about a time you disagreed with your manager or a senior person.",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Show you can disagree and still commit — respect, then evidence",
+          "Pick a real disagreement about the work, never about a person",
+          "End with what happened next, even if you lost"
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "S: my lead wanted to cut user testing to hit a demo date; I thought we would demo the wrong thing",
+          "A: asked for ten minutes, showed three testers failing at the same step, and offered a one-day version of testing",
+          "A: agreed that if the one-day test found nothing, we would drop it",
+          "R: the test found the problem; we fixed it before the demo, and the lead asked me to run testing from then on"
+        ]
+      }
+    ],
+    "tip": "They check whether you push back with evidence and whether you can lose gracefully. Both matter when engineers or a senior stakeholder disagree with you.",
+    "failureMode": "Telling a story where you were right and the other person was wrong, with no sign you listened to their reason.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "handle-ambiguity",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Describe a time you worked with unclear requirements or a vague goal.",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Show how you create structure when nobody gives you one",
+          "Steps: ask who it is for, write down what success looks like, pick the smallest thing to test",
+          "Say what you assumed, and how you checked it"
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "S: a club asked me to \"make the event app better\" with no brief",
+          "A: interviewed five members, found check-in was the pain, and wrote a one-line goal: check-in under 30 seconds",
+          "A: built a QR check-in as the smallest test and timed it at the next event",
+          "R: average check-in dropped from 2 minutes to 25 seconds; the club adopted it for every event"
+        ]
+      }
+    ],
+    "tip": "Product work starts vague. They want to see you turn a fuzzy ask into a goal, a test and a number.",
+    "failureMode": "Waiting to be told what to do, or jumping into building before agreeing what success means.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "decision-with-incomplete-data",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Tell me about a decision you made with incomplete information.",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Name what you knew, what you did not, and how you decided anyway",
+          "Show you sized the risk: how bad if wrong, how easy to undo",
+          "Show you went back and checked the result"
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "S: we had two days to pick a topic for a hackathon demo and no user data",
+          "A: listed what we could not know, chose the option that was cheap to change, and set a checkpoint after day one",
+          "A: asked three target users a single question to cut the biggest unknown",
+          "R: the checkpoint caught a flaw early; we switched on day two without losing the demo"
+        ]
+      }
+    ],
+    "tip": "Real product decisions never have full data. They look for a reversible-or-not call and a plan to learn fast.",
+    "failureMode": "Saying you waited for more data, or claiming you decided on gut with no way to check.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "take-ownership-beyond-your-role",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Tell me about a time you took ownership of something outside your job.",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Pick a gap nobody owned that hurt the team",
+          "Show you did it without being asked, and without dropping your own work",
+          "Quantify what changed"
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "S: our society kept missing sponsor follow-ups because nobody tracked them",
+          "A: built a shared sheet with owner, date and status for every sponsor, and ran a five-minute weekly check",
+          "A: handed it to a junior member after two months with a one-page guide",
+          "R: follow-ups on time went from about half to nearly all; we closed two more sponsors that term"
+        ]
+      }
+    ],
+    "tip": "Product managers own outcomes without a manual. They look for initiative that stays small and leaves something behind.",
+    "failureMode": "Describing a heroic one-off with no lasting change, or taking credit for what the team did.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "influence-without-authority",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Tell me about a time you got people to do something without being their manager.",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Product managers have no direct reports, so this is the core skill",
+          "Show you found what the other person cared about and linked the ask to it",
+          "Name the result and the relationship afterwards"
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "S: I needed two developers on a college project to fix a bug that was not in their tasks",
+          "A: showed them it blocked the demo they were presenting, and offered to test every fix myself",
+          "A: split it into two small tickets so each could finish in an hour",
+          "R: both fixed it that evening; they came to me for the next planning round"
+        ]
+      }
+    ],
+    "tip": "This is the product manager job in one question. They listen for motive and framing, not for pressure or favours.",
+    "failureMode": "Saying you escalated to someone senior, or that you asked nicely until they agreed.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "say-no-to-a-request",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Tell me about a time you said no to something.",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Show you said no to protect a goal, not to avoid work",
+          "Give the reason, offer an alternative, and keep the relationship",
+          "It is stronger if the person later agreed you were right"
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "S: a teammate asked me to add five features the week before submission",
+          "A: showed that each added risk to the one feature judges would score, and ranked them by impact",
+          "A: kept one, moved the rest to a \"next version\" list with owners",
+          "R: we submitted on time with a stable demo; the list became our roadmap"
+        ]
+      }
+    ],
+    "tip": "Prioritisation is saying no with a reason. They check that your no comes from a goal, not from comfort.",
+    "failureMode": "A flat refusal with no reason and no alternative, or a story where you gave in.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "why-this-company",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "Why do you want to join this company?",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Name one product decision of theirs you admire, and why",
+          "Say what you would want to work on, and what you bring to it",
+          "Be specific — one detail only they would have"
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "I use [product] daily and noticed [specific choice], which tells me you put [value] ahead of [shortcut]",
+          "On [project] I worked on a similar problem: [one line]",
+          "I want to learn [skill] from a team that ships to millions of people, and give back [strength]"
+        ]
+      }
+    ],
+    "tip": "They test whether you did your homework and whether you can talk about their product like an owner.",
+    "failureMode": "A generic answer that fits any company: big brand, great culture, lots of learning.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "strengths-and-weaknesses",
+    "type": "question",
+    "category": "Behavioral",
+    "question": "What are your strengths and your biggest weakness?",
+    "sections": [
+      {
+        "label": "How to answer",
+        "points": [
+          "Strengths: pick two that a product manager needs, and prove each with a one-line example",
+          "Weakness: a real one that is not a core skill, and say what you are doing about it",
+          "Never use a disguised strength such as \"I work too hard\""
+        ]
+      },
+      {
+        "label": "Example",
+        "points": [
+          "Strength: structure — I break a vague problem into parts; I did that for [project]",
+          "Strength: listening — I ask one more question before proposing a fix",
+          "Weakness: I used to over-polish before sharing; now I share a rough version on day one and fix what people point at"
+        ]
+      }
+    ],
+    "tip": "Self-awareness is the point. They want evidence you notice your own gaps and act on them.",
+    "failureMode": "Giving a fake weakness, or naming one that rules you out of the role, with no sign you are working on it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "improve-a-upi-app-for-first-time-users",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you improve a UPI payments app for first-time users?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: more first-time users complete their first payment within a day",
+          "Segment: someone with a first smartphone who is nervous about losing money",
+          "Problem: the drop-off sits at linking the bank and setting the UPI PIN, which needs debit card details most people do not have in hand",
+          "Solution: a guided setup that says up front what you need (\"keep your debit card ready\"), explains each step in the local language, and ends with a small practice payment to a trusted merchant",
+          "Metrics: setup completion rate, first payment within 24 hours, support contacts per 100 setups",
+          "Guardrail: scam and wrong-recipient reports — easy setup must not make fraud easier"
+        ]
+      }
+    ],
+    "tip": "Strong answers find the step where people fall off, instead of adding features to the home screen.",
+    "failureMode": "Redesigning the home screen or adding rewards, when the real problem is the first-time setup.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "improve-youtube-for-learners",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you improve YouTube for people who use it to learn?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: more learners finish what they start, and come back",
+          "Segment: students preparing for an exam or picking up a skill",
+          "Problem: the recommendations pull them to unrelated videos, and there is no path, notes or progress",
+          "Solution: a \"Learning mode\" that turns a playlist into a course — progress bar, chapter notes, and no recommendations sidebar until the lesson ends",
+          "Metrics: course completion rate, days per week a learner returns",
+          "Guardrail: total watch time and creator revenue — fewer detours is a trade-off to measure, not ignore"
+        ]
+      }
+    ],
+    "tip": "Say who loses out. A good answer names the business cost of your idea and measures it.",
+    "failureMode": "Proposing features for everyone on the platform instead of one segment with a clear problem.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "quick-commerce-for-a-tier-2-city",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a quick-commerce grocery app for a tier-2 city.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: a profitable launch in one city, not a copy of the metro model",
+          "Segment: families ordering weekly staples, not 10-minute snacks",
+          "Constraints: lower order value, thin delivery density, addresses by landmark, preference for cash on delivery, regional language",
+          "Solution: scheduled delivery slots instead of 10 minutes, a curated 500-item range of staples, pin-on-map plus a call to the rider, cash on delivery",
+          "Metrics: orders per rider per hour, repeat orders in four weeks, cost per delivery",
+          "Question the premise: speed may not be what this city values"
+        ]
+      }
+    ],
+    "tip": "They want to see you adapt a model to a market, not paste it. Start from what is different there.",
+    "failureMode": "Copying the metro 10-minute promise without checking if delivery density can pay for it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "improve-whatsapp-for-small-businesses",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you improve WhatsApp for small businesses?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: sellers run more of their business inside WhatsApp",
+          "Segment: a home-run seller who takes repeat orders over chat",
+          "Problem: orders are buried in chat threads, so they get lost, forgotten or mis-added",
+          "Solution: an order inbox that turns a chat into an order with items, amount and status, plus a repeat-order reminder for regular customers",
+          "Metrics: orders handled per seller per week, repeat orders per customer",
+          "Guardrail: spam reports and blocks — reminders must not annoy buyers"
+        ]
+      }
+    ],
+    "tip": "The best answers keep the product simple for a seller with no staff and a phone in one hand.",
+    "failureMode": "Adding a full e-commerce suite that a one-person seller will never learn.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "improve-train-ticket-booking",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you improve train ticket booking in India?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: more travellers leave with a confirmed seat and less stress",
+          "Segment: occasional travellers booking when seats are scarce",
+          "Problem: a waitlisted ticket gives no sense of whether it will confirm, and a failed payment at peak loses the seat",
+          "Solution: show a confirmation chance for waitlisted tickets, and offer nearby dates, trains or stations that are likely to confirm",
+          "Metrics: confirmed-booking rate, time to book, payment failure rate",
+          "Guardrail: accuracy of the confirmation chance — a wrong promise breaks trust"
+        ]
+      }
+    ],
+    "tip": "Honest uncertainty is the product here. Showing a probability beats hiding the waitlist.",
+    "failureMode": "Redesigning screens and colours while the real pain is the uncertainty of the waitlist.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-an-alarm-clock-for-heavy-sleepers",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design an alarm clock for people who cannot wake up.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: the user is awake, not only silenced",
+          "Segment: heavy sleepers who dismiss the alarm half-asleep",
+          "Problem: turning it off is too easy and needs no thought",
+          "Solution: make the dismissal need effort that wakes you — scan a code in another room, do a short puzzle, or step out of bed — and raise the volume gently while it waits",
+          "Metrics: share of users awake 10 minutes after the alarm, snooze count, 30-day retention",
+          "Guardrail: uninstalls and one-star reviews — an annoying alarm gets deleted"
+        ]
+      }
+    ],
+    "tip": "Define success as \"awake\", then design for it. Many candidates stop at louder alarms.",
+    "failureMode": "Making the alarm louder, which wakes the neighbours and does not wake the user.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-a-fitness-app-for-beginners",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design a fitness app for people who have never exercised regularly.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: a beginner is still exercising after four weeks",
+          "Segment: a first-time gym-goer or home-workout starter",
+          "Problem: they do not know what to do, and most quit within three weeks",
+          "Solution: three sessions a week of 20 minutes that adapt to what you finished, with one clear task each day and no choice overload",
+          "Metrics: week-4 retention, sessions completed per week",
+          "Guardrail: injury reports and feedback that sessions are too hard"
+        ]
+      }
+    ],
+    "tip": "Retention is the whole game for beginners. Design the first month, not the feature list.",
+    "failureMode": "Building a huge workout library for people who need one plan.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "design-a-hospital-elevator",
+    "type": "question",
+    "category": "Product Design",
+    "question": "Design an elevator for a hospital.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify who uses it: patients on beds and wheelchairs, staff, visitors",
+          "List what each needs, then rank by urgency",
+          "Design for the most critical user first",
+          "Name how you would measure it"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Priority: a key-call mode that sends the lift straight to a floor for stretchers and emergencies",
+          "Separate clinical lifts from visitor lifts so beds never wait in a crowd",
+          "Wide doors, controls at bed height, touchless buttons, floor and department shown in large type and voice",
+          "Metrics: wait time for emergency calls, time per bed transfer between floors",
+          "Guardrail: visitor wait time — protecting emergencies must not strand everyone else"
+        ]
+      }
+    ],
+    "tip": "Hardware questions test whether you start with users and rank their needs, not with gadgets.",
+    "failureMode": "Listing gadgets before deciding who the primary user is.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "improve-linkedin-for-freshers",
+    "type": "question",
+    "category": "Product Design",
+    "question": "How would you improve LinkedIn for students and freshers?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Clarify the goal and who it is for",
+          "Pick one user segment and one problem",
+          "Propose one solution, not five",
+          "Name the metrics, and one guardrail"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Goal: more freshers get a recruiter message within 30 days of joining",
+          "Segment: final-year students with projects but no job history",
+          "Problem: profiles are built around work experience, so freshers look empty and recruiters filter them out",
+          "Solution: a projects-first profile with proof of work, plus a one-tap request for a referral from alumni at a target company",
+          "Metrics: recruiter messages per fresher, referral requests accepted",
+          "Guardrail: alumni spam reports — referral requests must not flood the same people"
+        ]
+      }
+    ],
+    "tip": "Pick the group with the clearest unmet need. Freshers are an easy segment to defend with data.",
+    "failureMode": "Saying \"add more features for students\" with no specific problem.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "price-a-new-subscription",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How would you price a new subscription product?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Three lenses: what it costs us, what competitors charge, what it is worth to the user",
+          "Value wins; cost sets the floor; competitors set the range"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Floor: cost to serve one user per month, plus a margin",
+          "Range: what the two closest alternatives charge",
+          "Value: ask target users what is too cheap and too expensive, and test two price points on the paywall",
+          "For students in India: a low monthly price, a discounted annual plan, and a free tier that proves value first",
+          "Watch: conversion to paid, 3-month retention, refund rate"
+        ]
+      }
+    ],
+    "tip": "Show you test price instead of guessing it. A price is a hypothesis.",
+    "failureMode": "Picking a number from a competitor with no reason, or only adding a margin to cost.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "should-a-delivery-app-enter-a-new-city",
+    "type": "question",
+    "category": "Strategy",
+    "question": "Should a food delivery app launch in a new city?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Market: how many people order, and what they pay",
+          "Competition: who is already there",
+          "Economics: can orders per day cover riders and kitchens",
+          "Risk: how cheaply can we test it"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Size the city: population, share with smartphones, share who order out",
+          "Check supply: enough restaurants within delivery range of dense areas",
+          "Break-even: orders per rider per hour needed to pay for delivery",
+          "Pilot two dense zones first; expand only if orders per rider clear break-even for four weeks",
+          "Decision rule set before launch: the number that makes us stop"
+        ]
+      }
+    ],
+    "tip": "A decision rule set in advance shows discipline. Interviewers want a yes or no with the number that flips it.",
+    "failureMode": "Saying \"it depends\" and never naming the number that decides it.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "build-or-buy-a-payments-feature",
+    "type": "question",
+    "category": "Strategy",
+    "question": "Should we build our own payments feature or buy one from a vendor?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Is this what makes us different, or a utility",
+          "Compare time, cost over three years, control and risk"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "If it is a utility, buy: payments are heavily regulated and slow to build well",
+          "Time: a vendor ships in weeks; building takes quarters",
+          "Cost: add vendor fees against the team you would hire, over three years",
+          "Risk: lock-in, data access, compliance on both sides",
+          "Recommendation: buy now, keep the integration thin so we can swap later; revisit build when volume makes fees the bigger cost"
+        ]
+      }
+    ],
+    "tip": "They want a stated recommendation with the trigger that changes it.",
+    "failureMode": "Listing pros and cons with no recommendation.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "compete-with-a-free-product",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you compete with a free product?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Do not fight on price",
+          "Find what free cannot do, and who needs that"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Name the gap: reliability, support, depth, integration, or trust with data",
+          "Pick the segment that pays for that gap, such as teams or professionals",
+          "Offer a free tier that proves the value, then charge where cost to serve rises",
+          "Use the free product as the top of the funnel: import from it, integrate with it",
+          "Metric: paid conversion in the target segment, not total users"
+        ]
+      }
+    ],
+    "tip": "A free competitor is a segmentation problem. The answer is who it fails.",
+    "failureMode": "Cutting your price toward zero or listing features the free product also has.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "localise-a-global-app-for-india",
+    "type": "question",
+    "category": "Strategy",
+    "question": "A global app is launching in India. What do you change?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Payments, language, devices, price, trust",
+          "Choose the two that decide whether anyone gets past onboarding"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Payments: UPI first, and cash on delivery where it is a physical product; payment data must be stored in India under RBI rules",
+          "Language: Hindi and the big regional languages in the first flow, not buried in settings",
+          "Devices: low-end Android phones, small app size, works on a weak network",
+          "Price: smaller price points and short plans such as weekly or daily",
+          "Trust: WhatsApp-style support and clear refund promises"
+        ]
+      }
+    ],
+    "tip": "The best answers rank the changes by what blocks a new user, instead of listing every difference.",
+    "failureMode": "A list of generic points like \"understand the culture\" with no specific change.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "reduce-subscription-churn",
+    "type": "question",
+    "category": "Strategy",
+    "question": "Subscriber churn is rising. What is your strategy?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Split churn into voluntary and failed-payment churn",
+          "Find when it happens, then why"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Cohort view: do users leave in month one (onboarding), or later (value faded)",
+          "Failed payments: retry sensibly and remind users before the card expires — this is often a quick win",
+          "Month-one churn: fix onboarding so the first week shows the core value",
+          "Later churn: build habit hooks, and offer a pause instead of a cancel",
+          "Add an annual plan for the segment that stays; offer win-back messages with a reason to return",
+          "Success: 3-month retention up, involuntary churn down"
+        ]
+      }
+    ],
+    "tip": "Splitting churn into types is the answer. Each type has a different fix.",
+    "failureMode": "Proposing discounts for everyone before finding why people leave.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "decide-what-not-to-build",
+    "type": "question",
+    "category": "Strategy",
+    "question": "How do you decide what not to build?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Tie every idea to the current goal",
+          "Score the rest and say no with a reason"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Ask: which goal does this move this quarter? No answer, no build",
+          "Score with a simple model such as RICE, so the call is visible",
+          "Say no in one sentence with the reason, and offer a smaller alternative",
+          "Keep a \"not now\" list with a date to revisit, so no is not forever",
+          "Check yourself: what did we cut last quarter, and did we miss it?"
+        ]
+      }
+    ],
+    "tip": "Great product managers are known for what they cut. Tell a story where saying no helped.",
+    "failureMode": "Saying you never say no, or that you ship everything stakeholders ask for.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "go-to-market-for-a-student-budgeting-app",
+    "type": "question",
+    "category": "Strategy",
+    "question": "Plan the go-to-market for a new budgeting app for college students.",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Who first, which channel, what hook, how we measure",
+          "Start narrow: one segment in one place"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Segment: students living away from home with a monthly allowance",
+          "Hook: split shared costs with roommates over UPI — a reason to invite friends",
+          "Channel: campus ambassadors, hostel WhatsApp groups, short videos by student creators",
+          "Pricing: free at launch; charge later for extras such as reports",
+          "Pilot at three campuses for a month",
+          "Metrics: activation (first expense logged in 24 hours), invites per user, week-4 retention"
+        ]
+      }
+    ],
+    "tip": "Narrow beats broad. A launch to three campuses with a number to hit is a plan.",
+    "failureMode": "\"Launch everywhere with ads\" and no first segment.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "pick-a-north-star-metric",
+    "type": "question",
+    "category": "Analytics",
+    "question": "What North Star metric would you pick for a food delivery app?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "The North Star is the one number that tracks value delivered to users",
+          "Test it: if it rises, is the business healthier?"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Candidates: orders, weekly active orderers, orders per user per month",
+          "Pick weekly orders from repeat customers: it shows habit and value, and revenue follows",
+          "Not revenue alone: discounts can buy it without value",
+          "Inputs that move it: new users, repeat rate, restaurant availability, delivery time",
+          "Guardrails: delivery time, order cancellations, refund rate"
+        ]
+      }
+    ],
+    "tip": "Explain why you rejected the obvious option. That shows judgement.",
+    "failureMode": "Picking revenue or downloads without checking it reflects value to users.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "ab-test-shows-no-difference",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Your A/B test shows no difference between the versions. What do you do?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Was the test able to find a difference at all?",
+          "Then decide on the other evidence"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Check power: did we have enough users for the effect we cared about? If not, the test says nothing",
+          "Look at guardrail metrics and segments, but treat a segment win as an idea to test, not a result",
+          "If it is truly flat, ship the simpler or cheaper version, or drop the change",
+          "Write down what we learned so the next test starts smarter"
+        ]
+      }
+    ],
+    "tip": "A flat result is information. Interviewers check you do not hunt for a winner in the noise.",
+    "failureMode": "Slicing the data until some segment shows a win and shipping on it.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "ab-test-duration-and-sample-size",
+    "type": "question",
+    "category": "Analytics",
+    "question": "How do you decide how long to run an A/B test and how many users you need?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Decide before you start, not after you look"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Set the smallest improvement worth detecting, the current baseline, a 5% significance level and 80% power",
+          "Those four numbers give the sample size; divide by daily traffic to get days",
+          "Run full weeks so weekday and weekend behaviour both show up",
+          "Do not stop early because the number looks good; peeking inflates false wins",
+          "Pre-define the one success metric and the guardrails"
+        ]
+      }
+    ],
+    "tip": "You do not need the formula. You need to know what goes into it and why peeking is a problem.",
+    "failureMode": "Stopping the test the day the result turns positive.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "conversion-up-revenue-down",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Checkout conversion is up 8% but revenue per user is down. What happened?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Revenue per user = orders × order value",
+          "Find which part moved"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Possible cause: easier checkout, but basket size fell because we removed the upsell step",
+          "Possible cause: a discount drove more small orders from price-sensitive users",
+          "Possible cause: mix change: more new users who spend less than regulars",
+          "Check: split by new and existing users, by order value band, and by channel",
+          "Decide on profit and lifetime value, not on conversion alone"
+        ]
+      }
+    ],
+    "tip": "Break a metric into parts before you theorise. Two numbers moving apart is a mix or a trade-off.",
+    "failureMode": "Celebrating conversion alone, or guessing one cause without splitting the data.",
+    "companies": [],
+    "hard": true
+  },
+  {
+    "id": "define-activation-for-a-learning-app",
+    "type": "question",
+    "category": "Analytics",
+    "question": "How would you define activation for a language-learning app?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Activation is the first moment the user gets real value",
+          "Find the action that best predicts they stay"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Candidate: complete the first lesson",
+          "Better: complete two lessons across two days — it signals a habit",
+          "Check it with data: which early action best separates users who are still active in week four",
+          "Track the share of new users who reach it within seven days",
+          "Guardrail: do not shape onboarding so it forces the action and annoys users"
+        ]
+      }
+    ],
+    "tip": "Show that you would find the activation event from retention data, not from opinion.",
+    "failureMode": "Defining activation as signing up or installing.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "guardrail-metrics-for-a-faster-checkout",
+    "type": "question",
+    "category": "Analytics",
+    "question": "You are launching a faster checkout. What guardrail metrics do you set?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Primary: checkout conversion",
+          "Guardrails: what must not get worse"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Payment failure rate and error rate",
+          "Refunds and order cancellations: speed must not cause mistakes",
+          "Average order value, if the new flow drops an upsell step",
+          "Fraud rate, if you removed a verification step",
+          "Page load time and support tickets about checkout"
+        ]
+      }
+    ],
+    "tip": "Guardrails show maturity. Always say what you will do if one trips.",
+    "failureMode": "Naming only the metric you hope to improve.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "survey-says-vs-data-says",
+    "type": "question",
+    "category": "Analytics",
+    "question": "Users say they want a feature, but the usage data says they would not use it. What do you do?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "What people say and what they do often differ",
+          "Test behaviour before you build"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Trust behaviour for what people do; use interviews for why they do it",
+          "Ask what problem sits behind the request",
+          "Run a cheap test: a fake button, a waitlist, or a manual version",
+          "If people click and then use it, build it; if not, you saved the cost",
+          "Tell the people who asked what you learned"
+        ]
+      }
+    ],
+    "tip": "A cheap test beats an argument. They like seeing a fake-door or manual version.",
+    "failureMode": "Building the requested feature because customers asked loudly.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "measure-a-feature-with-no-baseline",
+    "type": "question",
+    "category": "Analytics",
+    "question": "How do you measure a brand-new feature that has no baseline?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "No baseline means create one",
+          "Compare against a holdout or a proxy"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Define the job it does and the action that shows it worked",
+          "Hold back a small share of users who do not get it, and compare",
+          "If you cannot hold back, compare against a similar feature or the time before launch",
+          "Start with usage and repeat use, then move to the business metric",
+          "Set a target before launch so success is not decided after"
+        ]
+      }
+    ],
+    "tip": "Say how you would create a comparison group. That is the whole answer.",
+    "failureMode": "Reporting raw usage numbers with nothing to compare them to.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "explain-an-api-to-a-non-technical-person",
+    "type": "question",
+    "category": "Technical",
+    "question": "Explain what an API is to a non-technical stakeholder.",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Think of a restaurant: you (the app) tell the waiter (the API) what you want, and the kitchen (another system) prepares it",
+          "The menu is the list of things you are allowed to ask for",
+          "You never walk into the kitchen; the API controls what you can request and what you get back",
+          "Example: a weather app asks a weather service for today's forecast through its API",
+          "Why it matters to a product manager: every API has limits, costs and downtime that become your product's limits"
+        ]
+      }
+    ],
+    "tip": "Plain language with one example is the test. Then add why it matters for the product.",
+    "failureMode": "Defining an API with more jargon, such as \"an interface that exposes endpoints\".",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "sql-vs-nosql-for-a-new-product",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you choose between SQL and NoSQL for a new product?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Ask what the data looks like and how it is used"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "SQL (relational): structured data with relationships that must stay consistent, such as orders and payments; easy reporting",
+          "NoSQL (document, key-value): flexible shapes, huge write volume, simple lookups, such as chat messages or activity feeds",
+          "Many products use both: SQL for the core records, NoSQL for high-volume side data",
+          "A product manager should ask: how will this data be queried, and what happens if two writes clash",
+          "Default for a new product: start relational unless you have a clear reason"
+        ]
+      }
+    ],
+    "tip": "You do not pick the database. You ask the questions that lead the team to the right one.",
+    "failureMode": "Saying NoSQL is always better because it scales.",
+    "companies": [],
+    "hard": false,
+    "topic": "system-design"
+  },
+  {
+    "id": "what-happens-when-you-type-a-url",
+    "type": "question",
+    "category": "Technical",
+    "question": "What happens when you type a web address and press enter?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Follow the request out and back"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "The browser asks DNS to turn the name into a server address",
+          "It opens a secure connection to that server",
+          "It sends a request; the server may check a cache, run application code and read a database",
+          "The server sends back HTML; the browser then fetches styles, scripts and images",
+          "The browser draws the page; slow steps along the way are what users feel as lag",
+          "Product link: each step is a place a page can be slow or fail"
+        ]
+      }
+    ],
+    "tip": "Follow one request end to end. Mentioning where it can fail shows product thinking.",
+    "failureMode": "Stopping at \"the server sends the page\" with no detail on the steps between.",
+    "companies": [],
+    "hard": false,
+    "topic": "system-design"
+  },
+  {
+    "id": "probe-an-engineering-estimate",
+    "type": "question",
+    "category": "Technical",
+    "question": "An engineer says a feature will take six weeks. How do you respond?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Understand the estimate, then negotiate scope, not time"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Ask what is in the six weeks: design, build, test, rollout",
+          "Ask what the biggest unknowns and risks are",
+          "Ask what the smallest useful version would take and what it leaves out",
+          "Check dependencies on other teams or vendors",
+          "Never push the number down; cut scope or add a milestone instead",
+          "Agree a checkpoint at week two to catch slippage early"
+        ]
+      }
+    ],
+    "tip": "Engineers trust product managers who ask about risk and offer scope, not pressure.",
+    "failureMode": "Asking \"can it be done faster?\" with no change to scope.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "tech-debt-vs-new-features",
+    "type": "question",
+    "category": "Technical",
+    "question": "How do you decide between paying down tech debt and shipping new features?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Put a cost on the debt, then compare it with feature value"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "Ask engineering what the debt costs: slower releases, incidents, hours lost per sprint",
+          "Link it to a business outcome: \"every feature takes 30% longer\" is a number leaders understand",
+          "Fix debt that blocks the next quarter's goals first",
+          "Reserve a fixed share of every sprint, 15–20% is a common start, so it is never a negotiation",
+          "Report back what the debt work unlocked"
+        ]
+      }
+    ],
+    "tip": "Treat tech debt as a business cost. A fixed share of every sprint avoids the yearly argument.",
+    "failureMode": "Saying features always come first, or that engineers decide on debt alone.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "caching-and-its-product-risks",
+    "type": "question",
+    "category": "Technical",
+    "question": "What is caching, and when does it cause a product problem?",
+    "sections": [
+      {
+        "label": "Framework",
+        "points": [
+          "Caching keeps a copy of data close so it loads faster"
+        ]
+      },
+      {
+        "label": "Answer",
+        "points": [
+          "A cache stores answers to repeated requests, so the system does less work",
+          "Benefit: faster pages and lower server cost",
+          "Risk: the copy can be stale — a price, a stock count or a profile photo that has already changed",
+          "Example: a product shows \"in stock\" from a cached page while the last unit is sold",
+          "Product question: how stale can this data be? Payments and stock: seconds. A trending list: minutes",
+          "Ask engineering for the refresh time of each important number"
+        ]
+      }
+    ],
+    "tip": "Staleness is the product risk. Name an example where it hurts the user.",
+    "failureMode": "Explaining caching as \"making things faster\" with no mention of stale data.",
+    "companies": [],
+    "hard": false,
+    "topic": "system-design"
+  },
+  {
+    "id": "first-30-days-as-a-product-manager",
+    "type": "question",
+    "category": "General",
+    "question": "What would you do in your first 30 days as a product manager?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Week 1: listen. Meet engineers, design, support and sales; ask what hurts and what they would change",
+          "Week 2: use the product like a new user and read the last quarter of data and feedback",
+          "Week 3: write down the top three problems, with evidence, and share them with your manager",
+          "Week 4: pick one small, visible improvement and ship it",
+          "Throughout: learn the metrics the team is judged on"
+        ]
+      }
+    ],
+    "tip": "A calm, listening-first plan beats a big vision. A small win in week four earns trust.",
+    "failureMode": "Promising a new strategy or a redesign before you have listened to anyone.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "how-do-you-work-with-engineers",
+    "type": "question",
+    "category": "General",
+    "question": "How do you work with engineers day to day?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Share the problem and the reason, before the solution",
+          "Bring them in early, while options are still open",
+          "Write a clear, short spec and answer questions fast",
+          "Respect their estimates; negotiate scope, not time",
+          "Protect them from changing priorities mid-sprint",
+          "Say thank you in public and take the blame in public"
+        ]
+      }
+    ],
+    "tip": "Engineers are your main partners. They are testing whether you treat them as thinkers or as builders on call.",
+    "failureMode": "Describing engineers as people you hand requirements to.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "what-goes-in-a-prd",
+    "type": "question",
+    "category": "General",
+    "question": "What goes into a product requirements document, and how long should it be?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "The problem and who has it, with evidence",
+          "The goal and the success metric",
+          "The scope: what is in, and what is explicitly out",
+          "The user flow or a rough design",
+          "Open questions, risks and dependencies",
+          "Keep it to one or two pages; if it is longer, split the work"
+        ]
+      }
+    ],
+    "tip": "Short and clear wins. The document exists so people can question it, not so it looks thorough.",
+    "failureMode": "Writing a long document nobody reads, with no stated success metric.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "what-is-an-mvp",
+    "type": "question",
+    "category": "General",
+    "question": "What is an MVP, and how do you decide what goes in it?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "The smallest version that tests your riskiest assumption with real users",
+          "Not a bad product; a focused one",
+          "Find the riskiest assumption first, such as \"people will pay\" or \"people will come back\"",
+          "Include only what is needed to test that assumption",
+          "Set the result that counts as success before you build",
+          "Example: a manual service run on WhatsApp before building an app"
+        ]
+      }
+    ],
+    "tip": "Tie the MVP to an assumption and a result. That separates it from \"version one\".",
+    "failureMode": "Calling a half-built product with every feature an MVP.",
+    "companies": [],
+    "hard": false
+  },
+  {
+    "id": "user-research-with-no-budget",
+    "type": "question",
+    "category": "General",
+    "question": "How would you do user research with no budget?",
+    "sections": [
+      {
+        "label": "Answer",
+        "points": [
+          "Talk to five real users; five conversations find most big problems",
+          "Recruit from where users already are: communities, WhatsApp groups, your own network",
+          "Ask about past behaviour, such as \"tell me about the last time you…\", not about opinions on your idea",
+          "Watch someone use the product or a competitor and note where they stall",
+          "Read support tickets, app reviews and forum posts for free evidence",
+          "Write what you learned in three lines and share it with the team"
+        ]
+      }
+    ],
+    "tip": "Show that research is a habit, not a budget. Ask about the past, not the future.",
+    "failureMode": "Asking friends whether they like your idea.",
+    "companies": [],
+    "hard": false
   }
 ]

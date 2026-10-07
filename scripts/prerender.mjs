@@ -2,7 +2,7 @@
 // <title> and social meta, so links pasted into WhatsApp / Slack unfurl
 // correctly without running JS. The SPA still hydrates and takes over routing.
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -192,4 +192,28 @@ writeFileSync(
   `User-agent: *\nAllow: /\n${[...PRIVATE].map((p) => `Disallow: ${p}`).join('\n')}\n\nSitemap: ${ORIGIN}/sitemap.xml\n`
 )
 
-console.log(`✓ prerendered ${count} routes, sitemap.xml with ${urls.length} urls, robots.txt`)
+// the service worker: the real file list goes into scripts/sw.template.js
+function listFiles(dir, prefix) {
+  return readdirSync(join(dist, dir)).flatMap((name) => {
+    const rel = `${prefix}/${name}`
+    return statSync(join(dist, rel)).isDirectory() ? listFiles(rel.slice(1), rel) : [rel]
+  })
+}
+const precache = [
+  '/',
+  '/favicon.svg',
+  '/manifest.webmanifest',
+  ...listFiles('assets', '/assets'),
+  ...listFiles('fonts', '/fonts'),
+  ...listFiles('logos', '/logos'),
+  ...listFiles('icons', '/icons'),
+  ...listFiles('mascot', '/mascot').filter((f) => f.endsWith('.webp')),
+]
+writeFileSync(
+  join(dist, 'sw.js'),
+  readFileSync(join(root, 'scripts', 'sw.template.js'), 'utf8')
+    .replace('__VERSION__', Date.now().toString(36))
+    .replace('__PRECACHE__', JSON.stringify(precache, null, 2))
+)
+
+console.log(`✓ prerendered ${count} routes, sitemap.xml with ${urls.length} urls, robots.txt, sw.js caching ${precache.length} files`)

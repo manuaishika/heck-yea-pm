@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { questions, shortAnswer } from '../data/questions'
 import { dayKey, dayNumber, useActivity } from '../lib/useActivity'
-import { questionForDay } from '../lib/daily'
+import { questionForDay, pickRevisit } from '../lib/daily'
+import { useQuiz } from '../lib/useQuiz'
 import { useReviews } from '../lib/useReviews'
 import { readJSON, writeJSON } from '../lib/storage'
 import { useHead } from '../lib/useHead'
@@ -13,9 +14,34 @@ import Points from '../components/Points'
 const INTERVIEW_KEY = 'pp.interview'
 const field = 'min-h-11 border border-border bg-surface px-3 text-[16px] text-text'
 
+/* ------------------------------------------------------------------- share */
+
+/** The share sheet on phones; a WhatsApp link where there is none. */
+function Share({ q, streak, label = 'Share' }) {
+  const url = `${window.location.origin}/today`
+  const text = `Today’s product interview question: “${q.question}”${streak > 1 ? ` I’m on a ${streak} day streak.` : ''} Try it:`
+  if (navigator.share) {
+    return (
+      <button type="button" className="btn" onClick={() => navigator.share({ text, url }).catch(() => {})}>
+        {label}
+      </button>
+    )
+  }
+  return (
+    <a
+      className="btn no-underline hover:no-underline"
+      href={`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      Share on WhatsApp
+    </a>
+  )
+}
+
 /* ------------------------------------------------------------------ streak */
 
-function Streak({ streak, doneToday, week }) {
+function Streak({ streak, doneToday, week, q }) {
   return (
     <section className="card p-4" aria-label="Streak">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
@@ -37,13 +63,18 @@ function Streak({ streak, doneToday, week }) {
           </li>
         ))}
       </ol>
+      {streak > 0 && (
+        <p className="mt-3">
+          <Share q={q} streak={streak} label="Share your streak" />
+        </p>
+      )}
     </section>
   )
 }
 
 /* ---------------------------------------------------------------- the card */
 
-function QuestionCard({ q, label, onRate, rated, onNext }) {
+function QuestionCard({ q, label, note, onRate, rated, onNext, streak }) {
   const [revealed, setRevealed] = useState(false)
   const [full, setFull] = useState(false)
   return (
@@ -53,6 +84,7 @@ function QuestionCard({ q, label, onRate, rated, onNext }) {
         <span className="label">{label}</span>
       </div>
       <h2 className="mt-3 text-section leading-snug">{q.question}</h2>
+      {note && <p className="mt-2 font-semibold text-text">{note}</p>}
 
       {!revealed ? (
         <>
@@ -85,15 +117,18 @@ function QuestionCard({ q, label, onRate, rated, onNext }) {
           {rated ? (
             <div className="mt-5 border-t border-border pt-4">
               <p className="text-body font-semibold text-text">
-                {rated === 'known' ? 'Marked known.' : 'Marked needs work. It comes back in your flashcards.'}
+                {rated === 'known' ? 'Marked known.' : 'Marked needs work. It comes back on Today and in flashcards.'}
               </p>
               <p className="mt-3 flex flex-wrap gap-3">
-                <button type="button" onClick={onNext} className="btn btn-primary">
-                  Another question
-                </button>
+                {onNext && (
+                  <button type="button" onClick={onNext} className="btn btn-primary">
+                    Another question
+                  </button>
+                )}
                 <Link to={`/browse/${q.id}`} className="btn no-underline hover:no-underline">
                   Open question page
                 </Link>
+                {onNext && <Share q={q} streak={streak} />}
               </p>
             </div>
           ) : (
@@ -112,6 +147,24 @@ function QuestionCard({ q, label, onRate, rated, onNext }) {
         </>
       )}
     </section>
+  )
+}
+
+/* ---------------------------------------------------------------- revisit */
+
+function Revisit({ pick, onRate }) {
+  const [rated, setRated] = useState(null)
+  return (
+    <QuestionCard
+      q={pick.q}
+      label="Revisit"
+      note={pick.why}
+      rated={rated}
+      onRate={(status) => {
+        onRate(pick.q.id, status)
+        setRated(status)
+      }}
+    />
   )
 }
 
@@ -263,16 +316,24 @@ export default function Today() {
 
   const { streak, doneToday, week, log } = useActivity()
   const { marks, mark } = useReviews()
+  const { answers } = useQuiz()
   const [extra, setExtra] = useState(0)
   const [rated, setRated] = useState(null)
 
-  const q = questionForDay(dayNumber(), extra)
+  const day = dayNumber()
+  const q = questionForDay(day, extra)
+  // chosen once on arrival, so rating it does not swap the card out from under you
+  const [revisit] = useState(() => pickRevisit(marks, answers, day, questionForDay(day).id))
   const ratedCount = questions.filter((x) => marks[x.id]).length
 
   function rate(status) {
     mark(q.id, status)
     log()
     setRated(status)
+  }
+  function rateRevisit(id, status) {
+    mark(id, status)
+    log()
   }
   function next() {
     setExtra((n) => n + 1)
@@ -282,7 +343,7 @@ export default function Today() {
   return (
     <Page>
       <PageHead chapter="Daily" title="Today’s question" intro="One question a day. Everyone gets the same one." />
-      <Streak streak={streak} doneToday={doneToday} week={week} />
+      <Streak streak={streak} doneToday={doneToday} week={week} q={questionForDay(day)} />
       <QuestionCard
         key={q.id}
         q={q}
@@ -290,7 +351,9 @@ export default function Today() {
         rated={rated}
         onRate={rate}
         onNext={next}
+        streak={streak}
       />
+      {revisit && <Revisit key={revisit.q.id} pick={revisit} onRate={rateRevisit} />}
       <Plan rated={ratedCount} />
       <Reminder />
       <p className="mt-6 border-t border-border pt-4 text-text-muted">
