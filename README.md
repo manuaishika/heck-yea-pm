@@ -34,6 +34,20 @@ routing; the prerendered files are served directly where they exist.
 Set `SITE_ORIGIN` in the Vercel project (e.g. `https://heckyea.pm`) so the
 prerendered `og:url` and canonical tags point at the real domain.
 
+## Sign-in and sync (Supabase)
+
+Optional. The site is fully readable without it; Supabase only powers sign-in
+and syncing progress across devices. Run `supabase/schema.sql` once in the
+SQL editor, then set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in Vercel.
+
+Free Supabase projects pause after about a week with no activity.
+`.github/workflows/keep-supabase-awake.yml` queries the database every three
+days to prevent that. Add the same two values as repository secrets named
+`SUPABASE_URL` and `SUPABASE_ANON_KEY` (Settings > Secrets and variables >
+Actions), then run the workflow once from the Actions tab to check it. If a
+project does pause, "Resume project" in the Supabase dashboard brings it back
+with its data.
+
 ## Content
 
 All content lives in typed JSON under `src/data/`, validated at build time by
