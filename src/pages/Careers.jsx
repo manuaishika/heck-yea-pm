@@ -144,7 +144,7 @@ export default function Careers() {
       </p>
 
       {hiring.length > 0 ? (
-        <ul className="mt-2 grid gap-x-8 border-t border-border sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-2 grid grid-cols-2 gap-x-4 border-t border-border sm:gap-x-8 lg:grid-cols-3">
           {hiring.map((c) => (
             <li key={c.slug} className="border-b border-border">
               <a

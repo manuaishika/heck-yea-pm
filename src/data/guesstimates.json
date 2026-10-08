@@ -1,5 +1,5 @@
 {
-  "intro": "Two kinds come up: sizing something (\"how many X\") and explaining a change (\"metric Y dropped, why\"). Interviewers score the structure and the assumptions, not the final number.",
+  "intro": "Sizing questions: \"how many X\". Interviewers score the structure and the assumptions, not the final number.",
   "sizing": {
     "title": "Sizing something",
     "steps": [
