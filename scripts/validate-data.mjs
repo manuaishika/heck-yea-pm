@@ -35,7 +35,7 @@ const checks = [
   ['role.json', (d) => validateRole(d), () => 'role guide'],
   ['skills.json', (d) => validateSkills(d), (d) => `${d.technical.skills.length + d.nonTechnical.skills.length} skills`],
   ['companies.json', (d) => validateCompanies(d), (d) => `${d.companies.length} companies`],
-  ['careers.json', (d) => validateCareers(d), (d) => `${d.adjacent.length} adjacent roles`],
+  ['careers.json', (d) => validateCareers(d), (d) => `${d.roleTypes.length} role types`],
   ['india.json', (d) => validateIndia(d), (d) => `${d.programs.length} programs`],
   ['guesstimates.json', (d) => validateGuesstimates(d), () => 'guesstimates guide'],
   ['resume.json', (d) => validateResume(d), (d) => `${d.checklist.length}-point checklist`],

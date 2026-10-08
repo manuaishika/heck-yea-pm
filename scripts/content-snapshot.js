@@ -38,7 +38,7 @@ function snapshot() {
     methods: methods.methods.map((m) => m.slug).sort(),
     'ai.topics': ai.topics.map((t) => t.slug).sort(),
     'resources.groups': resources.groups.map((g) => g.name).sort(),
-    'careers.adjacent': careers.adjacent.map((a) => a.role).sort(),
+    'careers.roleTypes': careers.roleTypes.map((r) => r.name).sort(),
     'india.programs': india.programs.map((p) => p.name).sort(),
     'guesstimates.questions': guesstimates.questionSets
       .flatMap((s) => s.questions.map((q) => q.q))

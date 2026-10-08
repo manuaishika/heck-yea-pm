@@ -3,7 +3,6 @@ import { validateAI } from '../lib/ai-schema'
 import { getQuestion, questions } from '../data/questions'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
-import { Block } from '../components/ui'
 import Placards from '../components/Placards'
 import ScrollProgress from '../components/ScrollProgress'
 
@@ -23,7 +22,7 @@ export default function AI() {
     <Page>
       <ScrollProgress />
       <PageHead
-        chapter="Module · Draft"
+        chapter="Module"
         title="AI for product managers"
         intro={ai.intro}
       />
@@ -33,11 +32,6 @@ export default function AI() {
         fallback="/browse?topic=ai"
       />
 
-      <div className="card mt-8">
-        <Block label="Responsible AI" rule={false}>
-          <p className="text-text-muted">{ai.responsibleAi.note}</p>
-        </Block>
-      </div>
     </Page>
   )
 }

@@ -4,7 +4,6 @@ import { guesstimates } from '../data/guides'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { Icon } from '../components/ui'
-import Tree from '../components/diagrams/Tree'
 
 // Charts and colour-coded groups use only ink, at four tints against paper —
 // block colours are reserved for full-bleed panels and tag pills, never charts.
@@ -20,7 +19,6 @@ const KIND_ICONS = ['users', 'briefcase', 'code'] // population & scale, non-tec
 const JUMP = [
   ['practice', 'Practice'],
   ['sizing', 'How to size'],
-  ['drops', 'Metric drops'],
   ['numbers', 'Numbers'],
 ]
 
@@ -141,11 +139,11 @@ export default function Guesstimates() {
   useHead({
     title: 'Guesstimates',
     description:
-      'Guesstimate questions with worked answers across population, non-tech products, and tech products, plus how to size something and how to explain a metric drop.',
+      'Guesstimate questions with worked answers across population, non-tech products, and tech products, plus how to size something and the numbers to know.',
     path: '/guesstimates',
   })
 
-  const { intro, sizing, diagnosis, questionSets, anchors } = guesstimates
+  const { intro, sizing, questionSets, anchors } = guesstimates
   const total = questionSets.reduce((n, s) => n + s.questions.length, 0)
 
   return (
@@ -188,36 +186,12 @@ export default function Guesstimates() {
             <Ledger rows={sizing.example.work} />
           </div>
         </div>
-      </Section>
-
-      <Section id="drops" title={`3 · ${diagnosis.title}`} note={diagnosis.note}>
-        <StepTiles items={diagnosis.steps} color={CHART_COLORS[1]} />
-
-        <p className="label mt-6">Sort the causes (MECE)</p>
-        <p className="mt-1 text-text-muted">{diagnosis.mece.note}</p>
-        <div className="mt-3 grid gap-2 sm:grid-cols-2">
-          {diagnosis.mece.buckets.map((b, i) => (
-            <div key={b.label} className="panel overflow-hidden">
-              <p className="px-4 py-3 font-semibold" style={{ background: 'var(--accent-tint)', color: CHART_COLORS[i % CHART_COLORS.length] }}>
-                {b.label}
-              </p>
-              <p className="p-3 text-text-muted">{b.examples}</p>
-            </div>
-          ))}
-        </div>
-
-        <p className="label mt-6">The ways a metric moves</p>
-        <div className="card mt-2 p-3">
-          <Tree root={diagnosis.tree.root} branches={diagnosis.tree.branches} />
-        </div>
-
         <p className="mt-4 text-text-muted">
-          More like this:{' '}
-          <Link to="/browse?category=analytics&hard=1">the RCA questions in the bank</Link>.
+          A metric dropped instead? Use the <Link to="/methods/metric-drop">metric drop method</Link>.
         </p>
       </Section>
 
-      <Section id="numbers" title={`4 · ${anchors.title}`} note={anchors.note}>
+      <Section id="numbers" title={`3 · ${anchors.title}`} note={anchors.note}>
         <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
           {anchors.rows.map(([label, value]) => (
             <li key={label} className="card p-3">

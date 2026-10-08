@@ -9,34 +9,6 @@ function fail(msg) {
 const str = (v) => typeof v === 'string' && v.trim().length > 0
 const arr = (v) => Array.isArray(v) && v.length > 0
 
-function validateModes(m, where) {
-  if (!str(m?.note)) fail(`${where}.modes.note missing`)
-  if (!Array.isArray(m?.columns) || m.columns.length !== 3) fail(`${where}.modes needs 3 columns`)
-  m.columns.forEach((c) => {
-    if (!str(c.key) || !str(c.name) || !str(c.sub)) fail(`${where} mode column: key/name/sub missing`)
-  })
-  if (!arr(m?.bars)) fail(`${where}.modes.bars missing`)
-  m.bars.forEach((b, i) => {
-    if (!str(b.dim)) fail(`${where} bar ${i}: dim missing`)
-    if (!Array.isArray(b.levels) || b.levels.length !== 3) fail(`${where} bar ${i}: needs 3 levels`)
-    b.levels.forEach((l) => {
-      if (typeof l !== 'number' || l < 0 || l > 3) fail(`${where} bar ${i}: level must be 0-3`)
-    })
-    if (!Array.isArray(b.labels) || b.labels.length !== 3) fail(`${where} bar ${i}: needs 3 labels`)
-  })
-  const sp = m.spectrum
-  if (!str(sp?.dim) || !Array.isArray(sp?.ends) || sp.ends.length !== 2) {
-    fail(`${where}.modes.spectrum incomplete`)
-  }
-  if (!Array.isArray(sp.positions) || sp.positions.length !== 3) fail(`${where} spectrum: needs 3 positions`)
-  if (!Array.isArray(sp.labels) || sp.labels.length !== 3) fail(`${where} spectrum: needs 3 labels`)
-  if (!arr(m?.text)) fail(`${where}.modes.text missing`)
-  m.text.forEach((t, i) => {
-    if (!str(t.dim)) fail(`${where} text row ${i}: dim missing`)
-    if (!Array.isArray(t.values) || t.values.length !== 3) fail(`${where} text row ${i}: needs 3 values`)
-  })
-}
-
 export function validateRole(r) {
   if (!r || typeof r !== 'object') fail('role.json is not an object')
 
@@ -71,18 +43,9 @@ export function validateRole(r) {
 export function validateCareers(c) {
   if (!c || typeof c !== 'object') fail('careers.json is not an object')
   if (!str(c.note)) fail('careers.note missing')
-  validateModes(c.modes, 'careers')
   if (!arr(c.roleTypes)) fail('careers.roleTypes missing')
   c.roleTypes.forEach((x, i) => {
     if (!str(x.name) || !str(x.what)) fail(`careers.roleTypes ${i} incomplete`)
-  })
-  if (!arr(c.adjacent)) fail('careers.adjacent missing')
-  c.adjacent.forEach((x, i) => {
-    if (!str(x.role) || !str(x.oneLine) || !str(x.vsPm)) fail(`careers.adjacent ${i} incomplete`)
-  })
-  if (!arr(c.growth)) fail('careers.growth missing')
-  c.growth.forEach((x, i) => {
-    if (!str(x.level) || !str(x.years) || !str(x.focus)) fail(`careers.growth ${i} incomplete`)
   })
   return c
 }
@@ -104,12 +67,6 @@ export function validateIndia(d) {
     if (!str(o.role) || !str(o.why)) fail(`india.noProgram.options ${i} incomplete`)
   })
 
-  if (!arr(d.misconceptions)) fail('india.misconceptions missing')
-  d.misconceptions.forEach((m, i) => {
-    if (!Array.isArray(m) || m.length !== 2 || !str(m[0]) || !str(m[1])) {
-      fail(`india.misconceptions ${i} must be [claim, reality]`)
-    }
-  })
   return d
 }
 
@@ -124,17 +81,6 @@ export function validateGuesstimates(g) {
     if (!Array.isArray(row) || row.length !== 2 || !str(row[0]) || !str(row[1])) {
       fail(`guesstimates.sizing.example.work ${i} must be [label, value]`)
     }
-  })
-
-  const dg = g.diagnosis
-  if (!str(dg?.title) || !str(dg?.note) || !arr(dg?.steps)) fail('guesstimates.diagnosis incomplete')
-  if (!str(dg.mece?.note) || !arr(dg.mece?.buckets)) fail('guesstimates.diagnosis.mece incomplete')
-  dg.mece.buckets.forEach((b, i) => {
-    if (!str(b.label) || !str(b.examples)) fail(`guesstimates.diagnosis.mece.buckets ${i} incomplete`)
-  })
-  if (!str(dg.tree?.root) || !arr(dg.tree?.branches)) fail('guesstimates.diagnosis.tree incomplete')
-  dg.tree.branches.forEach((b, i) => {
-    if (!str(b.label) || !arr(b.leaves)) fail(`guesstimates.diagnosis.tree.branches ${i} incomplete`)
   })
 
   if (!arr(g.questionSets)) fail('guesstimates.questionSets missing')
@@ -190,7 +136,6 @@ export function validateResume(r) {
   r.sections.forEach((s, i) => {
     if (!str(s.name) || !arr(s.keep)) fail(`resume.sections ${i} incomplete`)
   })
-  if (!arr(r.mistakes)) fail('resume.mistakes missing')
   if (!arr(r.checklist)) fail('resume.checklist missing')
 
   const sm = r.sample

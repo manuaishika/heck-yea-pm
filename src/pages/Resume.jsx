@@ -11,7 +11,7 @@ export default function Resume() {
     path: '/resume',
   })
 
-  const { intro, sample, bulletFormula, sections, mistakes, checklist } = resume
+  const { intro, sample, bulletFormula, sections, checklist } = resume
 
   return (
     <Page wide>
@@ -122,16 +122,6 @@ export default function Resume() {
           </div>
         ))}
       </div>
-
-      {/* mistakes */}
-      <h2 className="mt-10 text-section">Common mistakes</h2>
-      <ul className="mt-3 border-t border-border">
-        {mistakes.map((m) => (
-          <li key={m} className="border-b border-border py-2 text-body text-text-muted">
-            <span className="text-text-muted">✕</span> <Rich>{m}</Rich>
-          </li>
-        ))}
-      </ul>
 
       {/* checklist */}
       <h2 className="mt-10 text-section">Before you send it</h2>

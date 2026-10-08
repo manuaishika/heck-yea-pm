@@ -1,5 +1,5 @@
 {
-  "intro": "AI literacy is baseline for a product role now, not a specialisation. Draft content — check it before it ships as final.",
+  "intro": "AI literacy is baseline for a product role now, not a specialisation.",
   "topics": [
     {
       "slug": "how-llms-work",
@@ -50,18 +50,6 @@
       "practiceId": null
     },
     {
-      "slug": "prompt-design",
-      "name": "Prompt design basics",
-      "gist": "The instructions matter as much as the model.",
-      "howItWorks": "A good prompt gives the model its role, the exact task, and an example of the output you want.",
-      "need": [
-        "Show, don't just tell: one example of a good answer beats a paragraph of instructions.",
-        "Constrain the output format if downstream code has to parse it.",
-        "This is tunable, not fixed — know that before blaming the model for a bad first result."
-      ],
-      "practiceId": null
-    },
-    {
       "slug": "ai-metrics",
       "name": "Metrics for AI products",
       "gist": "Model metrics and product metrics are not the same thing.",
@@ -73,9 +61,5 @@
       ],
       "practiceId": "measure-an-ai-feature"
     }
-  ],
-  "responsibleAi": {
-    "drafted": false,
-    "note": "Left for you to write — fairness, bias, safety and data consent, at the depth your own research supports."
-  }
+  ]
 }

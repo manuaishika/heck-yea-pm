@@ -42,14 +42,6 @@
       ]
     }
   ],
-  "mistakes": [
-    "**Responsibilities instead of results** — \"was responsible for X\" says nothing happened.",
-    "**No numbers anywhere.** Even a small one (\"12 interviews\", \"3 features cut\") beats none.",
-    "Listing every hackathon. **Two strong projects beat six weak ones.**",
-    "A wall of text. **One page**, generous margins, one font.",
-    "**Buzzwords with no substance** — \"synergy\", \"passionate about disruption\", \"10x mindset\".",
-    "Tailoring nothing. **Mirror the language in the JD** for the specific company."
-  ],
   "checklist": [
     "**One page**",
     "Every bullet has a **number**",
@@ -57,7 +49,10 @@
     "The product skills are visible: **research, prioritisation, metrics, a trade-off**",
     "**No typos** — read it backwards, word by word",
     "A friend can tell **what you actually did** in each role in 5 seconds",
-    "**Links work** and point somewhere real"
+    "**Links work** and point somewhere real",
+    "**Two strong projects**, not six weak ones",
+    "Uses the **words from the job description**",
+    "**No buzzwords** — \"synergy\", \"passionate about disruption\""
   ],
   "sample": {
     "note": "A made-up final-year student. Copy the shape, never the numbers. Every note on the right is a reason a line is there.",

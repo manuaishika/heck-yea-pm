@@ -47,15 +47,22 @@
   "noProgram": {
     "note": "If you don't land a program — which is the common case — these roles put you one lateral move from product management.",
     "options": [
-      { "role": "Product Analyst", "why": "Owns the data a product manager uses. The most common route into product management in India. Look for it at the same companies." },
-      { "role": "Associate product manager at an early startup", "why": "Less structured, less competitive, more scope. You'll do real product work in month one." },
-      { "role": "Founder's office / business analyst", "why": "Broad exposure to how a company runs. Pivot to product internally after 12–18 months." },
-      { "role": "APM at an agency or services firm", "why": "Lower bar to entry, real client products. Use it to build a portfolio, then move." }
+      {
+        "role": "Product Analyst",
+        "why": "Owns the data a product manager uses. The most common route into product management in India. Look for it at the same companies."
+      },
+      {
+        "role": "Associate product manager at an early startup",
+        "why": "Less structured, less competitive, more scope. You'll do real product work in month one."
+      },
+      {
+        "role": "Founder's office / business analyst",
+        "why": "Broad exposure to how a company runs. Pivot to product internally after 12–18 months."
+      },
+      {
+        "role": "APM at an agency or services firm",
+        "why": "Lower bar to entry, real client products. Use it to build a portfolio, then move."
+      }
     ]
-  },
-  "misconceptions": [
-    ["\"I need an MBA.\"", "Not for an APM program — they hire straight from undergrad. An MBA matters more for switching into product management after a few years in another function."],
-    ["\"I need a CS degree.\"", "Helps at Google and for technical products. Plenty of APMs come from other engineering branches, economics, or design."],
-    ["\"I should wait and apply next year with more experience.\"", "The programs are built for people with none. Apply now — you can apply again next cycle if it doesn't work."]
-  ]
+  }
 }

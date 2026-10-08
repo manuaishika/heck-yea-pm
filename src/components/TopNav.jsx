@@ -9,7 +9,7 @@ const MENU_GROUPS = [
     label: 'Learn',
     items: [
       ['/role', 'Role & Skills'],
-      ['/skills#technical', 'Technical'],
+      ['/skills', 'Skills'],
       ['/ai', 'AI for product managers'],
       ['/methods', 'Methods'],
     ],

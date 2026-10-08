@@ -35,11 +35,5 @@ export function validateAI(d, questionIds) {
     }
   })
 
-  if (!d.responsibleAi || typeof d.responsibleAi !== 'object') {
-    fail('ai.responsibleAi missing')
-  }
-  if (typeof d.responsibleAi.drafted !== 'boolean') fail('ai.responsibleAi.drafted must be true/false')
-  if (!str(d.responsibleAi.note)) fail('ai.responsibleAi.note missing')
-
   return d
 }

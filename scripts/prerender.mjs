@@ -39,17 +39,17 @@ const routes = {
   '/careers': {
     title: 'Careers',
     description:
-      'Product role types, how to break in without a product background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
+      'Product role types, how to break in without a product background, and who is hiring in India right now.',
   },
   '/guesstimates': {
     title: 'Guesstimates',
     description:
-      'Guesstimate questions across population, non-tech products, and tech products, plus how to size something and explain a metric drop.',
+      'Guesstimate questions across population, non-tech products, and tech products, plus how to size something and the numbers to know.',
   },
   '/resources': {
     title: 'Resources',
     description:
-      'Newsletters, launch trackers, design references, and practice sites to build product taste before a product interview.',
+      'Newsletters, launch trackers and practice sites to build product taste before a product interview.',
   },
   '/resume': {
     title: 'Resume',
@@ -99,7 +99,7 @@ const routes = {
   '/india': {
     title: 'Careers',
     description:
-      'Product role types, how to break in without a product background, how the job changes by company stage, the ladder, getting in from India, and who is hiring right now.',
+      'Product role types, how to break in without a product background, and who is hiring in India right now.',
   },
   '/flashcards/complete': {
     title: 'Flashcards — done',
