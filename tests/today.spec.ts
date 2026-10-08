@@ -124,6 +124,20 @@ test.describe('revisit and share', () => {
   })
 })
 
+test.describe('answer out loud', () => {
+  test('without a microphone it is a two-minute timer', async ({ page }) => {
+    await page.addInitScript(`Object.defineProperty(navigator, 'mediaDevices', { value: undefined, configurable: true })`)
+    await page.goto('/today')
+    const card = page.getByRole('region', { name: 'Question' }).first()
+    await card.getByRole('button', { name: 'Answer out loud · 2:00' }).click()
+    await expect(card.getByText('Timer only — microphone off')).toBeVisible()
+    await expect(card.getByText(/^1:5\d$/)).toBeVisible({ timeout: 4000 })
+    await card.getByRole('button', { name: 'Stop' }).click()
+    await expect(card.getByRole('button', { name: 'Answer again' })).toBeVisible()
+    await expect(card.getByText(/short\. Aim for 1–2 minutes/)).toBeVisible()
+  })
+})
+
 test.describe('offline', () => {
   test('the site opens with no connection after one visit', async ({ page, context }) => {
     await page.goto('/')

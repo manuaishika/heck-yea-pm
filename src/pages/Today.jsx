@@ -10,6 +10,7 @@ import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 import { CategoryTag } from '../components/ui'
 import Points from '../components/Points'
+import SpeakPractice from '../components/SpeakPractice'
 
 const INTERVIEW_KEY = 'pp.interview'
 const field = 'min-h-11 border border-border bg-surface px-3 text-[16px] text-text'
@@ -85,14 +86,13 @@ function QuestionCard({ q, label, note, onRate, rated, onNext, streak }) {
       </div>
       <h2 className="mt-3 text-section leading-snug">{q.question}</h2>
       {note && <p className="mt-2 font-semibold text-text">{note}</p>}
+      {!revealed && <p className="mt-2 text-text-muted">Think for a minute, then answer out loud.</p>}
+      <SpeakPractice />
 
       {!revealed ? (
-        <>
-          <p className="mt-2 text-text-muted">Think for a minute. Say your answer out loud.</p>
-          <button type="button" onClick={() => setRevealed(true)} className="btn btn-primary mt-4">
-            Show model answer
-          </button>
-        </>
+        <button type="button" onClick={() => setRevealed(true)} className="btn btn-primary mt-4">
+          Show model answer
+        </button>
       ) : (
         <>
           <Points label="Answer" points={shortAnswer(q)} />
