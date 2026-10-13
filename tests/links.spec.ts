@@ -35,7 +35,6 @@ const ROUTES = [
   '/flashcards/complete',
   '/saved',
   '/about',
-  '/login',
 ]
 
 test('every internal link on every route resolves, none land on NotFound', async ({ page }) => {

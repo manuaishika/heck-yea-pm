@@ -5,8 +5,7 @@ import { readJSON, writeJSON, subscribe, storageAvailable } from './storage'
 // answers. Value: the index of the option the user picked.
 // Shape: { answers: { [slug]: number }, at: number } — `at` is the time of the
 // last change, used to pick a winner when this is synced across devices.
-import { QUIZ_KEY } from './syncMerge'
-export { QUIZ_KEY }
+export const QUIZ_KEY = 'hyp.quiz.v1'
 
 const EMPTY = { answers: {}, at: 0 }
 

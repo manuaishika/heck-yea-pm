@@ -31,7 +31,6 @@ const ROUTES = [
   '/flashcards/complete',
   '/saved',
   '/about',
-  '/login',
   '/does-not-exist',
 ]
 

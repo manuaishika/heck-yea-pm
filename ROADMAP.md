@@ -35,7 +35,7 @@ Lose: depth (131 questions against 10,000), no human mock interviews, no video, 
 
 ## Shipped
 
-- Daily loop: `/today` question (same for everyone, rotates categories), self-rating, streak and week view, interview date with a daily target, calendar reminder. Streaks sync through the existing progress store.
+- Daily loop: `/today` question (same for everyone, rotates categories), self-rating, streak and week view, interview date with a daily target, calendar reminder. Everything stays on the device; there is no login.
 - Practice from flashcards and the quiz counts toward the streak.
 - Today also brings back a question you marked needs work, or an unrated one from a category the quiz said is weak.
 - Share today's question and your streak: the phone share sheet, or a WhatsApp link elsewhere.

@@ -110,10 +110,6 @@ const routes = {
     title: 'Saved questions',
     description: 'Questions you saved from the bank, kept on your device or synced to your account.',
   },
-  '/login': {
-    title: 'Log in',
-    description: 'Sign in to sync your saved questions and flashcard progress across devices.',
-  },
 }
 
 for (const q of questions) {
@@ -178,7 +174,7 @@ for (const [path, meta] of Object.entries(routes)) {
 }
 
 // sitemap.xml and robots.txt — every public route, none of the personal ones
-const PRIVATE = new Set(['/login', '/saved', '/flashcards/complete', '/india'])
+const PRIVATE = new Set(['/saved', '/flashcards/complete', '/india'])
 const today = new Date().toISOString().slice(0, 10)
 const urls = Object.keys(routes)
   .filter((p) => !PRIVATE.has(p))

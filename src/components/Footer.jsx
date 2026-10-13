@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useReducedMotion } from 'framer-motion'
-import { useAuth } from '../lib/auth'
 import PageContainer from './PageContainer'
 
 const REPO = 'https://github.com/manuaishika/heck-yea-pm'
@@ -89,79 +87,10 @@ function WavyRule() {
   )
 }
 
-/** Email sign-in, the footer's one form. Only syncs progress; email is
- * opt-in and only ever carries the sign-in link. Falls back to a link to
- * /login when auth isn't configured. */
-function SyncBox() {
-  const { enabled, user, signInWithEmail } = useAuth()
-  const [email, setEmail] = useState('')
-  const [state, setState] = useState('idle') // idle | sending | sent | error
-
-  const field = 'flex min-h-12 w-full items-center border border-royal bg-transparent text-royal'
-
-  if (user) {
-    return (
-      <Link to="/login" className={`${field} justify-between px-4 no-underline hover:no-underline`}>
-        <span>Syncing as {user.email}</span>
-        <span aria-hidden="true">→</span>
-      </Link>
-    )
-  }
-
-  if (!enabled) {
-    return (
-      <Link to="/login" className={`${field} justify-between px-4 no-underline hover:no-underline`}>
-        <span>Log in</span>
-        <span aria-hidden="true">→</span>
-      </Link>
-    )
-  }
-
-  async function submit(e) {
-    e.preventDefault()
-    if (!email.trim()) return
-    setState('sending')
-    const { error } = await signInWithEmail(email.trim())
-    setState(error ? 'error' : 'sent')
-  }
-
-  if (state === 'sent') {
-    return <p className={`${field} px-4`}>Check your inbox for the sign-in link.</p>
-  }
-
-  return (
-    <form onSubmit={submit} className={field}>
-      <label htmlFor="footer-email" className="sr-only">
-        Email
-      </label>
-      <input
-        id="footer-email"
-        type="email"
-        required
-        autoComplete="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="min-w-0 flex-1 bg-transparent px-4 py-3 text-royal placeholder:text-royal/70 focus-visible:outline-none"
-      />
-      <button type="submit" disabled={state === 'sending'} aria-label="Send sign-in link" className="grid size-12 shrink-0 place-items-center">
-        <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-          <path d="M0 7h20M14 1l6 6-6 6" />
-        </svg>
-      </button>
-      {state === 'error' && (
-        <span role="alert" className="sr-only">
-          That didn&rsquo;t send. Try again.
-        </span>
-      )}
-    </form>
-  )
-}
-
 /**
  * Full-bleed footer, built on a grocer's "thank you for your curiosity"
  * sign-off: butter paper with one serif line in royal blue (kept smaller
- * than the homepage headline), link columns, the sign-in box, a wavy rule
+ * than the homepage headline), link columns, a wavy rule
  * and a strip of small print.
  */
 export default function Footer() {
@@ -174,7 +103,7 @@ export default function Footer() {
             Come back when the nerves kick in.
           </p>
 
-          <div className="mt-5 grid grid-cols-3 gap-x-4 gap-y-4 text-[0.875rem] sm:mt-8 sm:gap-x-6 sm:gap-y-6 sm:text-body lg:grid-cols-[auto_1fr_1fr_1fr_1fr_1.6fr]">
+          <div className="mt-5 grid grid-cols-3 gap-x-4 gap-y-4 text-[0.875rem] sm:mt-8 sm:gap-x-6 sm:gap-y-6 sm:text-body lg:grid-cols-[auto_1fr_1fr_1fr_1fr]">
             <div className="hidden sm:col-span-3 sm:flex sm:justify-center lg:col-span-1 lg:block">
               <StampBadge />
             </div>
@@ -202,12 +131,6 @@ export default function Footer() {
               </a>
             </div>
 
-            <div className="col-span-3 lg:col-span-1">
-              <p>Sign in to sync saved questions and flashcards across devices. We only email the sign-in link.</p>
-              <div className="mt-2 sm:mt-3">
-                <SyncBox />
-              </div>
-            </div>
           </div>
         </PageContainer>
 

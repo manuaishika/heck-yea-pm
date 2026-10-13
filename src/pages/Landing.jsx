@@ -20,7 +20,7 @@ const FAQS = [
   { q: 'Do I need an MBA?', a: 'No. Most APM programs hire straight from a bachelor’s degree. An MBA matters more for a senior move later.' },
   { q: 'Can a non-CS student get in?', a: 'Yes. Product thinking and communication are what’s tested — see Skills for exactly what that means.' },
   { q: 'How long should I prepare?', a: 'Two to four weeks of focused practice covers the bank. Cramming the night before does not.' },
-  { q: 'Is it free?', a: 'Yes. Every page reads signed out. Sign in only to sync progress across devices.' },
+  { q: 'Is it free?', a: 'Yes. No sign-up, no login. Your progress stays on your device.' },
 ]
 
 export default function Landing() {

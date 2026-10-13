@@ -4,7 +4,6 @@ import Layout from './components/Layout'
 import ScrollManager from './components/ScrollManager'
 import { Page } from './components/Page'
 import Landing from './pages/Landing'
-import { AuthProvider } from './lib/auth'
 
 const Role = lazy(() => import('./pages/Role'))
 const Today = lazy(() => import('./pages/Today'))
@@ -25,7 +24,6 @@ const Flashcards = lazy(() => import('./pages/Flashcards'))
 const FlashcardsComplete = lazy(() => import('./pages/FlashcardsComplete'))
 const About = lazy(() => import('./pages/About'))
 const Saved = lazy(() => import('./pages/Saved'))
-const Login = lazy(() => import('./pages/Login'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 const fallback = (
@@ -36,7 +34,6 @@ const fallback = (
 
 export default function App() {
   return (
-    <AuthProvider>
     <BrowserRouter>
       <ScrollManager />
       <Suspense fallback={fallback}>
@@ -64,12 +61,10 @@ export default function App() {
             <Route path="flashcards/complete" element={<FlashcardsComplete />} />
             <Route path="saved" element={<Saved />} />
             <Route path="about" element={<About />} />
-            <Route path="login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </Suspense>
     </BrowserRouter>
-    </AuthProvider>
   )
 }

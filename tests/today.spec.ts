@@ -163,7 +163,7 @@ test.describe('launch basics', () => {
     const sitemap = await (await request.get('/sitemap.xml')).text()
     expect(sitemap).toContain('/today</loc>')
     expect(sitemap).toContain('/browse</loc>')
-    expect(sitemap).not.toContain('/login<')
+    expect(sitemap).not.toContain('/saved<')
     const robots = await (await request.get('/robots.txt')).text()
     expect(robots).toMatch(/Sitemap: https?:\/\/.+\/sitemap\.xml/)
   })

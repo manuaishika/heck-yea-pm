@@ -1,4 +1,3 @@
-import { authEnabled } from '../lib/supabase'
 import { useHead } from '../lib/useHead'
 import { Page, PageHead } from '../components/Page'
 
@@ -22,20 +21,9 @@ export default function About() {
 
       <div className="prose-body mt-4 space-y-3">
         <p>
-          {authEnabled ? (
-            <>
-              <strong>No account needed.</strong> It loads and
-              it works, and your saves, flashcard progress and quiz results stay
-              in your browser. If you choose to sign in, those three things sync
-              across your devices. Nothing else is collected.
-            </>
-          ) : (
-            <>
-              <strong>No login and no email capture.</strong> It loads and
-              it works. Your saves, flashcard progress and quiz results stay in
-              your browser and are never sent anywhere.
-            </>
-          )}
+          <strong>No login and no email capture.</strong> It loads and
+          it works. Your saves, flashcard progress and quiz results stay in
+          your browser and are never sent anywhere.
         </p>
         <p>
           The question bank was built by hand from real interview reports. The

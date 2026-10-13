@@ -1,8 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import PageContainer from './PageContainer'
 import ThemeToggle from './ThemeToggle'
-import { useAuth } from '../lib/auth'
 
 const MENU_GROUPS = [
   {
@@ -42,22 +41,14 @@ const MENU_GROUPS = [
   },
 ]
 
-function initials(user) {
-  const name = user?.user_metadata?.full_name || user?.email || '?'
-  return name.trim().charAt(0).toUpperCase()
-}
-
 /**
  * The one nav bar, on every route: a single row of cells divided by
- * hairlines — logo, two lines of standing copy, INDEX, ACCOUNT, MENU. Sticky,
- * paper background, a hairline beneath it. On phones only logo/INDEX/MENU
- * survive; MENU opens a full-screen takeover with every section.
+ * hairlines — logo, theme toggle, MENU. Sticky,
+ * paper background, a hairline beneath it. MENU opens a full-screen takeover with every section.
  */
 export default function TopNav() {
-  const { enabled, user, signInWithGoogle } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
-  const navigate = useNavigate()
   const menuId = useId()
   const menuBtnRef = useRef(null)
 
@@ -81,14 +72,6 @@ export default function TopNav() {
     }
   }, [menuOpen])
 
-  async function openSignIn() {
-    if (!enabled) {
-      navigate('/login')
-      return
-    }
-    await signInWithGoogle()
-  }
-
   const Cell = ({ children, className = '', ...rest }) => (
     <div className={`flex items-center border-l border-border px-4 py-3 first:border-l-0 ${className}`} {...rest}>
       {children}
@@ -110,26 +93,6 @@ export default function TopNav() {
 
             <Cell className="shrink-0">
               <ThemeToggle />
-            </Cell>
-
-            <Cell className="hidden shrink-0 md:flex">
-              {user ? (
-                <Link
-                  to="/login"
-                  aria-label="Account"
-                  className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-pill border border-border bg-tag text-body font-semibold text-on-tag no-underline hover:no-underline"
-                >
-                  {user.user_metadata?.avatar_url ? (
-                    <img src={user.user_metadata.avatar_url} alt="" className="size-full object-cover" />
-                  ) : (
-                    initials(user)
-                  )}
-                </Link>
-              ) : (
-                <button type="button" onClick={openSignIn} className="label text-text hover:text-accent">
-                  Log in
-                </button>
-              )}
             </Cell>
 
             <Cell className="shrink-0">
@@ -182,17 +145,6 @@ export default function TopNav() {
               ))}
             </div>
 
-            <div className="border-t border-border px-4 py-4">
-              {user ? (
-                <Link to="/login" className="btn no-underline hover:no-underline">
-                  Account
-                </Link>
-              ) : (
-                <button type="button" onClick={openSignIn} className="btn btn-primary">
-                  Log in
-                </button>
-              )}
-            </div>
           </PageContainer>
         </div>
       )}
