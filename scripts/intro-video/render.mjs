@@ -81,7 +81,7 @@ async function main() {
     '-c:v', 'libvpx-vp9', '-crf', '36', '-b:v', '0', '-row-mt', '1', join(outDir, 'intro.webm')])
 
   // poster: the title card, fully in
-  await page.evaluate(() => window.render(2.7))
+  await page.evaluate(() => window.render(2.6))
   await page.screenshot({ path: join(outDir, 'poster.jpg'), type: 'jpeg', quality: 85 })
 
   await browser.close()

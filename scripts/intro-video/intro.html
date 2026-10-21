@@ -8,9 +8,11 @@
       window.render(t) for every t from 0 to window.DURATION and screenshots
       the page, so nothing here may depend on real time.
 
-      Look: the site's own — graph paper, butter and royal blue, New Spirit —
-      and the real product screens (Today, answer out loud, the quiz).
-      Type is large on purpose: on a phone this video is about 360px wide.
+      Look: the site's own — graph paper, butter and royal blue, New Spirit.
+      Story: the hook, the five steps into product, what the site gives you,
+      the companies, then free and no login. The brand name appears once, at
+      the end. Type is large on purpose: on a phone this video is about 360px
+      wide.
     -->
     <style>
       @font-face { font-family: 'New Spirit'; src: url('/fonts/NewSpirit-Regular.otf') format('opentype'); font-weight: 400; }
@@ -53,128 +55,91 @@
       .opt b { font-size: 28px; color: var(--muted); letter-spacing: 0.06em; width: 34px; }
       .opt .mark { margin-left: auto; font-size: 44px; }
       .big { font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+      .step { position: absolute; left: 80px; width: 1120px; height: 100px; background: var(--card); border: 3px solid var(--ink); display: flex; align-items: center; gap: 30px; padding: 0 28px 0 0; }
+      .step .n { width: 100px; height: 100px; margin: -3px 0 -3px -3px; background: var(--royal); color: var(--butter); display: grid; place-items: center; font-size: 56px; font-weight: 600; flex: none; }
+      .step .t { font-size: 48px; font-weight: 600; line-height: 1.05; }
+      .step .d { font-size: 32px; color: var(--muted); line-height: 1.1; margin-top: 4px; }
+      .tile { position: absolute; width: 352px; height: 266px; background: var(--card); border: 3px solid var(--ink); padding: 22px 28px; }
+      .tile svg { width: 56px; height: 56px; display: block; }
+      .tile .t { font-size: 44px; font-weight: 600; line-height: 1.05; margin-top: 14px; }
+      .tile .d { font-size: 30px; color: var(--muted); margin-top: 6px; }
+      .logo { position: absolute; width: 262px; height: 244px; background: var(--card); border: 3px solid var(--ink); display: grid; place-items: center; }
+      .logo img { width: 150px; height: 150px; object-fit: contain; }
     </style>
   </head>
   <body>
     <div id="stage">
       <!-- A. hook -->
       <section class="scene" id="sA">
-        <div class="abs" style="left:80px; top:60px; display:flex; align-items:center; gap:22px;">
-          <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#2447b8"/><path d="M22 51V14h12a11.5 11.5 0 0 1 0 23H22" fill="none" stroke="#fbe88a" stroke-width="7.5"/></svg>
-          <span style="font-size:44px; font-weight:600; color:var(--royal);">Product Practice</span>
-        </div>
-        <div class="abs big" id="aL1" style="left:80px; top:230px; font-size:132px; color:var(--royal);">Interview in</div>
-        <div class="abs big" id="aL2" style="left:80px; top:360px; font-size:132px; color:var(--royal);">a few weeks?</div>
-        <div class="abs" id="aL3" style="left:84px; top:540px; font-size:56px; font-weight:400; color:var(--ink);">Practise a little every day.</div>
+        <div class="abs big" id="aL1" style="left:80px; top:170px; font-size:140px; color:var(--royal);">Interview in</div>
+        <div class="abs big" id="aL2" style="left:80px; top:306px; font-size:140px; color:var(--royal);">a few weeks?</div>
+        <div class="abs" id="aL3" style="left:84px; top:500px; font-size:60px; font-weight:400; color:var(--ink);">Here is how to get in.</div>
       </section>
 
-      <!-- B. one question a day -->
+      <!-- B. five steps into product -->
       <section class="scene" id="sB">
-        <div class="head" id="bH">One question a day.</div>
-        <div class="abs" id="bStreak" style="right:80px; top:52px; display:flex; flex-direction:column; align-items:flex-end; gap:10px;">
-          <div class="pill" style="font-size:36px; color:var(--royal);">3 day streak</div>
-          <div style="display:flex; gap:8px;" id="bWeek"></div>
-        </div>
-        <div class="card" id="bCard" style="left:80px; top:200px; width:1120px; height:470px;">
-          <div class="abs" style="left:34px; top:28px;"><span class="pill tag">Behavioral</span></div>
-          <div class="abs lbl" style="right:34px; top:38px;">Today</div>
-          <div class="q" id="bQ" style="left:34px; top:96px; width:1050px;">Describe a time you worked with unclear requirements.</div>
-          <div class="abs" id="bBtn" style="left:34px; top:262px;"><span class="pill btn primary">Show model answer</span></div>
-          <div class="ring" id="bRing1" style="left:210px; top:300px;"></div>
-          <div id="bAns">
-            <div class="bul" id="bB1" style="top:228px;"><i></i><span>Ask who it is for, and what success looks like</span></div>
-            <div class="bul" id="bB2" style="top:288px;"><i></i><span>Pick the smallest thing to test</span></div>
-          </div>
-          <div class="abs" id="bRate" style="left:34px; top:372px; display:flex; gap:22px;">
-            <span class="pill btn primary" id="bNail">Nailed it</span>
-            <span class="pill btn">Needs work</span>
-          </div>
-          <div class="ring" id="bRing2" style="left:150px; top:410px;"></div>
-          <div class="abs" id="bDone" style="left:34px; top:386px; font-size:40px; font-weight:600; color:var(--correct);">Marked known</div>
-        </div>
+        <div class="head" id="bH" style="top:34px;">How to get in.</div>
+        <div class="step" id="bS0" style="top:150px;"><span class="n">1</span><div><div class="t">Know the job</div><div class="d">Decide what to build, and why.</div></div></div>
+        <div class="step" id="bS1" style="top:258px;"><span class="n">2</span><div><div class="t">Build the skills</div><div class="d">Learnable in weeks, not years.</div></div></div>
+        <div class="step" id="bS2" style="top:366px;"><span class="n">3</span><div><div class="t">Show proof</div><div class="d">A project, a teardown, a number.</div></div></div>
+        <div class="step" id="bS3" style="top:474px;"><span class="n">4</span><div><div class="t">Apply where freshers get in</div><div class="d">These roles hire straight out of college.</div></div></div>
+        <div class="step" id="bS4" style="top:582px;"><span class="n">5</span><div><div class="t">Crack the loop</div><div class="d">Structure beats a clever idea.</div></div></div>
       </section>
 
-      <!-- C. say it out loud -->
+      <!-- C. what the site gives you -->
       <section class="scene" id="sC">
-        <div class="head">Say it out loud.</div>
-        <div class="card" id="cCard" style="left:80px; top:200px; width:1120px; height:470px;">
-          <div class="abs" id="cIdle" style="left:34px; top:60px;">
-            <div class="lbl">Question of the day</div>
-            <div class="q" style="position:static; margin-top:18px; width:1000px;">Describe a time you worked with unclear requirements.</div>
-            <div style="margin-top:36px;"><span class="pill btn">Answer out loud · 2:00</span></div>
-          </div>
-          <div class="ring" id="cRing" style="left:240px; top:350px;"></div>
-          <div class="abs" id="cRec" style="left:0; top:0; width:100%; height:100%;">
-            <div class="abs big" id="cTimer" style="left:40px; top:40px; font-size:190px;">2:00</div>
-            <div class="abs" style="left:700px; top:96px; display:flex; align-items:center; gap:18px;">
-              <span id="cDot" style="width:28px; height:28px; border-radius:50%; background:var(--wrong); display:block;"></span>
-              <span style="font-size:48px; font-weight:600;">Recording</span>
-            </div>
-            <div class="abs" id="cWave" style="left:40px; right:40px; top:270px; height:130px; display:flex; align-items:center; gap:7px;"></div>
-          </div>
-          <div class="abs" id="cPlay" style="left:40px; top:300px; width:1040px;">
-            <div class="lbl">Your answer</div>
-            <div style="margin-top:16px; height:92px; border:3px solid var(--ink); background:#f1f1f1; border-radius:999px; display:flex; align-items:center; padding:0 28px; gap:26px;">
-              <svg width="38" height="38" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2l11 6-11 6V2Z" fill="#141414"/></svg>
-              <div style="flex:1; height:12px; background:#cfcfcf; border-radius:6px; position:relative;"><div id="cBar" style="position:absolute; left:0; top:0; bottom:0; width:0; background:var(--royal); border-radius:6px;"></div></div>
-              <span id="cTime" style="font-size:34px; font-weight:600;">0:00 / 1:12</span>
-            </div>
-          </div>
-        </div>
-        <div class="abs" id="cNote" style="left:80px; top:690px; font-size:0;"></div>
+        <div class="head" style="top:34px;">Practise it all.</div>
+        <div class="tile" id="cT0" style="left:80px; top:150px;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#2447b8" stroke-width="5" stroke-linejoin="round"><rect x="8" y="12" width="48" height="44"/><path d="M8 26h48M20 6v12M44 6v12"/></svg>
+          <div class="t">Daily question</div><div class="d">with a streak</div></div>
+        <div class="tile" id="cT1" style="left:464px; top:150px;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#2447b8" stroke-width="5" stroke-linejoin="round"><circle cx="32" cy="32" r="24"/><path d="M24 25a8 8 0 1 1 11 7c-3 1.5-3 4-3 6M32 46v3" stroke-linecap="round"/></svg>
+          <div class="t">Quiz</div><div class="d">15 questions</div></div>
+        <div class="tile" id="cT2" style="left:848px; top:150px;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#2447b8" stroke-width="5" stroke-linejoin="round"><rect x="6" y="20" width="40" height="32"/><path d="M18 20v-8h40v32h-12"/></svg>
+          <div class="t">Flashcards</div><div class="d">every question</div></div>
+        <div class="tile" id="cT3" style="left:80px; top:436px;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#2447b8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><rect x="23" y="6" width="18" height="30" rx="9"/><path d="M14 30a18 18 0 0 0 36 0M32 48v10"/></svg>
+          <div class="t">Answer out loud</div><div class="d">2-minute timer</div></div>
+        <div class="tile" id="cT4" style="left:464px; top:436px;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#2447b8" stroke-width="5" stroke-linejoin="round"><rect x="22" y="6" width="20" height="14"/><rect x="4" y="44" width="20" height="14"/><rect x="40" y="44" width="20" height="14"/><path d="M32 20v12M14 44V32h36v12"/></svg>
+          <div class="t">Methods</div><div class="d">11 frameworks</div></div>
+        <div class="tile" id="cT5" style="left:848px; top:436px;">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#2447b8" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M6 14l6 6 10-12M6 34l6 6 10-12M6 54l6 6M32 16h26M32 36h26M32 56h26"/></svg>
+          <div class="t">Resume checklist</div><div class="d">10 points</div></div>
       </section>
 
-      <!-- D. quiz -->
+      <!-- D. companies -->
       <section class="scene" id="sD">
-        <div class="head">See where you stand.</div>
-        <div class="abs q" style="left:80px; top:176px; width:1120px; font-size:40px;">Live train delays in your app. What do you check first?</div>
-        <div class="opt" id="dA" style="top:262px;"><b>A</b><span>Hire a team to collect the data</span><span class="mark"></span></div>
-        <div class="opt" id="dB" style="top:366px;"><b>B</b><span>Does the agency have an API, and its limits?</span><span class="mark"></span></div>
-        <div class="opt" id="dC" style="top:470px;"><b>C</b><span>Pick a database for the delays</span><span class="mark"></span></div>
-        <div class="opt" id="dD" style="top:574px;"><b>D</b><span>Choose a colour for delayed trains</span><span class="mark"></span></div>
-        <div class="ring" id="dRing" style="left:300px; top:516px;"></div>
+        <div class="head" style="top:34px;">Know the loops.</div>
+        <div class="logo" id="dL0" style="left:80px; top:160px;"><img src="/logos/google.png" alt="" /></div>
+        <div class="logo" id="dL1" style="left:366px; top:160px;"><img src="/logos/flipkart.png" alt="" /></div>
+        <div class="logo" id="dL2" style="left:652px; top:160px;"><img src="/logos/swiggy.png" alt="" /></div>
+        <div class="logo" id="dL3" style="left:938px; top:160px;"><img src="/logos/zomato.png" alt="" /></div>
+        <div class="logo" id="dL4" style="left:80px; top:432px;"><img src="/logos/microsoft.png" alt="" /></div>
+        <div class="logo" id="dL5" style="left:366px; top:432px;"><img src="/logos/razorpay.png" alt="" /></div>
+        <div class="logo" id="dL6" style="left:652px; top:432px;"><img src="/logos/meta.png" alt="" /></div>
+        <div class="logo" id="dL7" style="left:938px; top:432px;"><img src="/logos/zepto.png" alt="" /></div>
       </section>
 
-      <!-- E. everything -->
-      <section class="scene" id="sE">
-        <div class="head">Then keep going.</div>
-        <div class="abs" id="eTiles" style="left:80px; top:210px; width:1120px; display:flex; gap:28px;"></div>
-        <div class="abs" id="eChips" style="left:80px; top:570px; width:1120px; display:flex; flex-wrap:wrap; gap:16px;"></div>
-      </section>
-
-      <!-- F. call to action -->
-      <section class="scene" id="sF" style="background:var(--royal);">
-        <div class="abs" style="left:80px; top:70px; display:flex; align-items:center; gap:22px;">
+      <!-- E. call to action -->
+      <section class="scene" id="sE" style="background:var(--royal);">
+        <div class="abs big" id="eL1" style="left:80px; top:150px; font-size:170px; color:var(--butter);">Free.</div>
+        <div class="abs big" id="eL2" style="left:80px; top:318px; font-size:170px; color:var(--butter);">No login.</div>
+        <div class="abs" id="eBrand" style="left:84px; top:540px; display:flex; align-items:center; gap:22px;">
           <svg width="64" height="64" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#fbe88a"/><path d="M22 51V14h12a11.5 11.5 0 0 1 0 23H22" fill="none" stroke="#2447b8" stroke-width="7.5"/></svg>
-          <span style="font-size:44px; font-weight:600; color:var(--butter);">Product Practice</span>
+          <span style="font-size:52px; font-weight:600; color:var(--butter);">Product Practice</span>
         </div>
-        <div class="abs big" id="fL1" style="left:80px; top:220px; font-size:150px; color:var(--butter);">Free.</div>
-        <div class="abs big" id="fL2" style="left:80px; top:372px; font-size:150px; color:var(--butter);">No login.</div>
-        <div class="abs" id="fBtn" style="left:80px; top:566px;"><span class="pill btn" style="background:var(--butter); border-color:var(--butter); color:var(--royal); height:88px; font-size:42px;">Today’s question →</span></div>
       </section>
     </div>
 
     <script>
-      window.DURATION = 27
+      window.DURATION = 31
 
       const $ = (id) => document.getElementById(id)
       const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x))
       const seg = (t, a, b) => clamp((t - a) / (b - a))
       const out = (x) => 1 - Math.pow(1 - clamp(x), 3)
-      const inOut = (x) => { x = clamp(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2 }
-
-      // build the repeated bits once
-      const WEEK = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
-      $('bWeek').innerHTML = WEEK.map((d, i) => {
-        const on = i < 3
-        return `<div style="width:44px; height:44px; border:3px solid ${on || i === 2 ? '#141414' : '#d8d2c6'}; background:${on ? '#141414' : '#fff'}; color:${on ? '#fff' : '#5e5e5e'}; display:grid; place-items:center; font-size:24px; font-weight:600;">${on ? '✓' : d}</div>`
-      }).join('')
-      $('cWave').innerHTML = Array.from({ length: 64 }, () => '<div style="flex:1; background:#2447b8; border-radius:4px; height:20px;"></div>').join('')
-      const waveBars = [...$('cWave').children]
-      const TILES = [['131', 'questions'], ['11', 'methods'], ['35', 'companies']]
-      $('eTiles').innerHTML = TILES.map(([n, l], i) => `<div class="card" id="eT${i}" style="position:relative; flex:1; height:300px; padding:34px 34px;"><div class="big" id="eN${i}" style="font-size:150px; color:#2447b8;">0</div><div style="font-size:48px; font-weight:600; margin-top:20px;">${l}</div></div>`).join('')
-      const CHIPS = ['Google', 'Flipkart', 'Swiggy', 'Zomato']
-      $('eChips').innerHTML = CHIPS.map((c, i) => `<span class="pill" id="eC${i}" style="font-size:40px; height:76px; padding:0 34px; border:3px solid #141414; background:#fff;">${c}</span>`).join('')
 
       function show(id, t, a, b, fade = 0.35) {
         const el = $(id)
@@ -186,117 +151,45 @@
         el.style.opacity = out(p)
         el.style.transform = `translateY(${(1 - out(p)) * dy}px)`
       }
-      function tap(ring, t, at) {
-        const p = seg(t, at, at + 0.5)
-        ring.style.opacity = p > 0 && p < 1 ? 1 - p : 0
-        ring.style.transform = `scale(${0.4 + p * 1.1})`
-      }
-      function press(el, t, at) {
-        const p = seg(t, at, at + 0.18) * (1 - seg(t, at + 0.18, at + 0.36))
-        el.style.transform = `scale(${1 - p * 0.05})`
-      }
 
       window.render = function (t) {
-        // ---- scenes on and off
         show('sA', t, 0, 3.6, 0.01)
-        show('sB', t, 3.2, 9.8)
-        show('sC', t, 9.4, 14.4)
-        show('sD', t, 14.0, 19.2)
-        show('sE', t, 18.8, 23.4)
-        show('sF', t, 23.0, 27.01)
         $('sA').style.opacity = Math.min(seg(t, 0, 0.01), 1 - seg(t, 3.2, 3.6))
+        show('sB', t, 3.2, 15.6)
+        show('sC', t, 15.2, 21.8)
+        show('sD', t, 21.4, 27.2)
+        show('sE', t, 26.8, 31.01)
 
-        // ---- A: hook
+        // A: hook (no brand name here)
         pop($('aL1'), seg(t, 0.2, 0.9), 30)
         pop($('aL2'), seg(t, 0.55, 1.25), 30)
         pop($('aL3'), seg(t, 1.7, 2.4), 20)
 
-        // ---- B: one question a day
+        // B: five steps, one every 2.2s, all kept on screen
         {
           const u = t - 3.2
           pop($('bH'), seg(u, 0.1, 0.6), 20)
-          pop($('bCard'), seg(u, 0.35, 0.9), 40)
-          const chars = Math.floor(seg(u, 0.9, 2.3) * 'Describe a time you worked with unclear requirements.'.length)
-          $('bQ').textContent = 'Describe a time you worked with unclear requirements.'.slice(0, chars)
-          const showBtn = u >= 2.3 && u < 3.4
-          $('bBtn').style.display = u < 3.4 ? 'block' : 'none'
-          $('bBtn').style.opacity = seg(u, 2.3, 2.7)
-          press($('bBtn').firstElementChild, u, 3.1)
-          tap($('bRing1'), u, 3.1)
-          $('bB1').style.opacity = seg(u, 3.4, 3.8)
-          $('bB2').style.opacity = seg(u, 3.9, 4.3)
-          $('bB1').style.transform = `translateY(${(1 - seg(u, 3.4, 3.8)) * 14}px)`
-          $('bB2').style.transform = `translateY(${(1 - seg(u, 3.9, 4.3)) * 14}px)`
-          const rateOn = u >= 4.6 && u < 5.5
-          $('bRate').style.display = rateOn ? 'flex' : 'none'
-          $('bRate').style.opacity = seg(u, 4.6, 5.0)
-          press($('bNail'), u, 5.15)
-          tap($('bRing2'), u, 5.15)
-          $('bDone').style.display = u >= 5.5 ? 'block' : 'none'
-          $('bDone').style.opacity = seg(u, 5.5, 5.8)
-          // streak chip slides in once it is marked
-          pop($('bStreak'), seg(u, 5.5, 6.0), -16)
+          for (let i = 0; i < 5; i++) pop($(`bS${i}`), seg(u, 0.9 + i * 2.2, 1.4 + i * 2.2), 30)
         }
 
-        // ---- C: say it out loud
+        // C: what you get
         {
-          const u = t - 9.4
-          pop($('cCard'), seg(u, 0.2, 0.7), 40)
-          const recording = u >= 1.3 && u < 3.5
-          const done = u >= 3.5
-          $('cIdle').style.display = u < 1.3 ? 'block' : 'none'
-          press($('cIdle').querySelector('.btn'), u, 0.95)
-          tap($('cRing'), u, 0.95)
-          $('cRec').style.display = recording ? 'block' : 'none'
-          const left = Math.max(0, 120 - Math.floor((u - 1.3) * 2.4))
-          $('cTimer').textContent = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}`
-          $('cDot').style.opacity = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(u * 9))
-          waveBars.forEach((b, i) => {
-            const a = Math.abs(Math.sin(i * 0.7 + u * 7)) * 0.6 + Math.abs(Math.sin(i * 1.9 - u * 4.3)) * 0.4
-            b.style.height = `${14 + a * 112}px`
-          })
-          $('cPlay').style.display = done ? 'block' : 'none'
-          $('cPlay').style.opacity = seg(u, 3.5, 3.9)
-          const prog = seg(u, 3.9, 4.8)
-          $('cBar').style.width = `${prog * 100}%`
-          const secs = Math.floor(prog * 72)
-          $('cTime').textContent = `${Math.floor(secs / 60)}:${String(secs % 60).padStart(2, '0')} / 1:12`
+          const u = t - 15.2
+          for (let i = 0; i < 6; i++) pop($(`cT${i}`), seg(u, 0.5 + i * 0.35, 1.0 + i * 0.35), 30)
         }
 
-        // ---- D: quiz
+        // D: companies fill the frame
         {
-          const u = t - 14.0
-          ;['dA', 'dB', 'dC', 'dD'].forEach((id, i) => pop($(id), seg(u, 0.35 + i * 0.12, 0.8 + i * 0.12), 24))
-          press($('dC'), u, 2.0)
-          tap($('dRing'), u, 2.0)
-          const wrong = u >= 2.25
-          const right = u >= 2.9
-          const c = $('dC'), b = $('dB')
-          if (wrong) { c.style.background = '#b3261e'; c.style.borderColor = '#b3261e'; c.style.color = '#fff'; c.querySelector('.mark').textContent = '✗' }
-          else { c.style.background = '#fff'; c.style.borderColor = '#141414'; c.style.color = '#141414'; c.querySelector('.mark').textContent = '' }
-          if (right) { b.style.background = '#1f7a4d'; b.style.borderColor = '#1f7a4d'; b.style.color = '#fff'; b.querySelector('.mark').textContent = '✓' }
-          else { b.style.background = '#fff'; b.style.borderColor = '#141414'; b.style.color = '#141414'; b.querySelector('.mark').textContent = '' }
-          ;['dA', 'dD'].forEach((id) => { $(id).style.filter = right ? 'opacity(0.45)' : 'none' })
-          ;[c, b].forEach((el) => el.querySelectorAll('b').forEach((x) => (x.style.color = (el === c ? wrong : right) ? '#fff' : '#5e5e5e')))
+          const u = t - 21.4
+          for (let i = 0; i < 8; i++) pop($(`dL${i}`), seg(u, 0.5 + i * 0.3, 1.0 + i * 0.3), 30)
         }
 
-        // ---- E: everything to prep
+        // E: free, no login, then the name once
         {
-          const u = t - 18.8
-          TILES.forEach(([n], i) => {
-            const p = seg(u, 0.3 + i * 0.15, 0.9 + i * 0.15)
-            pop($(`eT${i}`), p, 36)
-            $(`eN${i}`).textContent = Math.round(Number(n) * out(seg(u, 0.5 + i * 0.15, 1.9 + i * 0.15)))
-          })
-          CHIPS.forEach((_, i) => pop($(`eC${i}`), seg(u, 2.0 + i * 0.12, 2.5 + i * 0.12), 20))
-        }
-
-        // ---- F: call to action
-        {
-          const u = t - 23.0
-          pop($('fL1'), seg(u, 0.3, 0.9), 30)
-          pop($('fL2'), seg(u, 0.7, 1.3), 30)
-          pop($('fBtn'), seg(u, 1.5, 2.1), 20)
+          const u = t - 26.8
+          pop($('eL1'), seg(u, 0.3, 0.9), 30)
+          pop($('eL2'), seg(u, 0.7, 1.3), 30)
+          pop($('eBrand'), seg(u, 1.8, 2.4), 20)
         }
       }
       window.render(0)
