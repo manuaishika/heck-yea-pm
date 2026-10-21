@@ -56,7 +56,7 @@ export default function Landing() {
 
       {/* intro video: how to get into product */}
       <section>
-        <h2 className="text-center">Getting into product in 30 seconds</h2>
+        <h2 className="text-center">How it works in 27 seconds</h2>
         <div className="mx-auto mt-4 max-w-3xl">
           <IntroVideo />
         </div>

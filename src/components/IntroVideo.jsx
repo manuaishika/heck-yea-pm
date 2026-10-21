@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 
 /**
- * The homepage intro: 30 seconds on how to get into product. Autoplays muted
+ * The homepage intro: 27 seconds on how the site works. Autoplays muted
  * and loops, with a visible pause control (autoplaying video always needs
  * one). Rendered by scripts/intro-video/render.mjs into public/intro/.
  */
@@ -31,7 +31,7 @@ export default function IntroVideo() {
         loop
         playsInline
         poster="/intro/poster.jpg"
-        aria-label="How to get into product management, in 30 seconds: know the job, build the skills, show proof, apply where freshers get in, crack the loop."
+        aria-label="How Product Practice works, in 27 seconds: one interview question a day with a streak, answer out loud with a timer, a quiz that shows right and wrong, 131 questions and 35 companies. Free, no login."
       >
         <source src="/intro/intro.webm" type="video/webm" />
         <source src="/intro/intro.mp4" type="video/mp4" />
