@@ -266,13 +266,11 @@ export function Detail({ columns }) {
     <div className={`grid gap-px bg-border ${colClass}`}>
       {columns.map((c, i) => {
         const last = i === n - 1
+        // the last cell stretches to fill its row, from md up only: a span on a
+        // one-column phone layout would invent extra columns
         const span = last && n > 3 ? cols - ((n - 1) % cols) : 1
         return (
-          <div
-            key={c.label}
-            className="bg-surface p-4"
-            style={span > 1 ? { gridColumn: `span ${span}` } : undefined}
-          >
+          <div key={c.label} className={`bg-surface p-4 ${{ 1: '', 2: 'md:col-span-2', 3: 'md:col-span-3' }[span]}`}>
             <p className="label !text-accent">{c.label}</p>
             <div className="mt-2 text-text">{c.children}</div>
           </div>

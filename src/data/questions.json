@@ -311,7 +311,7 @@
     "id": "favorite-product",
     "type": "question",
     "category": "Product Design",
-    "question": "What is your favorite product (app / web / desktop / hardware), and why?",
+    "question": "What is your favorite product, and why?",
     "sections": [
       {
         "label": "Framework",
@@ -319,21 +319,49 @@
           "Name the product and who it is for",
           "The one job it does better than anything else",
           "One design decision you find impressive, and why",
-          "One thing you would change"
+          "One thing you would change",
+          "Pick something you use every day — the follow-ups come from your own use"
         ]
       },
       {
         "label": "Answer",
+        "points": [
+          "Digital: Notion. One job it does best, one decision you admire, one change",
+          "Physical: a Kindle. The same four beats on something you can hold",
+          "Their company: use two or three of their products first, then pick the one you would open anyway"
+        ]
+      },
+      {
+        "label": "Digital product",
         "points": [
           "Notion. For people who juggle notes, tasks, and docs across five apps",
           "It is not a tool — it is blocks you assemble into your own tool. No feature bloat",
           "Impressive: they shipped a slow, confusing v1 and won on flexibility, then fixed speed later",
           "Would change: onboarding drops you on a blank page. New users need a template picker first"
         ]
+      },
+      {
+        "label": "Physical product",
+        "points": [
+          "A Kindle. For people who read a lot and want to read for hours without eye strain",
+          "The one job: reading. The screen is easy on the eyes and the battery lasts weeks, so it never gets in the way",
+          "Impressive: you can buy a book and start reading it in under a minute, so wanting a book turns into reading it",
+          "Would change: pulling your highlights and notes out into another app is clumsy"
+        ]
+      },
+      {
+        "label": "Your favorite from their company",
+        "points": [
+          "Before the interview, use two or three of their products for a week. Pick the one you would open anyway",
+          "Say who it serves and the one job it does best, in your own words",
+          "Name one decision that shows how the company thinks, not only that the product is popular",
+          "Give one improvement as an idea, not a complaint, and say how you would measure it",
+          "Example: [Product]. For [user] who [problem]. I like that [specific decision]. I would try [change] and watch [metric]"
+        ]
       }
     ],
-    "tip": "Prepare one answer each for a mobile app, a web app, a desktop app, and a hardware product. You'll be surprised which one they ask for.",
-    "failureMode": "Choosing an impressive-sounding product you barely use, then failing the follow-ups. Pick something you open every day.",
+    "tip": "It comes three ways: your favorite digital product, your favorite physical product, and your favorite product from their company. Prepare one answer for each, and use the same four beats every time.",
+    "failureMode": "Choosing an impressive-sounding product you barely use, or naming the company's biggest product with nothing specific to say about it. Pick something you open every day and name one real decision.",
     "companies": [],
     "hard": false
   },
