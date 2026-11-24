@@ -6,6 +6,14 @@ import { Page } from './components/Page'
 import Landing from './pages/Landing'
 
 const Role = lazy(() => import('./pages/Role'))
+const Learn = lazy(() => import('./pages/Learn'))
+const LessonDetail = lazy(() => import('./pages/LessonDetail'))
+const Practice = lazy(() => import('./pages/Practice'))
+const RcaCase = lazy(() => import('./pages/RcaCase'))
+const ConsumerExercise = lazy(() => import('./pages/ConsumerExercise'))
+const Interview = lazy(() => import('./pages/Interview'))
+const Start = lazy(() => import('./pages/Start'))
+const Progress = lazy(() => import('./pages/Progress'))
 const Today = lazy(() => import('./pages/Today'))
 const Skills = lazy(() => import('./pages/Skills'))
 const Assess = lazy(() => import('./pages/Assess'))
@@ -42,6 +50,14 @@ export default function App() {
             <Route index element={<Landing />} />
             <Route path="role" element={<Role />} />
             <Route path="today" element={<Today />} />
+            <Route path="learn" element={<Learn />} />
+            <Route path="learn/:slug" element={<LessonDetail />} />
+            <Route path="practice" element={<Practice />} />
+            <Route path="practice/rca/:slug" element={<RcaCase />} />
+            <Route path="practice/consumer/:slug" element={<ConsumerExercise />} />
+            <Route path="interview" element={<Interview />} />
+            <Route path="start" element={<Start />} />
+            <Route path="progress" element={<Progress />} />
             <Route path="skills" element={<Skills />} />
             <Route path="skills/assess" element={<Assess />} />
             <Route path="careers" element={<Careers />} />

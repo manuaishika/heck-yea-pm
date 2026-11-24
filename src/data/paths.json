@@ -1,0 +1,242 @@
+{
+  "paths": {
+    "aspiring": {
+      "name": "Aspiring product manager",
+      "goal": "Understand the job, learn to think like a product manager, and be ready for a first interview.",
+      "steps": [
+        {
+          "type": "link",
+          "ref": "/role",
+          "title": "Read what a product manager does",
+          "stage": "Foundations",
+          "why": "Start with the job itself, so every later lesson has a place to sit."
+        },
+        {
+          "type": "lesson",
+          "ref": "jobs-to-be-done",
+          "stage": "Foundations",
+          "why": "The idea behind most good product questions: what progress is the person after?"
+        },
+        {
+          "type": "lesson",
+          "ref": "facts-vs-assumptions",
+          "stage": "Discovery",
+          "why": "Learn to keep what you saw apart from what you assume."
+        },
+        {
+          "type": "consumer",
+          "ref": "a-consumers-day",
+          "stage": "Discovery",
+          "why": "Practise that skill on a made-up user."
+        },
+        {
+          "type": "lesson",
+          "ref": "mvp-and-riskiest-assumption",
+          "stage": "Discovery",
+          "why": "Learn to test the riskiest idea cheaply."
+        },
+        {
+          "type": "lesson",
+          "ref": "prioritisation-rice-ice-moscow",
+          "stage": "Product sense",
+          "why": "Choosing what not to build is half the job."
+        },
+        {
+          "type": "consumer",
+          "ref": "purchase-decision",
+          "stage": "Product sense",
+          "why": "Work out why someone bought, from behaviour."
+        },
+        {
+          "type": "link",
+          "ref": "/methods/circles",
+          "title": "Learn the CIRCLES method",
+          "stage": "Product sense",
+          "why": "A structure for design questions, in motion."
+        },
+        {
+          "type": "lesson",
+          "ref": "writing-a-prd",
+          "stage": "Execution",
+          "why": "See how an idea becomes something an engineer can build."
+        },
+        {
+          "type": "lesson",
+          "ref": "metric-decomposition",
+          "stage": "Analytics",
+          "why": "The core move in every metric question."
+        },
+        {
+          "type": "lesson",
+          "ref": "funnels-and-cohorts",
+          "stage": "Analytics",
+          "why": "Find where people leave, and whether they stay."
+        },
+        {
+          "type": "rca",
+          "ref": "food-delivery-orders-drop",
+          "stage": "Analytics",
+          "why": "Your first full diagnosis, with evidence on request."
+        },
+        {
+          "type": "quiz",
+          "stage": "Interview preparation",
+          "why": "Find out where you stand across the skills."
+        },
+        {
+          "type": "link",
+          "ref": "/browse",
+          "title": "Work through the question bank",
+          "stage": "Interview preparation",
+          "why": "Rehearse answers, by category."
+        },
+        {
+          "type": "interview",
+          "stage": "Interview preparation",
+          "why": "A timed mock with follow-ups and a rubric."
+        },
+        {
+          "type": "link",
+          "ref": "/resume",
+          "title": "Check your resume",
+          "stage": "Interview preparation",
+          "why": "Make the proof visible before you apply."
+        }
+      ]
+    },
+    "working": {
+      "name": "Working product manager",
+      "goal": "Find your weak spots, close them with harder cases, and test yourself under time.",
+      "steps": [
+        {
+          "type": "quiz",
+          "stage": "Skill assessment",
+          "why": "Start by finding the gaps."
+        },
+        {
+          "type": "lesson",
+          "ref": "prioritisation-rice-ice-moscow",
+          "stage": "Targeted learning",
+          "why": "Sharpen how you argue for a trade-off."
+        },
+        {
+          "type": "lesson",
+          "ref": "funnels-and-cohorts",
+          "stage": "Targeted learning",
+          "why": "Read retention honestly."
+        },
+        {
+          "type": "lesson",
+          "ref": "ab-testing-basics",
+          "stage": "Targeted learning",
+          "why": "Run and read experiments without fooling yourself."
+        },
+        {
+          "type": "rca",
+          "ref": "streaming-watch-time-drop",
+          "stage": "Advanced cases",
+          "why": "A diagnosis where the baseline hides the real fall."
+        },
+        {
+          "type": "rca",
+          "ref": "payment-failures-rise",
+          "stage": "Advanced cases",
+          "why": "A diagnosis where the cause is outside your system."
+        },
+        {
+          "type": "rca",
+          "ref": "onboarding-completion-drop",
+          "stage": "Advanced cases",
+          "why": "A diagnosis with a trade-off and a tempting wrong story."
+        },
+        {
+          "type": "consumer",
+          "ref": "extreme-user",
+          "stage": "Advanced cases",
+          "why": "Learn from the user at the edge."
+        },
+        {
+          "type": "consumer",
+          "ref": "purchase-decision",
+          "stage": "Advanced cases",
+          "why": "Separate what people say from what they do."
+        },
+        {
+          "type": "interview",
+          "stage": "Simulations",
+          "why": "Timed mocks, scored against a rubric."
+        },
+        {
+          "type": "link",
+          "ref": "/progress",
+          "title": "Review your competency levels",
+          "stage": "Competency assessment",
+          "why": "See where you moved and what is still weak."
+        }
+      ]
+    },
+    "technical": {
+      "name": "Technical product manager",
+      "goal": "Build the technical ground to discuss systems, trade-offs and AI with engineers and in interviews.",
+      "steps": [
+        {
+          "type": "lesson",
+          "ref": "apis-for-product-managers",
+          "stage": "Technical foundations",
+          "why": "The vocabulary of every technical conversation.",
+          "basics": true
+        },
+        {
+          "type": "lesson",
+          "ref": "databases-sql-nosql-indexes",
+          "stage": "Backend and architecture",
+          "why": "How data choices shape the product.",
+          "basics": true
+        },
+        {
+          "type": "lesson",
+          "ref": "latency-caching-and-scale",
+          "stage": "System design",
+          "why": "Targets, caches and what must never fail."
+        },
+        {
+          "type": "link",
+          "ref": "/skills",
+          "title": "Read the technical skills",
+          "stage": "System design",
+          "why": "The same ideas, in the interview framing."
+        },
+        {
+          "type": "lesson",
+          "ref": "llm-basics-for-product-managers",
+          "stage": "AI products",
+          "why": "The facts behind every AI feature decision."
+        },
+        {
+          "type": "link",
+          "ref": "/ai",
+          "title": "Read AI for product managers",
+          "stage": "AI products",
+          "why": "Evaluation, cost and when AI is the wrong tool."
+        },
+        {
+          "type": "rca",
+          "ref": "payment-failures-rise",
+          "stage": "Technical cases",
+          "why": "A diagnosis that runs through APIs, issuers and a gateway."
+        },
+        {
+          "type": "rca",
+          "ref": "food-delivery-orders-drop",
+          "stage": "Technical cases",
+          "why": "A diagnosis that ends at an SDK and a release."
+        },
+        {
+          "type": "interview",
+          "stage": "Technical interviews",
+          "why": "Practise explaining a trade-off against the clock."
+        }
+      ]
+    }
+  }
+}

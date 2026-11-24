@@ -1,0 +1,104 @@
+{
+  "rubric": [
+    {
+      "key": "structure",
+      "name": "Structure",
+      "levels": [
+        "No clear structure",
+        "Some structure, with gaps",
+        "Clear structure, mostly followed",
+        "Clear structure, signposted and followed through"
+      ]
+    },
+    {
+      "key": "reasoning",
+      "name": "Evidence and reasoning",
+      "levels": [
+        "Claims with no reasons",
+        "Some reasons, mostly assumed",
+        "Reasons tied to the user or the data",
+        "Reasons tied to evidence, with assumptions named"
+      ]
+    },
+    {
+      "key": "tradeoffs",
+      "name": "Trade-offs and prioritisation",
+      "levels": [
+        "No choices or trade-offs",
+        "Lists options without choosing",
+        "Chooses and gives one reason",
+        "Chooses, weighs the cost, and says what is left out"
+      ]
+    },
+    {
+      "key": "communication",
+      "name": "Communication",
+      "levels": [
+        "Hard to follow",
+        "Understandable but rambling",
+        "Clear and concise",
+        "Clear, concise, and answers the follow-up directly"
+      ]
+    }
+  ],
+  "followUps": {
+    "Product Design": [
+      "Which user would you cut from your scope, and why?",
+      "What is the biggest risk to your idea, and how would you test it?",
+      "Your engineering lead says it takes three times longer. What do you cut?",
+      "How would you know in four weeks that it is working?"
+    ],
+    "Analytics": [
+      "What would make you doubt this number?",
+      "Which segment would you look at first, and why?",
+      "What would you do if two metrics moved in opposite directions?",
+      "How big a change would you need to see before you acted?"
+    ],
+    "Strategy": [
+      "What would make you change your mind?",
+      "Who loses if you do this?",
+      "What is the cheapest test of your main assumption?",
+      "What would you choose not to build?"
+    ],
+    "Technical": [
+      "What breaks first when traffic grows ten times?",
+      "What would you ask the engineers before committing?",
+      "What does the user see if this fails?",
+      "Which part could degrade without hurting the user?"
+    ],
+    "Behavioral": [
+      "What did you personally do, as opposed to the team?",
+      "What would you do differently now?",
+      "How did you know it worked?",
+      "What was the hardest disagreement, and how did it end?"
+    ],
+    "General": [
+      "What would you do in the first week?",
+      "Who would you talk to first?",
+      "How would you measure it?",
+      "What is the common mistake here?"
+    ]
+  },
+  "bands": [
+    {
+      "min": 0,
+      "label": "Early",
+      "line": "Keep going with fundamentals. Do the lessons, then repeat this with shorter questions."
+    },
+    {
+      "min": 0.5,
+      "label": "Developing",
+      "line": "You have the shape of an answer. Work on the weakest criterion below."
+    },
+    {
+      "min": 0.7,
+      "label": "Getting ready",
+      "line": "Solid on most criteria. Repeat under tighter time and with harder questions."
+    },
+    {
+      "min": 0.85,
+      "label": "Strong on this evidence",
+      "line": "Your own ratings are high. Check them with a friend who will be honest."
+    }
+  ]
+}

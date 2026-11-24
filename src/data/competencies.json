@@ -1,0 +1,123 @@
+{
+  "competencies": [
+    {
+      "slug": "consumer",
+      "name": "Consumer and user understanding",
+      "blurb": "Who the user is, what they do, and why. Separates what you saw from what you assume.",
+      "demonstrate": "Builds a defensible picture of a user from observation, and says what evidence is still missing."
+    },
+    {
+      "slug": "discovery",
+      "name": "Product discovery",
+      "blurb": "Finding problems worth solving and testing the riskiest assumption cheaply.",
+      "demonstrate": "Chooses the cheapest test for the riskiest assumption and acts on what it shows."
+    },
+    {
+      "slug": "strategy",
+      "name": "Product strategy",
+      "blurb": "Choosing what to build, for whom, and what to leave out.",
+      "demonstrate": "Defends a prioritisation and a trade-off to someone who disagrees."
+    },
+    {
+      "slug": "design",
+      "name": "Product design and UX",
+      "blurb": "Whether a person can complete the task, understand the screen, and recover from errors.",
+      "demonstrate": "Diagnoses a confusing flow and proposes a change tied to the user's task."
+    },
+    {
+      "slug": "analytics",
+      "name": "Product analytics",
+      "blurb": "Metrics, funnels, cohorts and experiments, and what the numbers can and cannot say.",
+      "demonstrate": "Diagnoses a metric move from evidence and separates correlation from cause."
+    },
+    {
+      "slug": "technical",
+      "name": "Technical understanding",
+      "blurb": "How the web, APIs, databases and services behave, and what that means for a product.",
+      "demonstrate": "Explains a technical trade-off in plain language to a stakeholder and to an engineer."
+    },
+    {
+      "slug": "system-design",
+      "name": "System design",
+      "blurb": "Requirements, scale, bottlenecks and failure, at the level a product manager needs.",
+      "demonstrate": "Sketches a design from requirements and names where it breaks."
+    },
+    {
+      "slug": "execution",
+      "name": "Product execution",
+      "blurb": "Specs, roadmaps, estimates, launches and working with engineering.",
+      "demonstrate": "Ships a scoped change with a clear spec, a plan and a way to know it worked."
+    },
+    {
+      "slug": "business",
+      "name": "Business and growth",
+      "blurb": "Market size, pricing, unit economics and how products grow.",
+      "demonstrate": "Builds a unit-economics argument and tests it against real constraints."
+    },
+    {
+      "slug": "ai",
+      "name": "AI product management",
+      "blurb": "What models can do, where they fail, what they cost, and how to evaluate them.",
+      "demonstrate": "Decides whether an AI feature is worth building and how to measure it."
+    },
+    {
+      "slug": "leadership",
+      "name": "Product leadership",
+      "blurb": "Influence without authority, stakeholder handling and decisions under disagreement.",
+      "demonstrate": "Moves a group to a decision without relying on rank."
+    },
+    {
+      "slug": "communication",
+      "name": "Communication and decision-making",
+      "blurb": "Structured answers, clear writing, and showing your reasoning.",
+      "demonstrate": "Explains a decision and its reasoning so others can challenge it."
+    }
+  ],
+  "levels": [
+    {
+      "level": 1,
+      "name": "Understand",
+      "line": "Knows the definitions and can read a simple example."
+    },
+    {
+      "level": 2,
+      "name": "Apply",
+      "line": "Solves a guided exercise with a framework."
+    },
+    {
+      "level": 3,
+      "name": "Analyze",
+      "line": "Handles ambiguity, weighs trade-offs and diagnoses failures on their own."
+    },
+    {
+      "level": 4,
+      "name": "Demonstrate",
+      "line": "Solves an unfamiliar problem on their own, explains the reasoning and holds up to follow-up questions."
+    }
+  ],
+  "skillMap": {
+    "apis": "technical",
+    "databases": "technical",
+    "client-server": "technical",
+    "latency-caching": "system-design",
+    "ab-tests": "analytics",
+    "sql": "analytics",
+    "data-pipelines": "technical",
+    "ml-features": "ai",
+    "nfrs": "system-design",
+    "user-research": "consumer",
+    "prioritisation": "strategy",
+    "metrics": "analytics",
+    "writing": "communication",
+    "stakeholders": "leadership",
+    "business": "business"
+  },
+  "categoryMap": {
+    "Behavioral": "communication",
+    "Product Design": "design",
+    "Strategy": "strategy",
+    "Analytics": "analytics",
+    "Technical": "technical",
+    "General": "execution"
+  }
+}

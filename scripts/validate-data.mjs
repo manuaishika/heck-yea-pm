@@ -17,7 +17,9 @@ import {
   validateQuiz,
 } from '../src/data/guides-schema.js'
 import { validateMethods } from '../src/lib/methods-schema.js'
+import { CATEGORIES } from '../src/data/schema.js'
 import { validateAI } from '../src/lib/ai-schema.js'
+import { validateCompetencies, validateLessons, validateCases, validateConsumer, validatePaths, validateInterview } from '../src/data/learn-schema.js'
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -30,7 +32,24 @@ function load(name) {
   }
 }
 
+const competencySlugs = () => load('competencies.json').competencies.map((c) => c.slug)
+
 const checks = [
+  ['interview.json', (d) => validateInterview(d, CATEGORIES), (d) => `${d.rubric.length} rubric criteria`],
+  ['competencies.json', (d) => validateCompetencies(d), (d) => `${d.competencies.length} competencies`],
+  ['lessons.json', (d) => validateLessons(d, competencySlugs()), (d) => `${d.lessons.length} lessons`],
+  ['rca-cases.json', (d) => validateCases(d, competencySlugs()), (d) => `${d.cases.length} root cause cases`],
+  ['consumer-exercises.json', (d) => validateConsumer(d, competencySlugs()), (d) => `${d.exercises.length} consumer exercises`],
+  [
+    'paths.json',
+    (d) =>
+      validatePaths(d, {
+        lessons: new Set(load('lessons.json').lessons.map((l) => l.slug)),
+        cases: new Set(load('rca-cases.json').cases.map((c) => c.slug)),
+        consumer: new Set(load('consumer-exercises.json').exercises.map((e) => e.slug)),
+      }),
+    (d) => `${Object.keys(d.paths).length} learning paths`,
+  ],
   ['questions.json', (d) => validateQuestions(d), (d) => `${d.length} questions`],
   ['role.json', (d) => validateRole(d), () => 'role guide'],
   ['skills.json', (d) => validateSkills(d), (d) => `${d.technical.skills.length + d.nonTechnical.skills.length} skills`],

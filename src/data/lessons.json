@@ -1,0 +1,1876 @@
+{
+  "disciplines": [
+    {
+      "slug": "foundations",
+      "name": "Product foundations",
+      "subjects": [
+        {
+          "slug": "strategy",
+          "name": "Strategy and prioritisation"
+        }
+      ],
+      "planned": [
+        "Product lifecycle",
+        "Product thinking",
+        "Product vision",
+        "Product discovery methods"
+      ]
+    },
+    {
+      "slug": "consumer",
+      "name": "Consumer intelligence",
+      "subjects": [
+        {
+          "slug": "jobs",
+          "name": "Jobs to be done"
+        },
+        {
+          "slug": "research",
+          "name": "User research"
+        }
+      ],
+      "planned": [
+        "Consumer psychology",
+        "Behavioral segmentation",
+        "Purchase behavior",
+        "Ethnographic research",
+        "Extreme users"
+      ]
+    },
+    {
+      "slug": "design",
+      "name": "Product design",
+      "subjects": [
+        {
+          "slug": "ux",
+          "name": "UX fundamentals"
+        }
+      ],
+      "planned": [
+        "UX fundamentals",
+        "Interaction design",
+        "Information architecture",
+        "Wireframing",
+        "Design systems",
+        "Accessibility",
+        "Usability testing"
+      ]
+    },
+    {
+      "slug": "analytics",
+      "name": "Product analytics",
+      "subjects": [
+        {
+          "slug": "metrics",
+          "name": "Metrics and diagnosis"
+        },
+        {
+          "slug": "experiments",
+          "name": "Experimentation"
+        }
+      ],
+      "planned": [
+        "SQL",
+        "Retention curves",
+        "Statistical reasoning",
+        "Event instrumentation"
+      ]
+    },
+    {
+      "slug": "technical",
+      "name": "Technical product management",
+      "subjects": [
+        {
+          "slug": "web",
+          "name": "APIs and the web"
+        },
+        {
+          "slug": "data",
+          "name": "Databases"
+        },
+        {
+          "slug": "systems",
+          "name": "Systems and scale"
+        }
+      ],
+      "planned": [
+        "HTTP and DNS",
+        "Authentication and security",
+        "Cloud and CI/CD",
+        "Frontend basics"
+      ]
+    },
+    {
+      "slug": "ai",
+      "name": "AI product management",
+      "subjects": [
+        {
+          "slug": "llm",
+          "name": "LLM basics"
+        }
+      ],
+      "planned": [
+        "Prompt engineering",
+        "RAG and embeddings",
+        "AI evaluation",
+        "AI economics",
+        "AI safety"
+      ]
+    },
+    {
+      "slug": "execution",
+      "name": "Execution and leadership",
+      "subjects": [
+        {
+          "slug": "specs",
+          "name": "Specs and planning"
+        }
+      ],
+      "planned": [
+        "Roadmaps",
+        "Agile and Scrum",
+        "Stakeholder management",
+        "Launch management"
+      ]
+    },
+    {
+      "slug": "business",
+      "name": "Business and growth",
+      "subjects": [
+        {
+          "slug": "market",
+          "name": "Market and pricing"
+        }
+      ],
+      "planned": [
+        "Market sizing",
+        "Pricing",
+        "Unit economics",
+        "Growth loops"
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "slug": "jobs-to-be-done",
+      "title": "Jobs to be done",
+      "discipline": "consumer",
+      "subject": "jobs",
+      "topic": "Jobs to Be Done",
+      "competencies": [
+        "consumer",
+        "discovery"
+      ],
+      "level": 1,
+      "minutes": 10,
+      "audience": [
+        "aspiring",
+        "working"
+      ],
+      "prerequisites": [],
+      "next": [
+        "facts-vs-assumptions",
+        "mvp-and-riskiest-assumption"
+      ],
+      "objectives": [
+        "Explain a job to be done in one sentence",
+        "Write a job statement from a real situation",
+        "Tell a job apart from a feature request"
+      ],
+      "definition": "A job to be done is the progress a person is trying to make in a particular situation. People hire a product to make that progress.",
+      "whyItMatters": "Features and demographics describe the product and the person. The job explains why the person acts, so it predicts what they will switch to, and what competes with you.",
+      "howItWorks": [
+        "Pick a moment: the situation that triggers the need.",
+        "Name the progress they want, as an outcome and not as a product.",
+        "Find what they use today, including spreadsheets, a friend, or doing nothing.",
+        "List the struggles and workarounds in that moment.",
+        "Write it down: \"When [situation], I want to [motivation], so I can [outcome].\""
+      ],
+      "terms": [
+        {
+          "term": "Job",
+          "def": "The progress a person wants to make in a situation."
+        },
+        {
+          "term": "Situation",
+          "def": "The trigger and context: time, place, what happened a moment ago."
+        },
+        {
+          "term": "Outcome",
+          "def": "What changes for the person if the job gets done."
+        },
+        {
+          "term": "Hire and fire",
+          "def": "Choosing a product for the job, and dropping it when it stops doing the job."
+        },
+        {
+          "term": "Competing solution",
+          "def": "Anything the person uses for the job, whether or not it is in your category."
+        }
+      ],
+      "examples": [
+        {
+          "title": "The commuter milkshake",
+          "text": "In a much-told example from Clayton Christensen, a fast-food chain found many milkshakes sold early in the morning to solo drivers. The job: make a long, dull commute more interesting and keep hunger away until lunch. The competitors were bananas, bagels and boredom, not other milkshakes."
+        },
+        {
+          "title": "A midnight grocery order",
+          "text": "When I notice late at night that there is no milk for tomorrow morning, I want it at my door without going out, so I can start the day without a scramble. The competitors: the shop that is closed, a neighbour, black tea."
+        }
+      ],
+      "realWorld": [
+        "Writing positioning that speaks to a situation, not to a demographic.",
+        "Finding competitors outside your category.",
+        "Turning interview notes into a clear problem to solve."
+      ],
+      "mistakes": [
+        "Writing the solution as the job (\"I want an app that…\").",
+        "Making the job so broad it is useless (\"be happy\").",
+        "Using age or income as the job.",
+        "Assuming one product has exactly one job."
+      ],
+      "whyThingsFail": [
+        "Teams ask people what they want instead of what they did the last time the problem came up.",
+        "Interviews happen without the situation in mind, so answers stay abstract."
+      ],
+      "tradeoffs": [
+        "It suits new products and positioning well. It adds less to small interface changes.",
+        "Jobs come from a few conversations, so they are hypotheses until you test them with more people or behaviour data."
+      ],
+      "guided": {
+        "prompt": "A person buys a standing desk. Write the job.",
+        "steps": [
+          "Situation: after six hours at a laptop at home, their back hurts.",
+          "Progress: work for a full day without pain and without stopping work.",
+          "Competing solutions: a cushion, stretching breaks, a taller chair, working from the sofa.",
+          "Statement: \"When I have been at my laptop for six hours and my back starts to hurt, I want to change my posture without stopping work, so I can finish the day pain-free.\""
+        ]
+      },
+      "independent": {
+        "prompt": "Pick a product you used this week. Write its job statement and name two competing solutions that are not products in the same category.",
+        "rubric": [
+          "Names a specific situation, not a type of person",
+          "States an outcome, not a feature",
+          "Lists at least one competitor outside the category",
+          "Could be checked by asking one real person"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "Which is a job statement?",
+          "options": [
+            "A 25-year-old urban student who likes music",
+            "I want a playlist app with offline mode",
+            "When I am on a long commute, I want something to fill the time, so I arrive in a good mood",
+            "Increase daily active users by 10%"
+          ],
+          "answer": 2,
+          "why": "It names a situation, a motivation and an outcome. The others are a demographic, a solution and a company goal."
+        },
+        {
+          "q": "The milkshake story shows that competition is defined by…",
+          "options": [
+            "The product category",
+            "The job the customer hires a product to do",
+            "Price",
+            "Brand size"
+          ],
+          "answer": 1,
+          "why": "The milkshake competed with bananas and bagels because they did the same job."
+        },
+        {
+          "q": "You hear \"I want a faster horse\". The best next question is…",
+          "options": [
+            "How fast should the horse be?",
+            "What are you trying to get done when you need a horse?",
+            "What is your budget?",
+            "Which horse do you use now?"
+          ],
+          "answer": 1,
+          "why": "Ask for the situation and the progress wanted. The request is a solution, and the job sits behind it."
+        }
+      ],
+      "references": [
+        {
+          "label": "Clayton Christensen, \"Competing Against Luck\" (book)"
+        }
+      ]
+    },
+    {
+      "slug": "facts-vs-assumptions",
+      "title": "Facts, statements, assumptions and hypotheses",
+      "discipline": "consumer",
+      "subject": "research",
+      "topic": "User research",
+      "competencies": [
+        "consumer",
+        "discovery",
+        "communication"
+      ],
+      "level": 1,
+      "minutes": 9,
+      "audience": [
+        "aspiring",
+        "working"
+      ],
+      "prerequisites": [
+        "jobs-to-be-done"
+      ],
+      "next": [
+        "mvp-and-riskiest-assumption"
+      ],
+      "objectives": [
+        "Sort what you know about a user into four kinds",
+        "Turn an assumption into a testable hypothesis",
+        "Say what evidence is still missing before you decide"
+      ],
+      "definition": "Research notes mix four different things: observed facts, what users said, your assumptions, and hypotheses you can test. Good reasoning keeps them apart.",
+      "whyItMatters": "Teams ship on a story built from one observation and a few guesses. Separating the four kinds shows how much of the story is known.",
+      "howItWorks": [
+        "Write each note on its own line.",
+        "Ask: did someone see or measure this? That is a fact.",
+        "Ask: did a user say it? That is a statement. It may be true, and it may not describe what they do.",
+        "Ask: is this something we believe without evidence? That is an assumption.",
+        "Rewrite the important assumptions as hypotheses: \"If [we do X], then [Y] will happen, because [reason], and we will see it in [measure].\"",
+        "List the evidence that would confirm or reject each hypothesis."
+      ],
+      "terms": [
+        {
+          "term": "Observed fact",
+          "def": "Something seen or measured, with a source and a context."
+        },
+        {
+          "term": "User statement",
+          "def": "What a person says. Useful, but not the same as what they do."
+        },
+        {
+          "term": "Assumption",
+          "def": "A belief held without evidence yet."
+        },
+        {
+          "term": "Hypothesis",
+          "def": "A testable claim with a reason and a measure."
+        },
+        {
+          "term": "Overgeneralising",
+          "def": "Treating one person or one moment as the pattern."
+        }
+      ],
+      "examples": [
+        {
+          "title": "One shopper",
+          "text": "\"She buys the large pack\" is a fact. \"She says she buys it to save money\" is a statement. \"Price drives her choice\" is an assumption. \"If we show the per-kilo price, large-pack sales rise\" is a hypothesis."
+        },
+        {
+          "title": "Two interviews",
+          "text": "Two of five interviewees mention slow delivery. That is a statement from five people. It does not show that delivery time is the main reason people leave."
+        }
+      ],
+      "realWorld": [
+        "Interview synthesis.",
+        "Writing a research readout that a sceptical engineer will accept.",
+        "Deciding what to test first."
+      ],
+      "mistakes": [
+        "Calling a quote a fact.",
+        "Generalising from one observation.",
+        "Writing hypotheses that cannot fail (\"users will like it\").",
+        "Looking only for evidence that agrees."
+      ],
+      "whyThingsFail": [
+        "The team falls in love with a story and then collects evidence for it.",
+        "Statements are recorded and never checked against behaviour."
+      ],
+      "tradeoffs": [
+        "Sorting every note takes time. Do it for the claims your decision depends on.",
+        "A hypothesis needs a measure, and the right measure is sometimes hard to get quickly."
+      ],
+      "guided": {
+        "prompt": "A user says \"I would pay for a faster checkout\". Sort it and make it testable.",
+        "steps": [
+          "It is a user statement, not a fact about what they will do.",
+          "The assumption behind it: checkout speed is what stops purchases.",
+          "Hypothesis: \"If we cut checkout from five steps to three, completed purchases rise, because fewer people give up mid-way. We will see it in checkout completion rate.\"",
+          "Evidence needed: the funnel drop at each current step, and what people who abandon did next."
+        ]
+      },
+      "independent": {
+        "prompt": "Take three claims from something you recently read about a product or a user. Label each as fact, statement, assumption or hypothesis, and rewrite one assumption as a hypothesis with a measure.",
+        "rubric": [
+          "Labels are correct and reasons given",
+          "The hypothesis names a change, a reason and a measure",
+          "States what would reject the hypothesis",
+          "Does not generalise from one case"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "\"Our app has 40% day-7 retention\" from the analytics dashboard is…",
+          "options": [
+            "An assumption",
+            "An observed fact, with a definition and period to check",
+            "A hypothesis",
+            "A user statement"
+          ],
+          "answer": 1,
+          "why": "It was measured. Check how retention is defined before you rely on it."
+        },
+        {
+          "q": "Which is a testable hypothesis?",
+          "options": [
+            "Users love simplicity",
+            "Removing the coupon field will raise checkout completion, measured over two weeks",
+            "Our users are busy",
+            "The new design is better"
+          ],
+          "answer": 1,
+          "why": "It names a change, an outcome and a measure, so it can fail."
+        },
+        {
+          "q": "One interviewee says price is the problem. You should…",
+          "options": [
+            "Cut the price",
+            "Treat it as a statement and check it against behaviour and more users",
+            "Ignore it",
+            "Add a discount banner"
+          ],
+          "answer": 1,
+          "why": "One statement is a lead. Check it before it becomes the story."
+        }
+      ]
+    },
+    {
+      "slug": "metric-decomposition",
+      "title": "Metric decomposition and issue trees",
+      "discipline": "analytics",
+      "subject": "metrics",
+      "topic": "Metrics and diagnosis",
+      "competencies": [
+        "analytics",
+        "discovery"
+      ],
+      "level": 2,
+      "minutes": 11,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [],
+      "next": [
+        "funnels-and-cohorts",
+        "ab-testing-basics"
+      ],
+      "objectives": [
+        "Break one metric into parts that add or multiply",
+        "Segment a metric move to find where it sits",
+        "Order your checks so you find the cause fastest"
+      ],
+      "definition": "Metric decomposition splits one number into parts so you can see which part moved. An issue tree does the same for a question, with branches that do not overlap and cover everything.",
+      "whyItMatters": "When a number moves, most people guess. Decomposing shows where to look, which saves days and avoids fixing the wrong thing.",
+      "howItWorks": [
+        "Define the metric exactly: what is counted, over what period, against what baseline (same weekday, last week, last year).",
+        "Rule out measurement problems first: a tracking change, a delayed data feed, a dashboard filter.",
+        "Decompose into parts that multiply or add, for example orders = active users × sessions per user × conversion per session.",
+        "Segment: platform, app version, region, new or returning users, channel.",
+        "Look at time: when did the move start, and what shipped or happened then?",
+        "Turn what you see into hypotheses, rank them by evidence, and test the top one."
+      ],
+      "terms": [
+        {
+          "term": "MECE",
+          "def": "Mutually exclusive, collectively exhaustive: no overlap and nothing missed."
+        },
+        {
+          "term": "Segment",
+          "def": "A slice of users or events defined by one attribute."
+        },
+        {
+          "term": "Baseline",
+          "def": "What you compare against: same weekday last week, or the trend."
+        },
+        {
+          "term": "Seasonality",
+          "def": "Regular patterns, such as weekends or festivals."
+        },
+        {
+          "term": "Instrumentation bug",
+          "def": "A tracking error that changes the number without changing behaviour."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Daily orders",
+          "text": "Orders = visitors × conversion rate × orders per converting visitor. If visitors and conversion are flat and orders per converting visitor fell, look at basket splits or a change to multi-order checkout."
+        },
+        {
+          "title": "Internal and external",
+          "text": "Internal causes: releases, pricing, experiments, outages. External: competitors, weather, festivals, regulation. Check both, and check data quality before either."
+        }
+      ],
+      "realWorld": [
+        "Diagnosing a drop in a dashboard.",
+        "Setting up what to monitor for a launch.",
+        "Interview questions that start with \"metric X dropped\"."
+      ],
+      "mistakes": [
+        "Starting with a favourite cause before looking at data.",
+        "Comparing to the wrong baseline, such as a holiday week.",
+        "Segments that overlap, so the numbers do not add up.",
+        "Stopping at the first plausible cause."
+      ],
+      "whyThingsFail": [
+        "The metric definition changed and nobody noticed.",
+        "The team looks at the average, which hides one segment that fell sharply.",
+        "A change shipped to one platform and the analysis looked only at totals."
+      ],
+      "tradeoffs": [
+        "Deep splitting finds causes but can find noise: the more segments you cut, the more likely one looks odd by chance.",
+        "A tree is a thinking aid. The data decides which branch is right."
+      ],
+      "guided": {
+        "prompt": "Signups are down 15% this week. Build the first two levels of a tree.",
+        "steps": [
+          "Check measurement: did tracking, a form, or a consent banner change?",
+          "Signups = visits × signup rate. Which fell?",
+          "If visits fell: by channel (paid, organic, referral), by device.",
+          "If signup rate fell: by step in the flow, by platform, by new design or release.",
+          "Next: compare to the same weekday last week, and note what shipped when the fall began."
+        ]
+      },
+      "independent": {
+        "prompt": "Pick a metric from a product you use. Write its formula as parts, name four segments you would cut, and two measurement problems you would rule out first.",
+        "rubric": [
+          "Parts multiply or add correctly",
+          "Segments do not overlap",
+          "Names at least one data-quality check",
+          "Says what comparison baseline to use"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "What do you check first when a metric drops?",
+          "options": [
+            "Competitor launches",
+            "Whether the measurement itself changed",
+            "The marketing budget",
+            "The roadmap"
+          ],
+          "answer": 1,
+          "why": "A tracking or definition change creates drops that are not real."
+        },
+        {
+          "q": "Which split is MECE?",
+          "options": [
+            "Android, iOS, tablet users",
+            "New users, returning users",
+            "Mobile users, Android users",
+            "Paid, India, organic"
+          ],
+          "answer": 1,
+          "why": "Every user is new or returning, never both. The others overlap or mix dimensions."
+        },
+        {
+          "q": "A metric fell 8% but only on one app version. The best next step is…",
+          "options": [
+            "Restart the servers",
+            "Look at what changed in that version and the errors it shows",
+            "Cut the price",
+            "Wait a week"
+          ],
+          "answer": 1,
+          "why": "The segment points to a version-specific cause. Check that release."
+        }
+      ]
+    },
+    {
+      "slug": "funnels-and-cohorts",
+      "title": "Funnels and cohorts",
+      "discipline": "analytics",
+      "subject": "metrics",
+      "topic": "Funnels and cohorts",
+      "competencies": [
+        "analytics"
+      ],
+      "level": 2,
+      "minutes": 10,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [
+        "metric-decomposition"
+      ],
+      "next": [
+        "ab-testing-basics"
+      ],
+      "objectives": [
+        "Read a funnel and find the step that matters",
+        "Read a cohort table and tell retention from growth",
+        "Pick the right tool for a question"
+      ],
+      "definition": "A funnel shows how many people get through each step of a flow. A cohort groups people by when they started and follows them over time.",
+      "whyItMatters": "Funnels show where people leave. Cohorts show whether people stay. Totals can hide both: a growing user base can mask worse retention.",
+      "howItWorks": [
+        "Funnel: list the steps in order and count users who reach each one in a set window.",
+        "Step conversion = users at this step ÷ users at the previous step. Overall conversion = last step ÷ first step.",
+        "Cohort: group users by the week or month they first did something, then count how many return in week 1, 2, 3…",
+        "Read across a row to see one group decay. Read down a column to see whether newer groups retain better or worse.",
+        "A healthy retention curve flattens at some level above zero. If it keeps falling to zero, people are not finding lasting value."
+      ],
+      "terms": [
+        {
+          "term": "Funnel",
+          "def": "Ordered steps with the count of users who reach each."
+        },
+        {
+          "term": "Step conversion",
+          "def": "The share who move from one step to the next."
+        },
+        {
+          "term": "Cohort",
+          "def": "A group of users who started in the same period."
+        },
+        {
+          "term": "Retention",
+          "def": "The share of a cohort that is still active after a given time."
+        },
+        {
+          "term": "Churn",
+          "def": "The share that stops being active."
+        }
+      ],
+      "examples": [
+        {
+          "title": "A checkout funnel",
+          "text": "Illustrative numbers: 1,000 view cart, 600 enter address, 540 choose payment, 400 pay. Step conversions: 60%, 90%, 74%. The biggest relative drop is at payment, so look there first."
+        },
+        {
+          "title": "A retention table",
+          "text": "Illustrative: the January cohort keeps 40% at week 4 and the March cohort keeps 55%. Retention is improving across cohorts, even if the total number of active users is flat."
+        }
+      ],
+      "realWorld": [
+        "Finding the step to fix in onboarding.",
+        "Checking whether a release helped long-term behaviour.",
+        "Explaining growth to leadership honestly."
+      ],
+      "mistakes": [
+        "Mixing users who joined at different times in one retention number.",
+        "Comparing funnels with different time windows.",
+        "Reading totals as health."
+      ],
+      "whyThingsFail": [
+        "The funnel steps are not a real sequence, so a step looks like a drop when people skip it.",
+        "The window is too short for the behaviour, such as a monthly purchase."
+      ],
+      "tradeoffs": [
+        "Funnels show where, not why. You need interviews or session evidence for why.",
+        "Cohorts need time to mature, so recent cohorts are incomplete."
+      ],
+      "guided": {
+        "prompt": "Funnel: 2,000 sign up, 1,200 verify email, 900 add a profile photo, 300 post. Find the step to look at first.",
+        "steps": [
+          "Step conversions: 60%, 75%, 33%.",
+          "The largest drop is from photo to first post: 67% leave.",
+          "Ask whether the post step is clear and whether the photo step helps people post.",
+          "Check the funnel for new versus returning users and by device before you decide."
+        ]
+      },
+      "independent": {
+        "prompt": "Draw a three-step funnel for a product you know with made-up numbers, find the weakest step, and write two hypotheses for the drop.",
+        "rubric": [
+          "Step conversions calculated correctly",
+          "Names the step with the biggest problem and why",
+          "Hypotheses are testable",
+          "Mentions a segment to check"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "1,000 users start, 500 finish step 2, 250 finish step 3. Step 3 conversion is…",
+          "options": [
+            "25%",
+            "50%",
+            "75%",
+            "250"
+          ],
+          "answer": 1,
+          "why": "250 ÷ 500 = 50%. Overall conversion is 25%."
+        },
+        {
+          "q": "Why use cohorts instead of one retention number?",
+          "options": [
+            "They are easier to plot",
+            "They show whether newer users retain better or worse than older ones",
+            "They count more users",
+            "They remove churn"
+          ],
+          "answer": 1,
+          "why": "One blended number mixes users of different ages and hides trends."
+        },
+        {
+          "q": "A retention curve keeps falling to zero. This suggests…",
+          "options": [
+            "People find lasting value",
+            "People are not finding lasting value",
+            "The data is wrong",
+            "Growth is strong"
+          ],
+          "answer": 1,
+          "why": "A healthy curve flattens above zero."
+        }
+      ]
+    },
+    {
+      "slug": "ab-testing-basics",
+      "title": "A/B testing basics",
+      "discipline": "analytics",
+      "subject": "experiments",
+      "topic": "Experimentation",
+      "competencies": [
+        "analytics",
+        "discovery"
+      ],
+      "level": 2,
+      "minutes": 12,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [
+        "funnels-and-cohorts"
+      ],
+      "next": [
+        "prioritisation-rice-ice-moscow"
+      ],
+      "objectives": [
+        "Set up a test with a primary metric and guardrails",
+        "Explain significance and sample size without formulas",
+        "Spot the common ways a test misleads"
+      ],
+      "definition": "An A/B test shows two versions to randomly split groups of users and compares an outcome, so you can tell whether a change caused a difference.",
+      "whyItMatters": "Without a test, a rise after a launch may come from the season, a campaign or luck. Random assignment makes the groups alike, so a difference points to the change.",
+      "howItWorks": [
+        "Write the hypothesis, the one primary metric, and guardrail metrics that must not get worse.",
+        "Choose the smallest improvement worth detecting, the baseline rate, the significance level (often 5%) and power (often 80%). Together they set the sample size.",
+        "Randomly assign users, keep them in the same group for the whole test, and check the split is as designed.",
+        "Run for whole weeks and until the planned sample is reached. Do not stop because the number looks good.",
+        "Read the result: the size of the effect, the interval around it, and the guardrails. Decide using the plan you wrote first."
+      ],
+      "terms": [
+        {
+          "term": "Control and variant",
+          "def": "The current version and the changed version."
+        },
+        {
+          "term": "Primary metric",
+          "def": "The one outcome the decision rests on."
+        },
+        {
+          "term": "Guardrail",
+          "def": "A metric that must not get worse, such as refunds or page speed."
+        },
+        {
+          "term": "Significance",
+          "def": "A result is significant at 5% when a difference this large would show up less than 5% of the time if there were no real difference."
+        },
+        {
+          "term": "Power",
+          "def": "The chance the test detects a real effect of the size you care about."
+        },
+        {
+          "term": "Peeking",
+          "def": "Checking results repeatedly and stopping on a good one, which inflates false wins."
+        }
+      ],
+      "examples": [
+        {
+          "title": "A flat result",
+          "text": "The test shows no difference. Check whether it had enough users to detect the effect you care about. If it did, the change likely did not matter, so ship the cheaper version or drop it."
+        },
+        {
+          "title": "Correlation and causation",
+          "text": "Users who use search convert more. That does not show search causes buying: motivated shoppers both search and buy. Only a randomised test of search would show cause."
+        }
+      ],
+      "realWorld": [
+        "Testing a paywall, a button, an onboarding flow.",
+        "Deciding what not to ship.",
+        "Interview questions on experiment design."
+      ],
+      "mistakes": [
+        "Stopping early when the result looks good.",
+        "Testing many metrics and reporting the one that moved.",
+        "Changing the plan after seeing data.",
+        "Ignoring guardrails."
+      ],
+      "whyThingsFail": [
+        "The test ran too short to cover weekdays and weekends.",
+        "The split was not random, or one group got a bug.",
+        "A novelty effect: people click a new thing because it is new.",
+        "A sample ratio mismatch: the groups are not the size they should be."
+      ],
+      "tradeoffs": [
+        "Tests need traffic and time. Small products often cannot detect small effects.",
+        "A test answers one question. It does not say why the change worked."
+      ],
+      "guided": {
+        "prompt": "You test a new onboarding. Variant completion is 62% vs 58% control after three days, and your plan said two weeks. What do you do?",
+        "steps": [
+          "Do not stop. The plan set the length so the answer is reliable.",
+          "Check the split and look for a bug or a novelty effect.",
+          "Read guardrails now: refunds, support contacts, speed.",
+          "Decide at the planned sample size using the planned metric."
+        ]
+      },
+      "independent": {
+        "prompt": "Write a test plan for a change you would make to a product: hypothesis, primary metric, two guardrails, what effect size you care about, and how long you would run it.",
+        "rubric": [
+          "Hypothesis states change, reason and metric",
+          "One primary metric and two guardrails",
+          "Says what size of effect matters",
+          "Runs whole weeks and says why"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "Why randomise users?",
+          "options": [
+            "It is faster",
+            "It makes the groups alike so a difference points to the change",
+            "It removes the need for a metric",
+            "It guarantees significance"
+          ],
+          "answer": 1,
+          "why": "Random assignment balances other factors on average."
+        },
+        {
+          "q": "Stopping the test the day it turns positive causes…",
+          "options": [
+            "Faster learning with no cost",
+            "More false wins",
+            "More power",
+            "Better guardrails"
+          ],
+          "answer": 1,
+          "why": "Checking repeatedly and stopping on a good result inflates false positives."
+        },
+        {
+          "q": "\"Users who search convert more\" shows…",
+          "options": [
+            "Search causes conversion",
+            "Search and conversion go together; cause is not shown",
+            "Search is broken",
+            "Nothing at all"
+          ],
+          "answer": 1,
+          "why": "Motivated users do both. Only a randomised test can show cause."
+        }
+      ]
+    },
+    {
+      "slug": "prioritisation-rice-ice-moscow",
+      "title": "Prioritisation: RICE, ICE and MoSCoW",
+      "discipline": "foundations",
+      "subject": "strategy",
+      "topic": "Prioritization",
+      "competencies": [
+        "strategy",
+        "execution"
+      ],
+      "level": 2,
+      "minutes": 10,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [],
+      "next": [
+        "mvp-and-riskiest-assumption"
+      ],
+      "objectives": [
+        "Score a backlog with RICE and ICE",
+        "Use MoSCoW to cut scope for a deadline",
+        "Say where a scoring model misleads"
+      ],
+      "definition": "Prioritisation is choosing what to build now and what to leave out. Scoring models make the trade-off visible so the team can argue about the inputs, not the ranking.",
+      "whyItMatters": "There is always more to build than time. Without a method, the loudest voice or the newest idea wins. A model makes the reasons visible and challengeable.",
+      "howItWorks": [
+        "Start from the goal for the period. Drop anything that does not move it.",
+        "RICE: score = Reach × Impact × Confidence ÷ Effort. Reach is people affected in a period; Impact is how much each is affected; Confidence is how sure you are; Effort is person-months.",
+        "ICE: Impact, Confidence and Ease, each scored 1–10 and multiplied or averaged. It is faster and rougher.",
+        "MoSCoW: sort scope into Must, Should, Could and Won't this time. Use it when a deadline is fixed and scope must flex.",
+        "Rank, then sanity-check the top five. If the order feels wrong, find out which input is off.",
+        "Write the \"no\" list and revisit it on a date."
+      ],
+      "terms": [
+        {
+          "term": "Reach",
+          "def": "How many users an item touches in a period."
+        },
+        {
+          "term": "Impact",
+          "def": "The size of the effect on each person reached."
+        },
+        {
+          "term": "Confidence",
+          "def": "How much evidence supports your estimates."
+        },
+        {
+          "term": "Effort",
+          "def": "The work required, usually in person-months."
+        },
+        {
+          "term": "Won't have",
+          "def": "Scope agreed to be left out this time."
+        }
+      ],
+      "examples": [
+        {
+          "title": "RICE by hand",
+          "text": "Illustrative: feature A reaches 4,000 users, impact 2, confidence 80%, effort 2 → 4000 × 2 × 0.8 ÷ 2 = 3,200. Feature B reaches 10,000, impact 0.5, confidence 50%, effort 1 → 2,500. A ranks first, but B is cheaper, so check the inputs before you commit."
+        },
+        {
+          "title": "MoSCoW for a launch",
+          "text": "Must: sign-in and checkout. Should: saved addresses. Could: wish lists. Won't this time: gift cards. When the date slips, cut from the bottom."
+        }
+      ],
+      "realWorld": [
+        "Backlog reviews.",
+        "Planning a launch date.",
+        "Interview questions on how you prioritise."
+      ],
+      "mistakes": [
+        "Treating the score as the answer.",
+        "Gaming confidence to favour a pet idea.",
+        "Ranking without a goal.",
+        "Never saying no out loud."
+      ],
+      "whyThingsFail": [
+        "Inputs are guesses that look like data.",
+        "Impact is compared across different kinds of benefit with no common scale.",
+        "Dependencies are ignored, so the ranked order cannot be built in that order."
+      ],
+      "tradeoffs": [
+        "Scores make debate productive, but they imply precision that is not there.",
+        "Fast models such as ICE are easy to game. Slower ones take longer than the decision deserves for small items."
+      ],
+      "guided": {
+        "prompt": "Score two items with RICE and decide. Item 1: reach 6,000, impact 1, confidence 100%, effort 3. Item 2: reach 1,000, impact 3, confidence 50%, effort 1.",
+        "steps": [
+          "Item 1: 6000 × 1 × 1 ÷ 3 = 2,000.",
+          "Item 2: 1000 × 3 × 0.5 ÷ 1 = 1,500.",
+          "Item 1 ranks higher, but Item 2 is cheap and could be tested.",
+          "Decide: build item 1; run a small test on item 2 to raise its confidence."
+        ]
+      },
+      "independent": {
+        "prompt": "Take five ideas for a product you know. Score them with RICE, rank them, then name the one input you trust least and what would raise your confidence.",
+        "rubric": [
+          "Scores calculated correctly",
+          "States the goal that the ranking serves",
+          "Names the weakest input honestly",
+          "Says what would change the order"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "RICE score = ?",
+          "options": [
+            "Reach + Impact + Confidence + Effort",
+            "Reach × Impact × Confidence ÷ Effort",
+            "Impact ÷ Effort",
+            "Reach × Effort"
+          ],
+          "answer": 1,
+          "why": "Multiply the benefit terms and divide by effort."
+        },
+        {
+          "q": "MoSCoW is most useful when…",
+          "options": [
+            "The deadline is fixed and scope must flex",
+            "You have no goal",
+            "Everything is a Must",
+            "You need a precise ranking"
+          ],
+          "answer": 0,
+          "why": "It sorts scope so cuts are agreed in advance."
+        },
+        {
+          "q": "A weakness of scoring models is…",
+          "options": [
+            "They are too slow to use",
+            "Guessed inputs look like data",
+            "They ignore effort",
+            "They cannot be shared"
+          ],
+          "answer": 1,
+          "why": "The numbers look precise but rest on estimates."
+        }
+      ]
+    },
+    {
+      "slug": "mvp-and-riskiest-assumption",
+      "title": "MVP and the riskiest assumption",
+      "discipline": "foundations",
+      "subject": "strategy",
+      "topic": "MVP",
+      "competencies": [
+        "strategy",
+        "discovery"
+      ],
+      "level": 2,
+      "minutes": 9,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [
+        "jobs-to-be-done"
+      ],
+      "next": [
+        "prioritisation-rice-ice-moscow"
+      ],
+      "objectives": [
+        "Name the riskiest assumption behind an idea",
+        "Choose the cheapest test for it",
+        "Write a success rule before you build"
+      ],
+      "definition": "A minimum viable product is the smallest thing you can put in front of real people to test the riskiest assumption behind an idea. It is a test, not version one.",
+      "whyItMatters": "Most failed products are built correctly and wanted by nobody. Testing the riskiest assumption first stops you spending months on the wrong thing.",
+      "howItWorks": [
+        "List the assumptions: that the problem exists, that people care, that your solution works, that they will pay, that you can reach them.",
+        "Pick the one that would sink the idea if wrong.",
+        "Choose the cheapest test: interviews, a landing page, a fake button, a manual service run by hand, a clickable prototype.",
+        "Write the success rule first: \"If at least 20 of 100 visitors leave an email, we continue.\"",
+        "Run it, record the result, and decide: continue, change or stop."
+      ],
+      "terms": [
+        {
+          "term": "Riskiest assumption",
+          "def": "The belief that, if false, makes the idea fail."
+        },
+        {
+          "term": "Concierge test",
+          "def": "Deliver the service by hand to a few customers before building anything."
+        },
+        {
+          "term": "Wizard of Oz",
+          "def": "The product looks automatic to the user but people do the work behind it."
+        },
+        {
+          "term": "Fake door",
+          "def": "A button or page for a feature that does not exist yet, to measure interest."
+        },
+        {
+          "term": "Success rule",
+          "def": "The result that counts as a pass, written before the test."
+        }
+      ],
+      "examples": [
+        {
+          "title": "A WhatsApp-first test",
+          "text": "To test a tiffin-subscription idea, take orders on WhatsApp and deliver by hand for ten customers. The assumption tested: people will pay weekly for a repeat order. No app is built."
+        },
+        {
+          "title": "A fake door",
+          "text": "Add a \"Split with friends\" button that shows \"coming soon\" and counts taps. Enough taps justify building it."
+        }
+      ],
+      "realWorld": [
+        "Deciding what to build first.",
+        "Answering \"what is your MVP?\" in an interview.",
+        "Cutting scope to learn faster."
+      ],
+      "mistakes": [
+        "Calling a half-built product with every feature an MVP.",
+        "Testing a safe assumption first.",
+        "No success rule, so any result looks fine.",
+        "Building before talking to anyone."
+      ],
+      "whyThingsFail": [
+        "Founders test what is easy, not what is risky.",
+        "Friends and family say yes to be kind.",
+        "The test is so small that the result is noise."
+      ],
+      "tradeoffs": [
+        "A manual or fake test learns fast but does not prove the product can scale.",
+        "A thin first version can make a good idea look weak if the core experience is too poor to judge."
+      ],
+      "guided": {
+        "prompt": "Idea: an app that helps students split rent. What is the riskiest assumption and the cheapest test?",
+        "steps": [
+          "Assumptions: roommates struggle to split, they will use an app, they will pay or share it.",
+          "Riskiest: that roommates will move their payments into a new app instead of using chat and UPI.",
+          "Test: a shared sheet and a weekly reminder message to five flats for a month.",
+          "Success rule: at least three of five flats still use it in week four."
+        ]
+      },
+      "independent": {
+        "prompt": "Write an MVP plan for an idea of your own: list assumptions, pick the riskiest, choose a test, and write the success rule before you run it.",
+        "rubric": [
+          "Assumptions listed and the riskiest named with a reason",
+          "The test is cheap and can fail",
+          "Success rule is a number written first",
+          "Says what you would do on pass and on fail"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "The riskiest assumption is…",
+          "options": [
+            "The easiest to test",
+            "The one that sinks the idea if wrong",
+            "The one the founder likes",
+            "The most expensive to build"
+          ],
+          "answer": 1,
+          "why": "Test what could kill the idea first."
+        },
+        {
+          "q": "Which is a concierge test?",
+          "options": [
+            "A polished app on the store",
+            "Delivering the service by hand to a few customers",
+            "A survey",
+            "A landing page"
+          ],
+          "answer": 1,
+          "why": "You do the work manually to learn before automating."
+        },
+        {
+          "q": "A success rule should be written…",
+          "options": [
+            "After the test",
+            "Before the test",
+            "Only if it passes",
+            "By the engineers"
+          ],
+          "answer": 1,
+          "why": "Writing it first stops you moving the goalposts."
+        }
+      ]
+    },
+    {
+      "slug": "apis-for-product-managers",
+      "title": "APIs for product managers",
+      "discipline": "technical",
+      "subject": "web",
+      "topic": "APIs",
+      "competencies": [
+        "technical"
+      ],
+      "level": 1,
+      "minutes": 11,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [],
+      "next": [
+        "databases-sql-nosql-indexes",
+        "latency-caching-and-scale"
+      ],
+      "objectives": [
+        "Explain an API in plain language",
+        "Read a basic API request and response",
+        "List the product questions to ask about any API"
+      ],
+      "definition": "An API is a contract for how one piece of software asks another for something. It defines what you can ask, how you ask, and what you get back.",
+      "whyItMatters": "Products depend on other systems: payments, maps, messaging, identity. Every API brings limits, costs, delays and the risk of change. Those become your product's limits.",
+      "howItWorks": [
+        "A client sends a request to an address (an endpoint) with a method: GET reads, POST creates, PUT or PATCH changes, DELETE removes.",
+        "The request may carry a key or token to prove who is asking.",
+        "The server replies with a status code and usually data, often in JSON.",
+        "Common codes: 200 success, 400 bad request, 401 not authorised, 404 not found, 429 too many requests, 500 server error.",
+        "Providers limit how often you can call, version the API, and sometimes charge per call.",
+        "Some APIs call you back with a webhook when something happens, so you do not have to keep asking."
+      ],
+      "terms": [
+        {
+          "term": "Endpoint",
+          "def": "The address where a request is sent."
+        },
+        {
+          "term": "JSON",
+          "def": "A text format for data: names and values in curly brackets."
+        },
+        {
+          "term": "API key",
+          "def": "A secret that identifies the caller."
+        },
+        {
+          "term": "Rate limit",
+          "def": "The maximum number of calls allowed in a period."
+        },
+        {
+          "term": "Webhook",
+          "def": "A message the provider sends to you when an event happens."
+        }
+      ],
+      "examples": [
+        {
+          "title": "A restaurant",
+          "text": "You (the app) tell the waiter (the API) what you want. The kitchen (another system) prepares it. You never enter the kitchen, and the menu limits what you can order."
+        },
+        {
+          "title": "A payment status",
+          "text": "Your app sends GET /payments/123. The reply says {\"status\": \"pending\"}. If the provider is slow, your checkout is slow. If it is down, you cannot take payments."
+        }
+      ],
+      "realWorld": [
+        "Choosing between building and integrating.",
+        "Writing requirements that depend on a third party.",
+        "Discussing incidents with engineers."
+      ],
+      "mistakes": [
+        "Assuming the API is always up and fast.",
+        "Ignoring rate limits until launch day.",
+        "Not asking how changes are announced.",
+        "Treating an API as free."
+      ],
+      "whyThingsFail": [
+        "The provider changes or retires a version and your feature breaks.",
+        "A traffic spike hits the rate limit and users see errors.",
+        "The provider is down and there is no fallback."
+      ],
+      "tradeoffs": [
+        "Using an API ships faster than building, but you depend on someone else's uptime, pricing and roadmap.",
+        "Tight coupling is quick to build and costly to change."
+      ],
+      "guided": {
+        "prompt": "Your app shows live train delays from a transit agency API. What do you ask first?",
+        "steps": [
+          "Does the agency offer an API, and on what terms?",
+          "What are the rate limits and the cost?",
+          "What is the uptime, and how fresh is the data?",
+          "How are changes announced, and what is our fallback when it fails?"
+        ]
+      },
+      "independent": {
+        "prompt": "Pick a product that uses a third-party API (maps, payments, login). List five questions you would ask the provider and what the product should do if the API fails.",
+        "rubric": [
+          "Covers limits, cost and uptime",
+          "Asks about versioning or changes",
+          "Names a fallback or a user message for failure",
+          "Explains the product impact of each question"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "A 429 status code means…",
+          "options": [
+            "Not found",
+            "Too many requests",
+            "Server error",
+            "Success"
+          ],
+          "answer": 1,
+          "why": "The caller hit a rate limit."
+        },
+        {
+          "q": "Why does a product manager care about an API's rate limit?",
+          "options": [
+            "It sets the colour of the app",
+            "It caps how much your feature can do at once",
+            "It changes the database",
+            "It does not matter"
+          ],
+          "answer": 1,
+          "why": "The limit becomes a limit on the product during peaks."
+        },
+        {
+          "q": "A webhook is…",
+          "options": [
+            "A way for the provider to notify you when something happens",
+            "A kind of database",
+            "A design tool",
+            "A login screen"
+          ],
+          "answer": 0,
+          "why": "It saves you from asking repeatedly."
+        }
+      ]
+    },
+    {
+      "slug": "databases-sql-nosql-indexes",
+      "title": "Databases: SQL, NoSQL and indexes",
+      "discipline": "technical",
+      "subject": "data",
+      "topic": "Databases",
+      "competencies": [
+        "technical",
+        "system-design"
+      ],
+      "level": 2,
+      "minutes": 12,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [
+        "apis-for-product-managers"
+      ],
+      "next": [
+        "latency-caching-and-scale"
+      ],
+      "objectives": [
+        "Choose between relational and non-relational stores for a case",
+        "Explain what an index and a transaction do",
+        "List the product questions to ask about data"
+      ],
+      "definition": "A database stores data so a product can find and change it reliably. Relational (SQL) databases hold tables with relationships. NoSQL stores keep data in other shapes, such as documents or key-value pairs.",
+      "whyItMatters": "How data is stored decides what reports are easy, how a change to the model costs, and what happens when two things change at once. These are product decisions as much as technical ones.",
+      "howItWorks": [
+        "Relational: tables with rows and columns; keys link tables (a primary key identifies a row, a foreign key points to another table); SQL queries combine them.",
+        "Document or key-value: flexible shapes and fast lookups, often simpler to scale for high volume.",
+        "An index is an extra structure that makes reads on a column fast, at the cost of slower writes and more storage.",
+        "A transaction groups changes so they all happen or none do. ACID names the guarantees: atomic, consistent, isolated, durable.",
+        "Replication keeps copies for resilience and read speed. Sharding splits data across machines to handle size."
+      ],
+      "terms": [
+        {
+          "term": "Primary key",
+          "def": "A column that uniquely identifies each row."
+        },
+        {
+          "term": "Foreign key",
+          "def": "A column that points to a row in another table."
+        },
+        {
+          "term": "Index",
+          "def": "A lookup structure that speeds up reads."
+        },
+        {
+          "term": "Transaction",
+          "def": "A group of changes that succeed or fail together."
+        },
+        {
+          "term": "Replication",
+          "def": "Keeping copies of data on more than one machine."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Orders and payments",
+          "text": "Orders, payments and refunds are related and must stay consistent, so a relational database with transactions is a natural fit. Chat messages and activity feeds are high-volume and simple to look up, so a document or key-value store often fits."
+        },
+        {
+          "title": "Why reports get slow",
+          "text": "A report that filters on a column with no index reads every row. Adding an index makes it fast but slows inserts slightly."
+        }
+      ],
+      "realWorld": [
+        "Questions in a technical product interview.",
+        "Planning a data change, such as adding a field.",
+        "Understanding why a report is slow or a migration is risky."
+      ],
+      "mistakes": [
+        "Believing NoSQL is always faster or better.",
+        "Changing the data model late without counting the migration cost.",
+        "Asking for \"real-time\" reports with no thought for cost."
+      ],
+      "whyThingsFail": [
+        "Two writes clash and one is lost, because there was no transaction.",
+        "A copy is behind, so users see stale data.",
+        "The data model could not answer a question the business now asks."
+      ],
+      "tradeoffs": [
+        "Relational stores give strong consistency and rich queries; some NoSQL stores trade that for scale or flexibility.",
+        "Many products use both: a relational core and a NoSQL store for high-volume side data."
+      ],
+      "guided": {
+        "prompt": "A startup stores users, orders and payments and finance wants a monthly revenue report by customer. Which store fits the core data?",
+        "steps": [
+          "Orders and payments are related and must stay consistent.",
+          "Finance needs flexible queries and reports.",
+          "So: a relational database with transactions.",
+          "Side data such as activity logs can live elsewhere."
+        ]
+      },
+      "independent": {
+        "prompt": "Choose a store for a product you know. List what data it holds, how it is queried, and what happens if two writes clash. Justify relational or NoSQL.",
+        "rubric": [
+          "Describes how the data is queried",
+          "Names a consistency risk",
+          "Justifies the choice and mentions a trade-off",
+          "Says whether you would use both"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "An index mainly…",
+          "options": [
+            "Makes reads on a column faster",
+            "Deletes old data",
+            "Encrypts data",
+            "Splits the database"
+          ],
+          "answer": 0,
+          "why": "It speeds reads at the cost of slower writes and more storage."
+        },
+        {
+          "q": "A transaction ensures…",
+          "options": [
+            "Changes all happen or none do",
+            "Data is always fast",
+            "Data is public",
+            "Queries are shorter"
+          ],
+          "answer": 0,
+          "why": "It keeps related changes consistent."
+        },
+        {
+          "q": "Which statement is best?",
+          "options": [
+            "NoSQL is always better",
+            "Choose by how data is related and queried, and what must stay consistent",
+            "SQL is outdated",
+            "The choice never matters"
+          ],
+          "answer": 1,
+          "why": "The fit depends on the data and the guarantees needed."
+        }
+      ]
+    },
+    {
+      "slug": "latency-caching-and-scale",
+      "title": "Latency, caching and scale",
+      "discipline": "technical",
+      "subject": "systems",
+      "topic": "Systems and scale",
+      "competencies": [
+        "system-design",
+        "technical"
+      ],
+      "level": 3,
+      "minutes": 12,
+      "audience": [
+        "technical",
+        "working"
+      ],
+      "prerequisites": [
+        "apis-for-product-managers",
+        "databases-sql-nosql-indexes"
+      ],
+      "next": [
+        "writing-a-prd"
+      ],
+      "objectives": [
+        "Explain latency and why averages hide problems",
+        "Describe caching and its main risk",
+        "Reason about a traffic spike"
+      ],
+      "definition": "Latency is the time one request takes. Throughput is how many requests the system handles per second. Scale is the ability to keep both acceptable as load grows.",
+      "whyItMatters": "Users feel latency. A slow checkout loses sales, and a failure on a sale day is public. Product managers set the targets and choose which parts of the product can degrade.",
+      "howItWorks": [
+        "Measure latency with percentiles: p50 is the typical request, p95 and p99 are the slow tail. Averages hide the tail.",
+        "Caching stores answers close to the user so the system does less work: in the browser, on a CDN, or in memory in front of the database.",
+        "The risk is stale data: the cache can show a price or stock level that has changed. Decide how stale each piece of data may be.",
+        "Load balancers spread requests across servers. Scaling out adds servers; scaling up makes one bigger.",
+        "Queues smooth spikes by holding work to be done soon, so the front end stays responsive.",
+        "Plan for failure: decide what degrades gracefully (recommendations may fail) and what must never fail (payment)."
+      ],
+      "terms": [
+        {
+          "term": "p99",
+          "def": "The latency that 99% of requests are faster than."
+        },
+        {
+          "term": "Cache",
+          "def": "A fast store of recent answers."
+        },
+        {
+          "term": "CDN",
+          "def": "A network of servers that serve files near the user."
+        },
+        {
+          "term": "Queue",
+          "def": "A list of work waiting to be done."
+        },
+        {
+          "term": "Graceful degradation",
+          "def": "Losing a feature without losing the whole product."
+        }
+      ],
+      "examples": [
+        {
+          "title": "A sale day",
+          "text": "Traffic is ten times normal. Product images come from a CDN, product lists from a cache, orders go through a queue, and recommendations switch off if the system is busy. Checkout keeps priority."
+        },
+        {
+          "title": "A stale price",
+          "text": "A cached page shows \"in stock\" after the last unit sells. The product question: how old can stock data be? Seconds for stock and payment, minutes for a trending list."
+        }
+      ],
+      "realWorld": [
+        "Writing non-functional requirements.",
+        "Planning a launch or a sale.",
+        "System design and technical interviews."
+      ],
+      "mistakes": [
+        "Asking for \"fast\" with no number.",
+        "Looking only at average latency.",
+        "Caching data that must be exact.",
+        "Not testing at peak load."
+      ],
+      "whyThingsFail": [
+        "Traffic spikes beyond what was tested.",
+        "One slow dependency slows everything that waits on it.",
+        "A cache returns stale data, or empties all at once and floods the database."
+      ],
+      "tradeoffs": [
+        "Caching speeds things up but adds the risk of stale data.",
+        "Adding servers handles load but adds cost and complexity.",
+        "Strict consistency and high availability pull against each other."
+      ],
+      "guided": {
+        "prompt": "Your app has a big sale in two weeks. List five requirements you would write.",
+        "steps": [
+          "Page load under 2 seconds at ten times normal traffic.",
+          "p99 API latency under 500 ms for checkout.",
+          "Checkout stays available; recommendations may fail.",
+          "Load test at 1.5 times the expected peak a week before.",
+          "No releases in the final week, with a rollback plan."
+        ]
+      },
+      "independent": {
+        "prompt": "Pick a product you know. Write three non-functional requirements with numbers, and say which part may degrade and which must never fail.",
+        "rubric": [
+          "Requirements include numbers, not \"fast\"",
+          "Names what degrades and what must not",
+          "Mentions a test at peak load",
+          "Notes one cache or queue and its risk"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "p99 latency shows…",
+          "options": [
+            "The average speed",
+            "The speed that 99% of requests beat, so it shows the slow tail",
+            "The fastest request",
+            "The error rate"
+          ],
+          "answer": 1,
+          "why": "The tail is what unlucky users feel and averages hide it."
+        },
+        {
+          "q": "The main risk of caching is…",
+          "options": [
+            "Higher cost",
+            "Stale data",
+            "Slower reads",
+            "More logins"
+          ],
+          "answer": 1,
+          "why": "The cache can serve data that has changed."
+        },
+        {
+          "q": "For a sale-day plan, which should never fail?",
+          "options": [
+            "Recommendations",
+            "Checkout",
+            "Banners",
+            "Product reviews"
+          ],
+          "answer": 1,
+          "why": "Protect the revenue path and let the rest degrade."
+        }
+      ]
+    },
+    {
+      "slug": "llm-basics-for-product-managers",
+      "title": "LLM basics for product managers",
+      "discipline": "ai",
+      "subject": "llm",
+      "topic": "LLM Fundamentals",
+      "competencies": [
+        "ai",
+        "technical"
+      ],
+      "level": 1,
+      "minutes": 11,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [],
+      "next": [
+        "writing-a-prd"
+      ],
+      "objectives": [
+        "Explain tokens, context windows and next-word prediction",
+        "Say why models give confident wrong answers",
+        "List the cost, speed and quality questions for an AI feature"
+      ],
+      "definition": "A large language model predicts the next piece of text from the text so far. It does this at huge scale, which produces fluent writing, answers and code.",
+      "whyItMatters": "Product decisions about AI depend on a few facts: models can be confidently wrong, cost and speed grow with text length, and quality must be measured, not assumed.",
+      "howItWorks": [
+        "Text is split into tokens, short pieces of words. English text is roughly four characters per token as a rule of thumb.",
+        "The model predicts the next token, appends it, and repeats. It is pattern-matching on training data, not looking facts up.",
+        "The context window is how much text the model can consider at once. It includes your instructions, the user's message and the reply.",
+        "A hallucination is a fluent answer that is wrong. It happens because the model produces likely text, not checked facts.",
+        "Grounding gives the model trusted text to answer from, often by retrieving documents first. It reduces, but does not remove, wrong answers.",
+        "Cost and latency grow with tokens in and out, so long prompts and long answers are slower and cost more."
+      ],
+      "terms": [
+        {
+          "term": "Token",
+          "def": "A short piece of text the model reads and writes."
+        },
+        {
+          "term": "Context window",
+          "def": "The maximum amount of text the model can consider at once."
+        },
+        {
+          "term": "Hallucination",
+          "def": "A confident answer that is false."
+        },
+        {
+          "term": "Grounding",
+          "def": "Giving the model trusted sources to answer from."
+        },
+        {
+          "term": "Evaluation",
+          "def": "A repeatable way to score outputs against what good looks like."
+        }
+      ],
+      "examples": [
+        {
+          "title": "A support bot",
+          "text": "A bot answers refund questions. Without sources it invents a policy. With the real policy text supplied, it quotes it. The team scores 200 past tickets before launch and re-scores after every change."
+        },
+        {
+          "title": "A cost check",
+          "text": "If each reply uses 2,000 tokens in and 500 out and you serve 100,000 chats a day, cost and speed scale with those numbers. Shorter prompts or cached answers cut both."
+        }
+      ],
+      "realWorld": [
+        "Deciding whether an AI feature is worth building.",
+        "Writing success criteria for an AI product.",
+        "Interview questions on AI product management."
+      ],
+      "mistakes": [
+        "Assuming the model \"knows\" current or private facts.",
+        "Shipping on a few good demos.",
+        "Ignoring cost per request.",
+        "Using a model where a rule or a lookup would do."
+      ],
+      "whyThingsFail": [
+        "Wrong answers are confident, so users trust them.",
+        "Quality dropped after a prompt or model change and nobody measured.",
+        "Costs exploded when usage grew."
+      ],
+      "tradeoffs": [
+        "Bigger models are often better but slower and costlier. Smaller ones are cheaper and faster, and may be enough.",
+        "More context improves answers up to a point, then adds cost and noise."
+      ],
+      "guided": {
+        "prompt": "Your CEO wants an AI chatbot by next quarter. List four questions before you commit.",
+        "steps": [
+          "What job does the user need done, and is a model the right tool, or is a rule or a search enough?",
+          "What does a wrong answer cost, and how will we measure quality?",
+          "What will it cost per conversation at expected volume?",
+          "What does the bot do when it is unsure?"
+        ]
+      },
+      "independent": {
+        "prompt": "Describe an AI feature for a product you know. Write the job, what a wrong answer would cost, three things you would measure, and when it should hand off to a person.",
+        "rubric": [
+          "States the job and why a model is needed",
+          "Names the cost of a wrong answer",
+          "Lists measures, not only \"accuracy\"",
+          "Defines a hand-off"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "A hallucination is…",
+          "options": [
+            "A slow reply",
+            "A confident wrong answer",
+            "A long prompt",
+            "A login error"
+          ],
+          "answer": 1,
+          "why": "The model produces likely text, which can be false."
+        },
+        {
+          "q": "The context window is…",
+          "options": [
+            "The price per request",
+            "How much text the model can consider at once",
+            "The training date",
+            "The screen size"
+          ],
+          "answer": 1,
+          "why": "Instructions, input and output all use it."
+        },
+        {
+          "q": "To reduce wrong answers about company policy you would…",
+          "options": [
+            "Make the prompt longer",
+            "Give the model the policy text to answer from",
+            "Use a larger font",
+            "Switch off logging"
+          ],
+          "answer": 1,
+          "why": "Grounding on trusted text reduces invented answers."
+        }
+      ]
+    },
+    {
+      "slug": "writing-a-prd",
+      "title": "Writing a product requirements document",
+      "discipline": "execution",
+      "subject": "specs",
+      "topic": "PRDs",
+      "competencies": [
+        "execution",
+        "communication"
+      ],
+      "level": 2,
+      "minutes": 10,
+      "audience": [
+        "aspiring",
+        "working",
+        "technical"
+      ],
+      "prerequisites": [
+        "prioritisation-rice-ice-moscow"
+      ],
+      "next": [],
+      "objectives": [
+        "List what a requirements document must contain",
+        "Write acceptance criteria an engineer can test",
+        "Keep a document short enough to be read"
+      ],
+      "definition": "A product requirements document explains what to build, for whom, why, and how you will know it worked. It lets engineers and designers question the plan before work starts.",
+      "whyItMatters": "A clear document replaces many meetings and prevents building the wrong thing. It also records why a decision was made, which helps when people ask later.",
+      "howItWorks": [
+        "Problem: who has it, how you know, and the evidence.",
+        "Goal and success metric, with guardrails.",
+        "Scope: what is in, and what is explicitly out.",
+        "Requirements as user stories with acceptance criteria: \"Given [state], when [action], then [result].\"",
+        "Flows or rough designs, and edge cases: empty, error and loading states.",
+        "Risks, dependencies and open questions.",
+        "Rollout and measurement: who sees it first, how you will read the result.",
+        "Keep it to one or two pages. If it is longer, split the work."
+      ],
+      "terms": [
+        {
+          "term": "User story",
+          "def": "A need written from the user's side: \"As a [user], I want [action], so I can [outcome].\""
+        },
+        {
+          "term": "Acceptance criteria",
+          "def": "Conditions that must be true for the story to count as done."
+        },
+        {
+          "term": "Scope",
+          "def": "What is included in this piece of work."
+        },
+        {
+          "term": "Non-goal",
+          "def": "Something that is out of scope on purpose."
+        },
+        {
+          "term": "Edge case",
+          "def": "A rare or unusual situation the product still has to handle."
+        }
+      ],
+      "examples": [
+        {
+          "title": "Acceptance criteria",
+          "text": "Given I have items in my cart and my payment fails, when I return to checkout, then my cart is intact and I see a message with a retry button."
+        },
+        {
+          "title": "A short outline",
+          "text": "Problem and evidence; goal and metric; in scope and out of scope; stories; flows; risks and open questions; rollout and measurement. One page each is too long; one page in total is a good target."
+        }
+      ],
+      "realWorld": [
+        "Starting any feature with engineering.",
+        "Aligning stakeholders.",
+        "Interview questions about how you work with engineers."
+      ],
+      "mistakes": [
+        "Writing the solution before the problem.",
+        "No success metric.",
+        "No out-of-scope list.",
+        "Writing so much that nobody reads it."
+      ],
+      "whyThingsFail": [
+        "The document says what to build but not why, so engineers cannot make good trade-offs.",
+        "Edge cases are missing, and surface in testing or after launch.",
+        "Nobody agrees on the metric, so success is argued afterwards."
+      ],
+      "tradeoffs": [
+        "Detailed specs reduce surprises but slow teams and can lock in a solution too early.",
+        "Light specs move faster but depend on trust and shared context."
+      ],
+      "guided": {
+        "prompt": "Write acceptance criteria for \"saved addresses\" at checkout.",
+        "steps": [
+          "Given I have a saved address, when I reach checkout, then it is pre-selected and I can change it.",
+          "Given I add a new address, when I tick \"save\", then it appears next time.",
+          "Given I delete an address, when I return to checkout, then it is no longer listed.",
+          "Edge: given I have none saved, then I see the address form with no empty list."
+        ]
+      },
+      "independent": {
+        "prompt": "Write a one-page outline for a feature you would add to a product you know: problem, goal and metric, in and out of scope, two stories with acceptance criteria, and one risk.",
+        "rubric": [
+          "States the problem with evidence",
+          "One success metric and a guardrail",
+          "Has an out-of-scope list",
+          "Acceptance criteria are testable"
+        ]
+      },
+      "assessment": [
+        {
+          "q": "Acceptance criteria describe…",
+          "options": [
+            "The visual style",
+            "Conditions that must be true for the work to be done",
+            "The budget",
+            "The launch date"
+          ],
+          "answer": 1,
+          "why": "They let anyone check whether the story is complete."
+        },
+        {
+          "q": "A good document is…",
+          "options": [
+            "As long as possible",
+            "Short enough to be read and questioned",
+            "Written after launch",
+            "Only for managers"
+          ],
+          "answer": 1,
+          "why": "The aim is to align people before work starts."
+        },
+        {
+          "q": "Which belongs in a requirements document?",
+          "options": [
+            "An out-of-scope list",
+            "Only a visual design",
+            "Only a date",
+            "Nothing about metrics"
+          ],
+          "answer": 0,
+          "why": "Saying what is out of scope prevents scope creep."
+        }
+      ]
+    }
+  ]
+}

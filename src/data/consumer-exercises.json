@@ -1,0 +1,356 @@
+{
+  "exercises": [
+    {
+      "slug": "a-consumers-day",
+      "title": "Understand a consumer's day",
+      "job": "Tell what you saw from what you were told, and find what is still missing.",
+      "competencies": [
+        "consumer",
+        "discovery"
+      ],
+      "illustrative": true,
+      "minutes": 12,
+      "scenario": "You followed Priya, a 22-year-old final-year student in a hostel, for one day and interviewed her at the end. The notes below are made up for practice. Sort what you can say about her.",
+      "material": [
+        {
+          "label": "Observed",
+          "text": "8:10: skipped breakfast and bought tea at the canteen. 10:00: watched lecture recordings at 1.5× speed with earphones. 14:00–16:00: sat in the library with her phone face down. 23:40: ordered a snack from a delivery app and used a 40% coupon at checkout."
+        },
+        {
+          "label": "She said",
+          "text": "\"I never have time to cook.\" \"I only order when there is a coupon.\" \"Everyone in my hostel orders late at night.\""
+        }
+      ],
+      "claims": [
+        {
+          "text": "She ordered a snack at 23:40 using a 40% coupon.",
+          "kind": "fact",
+          "why": "It was observed, with a time and a detail. It describes one evening."
+        },
+        {
+          "text": "She kept her phone face down for two hours in the library.",
+          "kind": "fact",
+          "why": "It was observed and has a time range. It does not say why she did it."
+        },
+        {
+          "text": "She says she only orders when there is a coupon.",
+          "kind": "statement",
+          "why": "It is what she said. It may not match what she does. Her order history would check it."
+        },
+        {
+          "text": "She says she never has time to cook.",
+          "kind": "statement",
+          "why": "A statement. It may be true, and it may be a convenient reason."
+        },
+        {
+          "text": "She orders late because delivery apps are the only food available then.",
+          "kind": "assumption",
+          "why": "Nothing in the notes says what else was open or what the canteen hours are. It is a guess about her reason."
+        },
+        {
+          "text": "Students like her are price-sensitive about everything.",
+          "kind": "assumption",
+          "why": "It generalises from one person and one coupon. It is an assumption about a large group.",
+          "overgeneralises": true
+        },
+        {
+          "text": "All hostel students order late at night.",
+          "kind": "statement",
+          "why": "It is her claim about other people. Treat it as a lead and check with others.",
+          "overgeneralises": true
+        },
+        {
+          "text": "If we show a coupon to hostel students who have not ordered that day, at 22:00, more of them will order than a similar group with no coupon, measured over two weeks.",
+          "kind": "hypothesis",
+          "why": "It names a change, an expected result, a comparison group and a measure. It can fail."
+        }
+      ],
+      "evidenceNeeded": [
+        {
+          "text": "Her order history for a month, with and without coupons",
+          "useful": true,
+          "why": "It shows whether she orders only with coupons, so it tests her statement against behaviour."
+        },
+        {
+          "text": "What else is open near the hostel at 23:40, and the canteen hours",
+          "useful": true,
+          "why": "It tests the assumption that delivery is her only option."
+        },
+        {
+          "text": "Interviews with eight other hostel students",
+          "useful": true,
+          "why": "It tests whether her story holds for others."
+        },
+        {
+          "text": "Her age and year of study",
+          "useful": false,
+          "why": "You already have it, and it does not change what to do next."
+        },
+        {
+          "text": "The app's total downloads in her city",
+          "useful": false,
+          "why": "It is a large number that says nothing about why she orders."
+        }
+      ],
+      "hypothesisOptions": [
+        {
+          "text": "Priya loves late-night snacks.",
+          "good": false,
+          "why": "It has no measure and cannot fail. It describes a taste, not a testable change."
+        },
+        {
+          "text": "Students want cheaper food.",
+          "good": false,
+          "why": "It is a broad claim with no change, group or measure."
+        },
+        {
+          "text": "If hostel students see a 40% coupon at 22:00 on days they have not ordered, more of them order that night than a similar group without it, over two weeks.",
+          "good": true,
+          "why": "It states the change, the group, the comparison and the measure."
+        }
+      ],
+      "takeaways": [
+        "A fact has a source and a context. A statement is what someone said.",
+        "One person is a lead, not a pattern.",
+        "A good hypothesis names a change, a comparison and a measure.",
+        "Ask what evidence would change your mind before you decide."
+      ],
+      "level": 2
+    },
+    {
+      "slug": "purchase-decision",
+      "title": "Investigate a purchase decision",
+      "job": "Work out why someone bought, using what they did and not only what they said.",
+      "competencies": [
+        "consumer",
+        "discovery",
+        "strategy"
+      ],
+      "illustrative": true,
+      "minutes": 12,
+      "scenario": "A first-time buyer of running shoes spent three days choosing. The notes are made up for practice. Sort what you can say about why she bought online.",
+      "material": [
+        {
+          "label": "Observed",
+          "text": "Day 1: read reviews on two sites for 40 minutes. Day 2: visited a store, tried on three pairs, bought nothing, took a photo of one pair. Day 3: ordered a different colour of the same model online at 12% less than the store price."
+        },
+        {
+          "label": "She said",
+          "text": "\"The store is too expensive.\" \"I wanted to be sure about the fit first.\" \"My friend said colours look different in photos.\""
+        }
+      ],
+      "claims": [
+        {
+          "text": "She tried on three pairs in a store and then bought online.",
+          "kind": "fact",
+          "why": "It was observed. The order of events is clear."
+        },
+        {
+          "text": "The online price was 12% lower than the store price.",
+          "kind": "fact",
+          "why": "It is a measured price difference for the same model."
+        },
+        {
+          "text": "She says the store is too expensive.",
+          "kind": "statement",
+          "why": "It is her explanation. The 12% difference is a fact, but price may not be the whole reason."
+        },
+        {
+          "text": "She says she wanted to be sure about the fit first.",
+          "kind": "statement",
+          "why": "A statement. It matches her trying on shoes, which is a behaviour that supports it."
+        },
+        {
+          "text": "She bought online because it was cheaper.",
+          "kind": "assumption",
+          "why": "The price gap is a fact, but the reason is not established. She also said she wanted the fit checked, and she changed the colour."
+        },
+        {
+          "text": "Shoppers always try in a store and buy online.",
+          "kind": "assumption",
+          "why": "It generalises from one shopper to all. The notes do not support it.",
+          "overgeneralises": true
+        },
+        {
+          "text": "If the store offers to match the online price for shoppers who have tried a pair on, more try-ons end in a store purchase, measured over a month.",
+          "kind": "hypothesis",
+          "why": "It states a change, the group, the expected result and a measure."
+        },
+        {
+          "text": "Two sites' reviews took 40 minutes to read.",
+          "kind": "fact",
+          "why": "It was observed and timed."
+        }
+      ],
+      "evidenceNeeded": [
+        {
+          "text": "How many people who try on shoes in the store buy in the store, and how many buy elsewhere later",
+          "useful": true,
+          "why": "It shows how common this path is, so you do not rely on one shopper."
+        },
+        {
+          "text": "Whether shoppers who are offered a price match buy more often",
+          "useful": true,
+          "why": "It tests the proposed change."
+        },
+        {
+          "text": "Why she chose a different colour from the one she tried",
+          "useful": true,
+          "why": "It checks whether fit was the only reason, and may reveal another need."
+        },
+        {
+          "text": "Her shoe size",
+          "useful": false,
+          "why": "It does not help you understand the decision."
+        },
+        {
+          "text": "The store's total sales last year",
+          "useful": false,
+          "why": "It is a large number that does not explain this path."
+        }
+      ],
+      "hypothesisOptions": [
+        {
+          "text": "Shoppers prefer online shopping.",
+          "good": false,
+          "why": "It is vague and has no change or measure."
+        },
+        {
+          "text": "If we match the online price in store for shoppers who tried a pair on, more try-ons end in a store purchase, measured over a month.",
+          "good": true,
+          "why": "It names a change, a group and a measure, so it can fail."
+        },
+        {
+          "text": "She is price sensitive.",
+          "good": false,
+          "why": "It describes a person, not a test, and one purchase does not show a trait."
+        }
+      ],
+      "takeaways": [
+        "A price gap is a fact. \"She bought because of the price\" is an assumption.",
+        "Behaviour and statements can support each other. Check that they do.",
+        "Describe the path, then ask how many people follow it.",
+        "Test a change before you build a policy around one shopper."
+      ],
+      "level": 3
+    },
+    {
+      "slug": "extreme-user",
+      "title": "Learn from an extreme user",
+      "job": "Use an extreme case to find a need that ordinary users have in a milder form.",
+      "competencies": [
+        "consumer",
+        "design",
+        "discovery"
+      ],
+      "illustrative": true,
+      "minutes": 12,
+      "scenario": "Arun delivers food at night in the rain, on a bike with his phone on a mount. The notes below are made up for practice. Sort what you can say.",
+      "material": [
+        {
+          "label": "Observed",
+          "text": "He wears thick gloves and taps with the knuckle. Three of ten taps on small buttons hit the wrong thing. He turns brightness to maximum and the battery shows 12% by midnight. In a basement car park the map stops loading and he waits about 30 seconds."
+        },
+        {
+          "label": "He said",
+          "text": "\"The app hangs in basements.\" \"I use voice for the address when I can.\" \"Other riders have the same problem.\""
+        }
+      ],
+      "claims": [
+        {
+          "text": "Three of ten taps on small buttons hit the wrong target while he wears gloves.",
+          "kind": "fact",
+          "why": "It was observed and counted."
+        },
+        {
+          "text": "The map stopped loading in a basement car park, and he waited about 30 seconds.",
+          "kind": "fact",
+          "why": "It was observed with a place and a duration."
+        },
+        {
+          "text": "He says the app hangs in basements.",
+          "kind": "statement",
+          "why": "It matches what was observed, but it is his description."
+        },
+        {
+          "text": "He says other riders have the same problem.",
+          "kind": "statement",
+          "why": "It is a claim about other people. Check it with other riders.",
+          "overgeneralises": true
+        },
+        {
+          "text": "Riders do not like small buttons.",
+          "kind": "assumption",
+          "why": "It generalises from one rider in gloves. It may hold for riders in rain, and it may not.",
+          "overgeneralises": true
+        },
+        {
+          "text": "He uses voice because typing addresses is hard.",
+          "kind": "assumption",
+          "why": "He said he uses voice, but not why. The reason is a guess."
+        },
+        {
+          "text": "If primary actions are larger and key screens work offline, riders complete a delivery with fewer mis-taps and less waiting, and other users do not complete fewer tasks, measured over two weeks.",
+          "kind": "hypothesis",
+          "why": "It names a change, two groups, and measures for both, including a check that ordinary users are not harmed."
+        },
+        {
+          "text": "His battery showed 12% by midnight with brightness at maximum.",
+          "kind": "fact",
+          "why": "It was observed. The cause of the drain was not established."
+        }
+      ],
+      "evidenceNeeded": [
+        {
+          "text": "Observe five more riders on shifts, in different weather",
+          "useful": true,
+          "why": "It tests whether Arun is typical of riders or unusual."
+        },
+        {
+          "text": "Mis-tap rates and task times for all users, split by screen size and by use of gloves if known",
+          "useful": true,
+          "why": "It shows whether the need appears in milder form for ordinary users."
+        },
+        {
+          "text": "How often the map fails to load, by location type",
+          "useful": true,
+          "why": "It sizes the offline problem."
+        },
+        {
+          "text": "Arun's age",
+          "useful": false,
+          "why": "It does not help explain the problem."
+        },
+        {
+          "text": "How many riders the company employs in total",
+          "useful": false,
+          "why": "It is a count, not evidence about the need."
+        }
+      ],
+      "hypothesisOptions": [
+        {
+          "text": "Riders need a better app.",
+          "good": false,
+          "why": "It is vague, with no change, group or measure."
+        },
+        {
+          "text": "If primary actions are larger and key screens work offline, riders have fewer mis-taps and less waiting, and ordinary users complete the same number of tasks, measured over two weeks.",
+          "good": true,
+          "why": "It states the change, both groups, and measures, and includes a guard for ordinary users."
+        },
+        {
+          "text": "Arun dislikes small buttons.",
+          "good": false,
+          "why": "It describes one person and cannot guide a product change."
+        }
+      ],
+      "takeaways": [
+        "An extreme user shows a need that others have in a milder form.",
+        "Check whether the extreme case generalises before you design for it.",
+        "Test that the change does not harm ordinary users.",
+        "Counts and observations beat adjectives."
+      ],
+      "level": 3
+    }
+  ]
+}

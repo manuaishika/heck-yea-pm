@@ -1,0 +1,1155 @@
+{
+  "cases": [
+    {
+      "slug": "food-delivery-orders-drop",
+      "title": "Food delivery orders fall 18%",
+      "company": "A food delivery app",
+      "metric": "Daily orders",
+      "difficulty": 1,
+      "minutes": 15,
+      "competencies": [
+        "analytics",
+        "discovery",
+        "technical"
+      ],
+      "illustrative": true,
+      "background": "The app runs in 8 cities and takes about 120,000 orders a day on weekdays. It ships iOS, Android and web. Releases go out in staged rollouts.",
+      "problem": "Over the last five days, daily orders fell from about 120,000 to about 98,000, down 18%. Leadership wants to know why, and what to do, by the end of the day.",
+      "evidence": [
+        {
+          "id": "tracking",
+          "group": "Data quality",
+          "ask": "Did tracking or the dashboard change?",
+          "weight": "useful",
+          "insight": "The drop is real. It is not a tracking error.",
+          "reveals": "No tracking or dashboard changes this month. Finance's count of settled orders shows the same drop, within 1%."
+        },
+        {
+          "id": "trend",
+          "group": "When",
+          "ask": "Show daily orders for the last 10 days.",
+          "weight": "useful",
+          "insight": "The fall is a step on day -4, not a slow slide. A step points to a change, not to a gradual trend such as competition.",
+          "table": [
+            [
+              "Day",
+              "Orders"
+            ],
+            [
+              "-9",
+              "119,000"
+            ],
+            [
+              "-8",
+              "121,000"
+            ],
+            [
+              "-7",
+              "120,000"
+            ],
+            [
+              "-6",
+              "118,000"
+            ],
+            [
+              "-5",
+              "119,000"
+            ],
+            [
+              "-4",
+              "99,000"
+            ],
+            [
+              "-3",
+              "98,000"
+            ],
+            [
+              "-2",
+              "97,000"
+            ],
+            [
+              "-1",
+              "99,000"
+            ],
+            [
+              "Today",
+              "98,000"
+            ]
+          ]
+        },
+        {
+          "id": "platform",
+          "group": "Where",
+          "ask": "Split orders by platform, day -5 against day -3.",
+          "weight": "key",
+          "insight": "Android fell 36%. iOS and web are flat. The problem sits on Android.",
+          "table": [
+            [
+              "Platform",
+              "Day -5",
+              "Day -3",
+              "Change"
+            ],
+            [
+              "iOS",
+              "52,000",
+              "51,000",
+              "-2%"
+            ],
+            [
+              "Android",
+              "56,000",
+              "36,000",
+              "-36%"
+            ],
+            [
+              "Web",
+              "11,000",
+              "11,000",
+              "0%"
+            ],
+            [
+              "Total",
+              "119,000",
+              "98,000",
+              "-18%"
+            ]
+          ]
+        },
+        {
+          "id": "city",
+          "group": "Where",
+          "ask": "Split orders by city group.",
+          "weight": "useful",
+          "insight": "Every city group fell by a similar amount, so no single city explains it. A local cause such as a competitor or weather is unlikely.",
+          "table": [
+            [
+              "City group",
+              "Day -5",
+              "Day -3",
+              "Change"
+            ],
+            [
+              "Metro 1",
+              "36,000",
+              "29,000",
+              "-19%"
+            ],
+            [
+              "Metro 2",
+              "30,000",
+              "25,000",
+              "-17%"
+            ],
+            [
+              "Metro 3",
+              "28,000",
+              "23,000",
+              "-18%"
+            ],
+            [
+              "Other 5 cities",
+              "25,000",
+              "21,000",
+              "-16%"
+            ]
+          ]
+        },
+        {
+          "id": "newret",
+          "group": "Who",
+          "ask": "New or returning users: who dropped?",
+          "weight": "useful",
+          "insight": "New and returning Android users fell by the same amount. Acquisition quality is not the cause.",
+          "reveals": "On Android, orders from new users fell 35% and from returning users fell 36%. iOS is flat for both."
+        },
+        {
+          "id": "version",
+          "group": "Changes",
+          "ask": "On Android, compare conversion by app version.",
+          "weight": "key",
+          "insight": "Version 8.4 converts at about half the rate of version 8.3. The older version is unchanged.",
+          "table": [
+            [
+              "Android app version",
+              "Share of sessions after day -4",
+              "Orders per 100 sessions, before",
+              "Orders per 100 sessions, after"
+            ],
+            [
+              "8.3",
+              "28%",
+              "7.1",
+              "7.0"
+            ],
+            [
+              "8.4",
+              "72%",
+              "not released",
+              "3.6"
+            ]
+          ]
+        },
+        {
+          "id": "funnel",
+          "group": "Funnel",
+          "ask": "Show the Android 8.4 funnel by step against 8.3.",
+          "weight": "key",
+          "insight": "Everything is normal until the payment step. On 8.4 only about half of the people who reach payment place an order.",
+          "table": [
+            [
+              "Step",
+              "8.3",
+              "8.4"
+            ],
+            [
+              "Open → restaurant",
+              "78%",
+              "78%"
+            ],
+            [
+              "Cart → checkout",
+              "62%",
+              "62%"
+            ],
+            [
+              "Checkout → payment screen",
+              "91%",
+              "91%"
+            ],
+            [
+              "Payment screen → order placed",
+              "96%",
+              "52%"
+            ]
+          ]
+        },
+        {
+          "id": "errors",
+          "group": "Changes",
+          "ask": "What errors appear at the payment step on 8.4?",
+          "weight": "key",
+          "insight": "The failure is specific: opening the UPI app from checkout. Cards and wallets are fine.",
+          "reveals": "On version 8.4, 41% of payment attempts hit an error when the app tries to open the user's UPI app. Card and wallet payments succeed at the usual rate."
+        },
+        {
+          "id": "release",
+          "group": "Changes",
+          "ask": "What shipped in the last week?",
+          "weight": "useful",
+          "insight": "The Android release is the only change that lines up with the step on day -4.",
+          "reveals": "Android 8.4 started rolling out on day -4 and reached 72% of sessions in three days. It updates the payment SDK to a new major version and redesigns the address picker. iOS had no release. There was no pricing, fee or marketing change."
+        },
+        {
+          "id": "support",
+          "group": "Support",
+          "ask": "What are users writing to support?",
+          "weight": "useful",
+          "insight": "Users see failed payments, and some worry about being charged. That matches the payment-step failure.",
+          "reveals": "Tickets saying \"payment failed\" or \"money not deducted\" are up five times on Android since day -4. iOS ticket volume is normal."
+        },
+        {
+          "id": "competitor",
+          "group": "Outside",
+          "ask": "Did a competitor do anything?",
+          "weight": "noise",
+          "insight": "A promotion in two cities cannot explain a fall that is the same in all cities and absent on iOS.",
+          "reveals": "A competitor ran a ₹100-off weekend offer in two metros on days -3 and -2. iOS orders in those two metros were flat."
+        },
+        {
+          "id": "weather",
+          "group": "Outside",
+          "ask": "Was there unusual weather or an event?",
+          "weight": "noise",
+          "insight": "Light rain usually raises delivery orders. It does not explain an Android-only fall.",
+          "reveals": "Light rain in two cities on day -3. Rainy days normally lift orders a little. No holidays or festivals this week."
+        },
+        {
+          "id": "marketing",
+          "group": "Outside",
+          "ask": "Did marketing spend or channels change?",
+          "weight": "noise",
+          "insight": "Marketing is stable, so traffic into the app is not the cause.",
+          "reveals": "Spend and channel mix are flat. Sessions on Android are down only 1%."
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "tracking",
+          "text": "Tracking broke, so reported orders fell",
+          "cause": false,
+          "why": "Settled orders from finance fell by the same amount, so the drop is real.",
+          "ruledOutBy": [
+            "tracking"
+          ]
+        },
+        {
+          "id": "competitor",
+          "text": "A competitor's promotion pulled orders away",
+          "cause": false,
+          "why": "The fall is the same in every city and absent on iOS. A promotion in two cities does not do that.",
+          "ruledOutBy": [
+            "platform",
+            "city",
+            "competitor"
+          ]
+        },
+        {
+          "id": "weather",
+          "text": "Weather reduced demand",
+          "cause": false,
+          "why": "Rain usually raises delivery orders, and the fall is Android-only.",
+          "ruledOutBy": [
+            "weather",
+            "platform"
+          ]
+        },
+        {
+          "id": "demand",
+          "text": "Users want to order less, in general",
+          "cause": false,
+          "why": "iOS and web orders are flat, and sessions on Android barely changed. People are trying to order and failing.",
+          "ruledOutBy": [
+            "platform",
+            "marketing"
+          ]
+        },
+        {
+          "id": "android-release",
+          "text": "The Android 8.4 release broke payment",
+          "cause": true,
+          "why": "The fall is Android-only, starts on release day, tracks the share of sessions on 8.4, and sits at the payment step where the UPI app fails to open.",
+          "confirmedBy": [
+            "platform",
+            "version",
+            "funnel",
+            "errors",
+            "release",
+            "support"
+          ]
+        },
+        {
+          "id": "pricing",
+          "text": "A fee or price change reduced orders",
+          "cause": false,
+          "why": "No pricing or fee change shipped, and the fall would show on every platform.",
+          "ruledOutBy": [
+            "release",
+            "platform"
+          ]
+        }
+      ],
+      "recommendation": {
+        "rubric": [
+          "Names the cause and the evidence that supports it",
+          "Gives an immediate fix: halt the rollout and roll back or hotfix the UPI app-open call",
+          "Adds a safeguard: alerts on step conversion by version and a rollout gate",
+          "Looks after affected users: tell support, check for double charges, offer a retry",
+          "Defines how you will know it is fixed: Android payment-step conversion back to about 96%"
+        ],
+        "model": "Stop the 8.4 rollout now and roll back, or hotfix the UPI app-open call, whichever is faster. Tell support what is happening so they can reply to affected users and check for money deducted without an order. Afterwards add an alert when step conversion falls on any app version, and make staged rollouts pause automatically when it does. Track Android payment-step conversion: it should return to about 96%, and orders to about 119,000 a day."
+      },
+      "modelReasoning": "The first check was whether the drop was real: finance's settled orders agreed. The step on day -4 pointed to a change, not a trend. Splitting by platform isolated Android, and splitting Android by version isolated 8.4. The funnel then showed exactly where people were lost, the payment step, and the error log named the failure. Competitor, weather and marketing evidence was available but could not explain an Android-only, release-day step.",
+      "mistakes": [
+        "Blaming the competitor or the weather because they are easy to see.",
+        "Looking only at totals and missing the platform split.",
+        "Proposing price cuts or marketing before finding the cause.",
+        "Stopping at \"an Android problem\" without finding the step."
+      ],
+      "learnMore": [
+        "metric-decomposition",
+        "funnels-and-cohorts",
+        "apis-for-product-managers"
+      ]
+    },
+    {
+      "slug": "streaming-watch-time-drop",
+      "title": "Streaming watch time drops 12%",
+      "company": "A video streaming service",
+      "metric": "Weekly watch hours per subscriber",
+      "difficulty": 2,
+      "minutes": 18,
+      "competencies": [
+        "analytics",
+        "discovery",
+        "design"
+      ],
+      "illustrative": true,
+      "background": "The service streams on TV apps, mobile, web and tablets. Subscribers number in the millions. The team reviews weekly watch hours per subscriber every Monday.",
+      "problem": "Weekly watch hours per subscriber fell from 6.9 last week to 6.1 this week, down 12%. The head of product asks whether to panic.",
+      "evidence": [
+        {
+          "id": "trend",
+          "group": "When",
+          "ask": "Show weekly watch hours for the last five weeks.",
+          "weight": "key",
+          "insight": "Last week was a spike. Against a normal week the fall is closer to 5%. Part of the \"drop\" is a high baseline, but a real fall remains.",
+          "table": [
+            [
+              "Week",
+              "Hours per subscriber"
+            ],
+            [
+              "-4",
+              "6.4"
+            ],
+            [
+              "-3",
+              "6.5"
+            ],
+            [
+              "-2",
+              "6.4"
+            ],
+            [
+              "-1",
+              "6.9"
+            ],
+            [
+              "This week",
+              "6.1"
+            ]
+          ]
+        },
+        {
+          "id": "calendar",
+          "group": "Outside",
+          "ask": "What was released or happening last week?",
+          "weight": "useful",
+          "insight": "A finale last week inflated the baseline. It also explains a small, temporary dip afterwards, on every device.",
+          "reveals": "The finale of a hit series streamed last week and drove a spike in viewing. Three new series were added this week. No titles were removed."
+        },
+        {
+          "id": "tracking",
+          "group": "Data quality",
+          "ask": "Did measurement change?",
+          "weight": "useful",
+          "insight": "Billing-based streaming minutes agree with the dashboard. The change is real.",
+          "reveals": "No changes to event tracking. Streaming minutes from the delivery network match the dashboard within 1%."
+        },
+        {
+          "id": "device",
+          "group": "Where",
+          "ask": "Split hours by device, a normal week against this week.",
+          "weight": "key",
+          "insight": "TV viewing fell about 10% from a normal week. Mobile, web and tablet are flat. The real fall is on TV.",
+          "table": [
+            [
+              "Device",
+              "Normal week (-2)",
+              "Last week (-1)",
+              "This week"
+            ],
+            [
+              "TV",
+              "3.1",
+              "3.5",
+              "2.8"
+            ],
+            [
+              "Mobile",
+              "2.1",
+              "2.2",
+              "2.1"
+            ],
+            [
+              "Web",
+              "0.8",
+              "0.8",
+              "0.8"
+            ],
+            [
+              "Tablet",
+              "0.4",
+              "0.4",
+              "0.4"
+            ],
+            [
+              "Total",
+              "6.4",
+              "6.9",
+              "6.1"
+            ]
+          ]
+        },
+        {
+          "id": "sessions",
+          "group": "Where",
+          "ask": "On TV, did people watch less often or for less time?",
+          "weight": "key",
+          "insight": "People come as often as before but stop sooner. The change is in what happens inside a session.",
+          "table": [
+            [
+              "TV metric",
+              "Normal week",
+              "This week"
+            ],
+            [
+              "Sessions per subscriber",
+              "3.9",
+              "3.9"
+            ],
+            [
+              "Average session length",
+              "48 min",
+              "43 min"
+            ],
+            [
+              "Episodes started per session",
+              "2.4",
+              "2.1"
+            ]
+          ]
+        },
+        {
+          "id": "version",
+          "group": "Changes",
+          "ask": "Compare TV app versions.",
+          "weight": "key",
+          "insight": "The shorter sessions appear only on the newer TV app version.",
+          "table": [
+            [
+              "TV app version",
+              "Share of TV sessions",
+              "Episodes per session"
+            ],
+            [
+              "5.1",
+              "34%",
+              "2.4"
+            ],
+            [
+              "5.2",
+              "66%",
+              "2.0"
+            ]
+          ]
+        },
+        {
+          "id": "release",
+          "group": "Changes",
+          "ask": "What changed in TV app 5.2?",
+          "weight": "key",
+          "insight": "A default changed: the next episode no longer starts by itself. Viewers must press play after each episode, and many stop.",
+          "reveals": "TV app 5.2 shipped last week with a redesigned player. The release notes do not mention it, but the configuration log shows \"autoplay next episode\" changed from on to off by default on 5.2."
+        },
+        {
+          "id": "reviews",
+          "group": "Support",
+          "ask": "What are viewers saying?",
+          "weight": "useful",
+          "insight": "Viewers describe the symptom.",
+          "reveals": "App store reviews for the TV app mention \"have to press play every time\" and \"it used to continue by itself\" in 14% of recent reviews, up from under 1%."
+        },
+        {
+          "id": "timeofday",
+          "group": "Who",
+          "ask": "Did viewing change by time of day?",
+          "weight": "noise",
+          "insight": "The shape of the day is unchanged. Time of day does not explain it.",
+          "reveals": "Peak hours and shape are the same as normal weeks."
+        },
+        {
+          "id": "plan",
+          "group": "Who",
+          "ask": "Did the plan mix or price change?",
+          "weight": "noise",
+          "insight": "No pricing or plan change. Mix is stable.",
+          "reveals": "No price or plan changes. Plan mix is stable to within 0.3 points."
+        },
+        {
+          "id": "rival",
+          "group": "Outside",
+          "ask": "Did a rival launch something big?",
+          "weight": "noise",
+          "insight": "A rival launch could dent all devices. The fall is TV and version specific.",
+          "reveals": "A rival launched a series on mobile-first on day -3. Mobile viewing is flat."
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "baseline",
+          "text": "Last week was a spike, so the drop is only an artefact",
+          "cause": false,
+          "why": "It explains most of the headline: against a normal week the fall is about 5%. But the TV-only fall remains, so it is not the whole story.",
+          "ruledOutBy": [
+            "device",
+            "sessions"
+          ]
+        },
+        {
+          "id": "tracking",
+          "text": "Tracking changed and under-counts viewing",
+          "cause": false,
+          "why": "Delivery-network minutes agree with the dashboard.",
+          "ruledOutBy": [
+            "tracking"
+          ]
+        },
+        {
+          "id": "catalogue",
+          "text": "The catalogue got weaker",
+          "cause": false,
+          "why": "Three new series arrived and none were removed. A catalogue effect would show on every device.",
+          "ruledOutBy": [
+            "calendar",
+            "device"
+          ]
+        },
+        {
+          "id": "rival",
+          "text": "A rival's launch took viewers",
+          "cause": false,
+          "why": "Mobile, where the rival launched, is flat. The fall is on TV.",
+          "ruledOutBy": [
+            "rival",
+            "device"
+          ]
+        },
+        {
+          "id": "autoplay",
+          "text": "TV app 5.2 turned off autoplay of the next episode",
+          "cause": true,
+          "why": "The fall is TV only, sessions per subscriber are unchanged but episodes per session fell, it appears only on 5.2, and the configuration log shows the default changed.",
+          "confirmedBy": [
+            "device",
+            "sessions",
+            "version",
+            "release",
+            "reviews"
+          ]
+        },
+        {
+          "id": "pricing",
+          "text": "A price or plan change reduced viewing",
+          "cause": false,
+          "why": "No price or plan change, and it would show on all devices.",
+          "ruledOutBy": [
+            "plan"
+          ]
+        }
+      ],
+      "recommendation": {
+        "rubric": [
+          "Separates the baseline effect from the real fall",
+          "Names the cause and the evidence",
+          "Restores autoplay on 5.2 quickly, with a staged check",
+          "Explains why this should have been caught: release notes and default changes need review",
+          "Defines the recovery measure: episodes per session on TV back to about 2.4"
+        ],
+        "model": "Be calm about the headline: about 7 points of the 12% is the finale baseline, and about 5% is real. Restore the autoplay default on TV 5.2 through remote configuration, then watch episodes per session on 5.2 return to about 2.4. Add default-setting changes to the release checklist and alert on episodes per session by app version. If the team wants autoplay off for some users (for example on a kids' profile), make it an explicit test with a measured outcome."
+      },
+      "modelReasoning": "Look at the baseline first: last week was inflated. Then find where the real fall sits. Splitting by device isolated TV. Sessions per subscriber were flat while episodes per session fell, which says people were still coming but stopping sooner. Splitting by app version isolated 5.2, and the configuration log named the changed default. Rival, plan mix and time of day were checked and could not explain a TV-only, version-specific change.",
+      "mistakes": [
+        "Comparing to last week only, without a baseline.",
+        "Reporting one total and missing the device split.",
+        "Treating fewer episodes per session as lower interest, not as friction.",
+        "Concluding \"seasonality\" without evidence."
+      ],
+      "learnMore": [
+        "metric-decomposition",
+        "funnels-and-cohorts",
+        "ab-testing-basics"
+      ]
+    },
+    {
+      "slug": "payment-failures-rise",
+      "title": "Payment failures climb to 5.4%",
+      "company": "An online marketplace",
+      "metric": "Payment failure rate",
+      "difficulty": 2,
+      "minutes": 18,
+      "competencies": [
+        "analytics",
+        "technical",
+        "discovery"
+      ],
+      "illustrative": true,
+      "background": "The marketplace takes UPI, cards, net banking and wallets through a payment gateway. Failure rate is normally about 2%. The team has not shipped to checkout this week.",
+      "problem": "The payment failure rate rose from 2.1% to 5.4% starting three days ago. Sales are down and the on-call engineer sees no errors in the app.",
+      "evidence": [
+        {
+          "id": "trend",
+          "group": "When",
+          "ask": "Show the failure rate by hour around the start.",
+          "weight": "useful",
+          "insight": "The rate stepped up at 10:00 on day -3 and stayed. A step at a clock time suggests something outside the daily cycle, such as a partner change.",
+          "table": [
+            [
+              "Time (day -3)",
+              "Failure rate"
+            ],
+            [
+              "08:00",
+              "2.0%"
+            ],
+            [
+              "09:00",
+              "2.2%"
+            ],
+            [
+              "10:00",
+              "5.1%"
+            ],
+            [
+              "11:00",
+              "5.6%"
+            ],
+            [
+              "12:00",
+              "5.4%"
+            ]
+          ]
+        },
+        {
+          "id": "method",
+          "group": "Where",
+          "ask": "Split failures by payment method.",
+          "weight": "key",
+          "insight": "Cards fell sharply. UPI, net banking and wallets are normal. The problem sits in cards.",
+          "table": [
+            [
+              "Payment method",
+              "Share of attempts",
+              "Failure before",
+              "Failure now"
+            ],
+            [
+              "UPI",
+              "40%",
+              "1.4%",
+              "1.5%"
+            ],
+            [
+              "Cards",
+              "40%",
+              "3.2%",
+              "11.0%"
+            ],
+            [
+              "Net banking",
+              "12%",
+              "2.5%",
+              "2.6%"
+            ],
+            [
+              "Wallets",
+              "8%",
+              "1.1%",
+              "1.2%"
+            ]
+          ]
+        },
+        {
+          "id": "issuer",
+          "group": "Where",
+          "ask": "For cards, split by the bank that issued the card.",
+          "weight": "key",
+          "insight": "One issuing bank explains almost all of the increase. Cards from other banks are normal.",
+          "table": [
+            [
+              "Card issuer",
+              "Share of card attempts",
+              "Failure before",
+              "Failure now"
+            ],
+            [
+              "Bank X",
+              "24%",
+              "3.0%",
+              "34%"
+            ],
+            [
+              "Other banks, combined",
+              "76%",
+              "3.3%",
+              "3.4%"
+            ]
+          ]
+        },
+        {
+          "id": "reason",
+          "group": "Funnel",
+          "ask": "What do the failure reason codes say for Bank X cards?",
+          "weight": "key",
+          "insight": "The bank is not completing authentication. The failure is not on the marketplace side or inside the gateway.",
+          "reveals": "For Bank X cards, 88% of failures carry the code \"authentication failed or timed out\" at the one-time password step. Gateway errors and our own fraud-block codes are under 1%."
+        },
+        {
+          "id": "release",
+          "group": "Changes",
+          "ask": "Did we or the gateway ship anything?",
+          "weight": "useful",
+          "insight": "No change on our side lines up with the step.",
+          "reveals": "No releases to checkout this week. The gateway SDK version is unchanged. Fraud rules were not edited."
+        },
+        {
+          "id": "gateway",
+          "group": "Outside",
+          "ask": "Is the gateway reporting an incident?",
+          "weight": "useful",
+          "insight": "The gateway is healthy for everything else, so the issue is at one issuer.",
+          "reveals": "The gateway status page shows no incident. Other merchants in the gateway's channel report Bank X card failures starting at 10:00 on day -3."
+        },
+        {
+          "id": "platform",
+          "group": "Who",
+          "ask": "Is it the same on Android, iOS and web?",
+          "weight": "useful",
+          "insight": "It is the same everywhere, so it is not an app problem.",
+          "reveals": "Failure rates for Bank X cards are similar on Android, iOS and web."
+        },
+        {
+          "id": "saved",
+          "group": "Who",
+          "ask": "Saved cards or new cards?",
+          "weight": "noise",
+          "insight": "Both fail alike, so the way the card was entered does not matter.",
+          "reveals": "Saved and newly entered Bank X cards fail at similar rates."
+        },
+        {
+          "id": "support",
+          "group": "Support",
+          "ask": "What are customers writing?",
+          "weight": "useful",
+          "insight": "Customers cannot get the OTP, which fits the issuer being the problem.",
+          "reveals": "Tickets saying \"OTP not received\" or \"bank page keeps loading\" are up eight times, almost all from Bank X customers."
+        },
+        {
+          "id": "retry",
+          "group": "Funnel",
+          "ask": "What do customers do after a failure?",
+          "weight": "useful",
+          "insight": "Many abandon, but those who switch method succeed. A fallback helps.",
+          "reveals": "After a Bank X card failure, 63% abandon the order. Among the 37% who retry, 94% succeed when they switch to UPI."
+        },
+        {
+          "id": "amount",
+          "group": "Who",
+          "ask": "Does order value matter?",
+          "weight": "noise",
+          "insight": "Value is not the driver.",
+          "reveals": "Failure rates are similar across low and high order values."
+        },
+        {
+          "id": "mix",
+          "group": "Who",
+          "ask": "Did the customer mix change?",
+          "weight": "noise",
+          "insight": "The mix of customers is stable, so it is not a shift in who is buying.",
+          "reveals": "Share of Bank X cards in card attempts is 24%, the same as last month."
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "release",
+          "text": "Our checkout release introduced a bug",
+          "cause": false,
+          "why": "Nothing shipped, and failures are confined to one issuer.",
+          "ruledOutBy": [
+            "release",
+            "issuer"
+          ]
+        },
+        {
+          "id": "gateway",
+          "text": "The payment gateway has an outage",
+          "cause": false,
+          "why": "Other methods and other banks' cards are normal, and the gateway reports no incident.",
+          "ruledOutBy": [
+            "method",
+            "issuer",
+            "gateway"
+          ]
+        },
+        {
+          "id": "fraud",
+          "text": "Our fraud rules are blocking good payments",
+          "cause": false,
+          "why": "Our fraud-block codes are under 1% of failures, and rules were not changed.",
+          "ruledOutBy": [
+            "reason",
+            "release"
+          ]
+        },
+        {
+          "id": "mix",
+          "text": "More risky customers arrived, so failures rose",
+          "cause": false,
+          "why": "The share of Bank X cards and the mix are unchanged, and the failure is at the bank's OTP step.",
+          "ruledOutBy": [
+            "mix",
+            "reason"
+          ]
+        },
+        {
+          "id": "issuer",
+          "text": "Bank X's card authentication is failing",
+          "cause": true,
+          "why": "The rise is confined to one issuer, starts at a clock time, shows authentication or timeout codes, and other merchants report the same.",
+          "confirmedBy": [
+            "method",
+            "issuer",
+            "reason",
+            "gateway",
+            "support"
+          ]
+        }
+      ],
+      "recommendation": {
+        "rubric": [
+          "Names the cause and does not blame our own code",
+          "Takes an immediate action customers feel: after a card failure, offer UPI or another method",
+          "Escalates to the issuer through the gateway and asks for an update",
+          "Communicates: a banner for Bank X card users and a note to support",
+          "Defines how to know it is fixed: Bank X failure rate back to about 3%"
+        ],
+        "model": "This one is not ours to fix, but it is ours to soften. Contact the gateway's account team to escalate to Bank X and ask for an update time. Meanwhile, after a Bank X card failure, show a prompt to pay with UPI or another method, since 94% of people who switch succeed. Put a banner on checkout for Bank X card users, and brief support. Track the Bank X failure rate and the abandon rate after failure. Afterwards, add an alert that fires when failure rate for any one issuer rises sharply."
+      },
+      "modelReasoning": "The step at a clock time suggested something outside our app. Splitting by method isolated cards, and splitting cards by issuer isolated one bank. The reason codes showed the bank's own authentication failing, and the gateway and other merchants confirmed it. No release, fraud rule or customer mix change was involved. The lesson: sometimes the cause is outside your system, and the job becomes limiting the harm and escalating.",
+      "mistakes": [
+        "Assuming it is the team's own code.",
+        "Tuning fraud rules or retries without evidence.",
+        "Stopping at \"cards\" without splitting by issuer.",
+        "Doing nothing for customers while waiting for the bank."
+      ],
+      "learnMore": [
+        "metric-decomposition",
+        "apis-for-product-managers",
+        "latency-caching-and-scale"
+      ]
+    },
+    {
+      "slug": "onboarding-completion-drop",
+      "title": "Onboarding completion falls from 68% to 51%",
+      "company": "A fitness app",
+      "metric": "Onboarding completion rate",
+      "difficulty": 3,
+      "minutes": 20,
+      "competencies": [
+        "analytics",
+        "design",
+        "strategy"
+      ],
+      "illustrative": true,
+      "background": "New users answer a few questions and receive a first workout plan. The growth team runs several experiments a month. A new marketing campaign also started recently.",
+      "problem": "Onboarding completion fell from 68% to 51% over the last six days. The growth lead thinks the new campaign is bringing low-intent users. Another team member points to a recent change to onboarding.",
+      "evidence": [
+        {
+          "id": "funnel",
+          "group": "Funnel",
+          "ask": "Show onboarding step conversion, before against now.",
+          "weight": "key",
+          "insight": "A new step appears and it loses about 25% of people. The other steps are unchanged.",
+          "table": [
+            [
+              "Step",
+              "Before",
+              "Now"
+            ],
+            [
+              "1 · Choose a goal",
+              "92%",
+              "92%"
+            ],
+            [
+              "2 · Tell us about you",
+              "85%",
+              "85%"
+            ],
+            [
+              "3 · Verify phone number",
+              "not in the flow",
+              "75%"
+            ],
+            [
+              "4 · See your first plan",
+              "87%",
+              "87%"
+            ]
+          ]
+        },
+        {
+          "id": "channel",
+          "group": "Who",
+          "ask": "Split completion by acquisition channel.",
+          "weight": "key",
+          "insight": "Every channel fell by about the same amount, old channels included. The new campaign is not the cause.",
+          "table": [
+            [
+              "Channel",
+              "Before",
+              "Now"
+            ],
+            [
+              "Organic search",
+              "70%",
+              "53%"
+            ],
+            [
+              "Referral",
+              "73%",
+              "56%"
+            ],
+            [
+              "Paid, existing campaigns",
+              "66%",
+              "49%"
+            ],
+            [
+              "Paid, new campaign",
+              "n/a",
+              "50%"
+            ]
+          ]
+        },
+        {
+          "id": "device",
+          "group": "Where",
+          "ask": "Split by device.",
+          "weight": "useful",
+          "insight": "iOS and Android fall alike. This is not a platform bug.",
+          "reveals": "Completion is 51% on iOS and 52% on Android now, against 68% and 69% before."
+        },
+        {
+          "id": "time",
+          "group": "Funnel",
+          "ask": "How long does onboarding take?",
+          "weight": "useful",
+          "insight": "The flow takes longer. The extra time sits in the new step.",
+          "reveals": "Median time to complete went from 2:10 to 3:40. The new phone verification step takes a median of 1:25."
+        },
+        {
+          "id": "otp",
+          "group": "Funnel",
+          "ask": "How well does the verification step itself work?",
+          "weight": "key",
+          "insight": "About one in twelve users never get the code, and the step also asks for something personal before showing any value.",
+          "reveals": "The one-time code is delivered successfully to 92% of numbers. 8% never receive it. 11% of people who see the step leave before entering a number."
+        },
+        {
+          "id": "experiment",
+          "group": "Changes",
+          "ask": "What changed in onboarding, and when?",
+          "weight": "key",
+          "insight": "A test at 10% showed a lower completion rate but a small gain in later activity. It was ramped to 100% six days ago.",
+          "reveals": "Phone verification was tested on 10% of new users two weeks ago. The test readout showed completion down 17 points and 7-day return up 2 points. It was ramped to 100% of new users six days ago with the readout attached."
+        },
+        {
+          "id": "release",
+          "group": "Changes",
+          "ask": "Did the app or the plan screen change?",
+          "weight": "useful",
+          "insight": "Nothing else changed, and the later steps are stable.",
+          "reveals": "No app release in the last two weeks. The plan screen is unchanged and loads in the same time."
+        },
+        {
+          "id": "support",
+          "group": "Support",
+          "ask": "What are users saying?",
+          "weight": "useful",
+          "insight": "Users are blocked by the code or put off by being asked for a number early.",
+          "reveals": "Tickets about \"no code received\" are up. Reviews say \"why do you need my number?\" in 6% of new reviews, up from near zero."
+        },
+        {
+          "id": "season",
+          "group": "Outside",
+          "ask": "Is it seasonal?",
+          "weight": "noise",
+          "insight": "There is a normal seasonal rise in signups, not a fall in completion. It does not explain a step on one change.",
+          "reveals": "Signups are up 12% on seasonality, with no seasonal effect on completion in past years."
+        },
+        {
+          "id": "tracking",
+          "group": "Data quality",
+          "ask": "Did tracking change?",
+          "weight": "useful",
+          "insight": "Measurement is intact: the new step is tracked, and signups agree with the store.",
+          "reveals": "Step events were added for the new step. Other events are unchanged, and download counts agree with the store."
+        },
+        {
+          "id": "copy",
+          "group": "Changes",
+          "ask": "Did we change copy or design on earlier steps?",
+          "weight": "noise",
+          "insight": "Earlier steps are stable.",
+          "reveals": "No copy or layout changes on steps 1, 2 or 4."
+        }
+      ],
+      "hypotheses": [
+        {
+          "id": "campaign",
+          "text": "The new campaign is bringing low-intent users",
+          "cause": false,
+          "why": "Every channel fell by the same amount, including old ones.",
+          "ruledOutBy": [
+            "channel"
+          ]
+        },
+        {
+          "id": "plan",
+          "text": "The first plan screen is slow or confusing",
+          "cause": false,
+          "why": "Step 4 conversion is unchanged and the screen did not change.",
+          "ruledOutBy": [
+            "funnel",
+            "release"
+          ]
+        },
+        {
+          "id": "season",
+          "text": "Seasonality reduced completion",
+          "cause": false,
+          "why": "Past years show no seasonal fall in completion, and the fall lines up with a specific change.",
+          "ruledOutBy": [
+            "season"
+          ]
+        },
+        {
+          "id": "tracking",
+          "text": "Tracking changed and under-reports completion",
+          "cause": false,
+          "why": "Downloads agree with the store and only a step was added.",
+          "ruledOutBy": [
+            "tracking"
+          ]
+        },
+        {
+          "id": "verify",
+          "text": "The new phone verification step is losing people",
+          "cause": true,
+          "why": "The new step loses 25%, all channels and devices fall alike, the time rises by the length of the step, and the ramp to 100% matches the date.",
+          "confirmedBy": [
+            "funnel",
+            "channel",
+            "time",
+            "otp",
+            "experiment"
+          ]
+        }
+      ],
+      "recommendation": {
+        "rubric": [
+          "Names the cause and the numbers: step 3 loses 25%",
+          "Weighs the trade-off: completion fell 17 points, 7-day return rose 2 points",
+          "Proposes a change that keeps the benefit: ask for the number after the first workout, or make it optional",
+          "Fixes the delivery problem for the 8% who get no code",
+          "Defines the decision measure: completed onboarding and 7-day return together, via a new test"
+        ],
+        "model": "The cause is the phone-verification step, which was ramped from a 10% test to 100% with a readout that showed a large completion cost. Do not remove it outright, because the test also showed a small gain in 7-day return. Test moving verification after the first workout, or making it optional, and compare completion and 7-day return together. Meanwhile, fix delivery for the 8% who never get a code, and add a skip. Agree a rule that a ramp needs a decision on the trade-off, not only a readout."
+      },
+      "modelReasoning": "The hypothesis from the growth lead, the campaign, could be tested directly: completion fell in every channel, including old ones. The funnel showed one step losing people, and it was a new step. The experiment log showed it had been ramped from a test that already warned about the trade-off. The right answer is not \"remove it\", because the test also showed benefit. It is to find a way to keep the benefit without the cost.",
+      "mistakes": [
+        "Accepting the first story, such as the campaign, without testing it.",
+        "Reverting the change without weighing the later benefit.",
+        "Looking only at the headline completion rate.",
+        "Ramping an experiment without a trade-off decision."
+      ],
+      "learnMore": [
+        "funnels-and-cohorts",
+        "ab-testing-basics",
+        "prioritisation-rice-ice-moscow"
+      ]
+    }
+  ]
+}

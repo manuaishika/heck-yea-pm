@@ -244,6 +244,31 @@
     "How many weddings happen in India each year?",
     "How much storage would Google Photos need for all of India?"
   ],
+  "learn.lessons": [
+    "ab-testing-basics",
+    "apis-for-product-managers",
+    "databases-sql-nosql-indexes",
+    "facts-vs-assumptions",
+    "funnels-and-cohorts",
+    "jobs-to-be-done",
+    "latency-caching-and-scale",
+    "llm-basics-for-product-managers",
+    "metric-decomposition",
+    "mvp-and-riskiest-assumption",
+    "prioritisation-rice-ice-moscow",
+    "writing-a-prd"
+  ],
+  "learn.rcaCases": [
+    "food-delivery-orders-drop",
+    "onboarding-completion-drop",
+    "payment-failures-rise",
+    "streaming-watch-time-drop"
+  ],
+  "learn.consumerExercises": [
+    "a-consumers-day",
+    "extreme-user",
+    "purchase-decision"
+  ],
   "quiz.questions": [
     "{\"skill\":\"ab-tests\",\"q\":\"You run an A/B test for three days, peek, and see version B up 2%. You want to ship. What did you skip?\",\"options\":[\"Nothing. B is ahead\",\"Fixing the success metric and run length up front, and having enough users to call it\",\"Asking users which version they prefer\",\"Testing on employees first\"],\"answer\":1,\"why\":\"Stopping when the numbers look good inflates false wins. Decide the metric and duration before you start, and let it reach enough users.\"}",
     "{\"skill\":\"apis\",\"q\":\"Your team wants to show live train delays in the app. A transit agency already publishes this data. What do you check first?\",\"options\":[\"Whether we should hire a team to collect the data ourselves\",\"Whether the agency offers an API, and what its limits, cost and uptime look like\",\"Which database to store the delays in\",\"What colour to show a delayed train in\"],\"answer\":1,\"why\":\"Assume an API exists before building anything. Then ask what happens when it is slow or down, because your feature now depends on it.\"}",

@@ -20,7 +20,35 @@ const methods = read('methods.json').methods
 const clip = (s, n = 155) => s.replace(/\s+/g, ' ').trim().slice(0, n)
 
 // static routes — kept in step with each page's useHead() call
+const learn = (f) => read(f)
+const lessons = learn('lessons.json').lessons
+const rcaCases = learn('rca-cases.json').cases
+const consumerExercises = learn('consumer-exercises.json').exercises
+
 const routes = {
+  '/learn': {
+    title: 'Lessons',
+    description:
+      'Short product management lessons by discipline: consumer research, analytics, technical foundations, AI and execution. Each one ends with an exercise and a check.',
+  },
+  '/practice': {
+    title: 'Practice',
+    description:
+      'Practice that asks you to think: diagnose a metric drop with evidence on request, sort what you know about a user, and run a timed mock interview.',
+  },
+  '/interview': {
+    title: 'Interview simulator',
+    description:
+      'A timed mock product interview: pick categories and difficulty, answer out loud against a clock, take follow-ups, and score yourself against a four-part rubric.',
+  },
+  '/start': {
+    title: 'Set up your path',
+    description: 'Tell us your goal, your time and your technical level. You get a learning path of lessons, cases and practice. Everything stays on your device.',
+  },
+  '/progress': {
+    title: 'My progress',
+    description: 'Your learning path, competency levels, weak areas and recent activity. Kept on your device.',
+  },
   '/': {
     title: null,
     description:
@@ -112,6 +140,24 @@ const routes = {
   },
 }
 
+for (const l of lessons) {
+  routes[`/learn/${l.slug}`] = {
+    title: l.title,
+    description: clip(`${l.definition} ${l.minutes}-minute lesson with an exercise and a check.`),
+  }
+}
+for (const c of rcaCases) {
+  routes[`/practice/rca/${c.slug}`] = {
+    title: `${c.title} — root cause case`,
+    description: clip(`${c.problem} A practice case with made-up data: ask for evidence, test hypotheses, find the cause.`),
+  }
+}
+for (const e of consumerExercises) {
+  routes[`/practice/consumer/${e.slug}`] = {
+    title: `${e.title} — consumer lab`,
+    description: clip(`${e.job} A practice exercise with made-up notes.`),
+  }
+}
 for (const q of questions) {
   const answer =
     q.sections.find((s) => /answer/i.test(s.label)) ||
@@ -174,7 +220,7 @@ for (const [path, meta] of Object.entries(routes)) {
 }
 
 // sitemap.xml and robots.txt — every public route, none of the personal ones
-const PRIVATE = new Set(['/saved', '/flashcards/complete', '/india'])
+const PRIVATE = new Set(['/progress', '/start', '/saved', '/flashcards/complete', '/india'])
 const today = new Date().toISOString().slice(0, 10)
 const urls = Object.keys(routes)
   .filter((p) => !PRIVATE.has(p))

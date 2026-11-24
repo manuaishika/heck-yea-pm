@@ -7,6 +7,7 @@ const MENU_GROUPS = [
   {
     label: 'Learn',
     items: [
+      ['/learn', 'Lessons'],
       ['/role', 'Role & Skills'],
       ['/skills', 'Skills'],
       ['/ai', 'AI for product managers'],
@@ -16,10 +17,19 @@ const MENU_GROUPS = [
   {
     label: 'Practice',
     items: [
+      ['/practice', 'Cases and labs'],
+      ['/interview', 'Mock interview'],
       ['/today', 'Today’s question'],
       ['/browse', 'Questions'],
       ['/flashcards', 'Flashcards'],
       ['/skills/assess', 'Where do you stand?'],
+    ],
+  },
+  {
+    label: 'Progress',
+    items: [
+      ['/progress', 'My progress'],
+      ['/start', 'Set up your path'],
     ],
   },
   {

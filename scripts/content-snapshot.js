@@ -29,6 +29,9 @@ function snapshot() {
   const india = load('india.json')
   const guesstimates = load('guesstimates.json')
   const quiz = load('quiz.json')
+  const lessons = load('lessons.json')
+  const rca = load('rca-cases.json')
+  const consumer = load('consumer-exercises.json')
 
   return {
     questions: questions.map((q) => q.id).sort(),
@@ -43,6 +46,9 @@ function snapshot() {
     'guesstimates.questions': guesstimates.questionSets
       .flatMap((s) => s.questions.map((q) => q.q))
       .sort(),
+    'learn.lessons': lessons.lessons.map((l) => l.slug).sort(),
+    'learn.rcaCases': rca.cases.map((c) => c.slug).sort(),
+    'learn.consumerExercises': consumer.exercises.map((e) => e.slug).sort(),
     'quiz.questions': quiz.questions.map((q) => q.id ?? q.question ?? JSON.stringify(q)).sort(),
   }
 }
