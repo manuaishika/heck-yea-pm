@@ -15,8 +15,8 @@ const maskStyle = {
  */
 export default function CompaniesMarquee() {
   return (
-    <div className="relative overflow-hidden" style={maskStyle}>
-      <ul className="marquee-track motion-reduce:hidden flex w-max items-center gap-3 group-hover:[animation-play-state:paused] hover:[animation-play-state:paused]">
+    <div className="marquee relative overflow-hidden" style={maskStyle}>
+      <ul className="marquee-track motion-reduce:hidden flex w-max items-center gap-3">
         {loop.map((c, i) => (
           <li key={`${c.slug}-${i}`}>
             <Link to={companyHref(c)} className="pill whitespace-nowrap">

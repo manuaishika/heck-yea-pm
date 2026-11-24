@@ -69,4 +69,13 @@ export function companyHasData(company) {
 
 /** Where a company's logo leads: its own page when there's data behind it,
  * otherwise the general question bank. */
-export const companyHref = (company) => (companyHasData(company) ? `/companies/${company.slug}` : '/browse')
+export const companyHref = (company) =>
+  companyHasData(company) ? `/companies/${company.slug}` : `/browse?q=${encodeURIComponent(company.name)}`
+
+/** Company a question tag belongs to (tags are company names), or undefined. */
+export function companyForTag(tag) {
+  return companies.find((c) => c.name === tag || c.questionTags.includes(tag))
+}
+
+/** Browse URL filtered to one question tag, e.g. "Google". */
+export const browseByCompany = (tag) => `/browse?company=${encodeURIComponent(tag)}`

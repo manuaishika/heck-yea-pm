@@ -4,6 +4,7 @@ import { shortAnswer } from '../data/questions'
 import { Row, Detail, Block, Bullets, CategoryTag, iconForCategory } from './ui'
 import SaveButton from './SaveButton'
 import MethodLinks from './MethodLinks'
+import CompanyTags from './CompanyTags'
 
 /**
  * One question as the shared expandable row. Two-layer answer: the short
@@ -22,10 +23,11 @@ import MethodLinks from './MethodLinks'
 export default function QuestionRow({ question, expanded, onToggle, defaultOpen, to, showCategory = true }) {
   const [fullOpen, setFullOpen] = useState(false)
   const sub =
-    showCategory || question.hard ? (
+    showCategory || question.hard || question.companies.length > 0 ? (
       <span className="mt-1 flex flex-wrap items-center gap-2">
         {showCategory && <CategoryTag category={question.category} />}
         {question.hard && <span className="label">curveball</span>}
+        {question.companies.length > 0 && <span className="label">{question.companies.join(' · ')}</span>}
       </span>
     ) : null
 
@@ -68,6 +70,11 @@ export default function QuestionRow({ question, expanded, onToggle, defaultOpen,
             <p>{question.failureMode}</p>
           </Block>
         </>
+      )}
+      {question.companies.length > 0 && (
+        <Block label="Asked at">
+          <CompanyTags names={question.companies} />
+        </Block>
       )}
       <MethodLinks question={question} />
       <div className="border-t border-border p-4">

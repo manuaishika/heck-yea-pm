@@ -504,6 +504,11 @@
 .marquee-track {
   animation: marquee 32s linear infinite;
 }
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track,
+.marquee:active .marquee-track {
+  animation-play-state: paused;
+}
 @keyframes marquee {
   from {
     transform: translateX(0);

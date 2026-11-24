@@ -19,6 +19,31 @@ import { CategoryTag } from '../components/ui'
 import Pip from '../components/Pip'
 import QuestionList from '../components/QuestionList'
 
+const SORTS = [
+  { id: 'default', label: 'Bank order' },
+  { id: 'most-asked', label: 'Most asked' },
+  { id: 'curveballs', label: 'Curveballs first' },
+  { id: 'az', label: 'A to Z' },
+]
+
+// company tags that appear on at least one question, with counts, biggest first
+const companyCounts = (() => {
+  const m = new Map()
+  for (const q of questions) for (const c of q.companies) m.set(c, (m.get(c) || 0) + 1)
+  return [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+})()
+const taggedCount = questions.filter((q) => q.companies.length > 0).length
+
+function sortQuestions(list, sort) {
+  const idx = new Map(questions.map((q, i) => [q.id, i]))
+  const byBank = (a, b) => idx.get(a.id) - idx.get(b.id)
+  const out = [...list]
+  if (sort === 'most-asked') out.sort((a, b) => b.companies.length - a.companies.length || byBank(a, b))
+  else if (sort === 'curveballs') out.sort((a, b) => Number(b.hard) - Number(a.hard) || byBank(a, b))
+  else if (sort === 'az') out.sort((a, b) => a.question.localeCompare(b.question))
+  return out
+}
+
 const chip = 'pill'
 const chipOn = 'pill-on'
 const chipOff = ''
@@ -40,6 +65,11 @@ export default function Browse() {
   const hardOnly = searchParams.get('hard') === '1'
   const activeTopic = topicFromSlug(searchParams.get('topic') || '')
   const urlQuery = searchParams.get('q') || ''
+  const rawCompany = searchParams.get('company') || ''
+  const activeCompany =
+    rawCompany === 'any' ? 'any' : companyCounts.find(([c]) => c.toLowerCase() === rawCompany.toLowerCase())?.[0] || ''
+  const rawSort = searchParams.get('sort') || 'default'
+  const activeSort = SORTS.some((s) => s.id === rawSort) ? rawSort : 'default'
 
   const [input, setInput] = useState(urlQuery)
   const debouncedInput = useDebounced(input, 200)
@@ -76,7 +106,7 @@ export default function Browse() {
 
   const counts = useMemo(() => categoryCounts(), [])
 
-  const filterKey = `${activeCategory}|${hardOnly}|${activeTopic}|${debouncedInput}`
+  const filterKey = `${activeCategory}|${hardOnly}|${activeTopic}|${activeCompany}|${activeSort}|${debouncedInput}`
   const [shown, setShown] = useState(PAGE)
   const [shownFor, setShownFor] = useState(filterKey)
   if (shownFor !== filterKey) {
@@ -86,14 +116,17 @@ export default function Browse() {
 
   const results = useMemo(() => {
     const tokens = queryTokens(debouncedInput)
-    return questions.filter(
+    const list = questions.filter(
       (q) =>
         (!activeCategory || q.category === activeCategory) &&
         (!hardOnly || q.hard) &&
         (!activeTopic || q.topic === activeTopic) &&
+        (!activeCompany ||
+          (activeCompany === 'any' ? q.companies.length > 0 : q.companies.includes(activeCompany))) &&
         matchesQuery(q, tokens)
     )
-  }, [activeCategory, hardOnly, activeTopic, debouncedInput])
+    return sortQuestions(list, activeSort)
+  }, [activeCategory, hardOnly, activeTopic, activeCompany, activeSort, debouncedInput])
 
   function patchParams(mutate) {
     const next = new URLSearchParams(searchParams)
@@ -110,6 +143,8 @@ export default function Browse() {
     Boolean(activeCategory) ||
     hardOnly ||
     Boolean(activeTopic) ||
+    Boolean(activeCompany) ||
+    activeSort !== 'default' ||
     debouncedInput.trim().length > 0
   const linkTo = (q) => `/browse/${q.id}${location.search}`
 
@@ -202,12 +237,67 @@ export default function Browse() {
         })}
       </div>
 
+      <p className="label mt-4">Asked at</p>
+      <div
+        className="-mx-4 mt-2 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0 [&>*]:shrink-0"
+        role="group"
+        aria-label="Filter by company"
+      >
+        {[['any', 'any company', taggedCount], ...companyCounts.map(([c, n]) => [c, c, n])].map(([value, label, n]) => {
+          const on = activeCompany === value
+          return (
+            <button
+              key={value}
+              type="button"
+              aria-pressed={on}
+              onClick={() =>
+                patchParams((p) => {
+                  if (on) p.delete('company')
+                  else p.set('company', value)
+                })
+              }
+              className={`${chip} ${on ? chipOn : chipOff}`}
+            >
+              {label} {n}
+            </button>
+          )
+        })}
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="sort" className="label">
+          Sort by
+        </label>
+        <select
+          id="sort"
+          value={activeSort}
+          onChange={(e) =>
+            patchParams((p) => {
+              if (e.target.value === 'default') p.delete('sort')
+              else p.set('sort', e.target.value)
+            })
+          }
+          className="mt-1 block min-h-11 w-full rounded-button border border-border bg-surface px-3 text-body text-text focus-visible:border-accent sm:w-auto"
+        >
+          {SORTS.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.label}
+            </option>
+          ))}
+        </select>
+        {activeSort === 'most-asked' && (
+          <p className="mt-2 text-text-muted">Ranked by how many companies a question is tagged to. Only {taggedCount} of {questions.length} carry a company tag.</p>
+        )}
+      </div>
+
       <p aria-live="polite" className="label mt-5">
         {results.length === questions.length
           ? `${results.length} questions`
           : `${results.length} of ${questions.length}`}
         {activeCategory ? ` · ${activeCategory.toLowerCase()}` : ''}
         {hardOnly ? ' · curveballs' : ''}
+        {activeCompany ? ` · ${activeCompany === 'any' ? 'asked at a company' : `asked at ${activeCompany}`}` : ''}
+        {activeSort !== 'default' ? ` · ${SORTS.find((s) => s.id === activeSort).label.toLowerCase()}` : ''}
         {activeTopic ? ` · ${topics.find((t) => t.slug === activeTopic).label}` : ''}
         {debouncedInput.trim() ? ` · "${debouncedInput.trim()}"` : ''}
       </p>

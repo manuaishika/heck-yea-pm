@@ -12,7 +12,7 @@ import { Page, PageHead } from '../components/Page'
 import { Detail, Block, Bullets, CategoryTag } from '../components/ui'
 import MethodLinks from '../components/MethodLinks'
 import SaveButton from '../components/SaveButton'
-import CompanyMark from '../components/CompanyMark'
+import CompanyTags from '../components/CompanyTags'
 import BackLink from '../components/BackLink'
 import NotFound from './NotFound'
 
@@ -138,13 +138,7 @@ export default function QuestionDetail() {
       {q.companies.length > 0 && (
         <section className="mt-6">
           <p className="label">Asked at</p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {q.companies.map((c) => (
-              <li key={c}>
-                <CompanyMark name={c} />
-              </li>
-            ))}
-          </ul>
+          <CompanyTags names={q.companies} className="mt-2" />
         </section>
       )}
 
