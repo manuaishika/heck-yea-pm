@@ -42,7 +42,7 @@ export default function Interview() {
   useHead({
     title: 'Interview simulator',
     description:
-      'A timed mock product interview: pick categories and difficulty, answer out loud against a clock, take follow-ups, and score yourself against a four-part rubric.',
+      'A timed mock product interview: pick categories and difficulty, answer out loud against a clock, take follow-ups, and score yourself on a five-part scorecard.',
     path: '/interview',
   })
   const [cfg, setCfg] = useState({ cats: ['Product Design', 'Analytics'], level: 'mixed', count: 3, minutes: 2 })
@@ -69,7 +69,7 @@ function Setup({ cfg, setCfg, start, error }) {
   const available = pickQuestions({ ...cfg, count: 999 }).length
   return (
     <Page>
-      <PageHead chapter="Interview simulator" title="Mock interview" intro="Timed answers, follow-up questions, and a rubric. You score yourself, so be honest." />
+      <PageHead chapter="Interview simulator" title="Mock interview" intro="Timed answers, follow-up questions, and a five-part scorecard. You score yourself, so be honest." />
 
       <fieldset>
         <legend className="label">Categories</legend>
@@ -227,7 +227,7 @@ function Review({ q, session, setSession, followUps }) {
   const [ratings, setRatings] = useState({})
   const ready = interview.rubric.every((r) => ratings[r.key])
   const last = session.i === session.qs.length - 1
-  const score = ready ? interview.rubric.reduce((n, r) => n + ratings[r.key], 0) / (interview.rubric.length * 4) : 0
+  const score = ready ? interview.rubric.reduce((n, r) => n + ratings[r.key], 0) / (interview.rubric.length * 5) : 0
   const sent = useRef(false)
 
   function next() {
@@ -280,7 +280,7 @@ function Review({ q, session, setSession, followUps }) {
         <button type="button" className="btn btn-primary" disabled={!ready} onClick={next}>
           {last ? 'Finish and see summary' : 'Next question'}
         </button>
-        {!ready && <span className="ml-3 text-text-muted">Score all four.</span>}
+        {!ready && <span className="ml-3 text-text-muted">Score all five.</span>}
       </p>
     </section>
   )
@@ -291,8 +291,11 @@ function Summary({ session, exit }) {
   const items = session.scores
   const total = items.reduce((n, it) => n + it.score, 0) / items.length
   const band = bandFor(total)
-  const per = interview.rubric.map((r) => ({ ...r, avg: items.reduce((n, it) => n + it.ratings[r.key], 0) / (items.length * 4) }))
-  const weakest = [...per].sort((a, b) => a.avg - b.avg)[0]
+  const per = interview.rubric.map((r) => ({ ...r, avg: items.reduce((n, it) => n + it.ratings[r.key], 0) / (items.length * 5) }))
+  const ranked = [...per].sort((a, b) => a.avg - b.avg)
+  const weakest = ranked[0]
+  const strongest = ranked[ranked.length - 1]
+  const focus = ranked.slice(0, 2)
 
   useEffect(() => {
     if (saved.current) return
@@ -309,18 +312,33 @@ function Summary({ session, exit }) {
         <p className="mt-1 text-text-muted">{band.line}</p>
         <p className="mt-2 text-text-muted">This is an estimate from your own ratings. It is not a prediction of a hiring decision.</p>
       </div>
-      <h2 className="mt-6 text-section">By criterion</h2>
+      <h2 className="mt-6 text-section">Scorecard</h2>
       <ul className="mt-2 border-t border-border">
-        {per.map((r) => (
-          <li key={r.key} className="flex items-baseline justify-between gap-3 border-b border-border py-2">
-            <span className="text-text">{r.name}</span>
-            <span className="tabular-nums text-text-muted">{pct(r.avg)}</span>
+        {per.map((r) => {
+          const n = Math.round(r.avg * 5 * 10) / 10
+          return (
+            <li key={r.key} className="border-b border-border py-3">
+              <p className="flex items-baseline justify-between gap-3">
+                <span className="font-semibold text-text">{r.name}</span>
+                <span className="tabular-nums text-text">{n}/5</span>
+              </p>
+              <p className="mt-1 text-text-muted">{r.levels[Math.min(4, Math.max(0, Math.round(n) - 1))]}</p>
+            </li>
+          )
+        })}
+      </ul>
+      <h2 className="mt-6 text-section">Summary</h2>
+      <p className="mt-2 text-text">
+        Strongest: <strong>{strongest.name}</strong>. Weakest: <strong>{weakest.name}</strong>.
+      </p>
+      <h2 className="mt-6 text-section">Next steps</h2>
+      <ol className="mt-2 list-decimal space-y-2 pl-5 text-text">
+        {focus.map((r) => (
+          <li key={r.key}>
+            <strong>{r.name}.</strong> {r.next}
           </li>
         ))}
-      </ul>
-      <p className="mt-3 text-text">
-        Weakest: <strong>{weakest.name}</strong>. A stronger answer here: {weakest.levels[2].toLowerCase()}.
-      </p>
+      </ol>
       <h2 className="mt-6 text-section">By question</h2>
       <ul className="mt-2 border-t border-border">
         {items.map((it) => (

@@ -198,10 +198,10 @@ export function validatePaths(d, ids) {
 }
 
 export function validateInterview(d, categories) {
-  if (!arr(d?.rubric) || d.rubric.length !== 4) fail('interview.rubric: need 4 criteria')
+  if (!arr(d?.rubric) || d.rubric.length !== 5) fail('interview.rubric: need 5 criteria')
   d.rubric.forEach((r, i) => {
     slug(r.key, `interview.rubric ${i}`)
-    if (!str(r.name) || !Array.isArray(r.levels) || r.levels.length !== 4 || !r.levels.every(str)) fail(`interview.rubric ${i}: name and 4 levels required`)
+    if (!str(r.name) || !Array.isArray(r.levels) || r.levels.length !== 5 || !r.levels.every(str) || !str(r.next)) fail(`interview.rubric ${i}: name, 5 levels and next required`)
   })
   unique(d.rubric, 'key', 'interview.rubric')
   for (const c of categories) if (!strs(d.followUps?.[c]) || d.followUps[c].length < 3) fail(`interview.followUps: need 3+ prompts for ${c}`)

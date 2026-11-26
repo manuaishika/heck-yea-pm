@@ -39,7 +39,7 @@ const routes = {
   '/interview': {
     title: 'Interview simulator',
     description:
-      'A timed mock product interview: pick categories and difficulty, answer out loud against a clock, take follow-ups, and score yourself against a four-part rubric.',
+      'A timed mock product interview: pick categories and difficulty, answer out loud against a clock, take follow-ups, and score yourself on a five-part scorecard.',
   },
   '/start': {
     title: 'Set up your path',

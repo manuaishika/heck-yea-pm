@@ -73,7 +73,7 @@ Product Practice PRD v1.0, checked against the site. "Built" means it works on t
 | Consumer Intelligence Lab | Built: 3 exercises that sort fact, statement, assumption and hypothesis, pick missing evidence, and challenge over-generalising. |
 | RCA case engine | Built: 4 cases with evidence on request, hypotheses you can revise, hints (assisted), criterion-level feedback, model reasoning. Data is made up and labelled. |
 | Product case practice with rubric feedback | Built through the interview simulator and the question bank; open-text answers are self-scored. |
-| Interview simulator | Built: categories, difficulty, timed answers, follow-ups, four-part rubric, readiness estimate, history. |
+| Interview simulator | Built: categories, difficulty, timed answers, follow-ups, five-part scorecard, readiness estimate, history. |
 | Competency tracking | Built: 12 competencies, 4 levels, assisted work capped at level 2, self-scored work marked. |
 | Design, Analytics, Technical and System Design labs | Partly: the RCA cases cover analytics and technical diagnosis; no UX critique lab, SQL practice or system design builder yet. |
 | AI tutor and AI-graded feedback | Not built. Needs a model, a server and a cost cap (an open decision). |

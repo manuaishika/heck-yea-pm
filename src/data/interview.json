@@ -1,43 +1,63 @@
 {
   "rubric": [
     {
-      "key": "structure",
-      "name": "Structure",
-      "levels": [
-        "No clear structure",
-        "Some structure, with gaps",
-        "Clear structure, mostly followed",
-        "Clear structure, signposted and followed through"
-      ]
-    },
-    {
-      "key": "reasoning",
-      "name": "Evidence and reasoning",
-      "levels": [
-        "Claims with no reasons",
-        "Some reasons, mostly assumed",
-        "Reasons tied to the user or the data",
-        "Reasons tied to evidence, with assumptions named"
-      ]
-    },
-    {
-      "key": "tradeoffs",
-      "name": "Trade-offs and prioritisation",
-      "levels": [
-        "No choices or trade-offs",
-        "Lists options without choosing",
-        "Chooses and gives one reason",
-        "Chooses, weighs the cost, and says what is left out"
-      ]
-    },
-    {
       "key": "communication",
       "name": "Communication",
+      "next": "Open with the answer in one sentence, name the sections you will cover, and say when you move on.",
       "levels": [
         "Hard to follow",
-        "Understandable but rambling",
-        "Clear and concise",
-        "Clear, concise, and answers the follow-up directly"
+        "Ideas arrive in no order",
+        "Understandable, with some rambling",
+        "Clear order, signposted, concise",
+        "Clear, concise, and the follow-up gets a direct answer"
+      ]
+    },
+    {
+      "key": "vision",
+      "name": "Product vision",
+      "next": "After the diagnosis or the design, say what you would build next and the user outcome it serves.",
+      "levels": [
+        "No view of where the product should go",
+        "Fixes the symptom only",
+        "Names a better experience for one user",
+        "Ties the solution to a clear user outcome",
+        "Ties the solution to a product direction and says what you would not build"
+      ]
+    },
+    {
+      "key": "prioritization",
+      "name": "Prioritization",
+      "next": "Rank the options on impact and effort, pick one first, and give the reason in one line.",
+      "levels": [
+        "No choices made",
+        "Lists options without ranking",
+        "Picks one and gives no reason",
+        "Picks one and ranks the rest by impact and effort",
+        "Picks one, weighs the cost, and says what waits and why"
+      ]
+    },
+    {
+      "key": "strategy",
+      "name": "Business strategy",
+      "next": "Link the answer to the company goal, then name one trade-off, such as engagement against revenue.",
+      "levels": [
+        "The business is never mentioned",
+        "Mentions revenue or growth in passing",
+        "Links the answer to one company goal",
+        "Links to the goal and names one trade-off",
+        "Links to the goal, weighs the trade-offs, and says what you would watch for"
+      ]
+    },
+    {
+      "key": "data",
+      "name": "Data literacy",
+      "next": "Name the metric you would check first, the segment you would cut it by, and what result would change your mind.",
+      "levels": [
+        "No metrics named",
+        "Names a metric with no reason",
+        "Picks relevant metrics",
+        "Picks metrics, segments them, and says what each would show",
+        "Picks metrics, segments them, names a counter-metric, and says what would change your mind"
       ]
     }
   ],
