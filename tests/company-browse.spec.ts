@@ -50,7 +50,7 @@ test.describe('browse by company', () => {
     await page.goto('/')
     const link = page.getByRole('link', { name: 'Google', exact: true }).first()
     await link.focus()
-    await link.click({ force: true })
+    await page.keyboard.press('Enter')
     await expect(page).toHaveURL(/companies\/google/)
   })
 
@@ -58,7 +58,8 @@ test.describe('browse by company', () => {
     await page.goto('/')
     const link = page.locator('.marquee a', { hasText: 'Atlassian' }).first()
     if (await link.count()) {
-      await link.click({ force: true })
+      await link.focus()
+      await page.keyboard.press('Enter')
       await expect(page).toHaveURL(/browse\?q=Atlassian/)
     }
   })
